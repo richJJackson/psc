@@ -1,13 +1,13 @@
 
 
 ### laoding packages
-library(mvtnorm)
-library(survival)
-library(flexsurv)
-library(enrichwith)
-library(devtools)
-devtools::install_github("richjjackson/psc")
-library(psc)
+#library(mvtnorm)
+#library(survival)
+#library(flexsurv)
+#library(enrichwith)
+#library(devtools)
+#devtools::install_github("richjjackson/psc")
+#library(psc)
 
 
 
