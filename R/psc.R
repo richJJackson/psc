@@ -33,7 +33,6 @@ psc <- function(CFM,DC,nsim=5000){
 
     ## Combining Data
     DC.clean <- data.comb.fpm(model.extract,DC)
-    DC
 
     ###### Estimation
     ### Frequentist estimation
@@ -49,6 +48,15 @@ psc <- function(CFM,DC,nsim=5000){
 
   }
 
-  mcmc
+  mcmc <- data.frame(mcmc)
+  names(mcmc) <- c(colnames(model.extract$sig),"beta","DIC")
+
+  ### Add in output here
+
+  ###
+
+  psc.ob <- list("model Type"=model.type,"CFM"=model.extract,"DC"=DC.clean,"posterior"=mcmc)
+  class(psc.ob) <- "psc"
+  psc.ob
 
 }

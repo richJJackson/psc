@@ -22,8 +22,8 @@ res <- psc(model,data)
 
 
 ## Example output
+print(res)
 plot(res)
 summary(res)
-
-
+plot.psc
 
