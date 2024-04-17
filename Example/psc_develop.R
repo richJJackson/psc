@@ -18,6 +18,12 @@ load("model.R")
 #### Survival Model
 
 ### Running basic
-psc <- psc(model,data)
+res <- psc(model,data)
+
+
+## Example output
+plot(res)
+summary(res)
+
 
 

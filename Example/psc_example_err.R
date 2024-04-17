@@ -9,7 +9,6 @@ library(mvtnorm)
 
 ## loading data and model
 
-here()
 
 setwd("Example")
 
@@ -22,7 +21,8 @@ load("model.R")
 #### Survival Model
 
 ### Running basic
-psc <- psc(fpm,data)
+psc <- psc(model,data)
+
 
 ### Running with missing covariate
 data_err_1 <- data[,-3]

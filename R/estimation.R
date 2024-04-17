@@ -47,8 +47,6 @@ mcmc.fpm <- function(nsim,start,model.extract,DC.clean){
 		## progress bar
 		setTxtProgressBar(pb, n)
 
-		est
-		sig
 		### Drawing Samples
 		cand <- rmvnorm(1,est,sig)
 		cand.beta <- rnorm(1,0,1)
@@ -69,7 +67,6 @@ mcmc.fpm <- function(nsim,start,model.extract,DC.clean){
 
 		### Likelihood evaluation
 		l.old <- lik.fpm(beta.old,cand.cov,cand.haz,model.extract,DC.clean) + pr.old + pr.cand
-
 		l.new <- lik.fpm(beta.new,cand.cov,cand.haz,model.extract,DC.clean)  + pr.new + pr.cand
 
 		### Accept/Reject

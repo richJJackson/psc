@@ -1,7 +1,3 @@
-### Data linear predictors
-
-DC <- data_err_2
-DC
 
 data.comb.fpm <- function(model.extract,DC){
 
