@@ -6,6 +6,7 @@ library(psc)
 library(survival)
 library(mvtnorm)
 
+
 ## loading data and model
 setwd("Example")
 
@@ -18,6 +19,15 @@ load("model.R")
 #### Survival Model
 
 ### Running basic
-psc <- psc(model,data)
+res <- psc(model,data)
 
+## Example output
+print(res)
+plot(res)
 
+### comparing with survival outcome from data (not needed)
+s.ob <- Surv(data$time,data$cen)
+lines(survfit(s.ob~1))
+
+## summary res
+summary(res)

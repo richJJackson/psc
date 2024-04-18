@@ -12,6 +12,9 @@ setwd("Example")
 ### Getting data
 data <- read.csv("exData.csv")
 
+data[1:3,]
+
+
 ### Getting model
 load("model.R")
 
@@ -24,6 +27,10 @@ res <- psc(model,data)
 ## Example output
 print(res)
 plot(res)
+
+### comparing with survival outcome from data (not needed)
+s.ob <- Surv(data$time,data$cen)
+lines(survfit(s.ob~1))
+
 summary(res)
-plot.psc
 
