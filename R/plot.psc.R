@@ -1,4 +1,10 @@
-## Fucntion for Plotting PSC objects
+#' Fucntion for Plotting PSC objects
+#' @param x an object of class 'psc'
+#' @return a plot corresponding to the psc fit
+#' @examples
+#' psc.ob <- psc(model,data)
+#' plot(psc.ob)
+
 plot.psc <- function(x){
   med <- coef(x)[1]
   s_fpm <- surv.fpm(x)

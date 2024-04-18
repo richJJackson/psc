@@ -1,7 +1,7 @@
 ### Example of PSC in R
 
 library(devtools)
-devtools::install_github("RichJJackson/psc")
+devtools::install_github("RichJJackson/psc",force=T)
 library(psc)
 library(survival)
 library(mvtnorm)
