@@ -19,3 +19,7 @@ a object of class 'psc'
 \description{
 Personalised Synthetic Controls
 }
+\examples{
+psc.ob <- psc(model,data)
+summary(psc.ob)
+}

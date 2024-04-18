@@ -4,7 +4,7 @@
 #' @param data A dataset including columns to match to covariates in the model
 #' @param nsim The number of simulations for the MCMC routine
 #' @return a object of class 'psc'
-#' @example
+#' @examples
 #' psc.ob <- psc(model,data)
 #' summary(psc.ob)
 
