@@ -24,4 +24,3 @@ res <- pscfit(model,data)
 plot(res)
 summary(res)
 
-
