@@ -1,7 +1,7 @@
 ### Example of PSC in R
 
 library(devtools)
-install_github("RichJJackson/psc",force=T)
+install_github("RichJJackson/psc",ref="develop",force=T)
 library(psc)
 library(survival)
 library(mvtnorm)
@@ -18,10 +18,10 @@ load("model.R")
 #### Survival Model
 
 ### Running basic
-psc <- pscfit(model,data)
+res <- pscfit(model,data)
 
 ## Example output
-print(psc)
-plot(psc)
-summary(psc)
+plot(res)
+summary(res)
+
 
