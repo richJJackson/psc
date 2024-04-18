@@ -6,7 +6,6 @@ library(psc)
 library(survival)
 library(mvtnorm)
 
-
 ## loading data and model
 setwd("Example")
 
@@ -19,17 +18,14 @@ load("model.R")
 #### Survival Model
 
 ### Running basic
-res <- psc(model,data)
+psc <- psc(model,data)
 
+<<<<<<< HEAD
 psc
 
 ## Example output
 print(res)
 plot(res)
+=======
+>>>>>>> parent of 0e19d15 (updated example)
 
-### comparing with survival outcome from data (not needed)
-s.ob <- Surv(data$time,data$cen)
-lines(survfit(s.ob~1))
-
-## summary res
-summary(res)

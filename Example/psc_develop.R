@@ -25,13 +25,17 @@ res <- psc(model,data)
 ## Example output
 print(res)
 plot(res)
+<<<<<<< HEAD
 
 ### comparing with survival outcome from data (not needed)
 s.ob <- Surv(data$time,data$cen)
 lines(survfit(s.ob~1))
 
 ## summary res
+=======
+>>>>>>> parent of 0e19d15 (updated example)
 summary(res)
+plot.psc
 
 
 
