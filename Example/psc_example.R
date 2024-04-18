@@ -1,7 +1,7 @@
 ### Example of PSC in R
 
 library(devtools)
-#devtools::install_github("RichJJackson/psc")
+devtools::install_github("RichJJackson/psc")
 library(psc)
 library(survival)
 library(mvtnorm)
@@ -20,6 +20,8 @@ load("model.R")
 
 ### Running basic
 res <- psc(model,data)
+
+psc
 
 ## Example output
 print(res)

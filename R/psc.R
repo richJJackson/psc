@@ -1,3 +1,13 @@
+#' Personalised Synthetic Controls
+#'
+#' @param model A model of type 'glm' or 'flexsurvspline'
+#' @param data A dataset including columns to match to covariates in the model
+#' @param nsim The number of simulations for the MCMC routine
+#' @return a object of class 'psc'
+#' @example
+#' psc.ob <- psc(model,data)
+#' summary(psc.ob)
+
 
 psc <- function(CFM,DC,nsim=5000){
 
