@@ -11,6 +11,7 @@ setwd("Example")
 
 ### Getting data
 load("exData.R")
+
 ### Getting model
 load("model.R")
 
@@ -22,5 +23,5 @@ psc <- pscfit(model,data)
 ## Example output
 print(psc)
 plot(psc)
-
+summary(psc)
 
