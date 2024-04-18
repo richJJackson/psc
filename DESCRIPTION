@@ -2,7 +2,7 @@ Package: psc
 Type: Package
 Title: Estimates treatment effects using Personalised Synthetic Controls (PSC)
 Version: 0.1.0
-Author: Richard J Jackspm
+Author: author
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: This package allows the estimation of treatment effects by 
     comparing a dataset to a model fit in the same setting.  Estimation is 
