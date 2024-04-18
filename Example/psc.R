@@ -25,3 +25,5 @@ print(psc)
 plot(psc)
 summary(psc)
 
+
+plot.psc
