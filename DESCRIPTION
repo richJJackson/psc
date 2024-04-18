@@ -1,11 +1,16 @@
 Package: psc
 Type: Package
-Title: Estimates treatment effecgts using Personalised Synthetic Controls
+Title: Estimates treatment effects using Personalised Synthetic Controls (PSC)
 Version: 0.1.0
 Author: Richard J Jackspm
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: This package allows the estimation of treatment effects by 
+    comparing a dataset to a model fit in the same setting.  Estimation is 
+    performed using an MCMC procedure and reuslt are obained in the form of an 
+    efficacy parameter
 License: What license is it under?
+Imports:
+    survival,
+    mvtnorm
 Encoding: UTF-8
 LazyData: true
