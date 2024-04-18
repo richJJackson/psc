@@ -13,7 +13,7 @@ coef.psc <- function(x){
 
 
 ### Survival Function
-surv_fpm <- function(x,beta=0){
+surv.fpm <- function(x,beta=0){
 
   me <- x$CFM
   dc <- x$DC
