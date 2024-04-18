@@ -6,14 +6,12 @@ library(psc)
 library(survival)
 library(mvtnorm)
 
+
 ## loading data and model
 setwd("Example")
 
 ### Getting data
 data <- read.csv("exData.csv")
-
-data[1:3,]
-
 
 ### Getting model
 load("model.R")
@@ -32,5 +30,8 @@ plot(res)
 s.ob <- Surv(data$time,data$cen)
 lines(survfit(s.ob~1))
 
+## summary res
 summary(res)
+
+
 
