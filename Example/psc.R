@@ -6,29 +6,21 @@ library(psc)
 library(survival)
 library(mvtnorm)
 
-
 ## loading data and model
-setwd("/Users/richardjackson/Documents/local/psc/data")
+setwd("Example")
 
 ### Getting data
 load("exData.R")
-
 ### Getting model
 load("model.R")
 
 #### Survival Model
 
 ### Running basic
-res <- pscfit(model,data)
-
+psc <- pscfit(model,data)
 
 ## Example output
-print(res)
-plot(res)
+print(psc)
+plot(psc)
 
-### comparing with survival outcome from data (not needed)
-s.ob <- Surv(data$time,data$cen)
-lines(survfit(s.ob~1))
 
-## summary res
-summary(res)
