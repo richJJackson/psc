@@ -1,6 +1,6 @@
 Package: psc
 Type: Package
-Title: Estimates treatment effects using Personalised Synthetic Controls (PSC)
+Title: Estimates treatment effects using Personalised Synthetic Controls
 Version: 0.1.0
 Author: author
 Maintainer: The package maintainer <yourself@somewhere.net>
