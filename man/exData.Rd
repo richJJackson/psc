@@ -1,7 +1,7 @@
 #' Example Dataset for Personalised Synthetic Controls
 #'
 #' A dataset for use with the personalised synthetic controls dataset
-#' @format a data frame with 100 rows and 14 columns
+#' @format a data frame with 100 rows and 14 columns:
 #' \describe{
 #'    \item{vi}{vascular invasion}
 #'    \item{age60}{age in years, centered at 60}
