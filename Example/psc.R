@@ -1,7 +1,7 @@
 ### Example of PSC in R
 
 library(devtools)
-devtools::install_github("RichJJackson/psc",force=T)
+install_github("RichJJackson/psc",force=T)
 library(psc)
 library(survival)
 library(mvtnorm)
@@ -25,5 +25,3 @@ print(psc)
 plot(psc)
 summary(psc)
 
-
-plot.psc
