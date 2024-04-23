@@ -1,3 +1,9 @@
+#' Model Extract
+#'
+#' @param x an R model object (of type 'flexsurvspline' or 'glm')
+#' @return Extracted model components
+#'
+
 model.extract.fpm <- function(CFM){
 
 	co <- CFM$coefficients
