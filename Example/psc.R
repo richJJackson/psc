@@ -24,3 +24,9 @@ res <- pscfit(model,data)
 plot(res)
 summary(res)
 
+## Adding
+s.ob <- Surv(data$time,data$cen)
+sfit <- survfit(s.ob~1)
+lines(sfit,col="forestgreen",lwd=3)
+
+
