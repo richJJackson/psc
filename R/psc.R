@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #' Personalised Synthetic Controls
 #'
 #' @param model A model of type 'glm' or 'flexsurvspline'
@@ -8,6 +9,8 @@
 #' psc.ob <- psc(model,data)
 #' summary(psc.ob)
 
+=======
+>>>>>>> parent of f0c7dc3 (updated description)
 
 psc <- function(CFM,DC,nsim=5000){
 

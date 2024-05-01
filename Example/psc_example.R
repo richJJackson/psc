@@ -1,7 +1,7 @@
 ### Example of PSC in R
 
 library(devtools)
-devtools::install_github("RichJJackson/psc")
+#devtools::install_github("RichJJackson/psc")
 library(psc)
 library(survival)
 library(mvtnorm)
@@ -21,8 +21,11 @@ load("model.R")
 psc <- psc(model,data)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 psc
 
+=======
+>>>>>>> parent of f0c7dc3 (updated description)
 ## Example output
 print(res)
 plot(res)
