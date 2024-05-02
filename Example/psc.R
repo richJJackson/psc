@@ -30,3 +30,20 @@ sfit <- survfit(s.ob~1)
 lines(sfit,col="forestgreen",lwd=3)
 
 
+
+# Individaul treatment effects (takes a while)
+
+ite <- psc_ite(model,data)
+ite <- ite[order(ite[,1]),]
+
+plot(density(ite[,1]))
+
+plot(ite[,1],dum,xlim=c(-3,3))
+segments(ite[,2],dum,ite[,3],dum)
+
+psc_all <- pscfit(model,data)
+
+coef(psc_all)
+abline(v=c(0.1,0.57,0.36))
+median(ite[,1])
+

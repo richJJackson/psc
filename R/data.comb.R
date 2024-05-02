@@ -1,12 +1,13 @@
 
-data.comb.fpm <- function(model.extract,DC){
+data.comb.fpm <- function(model.extract,DC,id=NULL){
 
 	### removing response and weights
 	mf <- model.extract$model.frame
 	term.nm <- names(mf)
 	term.nm <- term.nm[-c(1,length(term.nm))];term.nm
 
-	### ERROR CHECK: Selecting data from DC
+
+  ### ERROR CHECK: Selecting data from DC
 	data_unavail_id  <- which(!term.nm%in%names(DC))
 	data_unavail <- term.nm[data_unavail_id]
 	if(length(data_unavail_id)!=0) stop(paste("Covariate '",data_unavail,"' is included in the model but not the dataset",sep=""))
@@ -31,11 +32,17 @@ data.comb.fpm <- function(model.extract,DC){
 
 	### Estimating linear predictor
 	dc_mm <- model.matrix(model.extract$formula,data=DC)[,-1]
-	out <- data.frame("time"=DC$time,"cen"=DC$cen)
-	nrow(out)
+
+  out <- data.frame("time"=DC$time,"cen"=DC$cen)
+
+	if(!is.null(id)){
+	  dc_mm <- dc_mm[id,]
+	  out <- out[id,]
+	}
+
 
 	ret <- list("cov"=dc_mm,"outcome"=out)
-	ret
+  ret
 }
 
 
