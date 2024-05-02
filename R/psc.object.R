@@ -1,4 +1,4 @@
-#' Fitted \code{jointmeta1} object
+#' Fitted \code{psc} object
 #'
 #' An object returned by the \code{pscfit} function, inheriting from class
 #' \code{psc} and representing a fitted personlised synthetic control model.

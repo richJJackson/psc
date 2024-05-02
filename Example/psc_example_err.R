@@ -2,28 +2,9 @@
 
 
 library(devtools)
-#devtools::install_github("RichJJackson/psc")
-library(psc)
-library(survival)
-library(mvtnorm)
-
-## loading data and model
-
-
-setwd("Example")
-
-### Getting data
-data <- read.csv("exData.csv")
-
-### Getting model
-load("model.R")
-
-
-### Example of PSC in R
-
+.rs.restartR()
 remove.packages("psc")
-library(devtools)
-install_github("RichJJackson/psc",force=T)
+devtools::install_github("RichJJackson/psc",ref="devMay24")
 library(psc)
 library(survival)
 library(mvtnorm)
@@ -44,9 +25,20 @@ load("model.R")
 res <- pscfit(model,data)
 
 
+plot.psc(res)
+plot(res)
+
+coef(res)
+coef.psc(res)
+
+print(res)
+print.psc(res)
+
+summary(res)
+summary.psc(res)
 
 
-## Example output
+## Exares#res## Exares## Example output
 plot(res)
 summary(res)
 
