@@ -1,13 +1,10 @@
 ### Example of PSC in R
 
 
-library(devtools)
-.rs.restartR()
+#.rs.restartR()
 remove.packages("psc")
 devtools::install_github("RichJJackson/psc",ref="devMay24")
 library(psc)
-library(survival)
-library(mvtnorm)
 
 ## loading data and model
 setwd("Example")
@@ -20,14 +17,20 @@ load("model.R")
 
 #### Survival Model
 
+psc <- setClass("psc")
+
+
+cls <- getClasses()
+sort(cls)
+findClass("psc")
 
 ### Running basic
 res <- pscfit(model,data)
 
+res <- psc(res)
 
 plot(res)
 plot.psc(res)
-
 
 coef(res)
 coef.psc(res)
@@ -39,10 +42,6 @@ summary(res)
 summary.psc(res)
 
 
-## Exares#res## Exares## Example output
-plot(res)
-summary(res)
-
 ## Adding
 s.ob <- Surv(data$time,data$cen)
 sfit <- survfit(s.ob~1)
@@ -50,8 +49,9 @@ lines(sfit,col="forestgreen",lwd=3)
 
 
 
-# Individaul treatment effects (takes a while)
 
+
+# Individaul treatment effects (takes a while)
 ite <- psc_ite(model,data)
 ite <- ite[order(ite[,1]),]
 

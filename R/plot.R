@@ -4,7 +4,7 @@
 #' @examples
 #' psc.ob <- psc(model,data)
 #' plot(psc.ob)
-plot.psc <- function(x){
+plot.psc <- function(x,...){
   med <- coef(x)[1];med
   s_fpm <- surv.fpm(x)
   s_fpm_2 <- surv.fpm(x,beta=med)
