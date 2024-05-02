@@ -1,5 +1,5 @@
 ### Utility functions for psc
-coef.psc <- function(x){
+coef.psc <- function(x, ...){
   y <- x$posterior$beta;y
   qu <- quantile(y,p=c(0.025,0.5,00.975))
   p <- sum(y<0)/length(y)

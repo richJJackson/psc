@@ -17,18 +17,10 @@ load("model.R")
 
 #### Survival Model
 
-psc <- setClass("psc")
-
-
-cls <- getClasses()
-sort(cls)
-findClass("psc")
-
 ### Running basic
 res <- pscfit(model,data)
 
-res <- psc(res)
-
+class(res)
 plot(res)
 plot.psc(res)
 
