@@ -1,0 +1,8 @@
+#' Fitted \code{jointmeta1} object
+#'
+#' An object returned by the \code{pscfit} function, inheriting from class
+#' \code{psc} and representing a fitted personlised synthetic control model.
+#'
+#' @author Richard Jasckson (\email{richj23@@liverpool.ac.uk})
+
+"psc.object" <- NULL
