@@ -2,9 +2,12 @@
 
 
 #.rs.restartR()
+rm(list=ls())
 remove.packages("psc")
 devtools::install_github("RichJJackson/psc",ref="devMay24")
 library(psc)
+
+
 
 ## loading data and model
 setwd("Example")
