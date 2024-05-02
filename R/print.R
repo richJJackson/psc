@@ -3,7 +3,7 @@
 #' @param x an object of class 'psc'
 #' @return printing psc results
 #'
-print.psc <- function(x){
+print.psc <- function(x, ...){
   cat("Call:\n", "model + beta")
 
   cat("Coefficients:\n")
