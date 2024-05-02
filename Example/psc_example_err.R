@@ -25,8 +25,9 @@ load("model.R")
 res <- pscfit(model,data)
 
 
-plot.psc(res)
 plot(res)
+plot.psc(res)
+
 
 coef(res)
 coef.psc(res)
