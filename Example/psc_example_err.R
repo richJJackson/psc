@@ -8,7 +8,6 @@ devtools::install_github("RichJJackson/psc",ref="devMay24")
 library(psc)
 
 
-
 ## loading data and model
 setwd("Example")
 
@@ -23,7 +22,11 @@ load("model.R")
 ### Running basic
 res <- pscfit(model,data)
 
+
+
 class(res)
+
+
 plot(res)
 plot.psc(res)
 
