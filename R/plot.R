@@ -8,7 +8,7 @@
 ## Fucntion for Plotting PSC objects
 
 
-plot.psc<- function (x, ...)
+plot.psc <- function (x, ...)
 {
 
   model.type <- x$'model type'
