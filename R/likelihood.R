@@ -59,22 +59,16 @@ lik.logit <- function(beta,cov_co,DC.clean){
 
 
 
-### Likelihood Function
-lik.ef <- function(beta,cov_co,DC.clean,family){
-
-	## Getting data
-	event <- DC.clean$out;event
-	cov <- DC.clean$cov;cov
-	fam <- enrich(family)
-
-	### defining likelihood
-	lp <- cov%*%cov_co + beta
-	mu <- fam$linkinv(lp)
-	theta <- fam$theta(mu)
-	btheta <- fam$bfun(theta)
-
-	## returning result
-	- sum(event*theta-btheta)
-
-
+lik.ef <- function (beta, cov_co, DC.clean, family)
+{
+  event <- as.numeric(DC.clean$out[,1])
+  if(family$family=="binomial") event = as.numeric(as.factor(event)) -1
+  cov <- DC.clean$cov
+  fam <- enrich(family)
+  lp <- cov %*% cov_co + beta
+  mu <- fam$linkinv(lp)
+  theta <- fam$theta(mu)
+  btheta <- fam$bfun(theta)
+  -sum(event * theta - btheta)
 }
+
