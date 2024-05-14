@@ -3,13 +3,14 @@
 #' @param model A model of type 'glm' or 'flexsurvspline'
 #' @param data A dataset including columns to match to covariates in the model
 #' @param nsim The number of simulations for the MCMC routine
+#' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.  Defaults to all patients.
 #' @return a object of class 'psc'
 #' @examples
 #' psc.ob <- psc(model,data)
 #' summary(psc.ob)
 
 
-pscfit <- function(CFM,DC,nsim=5000){
+pscfit <- function(CFM,DC,nsim=5000,id=NULL){
 
 
   ### Getting model type (to inform likelihood)
@@ -42,7 +43,7 @@ pscfit <- function(CFM,DC,nsim=5000){
     model.extract <- model.extract.fpm(CFM)
 
     ## Combining Data
-    DC.clean <- data.comb.fpm(model.extract,DC)
+    DC.clean <- data.comb.fpm(model.extract,DC,id=id)
 
     ###### Estimation
     ### Frequentist estimation
@@ -56,7 +57,7 @@ pscfit <- function(CFM,DC,nsim=5000){
     ## MCMC
     mcmc <- mcmc.fpm(nsim,start,model.extract,DC.clean)
 
-  }
+}
 
   mcmc <- data.frame(mcmc)
   names(mcmc) <- c(colnames(model.extract$sig),"beta","DIC")
@@ -65,8 +66,8 @@ pscfit <- function(CFM,DC,nsim=5000){
 
   ###
 
-  psc.ob <- list("model Type"=model.type,"CFM"=model.extract,"DC"=DC.clean,"posterior"=mcmc)
+  psc.ob <- list("model type"=model.type,"CFM"=model.extract,"DC"=DC.clean,"posterior"=mcmc)
   class(psc.ob) <- "psc"
-  psc.ob
+  return(psc.ob)
 
 }

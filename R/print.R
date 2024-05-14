@@ -1,7 +1,9 @@
-### print.psc
-
-
-print.psc <- function(x){
+#' Personalised Synthetic Controls - print
+#'
+#' @param x an object of class 'psc'
+#' @return printing psc results
+#'
+print.psc <- function(x, ...){
   cat("Call:\n", "model + beta")
 
   cat("Coefficients:\n")
