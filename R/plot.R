@@ -26,7 +26,7 @@ plot.psc<- function (x, ...)
     xmax <- max(den.new$x,den.old$x,newr*1.1)
     xmax <- min(c(xmax,1))
 
-    plot(den.old,xlim=c(0,xmax),ylim=c(0,ymax),lwd=3,col="royalblue",xlab="Pr (Response)",main="")
+    plot(den.old,xlim=c(0,xmax),ylim=c(0,ymax),lwd=3,col="royalblue",xlab="Pr (Response)",main="",...)
     lines(den.new,col="pink",lwd=3)
     abline(v=newr,col="darkred",lty=2,lwd=3)
 
@@ -35,10 +35,10 @@ plot.psc<- function (x, ...)
 
   if ("flexsurvreg" %in% model.type) {
     med <- coef(x)[1];med
-    s_fpm <- surv.fpm(x)
-    s_fpm_2 <- surv.fpm(x, beta = med)
+    s_fpm <- surv_fpm(x)
+    s_fpm_2 <- surv_fpm(x, beta = med)
     plot(s_fpm$time, s_fpm$S, typ = "l", col = "royalblue", lwd = 4,
-         ylab = "Overall Survival", xlab = "Time")
+         ylab = "Overall Survival", xlab = "Time",...)
     lines(s_fpm_2$time, s_fpm_2$S, typ = "l", col = "pink", lwd = 4)
   }
 

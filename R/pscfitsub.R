@@ -19,7 +19,6 @@ pscfitsub <- function(CFM,DC,sg,cont_lev=2,cont_cut=NULL){
   nlev <- length(lev)
   tb <- table(sg.id, DC$cen)
 
-
   fit <- list()
 
   for(i in 1:nlev){
