@@ -15,9 +15,6 @@ acc <-  function(old,new){
 
 
 
-
-
-
 ### Assumed data in 'data' match fpm output
 
 mcmc.fpm <- function(nsim,start,model.extract,DC.clean){
