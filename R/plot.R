@@ -11,14 +11,12 @@
 plot.psc<- function (x, ...)
 {
 
-  model.type <- attributes(CFM)$class
+  model.type <- x$'model type'
 
 
   if ("glm" %in% model.type) {
-
     pr.new <- predict(CFM,type="response",newdata=DC)
     pr.old <- predict(CFM,type="response")
-
     den.new <- density(pr.new)
     den.old <- density(pr.old)
 
@@ -33,8 +31,8 @@ plot.psc<- function (x, ...)
     abline(v=newr,col="darkred",lty=2,lwd=3)
 
     legend(xmax*.4,ymax*.9,c("Pr(Resp.): control","Pr(Resp.): experimental","observed response"),bty="n",col=c(4,6,2),lwd=c(3,3,3),lty=c(1,1,2))
-
   }
+
   if ("flexsurvreg" %in% model.type) {
     med <- coef(x)[1];med
     s_fpm <- surv.fpm(x)

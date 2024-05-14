@@ -66,7 +66,7 @@ pscfit <- function(CFM,DC,nsim=5000,id=NULL){
 
   ###
 
-  psc.ob <- list("model Type"=model.type,"CFM"=model.extract,"DC"=DC.clean,"posterior"=mcmc)
+  psc.ob <- list("model type"=model.type,"CFM"=model.extract,"DC"=DC.clean,"posterior"=mcmc)
   class(psc.ob) <- "psc"
   return(psc.ob)
 
