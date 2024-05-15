@@ -2,7 +2,7 @@
 #'
 #' @param x an object of class 'psc'
 #' @return printing psc results
-#'
+#' @export
 print.psc <- function(x, ...){
   cat("Call:\n", "model + beta")
 

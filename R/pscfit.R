@@ -8,8 +8,7 @@
 #' @examples
 #' psc.ob <- psc(model,data)
 #' summary(psc.ob)
-
-
+#' @export
 pscfit <- function(CFM,DC,nsim=5000,id=NULL){
 
 

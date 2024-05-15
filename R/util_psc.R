@@ -1,4 +1,4 @@
-
+# util functions.
 ### Survival Function
 surv_fpm <- function(x,beta=0){
 

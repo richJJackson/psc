@@ -1,4 +1,11 @@
-
+#' Likehood functions for the estimation of psc
+#'
+#' @param beta efficacy parameter
+#' @param cov_co model coefficients
+#' @param haz_co baselined hazard coefficients
+#' @param model.extract model extract
+#' @param DC.clean cleaned dataset
+#'
 ### Likelihood Function
 lik.fpm <- function(beta,cov_co,haz_co,model.extract,DC.clean){
 

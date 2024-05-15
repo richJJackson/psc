@@ -4,10 +4,7 @@
 #' @examples
 #' psc.ob <- psc(model,data)
 #' plot(psc.ob)
-
-## Fucntion for Plotting PSC objects
-
-
+#' @export
 plot.psc <- function (x, ...)
 {
 

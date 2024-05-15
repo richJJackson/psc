@@ -4,10 +4,12 @@
 \alias{pscfit}
 \title{Personalised Synthetic Controls}
 \usage{
-pscfit(CFM, DC, nsim = 5000)
+pscfit(CFM, DC, nsim = 5000, id = NULL)
 }
 \arguments{
 \item{nsim}{The number of simulations for the MCMC routine}
+
+\item{id}{Numeric vector stating which patient(s) from the dataset should be included in the analysis.  Defaults to all patients.}
 
 \item{model}{A model of type 'glm' or 'flexsurvspline'}
 

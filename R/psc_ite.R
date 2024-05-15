@@ -1,5 +1,8 @@
-## Wrapper function for individual treatment effects
-
+#' Wrapper function for individual treatment effects
+#'
+#' @param model a CFM
+#' @param data
+#' @export
 psc_ite <- function(model,data){
 
   nr <- nrow(data)

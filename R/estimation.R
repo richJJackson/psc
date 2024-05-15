@@ -1,3 +1,7 @@
+#' Estimation functons
+#' @param NULL
+#'
+
 ### Estimation
 
 #### Functions

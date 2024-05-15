@@ -1,3 +1,8 @@
+#' Returns the coefficeint estimate of a psc object.
+#'
+#' @param x a 'psc' object
+#' @return The summary of the posterior distribution for the efficacy parameter in terms of the median and 95% HPD
+#' @export
 ### Utility functions for psc
 coef.psc <- function(x, ...){
   y <- x$posterior$beta;y

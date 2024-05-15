@@ -4,5 +4,4 @@
 #' \code{psc} and representing a fitted personlised synthetic control model.
 #'
 #' @author Richard Jasckson (\email{richj23@@liverpool.ac.uk})
-
 "psc.object" <- NULL

@@ -1,4 +1,9 @@
-
+#' Functions for cleaning a dataset to match the output of a CFM
+#'
+#' @param model.extract details of model extract from model extract
+#' @param DC A dataset to compare against the CFM
+#' @return A cleaned dataset and outcome
+#'
 data.comb.fpm <- function(model.extract,DC,id=NULL){
 
 	### removing response and weights

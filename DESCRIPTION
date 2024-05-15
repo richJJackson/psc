@@ -18,4 +18,5 @@ BugReports: https://github.com/richjjackson/psc/issues
 Depends:
     R (>= 3.3.0),
     mvtnorm,
-    survival
+    survival,
+    enrichwith

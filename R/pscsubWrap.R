@@ -1,3 +1,11 @@
+#' Wrapper for sub-group analysis
+#' @param CFM CFM
+#' @param DC DC
+#' @param sg sg
+#' @param cont_lev cont_lev
+#' @param cont_cut cont_cut
+#'
+#' @export
 pscsubWrap <- function(pscsub){
   tb <- pscsub$Table
   n <- rowSums(tb)
