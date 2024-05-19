@@ -22,7 +22,7 @@ pscfit <- function (CFM, DC, nsim = 5000, id = NULL){
 
   ## Cleaning output
   mcmc <- data.frame(mcmc)
-  names(mcmc) <- c(colnames(model.extract$sig), "beta", "DIC")
+  names(mcmc) <- c(colnames(DC_clean$model_extract$sig), "beta", "DIC")
   psc.ob <- list("model.type"=class(CFM),DC_clean=DC_clean, posterior = mcmc)
   class(psc.ob) <- "psc"
   return(psc.ob)
