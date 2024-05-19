@@ -4,7 +4,3 @@ initParm.flexsurvreg <- function(CFM,DC_clean){
   class(ip) <- class(model_extract)
   return(ip)
   }
-
-
-
-lik.flexsurvreg

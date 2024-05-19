@@ -24,7 +24,6 @@ lik.flexsurvreg <- function(beta,DC_clean){
 
   }
 
-
   H0 <- exp(haz_co[1]+ haz_co[2]*logt+z%*%haz_co[3:(2+k)])
   h0 <- (H0/time)*(haz_co[2]+3*z_h%*%haz_co[3:(2+k)])
 
