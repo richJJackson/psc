@@ -1,9 +1,26 @@
 # util functions.
+
+#### Functions
+modp <- function(x){
+  x*(sign(x)+1)/2
+}
+
+
+acc <-  function(old,new){
+  ret <- FALSE
+  r <- runif(1)
+  e <-exp(old-new)
+  try(if(e>r) ret <- TRUE)
+  ret
+}
+
+
+
 ### Survival Function
 surv_fpm <- function(x,beta=0){
 
-  me <- x$CFM
-  dc <- x$DC
+  me <- x$DC_clean$model_extract
+  dc <- x$DC_clean
   time <- dc$outcome$time
   logt <- log(time+1e-06)
 
@@ -37,10 +54,11 @@ surv_fpm <- function(x,beta=0){
 
 #### Linear Predictor
 lp_psc <- function(x){
-  me <- x$CFM
-  dc <- x$DC
+  me <- x$DC_clean$model_extract
+  dc <- x$DC_clean
   lp <- dc$cov%*%me$cov_co
   c(lp)
 }
+
 
 

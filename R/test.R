@@ -1,5 +1,5 @@
 #' test
 #'
 testPSC <- function(){
-  "Yes this has loaded properly - may 2024"
+  "Yes this has loaded properly - 20th may 2024"
 }

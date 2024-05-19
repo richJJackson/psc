@@ -8,7 +8,7 @@
 plot.psc <- function (x, ...)
 {
 
-  model.type <- x$'model type'
+  model.type <- x$'model.type'
 
 
   if ("glm" %in% model.type) {

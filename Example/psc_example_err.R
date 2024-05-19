@@ -4,7 +4,7 @@
 #.rs.restartR()
 rm(list=ls())
 remove.packages("psc")
-devtools::install_github("RichJJackson/psc",ref="devMay24")
+devtools::install_github("RichJJackson/psc",ref="2024_05_15")
 library(psc)
 
 
@@ -17,21 +17,51 @@ load("exData.R")
 ### Getting model
 load("model.R")
 
+class(model)
+
 #### Survival Model
 
 ### Running basic
 res <- pscfit(model,data)
 
 
+CFM <- model
+DC <- data
+
+pscfit <- function (CFM, DC, nsim = 5000, id = NULL){
+
+    # Creating 'cleaned' dataset for comparison
+    DC_clean <- dataComb(CFM=CFM,DC=DC,id=NULL)
+
+    # Initial Estimates using Optims
+    init <- initParm(CFM=CFM,DC_clean=DC_clean)
+
+    # estimation
+    mcmc <- pscEst(CFM=CFM,DC_clean=DC_clean,nsim=nsim,start=init$par)
+
+    ## Cleaning output
+    mcmc <- data.frame(mcmc)
+    names(mcmc) <- c(colnames(model.extract$sig), "beta", "DIC")
+    psc.ob <- list(DC_clean=DC_clean, posterior = mcmc)
+    class(psc.ob) <- "psc"
+    return(psc.ob)
+}
+
+
+
+
 
 class(res)
+attributes(res)
 
+res$model.type
 
 plot(res)
 plot.psc(res)
 
 coef(res)
 coef.psc(res)
+
 
 print(res)
 print.psc(res)

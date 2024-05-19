@@ -21,8 +21,9 @@ model.extract.fpm <- function(CFM){
 	haz_co <- co[1:n_haz_co]
 	cov_co <- co[(n_haz_co+1):length(co)]
 
-	list("model.frame"=mf,"cov_co"=cov_co,"sig"=sig,"haz_co"=haz_co,"k"=k,"kn"=kn,"lam"=lam,"formula"=form)
-
+	ret <- list("model.frame"=mf,"cov_co"=cov_co,"sig"=sig,"haz_co"=haz_co,"k"=k,"kn"=kn,"lam"=lam,"formula"=form)
+  class(ret) <- class(CFM)
+  return(ret)
 }
 
 
