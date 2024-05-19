@@ -2,7 +2,7 @@ dataComb.flexsurvreg <- function(CFM,DC,id=NULL){
 
   ### removing response and weights
   model_extract <- modelExtract(CFM);model_extract
-  mf <- model.extract$model.frame
+  mf <- model_extract$model.frame
   term.nm <- names(mf)
   term.nm <- term.nm[-c(1,length(term.nm))];term.nm
 
@@ -31,7 +31,7 @@ dataComb.flexsurvreg <- function(CFM,DC,id=NULL){
   }
 
   ### Estimating linear predictor
-  dc_mm <- model.matrix(model.extract$formula,data=DC)[,-1]
+  dc_mm <- model.matrix(model_extract$formula,data=DC)[,-1]
   out <- data.frame("time"=DC$time,"cen"=DC$cen)
 
   if(!is.null(id)){
