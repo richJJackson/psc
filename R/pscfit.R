@@ -12,7 +12,7 @@
 pscfit <- function (CFM, DC, nsim = 5000, id = NULL){
 
   # Creating 'cleaned' dataset for comparison
-  DC_clean <- dataComb(CFM=CFM,DC=DC,id=NULL)
+  DC_clean <- dataComb(CFM=CFM,DC=DC,id=id)
 
   # Initial Estimates using Optims
   init <- initParm(CFM=CFM,DC_clean=DC_clean)
