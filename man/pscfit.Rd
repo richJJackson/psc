@@ -21,10 +21,9 @@ a object of class 'psc' with attributes
 \description{
 Personalised Synthetic Controls
 }
-\section{Details}{
-
+\details{
+This is where the details go
 }
-
 \examples{
 psc.ob <- psc(model,data)
 summary(psc.ob)

@@ -5,7 +5,7 @@
 #' @param nsim The number of simulations for the MCMC routine
 #' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.  Defaults to all patients.
 #' @return a object of class 'psc' with attributes
-#' @section Details:
+#' @details This is where the details go
 #' @examples
 #' psc.ob <- psc(model,data)
 #' summary(psc.ob)
