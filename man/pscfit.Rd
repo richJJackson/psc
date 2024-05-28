@@ -9,18 +9,24 @@ pscfit(CFM, DC, nsim = 5000, id = NULL)
 \arguments{
 \item{nsim}{The number of simulations for the MCMC routine}
 
-\item{id}{Numeric vector stating which patient(s) from the dataset should be included in the analysis.  Defaults to all patients.}
+\item{id}{Numeric vector stating which patient(s) from the dataset
+should be included in the analysis.  Defaults to all patients.}
 
 \item{model}{A model of type 'glm' or 'flexsurvspline'}
 
 \item{data}{A dataset including columns to match to covariates in the model}
 }
 \value{
-a object of class 'psc'
+a object of class 'psc' with attributes
 }
 \description{
 Personalised Synthetic Controls
 }
+\section{Details}{
+ The \code{pscfit} function compares a dataset (\code{DC})
+  to a parmateric model (\code{CFM})
+}
+
 \examples{
 psc.ob <- psc(model,data)
 summary(psc.ob)
