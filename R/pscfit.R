@@ -3,9 +3,14 @@
 #' @param model A model of type 'glm' or 'flexsurvspline'
 #' @param data A dataset including columns to match to covariates in the model
 #' @param nsim The number of simulations for the MCMC routine
-#' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.  Defaults to all patients.
-#' @return a object of class 'psc' with attributes
-#' @details This is where the details go
+#' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.
+#'  Defaults to all patients
+#' @details the \code{pscfit} function compares a dataset ('DC') against a parametric model.
+#'   This is done by forming a likelihood based on the type of model which is supplied.
+#'   Estimation is performed using a Bayesian MCMC procedure.  Prior distributions are
+#'   derived from the vector of coefficients and variance covariance of the supplied model
+#' @return a object of class 'psc' with attributes model.tupe, the cleaned Dataset and the
+#'   posterior distribution of the fitted model
 #' @examples
 #' psc.ob <- psc(model,data)
 #' summary(psc.ob)

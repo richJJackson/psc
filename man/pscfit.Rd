@@ -9,20 +9,25 @@ pscfit(CFM, DC, nsim = 5000, id = NULL)
 \arguments{
 \item{nsim}{The number of simulations for the MCMC routine}
 
-\item{id}{Numeric vector stating which patient(s) from the dataset should be included in the analysis.  Defaults to all patients.}
+\item{id}{Numeric vector stating which patient(s) from the dataset should be included in the analysis.
+Defaults to all patients}
 
 \item{model}{A model of type 'glm' or 'flexsurvspline'}
 
 \item{data}{A dataset including columns to match to covariates in the model}
 }
 \value{
-a object of class 'psc' with attributes
+a object of class 'psc' with attributes model.tupe, the cleaned Dataset and the
+  posterior distribution of the fitted model
 }
 \description{
 Personalised Synthetic Controls
 }
 \details{
-This is where the details go
+the \code{pscfit} function compares a dataset ('DC') against a parametric model.
+  This is done by forming a likelihood based on the type of model which is supplied.
+  Estimation is performed using a Bayesian MCMC procedure.  Prior distributions are
+  derived from the vector of coefficients and variance covariance of the supplied model
 }
 \examples{
 psc.ob <- psc(model,data)
