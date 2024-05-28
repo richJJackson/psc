@@ -13,40 +13,42 @@ setwd("Example")
 
 ### Getting data
 load("exData.R")
+load("bin.data.R")
+
 
 ### Getting model
 load("model.R")
+load("bin.mod.R")
 
-class(model)
+
 
 #### Survival Model
 
 ### Running basic
-res <- pscfit(model,data)
+res <- pscfit(ukoss.mod,edata)
 
 
-CFM <- model
-DC <- data
+CFM <- ukoss.mod
+DC <- edata
 
 pscfit <- function (CFM, DC, nsim = 5000, id = NULL){
 
-    # Creating 'cleaned' dataset for comparison
-    DC_clean <- dataComb(CFM=CFM,DC=DC,id=NULL)
+  # Creating 'cleaned' dataset for comparison
+  DC_clean <- dataComb(CFM=CFM,DC=DC,id=id)
 
-    # Initial Estimates using Optims
-    init <- initParm(CFM=CFM,DC_clean=DC_clean)
+  # Initial Estimates using Optims
+  init <- initParm(CFM,DC_clean=DC_clean)
 
-    # estimation
-    mcmc <- pscEst(CFM=CFM,DC_clean=DC_clean,nsim=nsim,start=init$par)
+  # estimation
+  mcmc <- pscEst(CFM=CFM,DC_clean=DC_clean,nsim=nsim,start=init$par)
 
-    ## Cleaning output
-    mcmc <- data.frame(mcmc)
-    names(mcmc) <- c(colnames(model.extract$sig), "beta", "DIC")
-    psc.ob <- list(DC_clean=DC_clean, posterior = mcmc)
-    class(psc.ob) <- "psc"
-    return(psc.ob)
+  ## Cleaning output
+  mcmc <- data.frame(mcmc)
+  names(mcmc) <- c(colnames(DC_clean$model_extract$sig), "beta", "DIC")
+  psc.ob <- list("model.type"=class(CFM),DC_clean=DC_clean, posterior = mcmc)
+  class(psc.ob) <- "psc"
+  return(psc.ob)
 }
-
 
 
 

@@ -121,6 +121,9 @@ mcmc.ef <- function (nsim, start, model.extract, DC.clean)
   parm
 }
 
+
+
+
 pscfit <- function (CFM, DC, nsim = 5000, id = NULL)
 {
   model.type <- attributes(CFM)$class
