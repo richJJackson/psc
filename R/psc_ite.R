@@ -1,7 +1,9 @@
 #' Wrapper function for individual treatment effects
 #'
 #' @param model a CFM
-#' @param data
+#' @param data a data cohort
+#' @details
+#'  A wrapper function that estimates individual treatment effects usinf pscfit
 #' @export
 psc_ite <- function(model,data){
 

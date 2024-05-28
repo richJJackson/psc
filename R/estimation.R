@@ -1,5 +1,6 @@
 #' Estimation functons
-#' @param NULL
+#' @details
+#' Some utility funtions for the esitmation of a pscfit model
 #'
 
 ### Estimation

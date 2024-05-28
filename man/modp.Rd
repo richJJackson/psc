@@ -6,9 +6,9 @@
 \usage{
 modp(x)
 }
-\arguments{
-\item{NULL}{}
-}
 \description{
 Estimation functons
+}
+\details{
+Some utility funtions for the esitmation of a pscfit model
 }

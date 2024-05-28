@@ -8,7 +8,12 @@ psc_ite(model, data)
 }
 \arguments{
 \item{model}{a CFM}
+
+\item{data}{a data cohort}
 }
 \description{
 Wrapper function for individual treatment effects
+}
+\details{
+A wrapper function that estimates individual treatment effects usinf pscfit
 }

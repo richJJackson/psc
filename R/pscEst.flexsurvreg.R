@@ -1,3 +1,13 @@
+#' Fucntion for estimating initial parameter values  'flexsurvreg'
+#'
+#' @param CFM a model object supplied to pscfit
+#' @param DC a dataset including covariates to match the CFM
+#' @param nsim the number of MCMC simulations to run
+#' @param start the stating value for
+#' @details An MCMC routine for fitting a psc model
+#' @return a matrix continig the draws form the posterior ditribution
+#' @export
+#'
 pscEst.flexsurvreg <- function(CFM,DC_clean,nsim,start){
 
 cov_co <- DC_clean$model_extract$cov_co;cov_co

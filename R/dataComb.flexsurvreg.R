@@ -1,3 +1,12 @@
+#' Fucntion for cleaning the data of a model with class 'flexsurvreg'
+#'
+#' @param CFM a model object supplied to pscfit
+#' @param DC a dataset including covariates to match the CFM
+#' @param id a vector specifiying whether a subset of the dataset shoudl be selcted.
+#'   Defaults to 'NULL' e.g. all data points included
+#' @return a list containing objects which specifiy the required exported components
+#'   of the model and a cleaned data cohort.
+#' @export
 dataComb.flexsurvreg <- function(CFM,DC,id=NULL){
 
   ### removing response and weights
