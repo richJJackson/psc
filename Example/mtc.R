@@ -100,8 +100,31 @@ pscfit_mtc <- function (CFM, DC, nsim = 5000, id = NULL,trt=NULL){
 
 ### Checking it works
 trt <- round(runif(nrow(data)))
-psc1 <- pscfit_mtc(CFM,DC,trt=trt,nsim=50)
-psc2 <- pscfit_mtc(CFM,DC,nsim=50)
+psc1 <- pscfit(CFM,DC,trt=trt,nsim=50)
+psc2 <- pscfit(CFM,DC,nsim=50)
+x <- psc1
+
+
+
+
+coef.psc <- function(x, ...){
+
+  cl.nm <- attributes(x$DC_clean$model_extract$sig)$dimnames[[1]]
+  y <- x$posterior[,which(!names(x$posterior)%in%cl.nm)]
+
+  lap <- lapply(y,quantile,na.rm=T,p=c(0.025,0.5,00.975))
+  lap <- t(matrix(unlist(lap),3,ncol(y)))
+  p <- colSums(y<0)/nrow(y)
+
+  res <- data.frame(cbind(lap,p))
+  names(res) <- c("median","lower","upper","Pr(x<0)")
+  as.matrix(res)
+}
+
+coef(psc1)
+plot(psc2)
+
+print(psc1)
 
 
 ### Old one should still work!!

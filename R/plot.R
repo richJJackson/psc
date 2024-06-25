@@ -8,8 +8,7 @@
 #' psc.ob <- psc(model,data)
 #' plot(psc.ob)
 #' @export
-plot.psc <- function (x, ...)
-{
+plot.psc <- function (x, ...){
 
   model.type <- x$'model.type'
 
@@ -34,14 +33,22 @@ plot.psc <- function (x, ...)
   }
 
   if ("flexsurvreg" %in% model.type) {
-    med <- coef(x)[1];med
+    med <- coef(x)
+    med <- med[-nrow(med),1]
+
+
+    cls <- c("royalblue","pink","darkorchid","black","darkorange","forestgreen")
+
     s_fpm <- surv_fpm(x)
-    s_fpm_2 <- surv_fpm(x, beta = med)
-    plot(s_fpm$time, s_fpm$S, typ = "l", col = "royalblue", lwd = 4,
-         ylab = "Overall Survival", xlab = "Time",...)
-    lines(s_fpm_2$time, s_fpm_2$S, typ = "l", col = "pink", lwd = 4)
+    plot(s_fpm$time, s_fpm$S, typ = "l", col = cls[1], lwd = 4,
+         ylab = "Overall Survival", xlab = "Time")
+
+    for(i in 1:length(med)){
+      s_fpm_2 <- surv_fpm(x, beta = med[i])
+      lines(s_fpm_2$time, s_fpm_2$S, typ = "l", col = cls[(i+1)], lwd = 4)
+    }
   }
 
-
 }
+
 
