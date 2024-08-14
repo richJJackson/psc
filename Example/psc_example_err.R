@@ -4,7 +4,7 @@
 #.rs.restartR()
 rm(list=ls())
 remove.packages("psc")
-devtools::install_github("RichJJackson/psc",ref="2024_05_15")
+devtools::install_github("RichJJackson/psc",ref="mtc")
 library(psc)
 
 
@@ -27,49 +27,23 @@ load("bin.mod.R")
 ### Running basic
 res <- pscfit(ukoss.mod,edata)
 
-
-CFM <- ukoss.mod
-DC <- edata
-
-pscfit <- function (CFM, DC, nsim = 5000, id = NULL){
-
-  # Creating 'cleaned' dataset for comparison
-  DC_clean <- dataComb(CFM=CFM,DC=DC,id=id)
-
-  # Initial Estimates using Optims
-  init <- initParm(CFM,DC_clean=DC_clean)
-
-  # estimation
-  mcmc <- pscEst(CFM=CFM,DC_clean=DC_clean,nsim=nsim,start=init$par)
-
-  ## Cleaning output
-  mcmc <- data.frame(mcmc)
-  names(mcmc) <- c(colnames(DC_clean$model_extract$sig), "beta", "DIC")
-  psc.ob <- list("model.type"=class(CFM),DC_clean=DC_clean, posterior = mcmc)
-  class(psc.ob) <- "psc"
-  return(psc.ob)
-}
+plot(res)
+coef(res)
+print(res)
+summary(res)
 
 
 
+### Running basic
+res <- pscfit(model,data)
 
-class(res)
-attributes(res)
-
-res$model.type
 
 plot(res)
-plot.psc(res)
-
 coef(res)
-coef.psc(res)
-
-
 print(res)
-print.psc(res)
-
 summary(res)
-summary.psc(res)
+
+
 
 
 ## Adding

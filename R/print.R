@@ -7,6 +7,7 @@ print.psc <- function(x, ...){
   cat("Call:\n", "model + beta")
 
   cat("Coefficients:\n")
+  cat("\n")
   print.default(format(coef(x), digits = 1), print.gap = 2L,
                 quote = FALSE)
 

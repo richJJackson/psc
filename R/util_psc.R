@@ -15,8 +15,6 @@ acc <-  function(old,new){
 }
 
 
-
-### Survival Function
 surv_fpm <- function(x,beta=0){
 
   me <- x$DC_clean$model_extract
@@ -52,13 +50,12 @@ surv_fpm <- function(x,beta=0){
 
 
 
-#### Linear Predictor
+
 lp_psc <- function(x){
-  me <- x$DC_clean$model_extract
-  dc <- x$DC_clean
-  lp <- dc$cov%*%me$cov_co
+  me <- x$DC_clean$model_extract;me
+  dc <- x$DC_clean;dc
+  lp <- dc$cov[,1:length(me$cov_co)]%*%me$cov_co
   c(lp)
 }
-
 
 
