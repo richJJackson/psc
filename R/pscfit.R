@@ -62,10 +62,10 @@
 pscfit <- function (CFM, DC, nsim = 5000, id = NULL,trt=NULL){
 
   ### Cleaning data
-  DC_clean <- dataComb(CFM,DC,trt=trt);DC_clean$cov[1:3,]
+  DC_clean <- dataComb(CFM,DC,trt=trt)
 
   # Initial Estimates using Optims
-  init <- initParm(CFM=CFM,DC_clean=DC_clean,trt=trt);init
+  init <- initParm(CFM=CFM,DC_clean=DC_clean,trt=trt)
 
   # Estimation
   mcmc <- pscEst(CFM=CFM,DC_clean=DC_clean,nsim=nsim,start=init$par,trt=trt)

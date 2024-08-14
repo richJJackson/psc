@@ -23,6 +23,6 @@ initParm.flexsurvreg <- function(CFM,DC_clean,trt=NULL){
     ip <- optim(beta, lik.flexsurvreg.mtc, DC_clean=DC_clean, method = "BFGS", hessian = T)
   }
 
-  class(ip) <- class(model_extract)
+  class(ip) <- class(CFM)
   return(ip)
 }
