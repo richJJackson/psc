@@ -59,29 +59,32 @@
 #' psc.ob <- psc(model,data)
 #' summary(psc.ob)
 #' @export
-pscfit <- function (CFM, DC, nsim = 5000, id = NULL,trt=NULL){
+pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
 
-  ### Cleaning data
-  DC_clean <- dataComb(CFM,DC,trt=trt)
+  ### Cleaning Data
+  DC_clean <- dataComb(CFM, DC, id=id, trt = trt)
 
-  # Initial Estimates using Optims
-  init <- initParm(CFM=CFM,DC_clean=DC_clean,trt=trt)
+  ### Starting Parameters
+  init <- initParm(CFM = CFM, DC_clean = DC_clean, trt = trt)
 
-  # Estimation
-  mcmc <- pscEst(CFM=CFM,DC_clean=DC_clean,nsim=nsim,start=init$par,trt=trt)
+  ### MCMC estimation
+  mcmc <- pscEst(CFM = CFM, DC_clean = DC_clean, nsim = nsim,
+                 start = init$par, trt = trt)
 
+  ### Formatting results
   covnm <- "beta"
-
-  if(!is.null(trt)){
+  if (!is.null(trt)) {
     df <- data.frame(DC_clean$cov)
     ft <- factor(df$trt)
-    covnm <- paste("beta",levels(ft),sep="_")
+    covnm <- paste("beta", levels(ft), sep = "_")
   }
 
-  ## Cleaning output
   mcmc <- data.frame(mcmc)
-  names(mcmc) <- c(colnames(DC_clean$model_extract$sig), covnm,"DIC")
-  psc.ob <- list("model.type"=class(CFM),DC_clean=DC_clean, posterior = mcmc)
+  names(mcmc) <- c(colnames(DC_clean$model_extract$sig), covnm,
+                   "DIC")
+  psc.ob <- list(model.type = class(CFM), DC_clean = DC_clean,
+                 posterior = mcmc)
   class(psc.ob) <- "psc"
   return(psc.ob)
 }
+

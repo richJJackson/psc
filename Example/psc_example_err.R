@@ -4,7 +4,7 @@
 #.rs.restartR()
 rm(list=ls())
 remove.packages("psc")
-devtools::install_github("RichJJackson/psc",ref="mtc")
+devtools::install_github("RichJJackson/psc",ref="Version-1.0")
 library(psc)
 
 
@@ -22,6 +22,24 @@ load("bin.mod.R")
 
 
 
+### Getting data and saving
+setwd("/Volumes/RICHJ23/Fellowship/Methodology/Data and Models/Data")
+
+
+dir()
+
+load("test.bin.R")
+load("test.con.R")
+load("test.count.R")
+
+setwd("~/Documents/GitHub/psc/Data")
+use_data(bin.mod)
+use_data(con.mod)
+use_data(count.mod)
+ls()
+
+library(devtools)
+
 #### Survival Model
 
 ### Running basic
@@ -36,6 +54,60 @@ summary(res)
 
 ### Running basic
 res <- pscfit(model,data)
+
+data$event <- data$cen
+data$os <- data$time
+
+
+data$count <- round(runif(nrow(data),0,5))
+
+res_bin <- pscfit(bin.mod,data)
+res_bin <- pscfit(con.mod,data)
+res_bin <- pscfit(count.mod,data)
+
+use_data(data,overwrite=T)
+
+### Checking each outcome
+
+
+
+CFM <- bin.mod
+
+DC <- data
+trt <- NULL
+id <- NULL
+
+pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
+
+  ### Cleaning Data
+  DC_clean <- dataComb(CFM, DC, id=id, trt = trt)
+
+  ### Starting Parameters
+  init <- initParm(CFM = CFM, DC_clean = DC_clean, trt = trt)
+
+  ### MCMC estimation
+  mcmc <- pscEst(CFM = CFM, DC_clean = DC_clean, nsim = nsim,
+                 start = init$par, trt = trt)
+
+  ### Formatting results
+  covnm <- "beta"
+  if (!is.null(trt)) {
+    df <- data.frame(DC_clean$cov)
+    ft <- factor(df$trt)
+    covnm <- paste("beta", levels(ft), sep = "_")
+  }
+  mcmc <- data.frame(mcmc)
+  names(mcmc) <- c(colnames(DC_clean$model_extract$sig), covnm,
+                   "DIC")
+  psc.ob <- list(model.type = class(CFM), DC_clean = DC_clean,
+                 posterior = mcmc)
+  class(psc.ob) <- "psc"
+  return(psc.ob)
+}
+
+
+
+
 
 
 plot(res)

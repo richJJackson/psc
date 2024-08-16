@@ -8,11 +8,12 @@
 #' @return a matrix continig the draws form the posterior ditribution
 #' @export
 #'
-pscEst.glm <- function(CFM,DC_clean,nsim,start){
+pscEst.glm <- function(CFM,DC_clean,nsim,start,trt=trt){
 
   cov_co <- DC_clean$model_extract$cov_co;cov_co
   sig <- DC_clean$model_extract$sig;sig
   est <- c(cov_co)
+  trt.con <- is.null(trt)
 
   ####### Bayesian Estimation
   beta <- start
@@ -45,9 +46,17 @@ pscEst.glm <- function(CFM,DC_clean,nsim,start){
   pr.old <- log(dnorm(beta.old,0,1000))
   pr.new <- log(dnorm(beta.new,0,1000))
 
-  ### Likelihood evaluation
-  l.old <- lik.glm(beta.old,DC_cand) + pr.old + pr.cand
-  l.new <- lik.glm(beta.new,DC_cand)  + pr.new + pr.cand
+  if(trt.con){
+    ### Likelihood evaluation
+    l.old <- lik.glm(beta.old,DC_cand) + pr.old + pr.cand
+    l.new <- lik.glm(beta.new,DC_cand)  + pr.new + pr.cand
+  }
+
+  if(!trt.con){
+    l.old <- lik.flexsurvreg.mtc(beta.old,DC_cand) + pr.old + pr.cand;l.old
+    l.new <- lik.flexsurvreg.mtc(beta.new,DC_cand)  + pr.new + pr.cand
+  }
+
 
   ### Accept/Reject
   parm[n,ncol(parm)] <- l.new

@@ -7,7 +7,7 @@
 #' @return a list containing objects which specifiy the required exported components
 #'   of the model and a cleaned data cohort.
 #' @export
-dataComb.glm <- function(CFM,DC,id=NULL){
+dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
 
   ### removing response and weights
   model_extract <- modelExtract(CFM);model_extract
@@ -26,15 +26,31 @@ dataComb.glm <- function(CFM,DC,id=NULL){
   if (length(out.id) != 1)
     stop(paste("Please ensure covariates for the outcom labelled",
                out.nm, "is included"))
+
+
+  ### Adding treatment variable (if not null)
+  if(!is.null(trt)) {
+    if("trt"%in%names(DC)){
+      DC <- DC[,-which(names(DC)=="trt")]
+    }
+    DC <- cbind(DC,trt)
+    term.nm <- c(term.nm,"trt")
+  }
+
+  ### Finding missing data
   DC2 <- DC[, which(names(DC) %in% c(term.nm, out.nm))]
   miss.id <- unique(which(is.na(DC2), arr.ind = T)[, 1])
-
 
   if (length(miss.id) > 0) {
     DC <- DC[-miss.id, ]
     warning(paste(length(miss.id), "rows removed due to missing data in dataset"))
   }
+
+  ## Creating the model matrix
   dc_mm <- model.matrix(model_extract$formula, data = DC)
+
+  if(!is.null(trt)) dc_mm <- cbind(dc_mm,"trt"=DC$trt)
+
   out <- data.frame(out.nm = DC[, which(names(DC) == out.nm)])
   names(out) <- out.nm
 

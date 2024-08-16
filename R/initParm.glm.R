@@ -8,9 +8,21 @@
 #'   starting value for the mcmc routine.
 #' @export
 #'
-initParm.glm <- function(CFM,DC_clean){
-  ip <- optim(beta, lik.glm, DC_clean=DC_clean, method = "Brent", lower = -10,
-        upper = 10, hessian = T)
+initParm.glm <- function(CFM,DC_clean,trt=trt){
+
+  if(is.null(trt)){
+    beta<- 0
+    ip <- optim(beta, lik.glm, DC_clean=DC_clean, method = "Brent", lower = -10,
+                upper = 10, hessian = T)
+  }
+
+  if(!is.null(trt)){
+    beta <- rep(0,length(levels(factor(trt))))
+    ip <- optim(beta, lik.glm.mtc, DC_clean=DC_clean, method = "BFGS", hessian = T)
+  }
+
+  #class(ip) <- class(CFM)
   return(ip)
+
   }
 
