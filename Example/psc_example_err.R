@@ -8,6 +8,7 @@ devtools::install_github("RichJJackson/psc",ref="Version-1.0")
 library(psc)
 
 
+
 ## loading data and model
 setwd("Example")
 
@@ -25,22 +26,31 @@ load("bin.mod.R")
 ### Getting data and saving
 setwd("/Volumes/RICHJ23/Fellowship/Methodology/Data and Models/Data")
 
-
 dir()
+data[1:3,]
 
-load("test.bin.R")
+
+data$trt <- round(runif(nrow(data),0.5,3.5))-1
+load("model.rda")
+
+
+use_data(surv.mod)
+surv.mod <- model
+
+load("test.bmodelload("test.bin.R")
 load("test.con.R")
 load("test.count.R")
 
 setwd("~/Documents/GitHub/psc/Data")
-use_data(bin.mod)
+use_data(data,overwrite=TRUE)
 use_data(con.mod)
 use_data(count.mod)
 ls()
 
 library(devtools)
+pscfit(model,data)
 
-#### Survival Model
+#### Survivaldata#### Survival Model
 
 ### Running basic
 res <- pscfit(ukoss.mod,edata)
