@@ -1,5 +1,7 @@
 ---
 title: "psc-vignette"
+author: "Richard Jackson"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{psc-vignette}
@@ -14,6 +16,304 @@ knitr::opts_chunk$set(
 )
 ```
 
+# Introduction
+
+The psc.R package implements the methods for applying Personalised Synthetic Controls, which allows for patients receiving some experimental treatment to be compared against a model which predicts their reponse to some control.  This is a form of causal inference which differes from othere approaches in that
+
+\item Data are only required on a single treatment - all counterfactual evidence is supplied by a parametric model
+\item Causal inference, in theory at least, is estimated at a patient level - as opposed to estimating average effects over a population
+
+In its basic form, this method creates a likelihood to compare a cohort of data to a parametric model.  See (X) for disucssion on it's use as a causal inference tool.  To use this package, two basic peices of information are required, a dataset and a model against which they can be compared.
+
+In this vignette, we will detail how the psc.r package is constructed and give some examples for it's application in practice.
+
+
+To load the library use the code
+
 ```{r setup}
 library(psc)
 ```
+
+# Methodology
+
+
+the `pscfit` function compares a dataset ('DC') against a parametric model. This is done by selecting a likelihood which is identified by the type of CFM that is supplied. At present, two types of model are supported, a flexible parmaeteric survival model of type 'flexsurvreg' and a geleneralised linear model of type 'glm'.
+
+Where the CFM is of type 'flexsurvreg' the likeihood supplied is of the form:
+
+`L(D∣Λ,Γi)=∏i=1nf(ti∣Λ,Γi)ciS(ti∣Λ,Γi)(1−ci)L(D∣Λ,Γi​)=∏i=1n​f(ti​∣Λ,Γi​)ci​S(ti​∣Λ,Γi​)(1−ci​)`
+
+Where `ΛΛ` defines the cumulative baseline hazard function, `ΓΓ` is the linear predictor and `tt` and `cc` are the event time and indicator variables.
+
+Where the CFM is of the type 'glm' the likelihood supplied is of the form:
+
+`L(x∣Γi)=∏i=1nb(x∣Γi)exp⁡{ΓiTt(x)−c(Γi)}L(x∣Γi​)=∏i=1n​b(x∣Γi​)exp{ΓiT​t(x)−c(Γi​)}`
+
+Where `b(.)b(.)`, `t(.)t(.)` and `c(.)c(.)` represent the functions of the exponential family. In both cases, `ΓΓ` is defiend as:
+
+`Γ=γx+βΓ=γx+β`
+
+Where `γγ` are the model coefficients supplied by the CFM and \beta is the parameter set to measure the difference between the CFM and the DC.
+
+Estimation is performed using a Bayesian MCMC procedure. Prior distributions for `ΓΓ` (& `ΛΛ`) are derived directly from the model coefficients (mean and variance covariance matrix) or the CFM. A bespoke MCMC routine is performed to estimate `ββ`. Please see '?mcmc' for more detials.
+
+For the standard example where the DC contains information from only a single treatment, trt need not be specified. Where comparisons between the CFM and multiple treatments are require, a covariate of treamtne allocations must be specified sperately (using the 'trt' option).
+
+
+# Package Structure
+
+The main function for using applying Personal Synthetic Controls is the pscfit() function which has two inputs, a Counter-Factual Model (CFM) and a data cohort (DC).  Further arguments include
+
+* nsim which sets the number of MCMC iterations (defaults to 5000)
+* 'id' if the user wishes to restrict estimation to a sub-set (or individual) within the DC
+* 'trt' to be used as an initial identifier if mulitple treatment comparisons are to be made (please see the Mulitple Treatment Comparison below)
+
+
+## psc object
+
+The output of the "pscfit()" function is an object of class 'psc'.  This class contains the following attributes
+
+
+* A 'cleaned' dataset including extracted components of the CFM and the cleaned DC included in the procedure
+* An object defingin the class of model (and therefore the procedure applied - see above)
+* A matrix containing the draws of the posterior distributions
+
+## Postestimation functions
+
+basic post estimation functions have been developed to work with the psc object, namely "print()", "coef()", "summary()" and "plot()".  For the first three of these these provided basic summaries of the efficacy parameter obtained from the posterior distribution.
+
+
+
+# Data
+
+The psc.r package includes as example, a dataset which is derived from patients with advanced Hepatocellular Carcinoma (aHCC) who have all received some experimental treatment.  The dataset is simply named 'data' and is loaded into the enviroment using the "data()" function
+
+```r
+data("data")
+data[1:3,]
+
+```
+
+Included is a list of prognostic covariates:
+
+* vi - Vascular Invasion
+* age60 - Age - centered at 60
+* ecog - ECOG performance Status
+* logafp - AFP on the natural log scale
+* alb - Albumin
+* logcreat - Creatinine on the log scale
+* logast - AST on the natuarl log scale
+* allmets -Presence of Metastesis
+* aet - Ateiology; HBV, HCV or Other
+
+Also included are the following structures
+
+* time - survival time
+* cen - censoring indictor
+* os - time to be used as a continuous outcome
+* event - binary event for use as a binary outcome
+* count - count data to be used for a count outcome
+
+Lastly the dataset also inlclude a 'trt' variable to be used in the estimation of multiple treatment comparisons.
+
+
+# Examples
+
+## Survival
+
+For an example with a survival outcome a model must be supplied which is contructed ont he basis of flexible parametric splines.  This is contructed using the "flexsurvreg" function within the "flexsurv" package.  An example is included within the 'psc.r' package names 'surv.mod' and is loaded using the 'data()" function:
+
+```r
+data("surv.mod")
+surv.mod
+```
+
+In this example you can see that this is a model constructed with 3 internal knots and hence 5 parameters to describe the baseline cumulative hazard function.  There are also prognostic covariates which match with the prognostic covaraites in the data cohort.
+
+To begin it is worth looking at the performance of the model and looking at how the survival of patietns in the data cohort compare
+
+```r
+sfit <- survfit(Surv(data$time,data$cen)~1)
+#plot(surv.mod)
+plot(sfit)
+```
+
+Comparing the dataset to the model is then performed using
+
+```r
+surv.psc <- pscfit(surv.mod,data)
+```
+
+and we can view the attributes of the psc object that is created
+
+```r
+attributes(surv.psc)
+```
+
+For example to view the matrix contianing the draws of the posterior distribution we use
+
+```r
+surv.post <- surv.psc$posterior
+head(surv.post)
+```
+Inspection will show that there is a column for each parameter in the original model as well as 'beta' and 'DIC' vcolumns which give teh posterior estiamtes for $\beta$ and the Deviance Informaiton Criterion respectively.
+
+We can inspect the trace and obtaine standard estimates of the efficacy parameter using standard summary statistics
+
+```r
+par(mfrow=c(1,2))
+acf(surv.post$beta)
+plot(surv.post$beta,typ="s")
+summary(surv.post$beta)
+```
+
+Alternatively the standard post estimation functions can be used
+
+```r
+print(surv.psc)
+coef(surv.psc)
+summary(surv.psc)
+```
+
+To visualise the original model and the fit of the data, the plot function has been developed
+
+```r
+par(mfrow=c(1,1))
+plot(surv.psc)
+```
+
+
+## GLM
+
+The "pscfit()" object uses class of the model supplied to derive the likelihoiod and estimation procedure that is required.  In this example, the "enrichwith" package is utilised to extract from the model the parameters of the exponential family.  Important from the attributes of the GLM are the "family" statements which dictates the form of the likelihood.  For each of the binary, continuous and Count data outcomes then, the syntax and the DC remains the same and it is the form of the CFM that dictates the analysis
+
+
+### Binary
+
+Step 1:  Load Model
+```r
+data("bin.mod")
+```
+
+Step 2: Fit psc object
+```r
+psc.bin <- pscfit(bin.mod,data)
+psc.bin
+```
+
+Step 3: Review summary statistics
+```r
+summary(psc.bin)
+```
+
+Step 4: Plot Output
+```r
+plot(psc.bin)
+```
+
+### Count
+
+
+Step 1:  Load Model
+```r
+data("count.mod")
+```
+
+Step 2: Fit psc object
+```r
+psc.count <- pscfit(count.mod,data)
+psc.count
+```
+
+Step 3: Review summary statistics
+```r
+summary(psc.count)
+```
+
+Step 4: Plot Output
+```r
+plot(psc.count)
+```
+
+### Continuous
+
+Step 1:  Load Model
+```r
+data("con.mod")
+```
+
+Step 2: Fit psc object
+
+```r
+psc.con <- pscfit(con.mod,data)
+psc.con
+```
+
+Step 3: Review summary statistics
+```r
+summary(psc.con)
+```
+
+Step 4: Plot Output
+```r
+plot(psc.con)
+```
+
+
+# Sub group Effects
+
+An attractive feature of Personalised Synthetic Controls is its use in fitting sub-group effects.  Whereas other casual inference tools typically make assumptions about population levels of balance and then further assume that this balance holds at sub-group levels, Personalised Synthetic Controls differ in that they estimate 
+
+# Multiple Treatment Comparisons
+
+As a default, "pscfit()" assumes that the DC contains information entirely on a single experimental treatment and then performs a comparion against the control. Essentially this is achieved by ammending the linear predictor within the likelihood to $\eta = X \gamma + \beta$  which allows $\beta$ to contain all information which measures the difference between the dataset and the model.
+
+Where the data contain information on more than one treatment, the likelihood is adjusted to account for this and the linear predictor is ammended to $\eta = X^T \gamma + t^T\beta$ where $t$ is a vector identifying the treatment allocation and $\beta$ is not a vector the same length as the number of levels within $t$.  
+
+To perform multiple treatment comparisons we ammend the "pscfit()" to include the "trt" options.
+
+```{r,include=F}
+pc.mtc <- pscfit(surv.mod,data,trt=data$trt)
+```
+From this the standard post estiamtion functions can be applied
+
+```{r}
+plot(pc.mtc)
+summary(pc.mtc)
+```
+
+Please note here that multiple comparisons are made here by making multiple comparisons against the control (CFM).  If the DC contain information on the control treatment, the user may wish this information to be included in the estimation procedure in a different manner.
+
+
+
+
+# Individual Treatment Effects
+
+A feature of Personalised syhtetic controls is that it allows for the estimation of a treatment effect at an individual patient level.  These estiamtes should be treated with care as the assumptions made in the estimation of treatment effects are much stronger when applied to a single patient than they are when applied to a group of patients.  Nevertheless there are two methods which can be applied to estimate individual treatment effects
+
+## Using the 'id' option
+
+Using the 'id' option, the user specifies an indiviaul (or group) of patients within the "pscfit" object
+
+```{r,include=F}
+psc.id <- pscfit(surv.mod,data,id=10)
+```
+
+## Using the psc_ite wrapper
+
+A wrapper function has been created which produces and summarised the resutls for estimating individual treatment effects for each patient in the dataset.  Please note that this option fits individual models for each patient and will therefore can take a long period of time, in this example we have reduced the numebr fo siumulations to save time.
+
+```{r,include=F}
+psc.ite <- psc_ite(surv.mod,data)
+```
+
+# Summary
+
+
+# References
+
+
+
+
+
+
