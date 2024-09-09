@@ -32,9 +32,10 @@ In this vignette, we will detail how the psc.r package is constructed and give s
 
 To load the library use the code
 
-```{r setup}
+```{r setup,include=F}
 
 remove.packages("psc")
+library(devtools)
 install_github("RichJJackson/psc",ref="Version-1.0")
 library(psc)
 ```
@@ -127,7 +128,7 @@ Lastly the dataset also inlclude a 'trt' variable to be used in the estimation o
 
 For an example with a survival outcome a model must be supplied which is contructed ont he basis of flexible parametric splines.  This is contructed using the "flexsurvreg" function within the "flexsurv" package.  An example is included within the 'psc.r' package names 'surv.mod' and is loaded using the 'data()" function:
 
-```r
+```{r}
 data("surv.mod")
 surv.mod
 ```
@@ -136,7 +137,7 @@ In this example you can see that this is a model constructed with 3 internal kno
 
 To begin it is worth looking at the performance of the model and looking at how the survival of patietns in the data cohort compare
 
-```r
+```{r}
 sfit <- survfit(Surv(data$time,data$cen)~1)
 #plot(surv.mod)
 plot(sfit)
@@ -144,19 +145,19 @@ plot(sfit)
 
 Comparing the dataset to the model is then performed using
 
-```r
+```{r,include=F}
 surv.psc <- pscfit(surv.mod,data)
 ```
 
 and we can view the attributes of the psc object that is created
 
-```r
+```{r}
 attributes(surv.psc)
 ```
 
 For example to view the matrix contianing the draws of the posterior distribution we use
 
-```r
+```{r}
 surv.post <- surv.psc$posterior
 head(surv.post)
 ```
@@ -164,7 +165,7 @@ Inspection will show that there is a column for each parameter in the original m
 
 We can inspect the trace and obtaine standard estimates of the efficacy parameter using standard summary statistics
 
-```r
+```{r}
 par(mfrow=c(1,2))
 acf(surv.post$beta)
 plot(surv.post$beta,typ="s")
@@ -173,7 +174,7 @@ summary(surv.post$beta)
 
 Alternatively the standard post estimation functions can be used
 
-```r
+```{r}
 print(surv.psc)
 coef(surv.psc)
 summary(surv.psc)
@@ -181,7 +182,7 @@ summary(surv.psc)
 
 To visualise the original model and the fit of the data, the plot function has been developed
 
-```r
+```{r}
 par(mfrow=c(1,1))
 plot(surv.psc)
 ```
@@ -195,23 +196,23 @@ The "pscfit()" object uses class of the model supplied to derive the likelihoiod
 ### Binary
 
 Step 1:  Load Model
-```r
+```{r}
 data("bin.mod")
 ```
 
 Step 2: Fit psc object
-```r
+```{r,include=F}
 psc.bin <- pscfit(bin.mod,data)
 psc.bin
 ```
 
 Step 3: Review summary statistics
-```r
+```{r}
 summary(psc.bin)
 ```
 
 Step 4: Plot Output
-```r
+```{r}
 plot(psc.bin)
 ```
 
@@ -219,47 +220,47 @@ plot(psc.bin)
 
 
 Step 1:  Load Model
-```r
+```{r}
 data("count.mod")
 ```
 
 Step 2: Fit psc object
-```r
+```{r,include=F}
 psc.count <- pscfit(count.mod,data)
 psc.count
 ```
 
 Step 3: Review summary statistics
-```r
+```{r}
 summary(psc.count)
 ```
 
 Step 4: Plot Output
-```r
+```{r}
 plot(psc.count)
 ```
 
 ### Continuous
 
 Step 1:  Load Model
-```r
+```{r}
 data("con.mod")
 ```
 
 Step 2: Fit psc object
 
-```r
+```{r,include=F}
 psc.con <- pscfit(con.mod,data)
 psc.con
 ```
 
 Step 3: Review summary statistics
-```r
+```{r}
 summary(psc.con)
 ```
 
 Step 4: Plot Output
-```r
+```{r}
 plot(psc.con)
 ```
 
@@ -308,7 +309,7 @@ psc.id <- pscfit(surv.mod,data,id=10)
 A wrapper function has been created which produces and summarised the resutls for estimating individual treatment effects for each patient in the dataset.  Please note that this option fits individual models for each patient and will therefore can take a long period of time, in this example we have reduced the numebr fo siumulations to save time.
 
 ```{r,include=F}
-psc.ite <- psc_ite(surv.mod,data)
+#psc.ite <- psc_ite(surv.mod,data)
 ```
 
 # Summary
