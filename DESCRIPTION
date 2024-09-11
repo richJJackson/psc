@@ -20,3 +20,7 @@ Depends:
     mvtnorm,
     survival,
     enrichwith
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
