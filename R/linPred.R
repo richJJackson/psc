@@ -5,9 +5,8 @@
 #' @param resp detailing whether the linear predictor shoudl be returned on the natural or response level.  Defaults to the natural scale (resp=F)
 #' @details A function which combines the data from the data cohort against the model parameters of the PSC
 #' @export
-linPred <- function(CFM,DC,resp=F,...){
-  DC_clean <- dataComb(CFM, DC,)
-  mt <- class(CFM)
+linPred <- function(DC_clean,resp=F,...){
+  mt <- DC_clean$model.type
   cov <- DC_clean$cov;cov
   cov_co <- DC_clean$model_extract$cov_co;cov_co
   lp <- cov %*% cov_co
@@ -15,15 +14,14 @@ linPred <- function(CFM,DC,resp=F,...){
 
   if(resp){
     if("glm"%in%mt){
-      fam <- enrich(x$DC_clean$model_extract$family)
+      fam <- enrich(DC_clean$model_extract$family)
       ret <- fam$linkinv(lp)
     }
 
     if("flexsurvreg"%in%mt){
       mnlp <- mean(lp);mnlp
-      ret <- surv_fpm(x,s=0.5)^exp(lp-mnlp);ret
+      ret <- surv_fpm(DC_clean,s=0.5)^exp(mnlp-lp);ret
     }
-
-    return(ret)
-
   }
+  return(ret)
+}

@@ -69,7 +69,7 @@ plot.psc <- function (x,...){
 
     cls <- c("royalblue","pink","darkorchid","black","darkorange","forestgreen")
 
-    s_fpm <- surv_fpm(x)
+    s_fpm <- surv_fpm(x$DC_clean)
     plot(s_fpm$time, s_fpm$S, typ = "l", col = cls[1], lwd = 4,
          ylab = "Overall Survival", xlab = "Time")
 

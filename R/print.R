@@ -3,28 +3,42 @@
 #' @param x an object of class 'psc'
 #' @return printing psc results
 #' @export
-print.psc <- function(x, ...){
-  cat("Call:\n", "model + beta")
+print.psc <- function(x,digits = max(3L, getOption("digits") - 3L),...){
 
-  cat("Coefficients:\n")
+  frm <- x$DC_clean$model_extract$formula;frm
+  fam <- x$DC_clean$model_extract$family;fam
+  mt <- x$model.type
+
+  x$DC_clean$model_extract
+
+  cat("Counterfactual Model (CFM): \n")
+
+  if("glm"%in%mt){
+    cat(
+      paste("A model of class 'GLM'"," \n",sep=""),
+      paste("Family: ",fam$family," \n",sep=""),
+      paste("Link: ",fam$link," \n",sep=""))
+  }
+
+  if("flexsurvreg"%in%mt){
+    cat(
+      paste("A model of class 'flexsurvreg'"," \n",sep=""),
+      paste("Fit with ",x$DC_clean$model_extract$k," internal knots","\n",sep=""))
+  }
+
+
   cat("\n")
-  print.default(format(coef(x), digits = 1), print.gap = 2L,
+  cat("Formula: \n")
+  print(frm)
+
+  cat("\n")
+
+  cat("Call:\n", "CFM model + beta")
+  cat("\n")
+  cat("\n")
+  cat("Coefficients:\n")
+
+  print.default(format(coef(x), digits = digits), print.gap = 2L,
                 quote = FALSE)
 
 }
-
-
-
-#function (x, digits = max(3L, getOption("digits") - 3L), ...)
-#{
-#  cat("\nCall:\n", paste(deparse(x$call), sep = "\n", collapse = "\n"),
-#      "\n\n", sep = "")
-#  if (length(coef(x))) {
-#    cat("Coefficients:\n")
-#    print.default(format(coef(x), digits = digits), print.gap = 2L,
-#                  quote = FALSE)
-#  }
-#  else cat("No coefficients\n")
-#  cat("\n")
-#  invisible(x)
-#}

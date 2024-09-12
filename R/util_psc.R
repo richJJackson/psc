@@ -15,10 +15,12 @@ acc <-  function(old,new){
 }
 
 
-surv_fpm <- function(x,beta=0){
 
-  me <- x$DC_clean$model_extract
-  dc <- x$DC_clean
+
+surv_fpm <- function(DC_clean,beta=0,s=NULL){
+
+  me <- DC_clean$model_extract
+  dc <- DC_clean
   time <- dc$outcome$time
   logt <- log(time+1e-06)
 
@@ -42,14 +44,22 @@ surv_fpm <- function(x,beta=0){
   H<- H0*exp(adjLP)
   S <- exp(-H)
 
+
   ord <- order(time)
   ret <- list("time"=time[ord],"S"=S[ord])
-  ret
+
+  if(!is.null(s)){
+      cond <-  abs(ret$S-s)
+      ret <- ret$time[which(cond ==min(cond))]
+  }
+
+  return(ret)
 
 }
 
 
-
+exp(3-4)
+exp(3)/exp(4)
 
 lp_psc <- function(x){
   me <- x$DC_clean$model_extract;me

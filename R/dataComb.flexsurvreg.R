@@ -63,6 +63,6 @@ dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL){
   }
 
 
-  ret <- list("model_extract"=model_extract,"cov"=dc_mm,"outcome"=out)
+  ret <- list("model.type"=class(CFM),"model_extract"=model_extract,"cov"=dc_mm,"outcome"=out)
   ret
 }

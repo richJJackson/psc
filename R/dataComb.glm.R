@@ -54,11 +54,6 @@ dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
   out <- data.frame(out.nm = DC[, which(names(DC) == out.nm)])
   names(out) <- out.nm
 
-  names(out)
-  class(out[1:10,])
-
-  dc_mm
-  id <- c(1:10)
   if(!is.null(id)){
     dc_mm;dc_mm <- dc_mm[id,];dc_mm
 
@@ -68,7 +63,7 @@ dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
     names(out) <- "event"
   }
 
-  ret <- list("model_extract"=model_extract,"cov"=dc_mm,"outcome"=out)
+  ret <- list("model.type"=class(CFM),"model_extract"=model_extract,"cov"=dc_mm,"outcome"=out)
   ret
 
   }
