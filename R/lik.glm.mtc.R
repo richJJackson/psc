@@ -33,7 +33,3 @@ lik.glm.mtc <- function(beta,DC_clean){
 
   -sum(event * theta - btheta)
   }
-
-
-
-}
