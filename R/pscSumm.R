@@ -28,7 +28,7 @@ pscSumm <- function(DC_clean){
     ob_resp <- sfit.tab[7]
   }
 
-  cat(paste(nrow(dc$cov),"observations selected from the data cohort for comparison"),"\n")
+  cat(paste(nrow(DC_clean$cov),"observations selected from the data cohort for comparison"),"\n")
   cat("CFM of type",DC_clean$model.type,"identified"," \n")
   cat(paste("linear predictor succesfully obtained with a median of ",round(median(lp),3)),"\n")
   cat(paste("Average expected response:",round(exp_resp,3)),"\n")
