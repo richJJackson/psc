@@ -4,7 +4,7 @@
 \alias{summary.psc}
 \title{Personalised Synthetic Controls - summary}
 \usage{
-\method{summary}{psc}(x)
+\method{summary}{psc}(x, ...)
 }
 \arguments{
 \item{x}{an object of class 'psc'}

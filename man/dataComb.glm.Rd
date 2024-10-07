@@ -4,7 +4,7 @@
 \alias{dataComb.glm}
 \title{Fucntion for cleaning the data of a model with class 'flexsurvreg'}
 \usage{
-\method{dataComb}{glm}(CFM, DC, id = NULL)
+\method{dataComb}{glm}(CFM, DC, id = NULL, trt = NULL)
 }
 \arguments{
 \item{CFM}{a model object supplied to pscfit}

@@ -16,7 +16,6 @@ acc <-  function(old,new){
 
 
 
-
 surv_fpm <- function(DC_clean,beta=0,s=NULL){
 
   me <- DC_clean$model_extract
@@ -30,7 +29,7 @@ surv_fpm <- function(DC_clean,beta=0,s=NULL){
   haz_co <- me$haz_co
   k <- me$k
 
-  linPred <- lp_psc(x)
+  linPred <- lp_psc(DC_clean)
   adjLP <- mean(linPred) + beta
 
   z <- NULL
@@ -58,12 +57,9 @@ surv_fpm <- function(DC_clean,beta=0,s=NULL){
 }
 
 
-exp(3-4)
-exp(3)/exp(4)
-
-lp_psc <- function(x){
-  me <- x$DC_clean$model_extract;me
-  dc <- x$DC_clean;dc
+lp_psc <- function(DC_clean){
+  me <- DC_clean$model_extract;me
+  dc <- DC_clean;dc
   lp <- dc$cov[,1:length(me$cov_co)]%*%me$cov_co
   c(lp)
 }

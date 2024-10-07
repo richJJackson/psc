@@ -4,7 +4,7 @@
 \alias{initParm.glm}
 \title{Fucntion for estimating initial parameter values  'flexsurvreg'}
 \usage{
-\method{initParm}{glm}(CFM, DC_clean)
+\method{initParm}{glm}(CFM, DC_clean, trt = trt)
 }
 \arguments{
 \item{DC_clean}{a cleaned dataset obsect obtained using dataComb.flexsurvreg}

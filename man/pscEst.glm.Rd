@@ -4,7 +4,7 @@
 \alias{pscEst.glm}
 \title{Fucntion for estimating initial parameter values  'glm'}
 \usage{
-\method{pscEst}{glm}(CFM, DC_clean, nsim, start)
+\method{pscEst}{glm}(CFM, DC_clean, nsim, start, trt = trt)
 }
 \arguments{
 \item{CFM}{a model object supplied to pscfit}

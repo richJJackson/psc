@@ -4,7 +4,7 @@
 \alias{coef.psc}
 \title{Returns the coefficeint estimate of a psc object.}
 \usage{
-\method{coef}{psc}(x, ...)
+\method{coef}{psc}(x, level = 0.05, ...)
 }
 \arguments{
 \item{x}{a 'psc' object}

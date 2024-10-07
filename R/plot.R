@@ -74,7 +74,7 @@ plot.psc <- function (x,...){
          ylab = "Overall Survival", xlab = "Time")
 
     for(i in 1:length(med)){
-      s_fpm_2 <- surv_fpm(x, beta = med[i])
+      s_fpm_2 <- surv_fpm(x$DC_clean, beta = med[i])
       lines(s_fpm_2$time, s_fpm_2$S, typ = "l", col = cls[(i+1)], lwd = 4)
     }
   }

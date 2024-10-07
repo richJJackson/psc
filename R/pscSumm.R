@@ -12,9 +12,10 @@ pscSumm <- function(DC_clean){
   lp <- linPred(DC_clean,resp=F)
   resp <- linPred(DC_clean,resp=T)
 
+
   if("glm" %in% DC_clean$model.type){
     exp_resp <- mean(resp)
-    ob_resp <- mean(dc$out$event)
+    ob_resp <- mean(unlist(dc$out))
   }
 
 
