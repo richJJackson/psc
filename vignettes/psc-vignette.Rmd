@@ -268,27 +268,28 @@ plot(psc.con)
 
 # Sub group Effects
 
-An attractive feature of Personalised Synthetic Controls is its use in fitting sub-group effects.  Whereas other casual inference tools typically make assumptions about population levels of balance and then further assume that this balance holds at sub-group levels, Personalised Synthetic Controls differ in that they estimate 
+An attractive feature of Personalised Synthetic Controls is its use in fitting sub-group effects.  Whereas other casual inference tools typically make assumptions about population levels of balance and then further assume that this balance holds at sub-group levels, Personalised Synthetic Controls differ in that they estimate treatment effects at a patient level and then average across populations.  To estimate sub-group effects then we need only to restrict estimation over some sub-group of the population.  This can be achived in 2 ways;
 
-# Multiple Treatment Comparisons
+* By directly slecting the subgroup you wish to evaluate
 
-As a default, "pscfit()" assumes that the DC contains information entirely on a single experimental treatment and then performs a comparion against the control. Essentially this is achieved by ammending the linear predictor within the likelihood to $\eta = X \gamma + \beta$  which allows $\beta$ to contain all information which measures the difference between the dataset and the model.
+Using an example where we wnat to see if the treatment effect is consistent by patients with ECOG=0 and ECOG =1
 
-Where the data contain information on more than one treatment, the likelihood is adjusted to account for this and the linear predictor is ammended to $\eta = X^T \gamma + t^T\beta$ where $t$ is a vector identifying the treatment allocation and $\beta$ is not a vector the same length as the number of levels within $t$.  
-
-To perform multiple treatment comparisons we ammend the "pscfit()" to include the "trt" options.
+## Sub group effects by restricting the population
 
 ```{r,include=F}
-pc.mtc <- pscfit(surv.mod,data,trt=data$trt)
+
+id1 <- which(data$ecog==0)
+sub1 <- pscfit(surv.mod,data,id=id1)
+
+id2 <- which(data$ecog==1)
+sub2 <- pscfit(surv.mod,data,id=id2)
 ```
-From this the standard post estiamtion functions can be applied
 
 ```{r}
-plot(pc.mtc)
-summary(pc.mtc)
+summary(sub1)
+summary(sub2)
 ```
 
-Please note here that multiple comparisons are made here by making multiple comparisons against the control (CFM).  If the DC contain information on the control treatment, the user may wish this information to be included in the estimation procedure in a different manner.
 
 
 
@@ -305,18 +306,10 @@ Using the 'id' option, the user specifies an indiviaul (or group) of patients wi
 psc.id <- pscfit(surv.mod,data,id=10)
 ```
 
-## Using the psc_ite wrapper
-
-A wrapper function has been created which produces and summarised the resutls for estimating individual treatment effects for each patient in the dataset.  Please note that this option fits individual models for each patient and will therefore can take a long period of time, in this example we have reduced the numebr fo siumulations to save time.
-
-```{r,include=F}
-#psc.ite <- psc_ite(surv.mod,data)
+```{r}
+summary(psc.id)
 ```
 
-# Summary
-
-
-# References
 
 
 
