@@ -15,7 +15,7 @@ pscSumm <- function(DC_clean){
 
   if("glm" %in% DC_clean$model.type){
     exp_resp <- mean(resp)
-    ob_resp <- mean(unlist(dc$out))
+    ob_resp <- mean(unlist(DC_clean$out))
   }
 
 
