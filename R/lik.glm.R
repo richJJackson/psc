@@ -16,6 +16,3 @@ lik.glm <- function (beta, DC_clean){
   btheta <- fam$bfun(theta)
   -sum(event * theta - btheta)
 }
-
-
-
