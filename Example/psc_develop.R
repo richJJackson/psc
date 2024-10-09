@@ -14,6 +14,9 @@ library(psc)
 data(data)
 data("surv.mod")
 
+
+surv.mod
+
 dc <- dataComb(surv.mod,data)
 ps <-pscSumm(dc)
 surv.psc <- pscfit(surv.mod,data)
