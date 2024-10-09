@@ -7,7 +7,7 @@
 pscSumm(DC_clean)
 }
 \arguments{
-\item{x}{an object conting bothe the model and dataset created using 'dataComb()'}
+\item{DC_clean}{a cleaned dataset ontained using dataComb().}
 }
 \value{
 psc summary results including an estimate of the linear predictor

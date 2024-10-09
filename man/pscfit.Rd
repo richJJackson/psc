@@ -7,16 +7,16 @@
 pscfit(CFM, DC, nsim = 5000, id = NULL, trt = NULL)
 }
 \arguments{
+\item{CFM}{A model of type 'glm' or 'flexsurvspline'}
+
+\item{DC}{A dataset including columns to match to covariates in the model}
+
 \item{nsim}{The number of simulations for the MCMC routine}
 
 \item{id}{Numeric vector stating which patient(s) from the dataset should be included in the analysis.
 Defaults to all patients}
 
 \item{trt}{An optional vector denotin treatment allocations for multiple treatmence comparisons.  Defaults to NULL.}
-
-\item{model}{A model of type 'glm' or 'flexsurvspline'}
-
-\item{data}{A dataset including columns to match to covariates in the model}
 }
 \value{
 a object of class 'psc' with attributes model.tupe, the cleaned Dataset and the
@@ -26,7 +26,7 @@ a object of class 'psc' with attributes model.tupe, the cleaned Dataset and the
 
  \item {A 'cleaned' dataset including extracted components of the CFM and the
  cleaned DC included in the procedure}
- \item {An object defingin the class of model (and therefore the procedure
+ \item {An object defining the class of model (and therefore the procedure
  applied - see above)}
  \item {A matrix containing the draws of the posterior distributions}
  }
@@ -59,7 +59,7 @@ the \code{pscfit} function compares a dataset ('DC') against a parametric model.
 
   \deqn{ \Gamma = \gamma x + b}
 
-  Where \eqn{\gamma} are the model coefficients supplied by the CFM and \beta
+  Where \eqn{\gamma} are the model coefficients supplied by the CFM and b
   is the parameter set to measure the difference between the CFM and the DC.
 
   Estimation is performed using a Bayesian MCMC procedure.  Prior distributions

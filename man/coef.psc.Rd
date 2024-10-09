@@ -4,10 +4,14 @@
 \alias{coef.psc}
 \title{Returns the coefficeint estimate of a psc object.}
 \usage{
-\method{coef}{psc}(x, level = 0.05, ...)
+\method{coef}{psc}(object, ..., level = 0.05)
 }
 \arguments{
-\item{x}{a 'psc' object}
+\item{object}{a 'psc' object}
+
+\item{...}{not used}
+
+\item{level}{the level at which credibility intervals are assessed, defaults to 0.05}
 }
 \value{
 The summary of the posterior distribution for the efficacy parameter in terms of the median and 95% HPD

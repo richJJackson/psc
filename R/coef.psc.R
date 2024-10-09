@@ -1,12 +1,14 @@
 #' Returns the coefficeint estimate of a psc object.
 #'
-#' @param x a 'psc' object
+#' @param object a 'psc' object
+#' @param level the level at which credibility intervals are assessed, defaults to 0.05
+#' @param ... not used
 #' @return The summary of the posterior distribution for the efficacy parameter in terms of the median and 95% HPD
 #' @export
-coef.psc <- function(x,level=0.05,...){
+coef.psc <- function(object, ..., level=0.05){
 
-  cl.nm <- attributes(x$DC_clean$model_extract$sig)$dimnames[[1]]
-  y <- x$posterior[,which(!names(x$posterior)%in%cl.nm)]
+  cl.nm <- attributes(object$DC_clean$model_extract$sig)$dimnames[[1]]
+  y <- object$posterior[,which(!names(object$posterior)%in%cl.nm)]
 
 
   lap <- lapply(y,quantile,na.rm=T,p=c(0.5,level/2,1-level/2))

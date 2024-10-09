@@ -1,6 +1,6 @@
 #' Personalised Synthetic Controls - summary
 #'
-#' @param x an object conting bothe the model and dataset created using 'dataComb()'
+#' @param DC_clean a cleaned dataset ontained using dataComb().
 #' @return psc summary results including an estimate of the linear predictor
 #' combing the data and the model, an estimate of patient level response and
 #' summary statistics of the average responses for the sythenthic and observed

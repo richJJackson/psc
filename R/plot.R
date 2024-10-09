@@ -1,11 +1,13 @@
 #' Fucntion for Plotting PSC objects
 #' @param x an object of class 'psc'
+#' @param ... not used
 #' @return a plot corresponding to the psc fit
 #' @details making use of the generic 'plot' functions this will provide some
 #'   graphical output of the fitted psc object.  The form of the output will
 #'   depend on the class of the initial model
+#' @import graphics
 #' @export
-plot.psc <- function (x,...){
+plot.psc <- function (x, ...){
 
   model.type <- x$'model.type';model.type
 

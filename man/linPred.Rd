@@ -4,14 +4,12 @@
 \alias{linPred}
 \title{Estimates the linear predictor of a psc object}
 \usage{
-linPred(DC_clean, resp = F, ...)
+linPred(DC_clean, resp = F)
 }
 \arguments{
+\item{DC_clean}{a cleaned data obhject created using dataComb()}
+
 \item{resp}{detailing whether the linear predictor shoudl be returned on the natural or response level.  Defaults to the natural scale (resp=F)}
-
-\item{CFM}{a model object of class 'glm' or 'flexsurvreg'}
-
-\item{DC}{a cohort of data to match the CFM}
 }
 \description{
 Estimates the linear predictor of a psc object

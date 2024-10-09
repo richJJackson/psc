@@ -1,9 +1,10 @@
 #' Personalised Synthetic Controls - print
 #'
 #' @param x an object of class 'psc'
+#' @param ... not used
 #' @return printing psc results
 #' @export
-print.psc <- function(x,digits = max(3L, getOption("digits") - 3L),...){
+print.psc <- function(x,...){
 
   frm <- x$DC_clean$model_extract$formula;frm
   fam <- x$DC_clean$model_extract$family;fam
@@ -38,7 +39,7 @@ print.psc <- function(x,digits = max(3L, getOption("digits") - 3L),...){
   cat("\n")
   cat("Coefficients:\n")
 
-  print.default(format(coef(x), digits = digits), print.gap = 2L,
+  print.default(format(coef(x), digits = max(3L, getOption("digits") - 3L)), print.gap = 2L,
                 quote = FALSE)
 
 }

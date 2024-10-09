@@ -2,10 +2,25 @@
 % Please edit documentation in R/initParm.R
 \name{initParm}
 \alias{initParm}
-\title{A generic function for cleaning data ready for analysis}
+\title{Fucntion for estimating initial parameter values  'flexsurvreg'}
 \usage{
-initParm(x, ...)
+initParm(CFM, DC_clean, trt)
+}
+\arguments{
+\item{CFM}{A counter-factual model}
+
+\item{DC_clean}{a cleaned dataset obsect obtained using dataComb.flexsurvreg}
+
+\item{trt}{An optional additional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to 'NULL'}
+}
+\value{
+an 'optim' output giving the parameter values to be supplied as a
+  starting value for the mcmc routine.
 }
 \description{
-A generic function for cleaning data ready for analysis
+Fucntion for estimating initial parameter values  'flexsurvreg'
+}
+\details{
+This function takes the liklihood for a 'flexsurvreg' model and uses 'optim'
+  to fit the likelihood.
 }

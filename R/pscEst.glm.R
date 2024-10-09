@@ -1,11 +1,14 @@
 #' Fucntion for estimating initial parameter values  'glm'
 #'
 #' @param CFM a model object supplied to pscfit
-#' @param DC a dataset including covariates to match the CFM
+#' @param DC_clean a cleaned dataset ontained using dataComb().
 #' @param nsim the number of MCMC simulations to run
 #' @param start the stating value for
+#' @param trt an optional vector denoting treatment allocations where mulitple
+#'     treatment comparisons are bieng made
 #' @details An MCMC routine for fitting a psc model
 #' @return a matrix continig the draws form the posterior ditribution
+#' @import utils
 #' @export
 #'
 pscEst.glm <- function(CFM,DC_clean,nsim,start,trt=trt){

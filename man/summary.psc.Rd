@@ -4,10 +4,12 @@
 \alias{summary.psc}
 \title{Personalised Synthetic Controls - summary}
 \usage{
-\method{summary}{psc}(x, ...)
+\method{summary}{psc}(object, ...)
 }
 \arguments{
-\item{x}{an object of class 'psc'}
+\item{object}{an object of class 'psc'}
+
+\item{...}{not used}
 }
 \value{
 psc summary results'

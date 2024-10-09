@@ -2,8 +2,9 @@
 #'
 #' @param CFM a model object supplied to pscfit
 #' @param DC a dataset including covariates to match the CFM
-#' @param id a vector specifiying whether a subset of the dataset shoudl be selcted.
-#'   Defaults to 'NULL' e.g. all data points included
+#' @param id to specify which observations in the data cohort should be evaluated.
+#' Defualts to 'NULL' i.e all observations
+#' @param trt used to specify multiple treatment effects. Defaults to NULL
 #' @return a list containing objects which specifiy the required exported components
 #'   of the model and a cleaned data cohort.
 #' @export

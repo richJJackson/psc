@@ -1,9 +1,5 @@
 #' Wrapper for sub-group analysis
-#' @param CFM CFM
-#' @param DC DC
-#' @param sg sg
-#' @param cont_lev cont_lev
-#' @param cont_cut cont_cut
+#' @param pscsub a pscsub object
 #'
 #' @export
 pscsubWrap <- function(pscsub){

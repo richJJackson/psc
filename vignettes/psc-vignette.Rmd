@@ -33,8 +33,6 @@ In this vignette, we will detail how the psc.r package is constructed and give s
 To load the library use the code
 
 ```{r setup,include=F}
-
-remove.packages("psc")
 library(devtools)
 install_github("RichJJackson/psc",ref="Version-1.0")
 library(psc)
@@ -251,7 +249,7 @@ data("cont.mod")
 Step 2: Fit psc object
 
 ```{r,include=F}
-psc.con <- pscfit(con.mod,data)
+psc.con <- pscfit(cont.mod,data)
 psc.con
 ```
 

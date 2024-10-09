@@ -1,7 +1,7 @@
 #' Personalised Synthetic Controls model fit
 #'
-#' @param model A model of type 'glm' or 'flexsurvspline'
-#' @param data A dataset including columns to match to covariates in the model
+#' @param CFM A model of type 'glm' or 'flexsurvspline'
+#' @param DC A dataset including columns to match to covariates in the model
 #' @param nsim The number of simulations for the MCMC routine
 #' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.
 #'  Defaults to all patients
@@ -30,7 +30,7 @@
 #'
 #'   \deqn{ \Gamma = \gamma x + b}
 #'
-#'   Where \eqn{\gamma} are the model coefficients supplied by the CFM and \beta
+#'   Where \eqn{\gamma} are the model coefficients supplied by the CFM and b
 #'   is the parameter set to measure the difference between the CFM and the DC.
 #'
 #'   Estimation is performed using a Bayesian MCMC procedure.  Prior distributions
@@ -50,11 +50,11 @@
 #'
 #'  \item {A 'cleaned' dataset including extracted components of the CFM and the
 #'  cleaned DC included in the procedure}
-#'  \item {An object defingin the class of model (and therefore the procedure
+#'  \item {An object defining the class of model (and therefore the procedure
 #'  applied - see above)}
 #'  \item {A matrix containing the draws of the posterior distributions}
 #'  }
-#'
+#' @import enrichwith mvtnorm survival
 #' @export
 pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
 

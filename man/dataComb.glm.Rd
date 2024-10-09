@@ -11,8 +11,10 @@
 
 \item{DC}{a dataset including covariates to match the CFM}
 
-\item{id}{a vector specifiying whether a subset of the dataset shoudl be selcted.
-Defaults to 'NULL' e.g. all data points included}
+\item{id}{to specify which observations in the data cohort should be evaluated.
+Defualts to 'NULL' i.e all observations}
+
+\item{trt}{used to specify multiple treatment effects. Defaults to NULL}
 }
 \value{
 a list containing objects which specifiy the required exported components

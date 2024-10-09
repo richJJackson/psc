@@ -7,7 +7,11 @@
 \method{initParm}{glm}(CFM, DC_clean, trt = trt)
 }
 \arguments{
+\item{CFM}{A counter-factual model}
+
 \item{DC_clean}{a cleaned dataset obsect obtained using dataComb.flexsurvreg}
+
+\item{trt}{An optional additional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to 'NULL'}
 }
 \value{
 an 'optim' output giving the parameter values to be supplied as a

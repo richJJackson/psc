@@ -1,21 +1,10 @@
-# util functions.
-
-#### Functions
-modp <- function(x){
-  x*(sign(x)+1)/2
-}
-
-
-acc <-  function(old,new){
-  ret <- FALSE
-  r <- runif(1)
-  e <-exp(old-new)
-  try(if(e>r) ret <- TRUE)
-  ret
-}
-
-
-
+#' modp
+#' @param DC_clean a cleaned dataset ontained using dataComb().
+#' @param beta a parameter to determine if the survival probabilities should be adjusted by some (log) hazard ratio.  Defaults to beta=0, i.e. no adjustment.
+#' @param s if specified will return the time at which some threshold is passed (e.g. s=0.5 for median survival time)
+#' @return a list of times and assoicated survival probabilities
+#' @details A fucntion which extracts survival probabilities from a flexsurvreg object
+#' @export
 surv_fpm <- function(DC_clean,beta=0,s=NULL){
 
   me <- DC_clean$model_extract
@@ -48,20 +37,10 @@ surv_fpm <- function(DC_clean,beta=0,s=NULL){
   ret <- list("time"=time[ord],"S"=S[ord])
 
   if(!is.null(s)){
-      cond <-  abs(ret$S-s)
-      ret <- ret$time[which(cond ==min(cond))]
+    cond <-  abs(ret$S-s)
+    ret <- ret$time[which(cond ==min(cond))]
   }
 
   return(ret)
 
 }
-
-
-lp_psc <- function(DC_clean){
-  me <- DC_clean$model_extract;me
-  dc <- DC_clean;dc
-  lp <- dc$cov[,1:length(me$cov_co)]%*%me$cov_co
-  c(lp)
-}
-
-
