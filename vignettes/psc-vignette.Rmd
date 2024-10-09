@@ -4,9 +4,9 @@ author: "Richard Jackson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  \VignetteIndexEntry{psc-vignette}
-  \VignetteEngine{knitr::rmarkdown}
-  \VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{psc-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -306,9 +306,6 @@ Using the 'id' option, the user specifies an indiviaul (or group) of patients wi
 psc.id <- pscfit(surv.mod,data,id=10)
 ```
 
-```{r}
-summary(psc.id)
-```
 
 
 

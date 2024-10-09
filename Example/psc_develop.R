@@ -95,11 +95,6 @@ DC_clean$model.type
 
 
 
-
-
-
-
-
 model.extract()## loading data and model
 setwd("Example")
 

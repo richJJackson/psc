@@ -57,7 +57,7 @@ the \code{pscfit} function compares a dataset ('DC') against a parametric model.
   Where \eqn{b(.)}, \eqn{t(.)} and \eqn{c(.)} represent the functions of the
   exponential family. In both cases, \eqn{\Gamma} is defiend as:
 
-  \deqn{ \Gamma = \gamma x + \beta}
+  \deqn{ \Gamma = \gamma x + b}
 
   Where \eqn{\gamma} are the model coefficients supplied by the CFM and \beta
   is the parameter set to measure the difference between the CFM and the DC.
@@ -65,14 +65,10 @@ the \code{pscfit} function compares a dataset ('DC') against a parametric model.
   Estimation is performed using a Bayesian MCMC procedure.  Prior distributions
    for \eqn{\Gamma} (& \eqn{\Lambda}) are derived directly from the model
    coefficients (mean and variance covariance matrix) or the CFM. A bespoke MCMC
-   routine is performed to estimate \eqn{\beta}.  Please see '?mcmc' for more detials.
+   routine is performed to estimate \eqn{b}.  Please see '?mcmc' for more detials.
 
    For the standard example where the DC contains information from only a single
    treatment, trt need not be specified.  Where comparisons between the CFM and
    multiple treatments are require, a covariate of treamtne allocations must be
    specified sperately (using the 'trt' option).
-}
-\examples{
-psc.ob <- psc(model,data)
-summary(psc.ob)
 }
