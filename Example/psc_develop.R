@@ -15,8 +15,6 @@ data(data)
 data("surv.mod")
 
 
-surv.mod
-
 dc <- dataComb(surv.mod,data)
 ps <-pscSumm(dc)
 surv.psc <- pscfit(surv.mod,data)
@@ -26,7 +24,6 @@ coef(surv.psc)
 summary(surv.psc)
 plot(surv.psc)
 
-data[1:3,]
 
 pc.mtc <- pscfit(surv.mod,data,trt=data$trt)
 
