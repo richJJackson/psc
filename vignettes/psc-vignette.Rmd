@@ -245,7 +245,7 @@ plot(psc.count)
 
 Step 1:  Load Model
 ```{r}
-data("con.mod")
+data("cont.mod")
 ```
 
 Step 2: Fit psc object
