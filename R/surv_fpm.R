@@ -18,7 +18,7 @@ surv_fpm <- function(DC_clean,beta=0,s=NULL){
   haz_co <- me$haz_co
   k <- me$k
 
-  linPred <- lp_psc(DC_clean)
+  linPred <- dc$cov[,1:length(me$cov_co)]%*%me$cov_co
   adjLP <- mean(linPred) + beta
 
   z <- NULL

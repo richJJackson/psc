@@ -36,6 +36,9 @@ To load the library use the code
 library(devtools)
 install_github("RichJJackson/psc",ref="Version-1.0")
 library(psc)
+library(survival)
+library(mvtnorm)
+library(enrichwith)
 ```
 
 # Methodology
