@@ -13,12 +13,10 @@ The goal of psc is to …
 
 ## Installation
 
-You can install the development version of psc from
-[GitHub](https://github.com/) with:
+You can install this package from R CRAN:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("richJJackson/pic")
+install.packages("psc")
 ```
 
 ## Example

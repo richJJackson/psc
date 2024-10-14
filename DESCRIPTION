@@ -1,6 +1,6 @@
 Package: psc
 Type: Package
-Title: Estimates treatment effects using Personalised Synthetic Controls
+Title: Personalised Synthetic Controls
 Version: 0.1.0
 Authors@R: c(
     person("Richard", "Jackson", email = "richJ23@liverpool.ac.uk", 

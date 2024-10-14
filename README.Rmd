@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/richJJackson/pic/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/richJJackson/pic/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of psc is to ...
+The goal of psc is to compare a dataset of observations against a parametric model
 
 ## Installation
 
@@ -28,7 +28,7 @@ You can install the development version of psc from [GitHub](https://github.com/
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("richJJackson/pic")
+devtools::install_github("richJJackson/psc")
 ```
 
 ## Example
@@ -38,20 +38,29 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(psc)
 ## basic example code
+
+### Load model
+data("surv.mod")
+
+### Load Data
+data("data")
+
+### Use 'pscfit' to compare
+surv.psc <- pscfit(surv.mod,data)
+
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
+You can use standard commands for getting a summary of your analysis...
 ```{r cars}
-summary(cars)
+summary(surv.psc)
 ```
 
 You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
 
-You can also embed plots, for example:
+... and to see a plot of what you have done
 
 ```{r pressure, echo = FALSE}
-plot(pressure)
+plot(surv.psc)
 ```
 
 In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
