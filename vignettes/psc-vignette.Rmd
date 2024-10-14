@@ -277,7 +277,7 @@ Using an example where we wnat to see if the treatment effect is consistent by p
 
 ## Sub group effects by restricting the population
 
-```{r,include=F}
+```{r,include=F,echo=T}
 
 id1 <- which(data$ecog==0)
 sub1 <- pscfit(surv.mod,data,id=id1)
@@ -292,20 +292,6 @@ summary(sub2)
 ```
 
 
-
-
-
-# Individual Treatment Effects
-
-A feature of Personalised syhtetic controls is that it allows for the estimation of a treatment effect at an individual patient level.  These estiamtes should be treated with care as the assumptions made in the estimation of treatment effects are much stronger when applied to a single patient than they are when applied to a group of patients.  Nevertheless there are two methods which can be applied to estimate individual treatment effects
-
-## Using the 'id' option
-
-Using the 'id' option, the user specifies an indiviaul (or group) of patients within the "pscfit" object
-
-```{r,include=F}
-psc.id <- pscfit(surv.mod,data,id=10)
-```
 
 
 
