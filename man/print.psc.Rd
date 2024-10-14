@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{x}{an object of class 'psc'}
+
+\item{...}{not used}
 }
 \value{
 printing psc results

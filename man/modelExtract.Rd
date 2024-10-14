@@ -4,7 +4,7 @@
 \alias{modelExtract}
 \title{A generic function for extracting model information}
 \usage{
-modelExtract(CFM, ...)
+modelExtract(CFM)
 }
 \arguments{
 \item{CFM}{a model object supplied to pscfit}

@@ -1,7 +1,7 @@
 #' Personalised Synthetic Controls model fit
 #'
-#' @param model A model of type 'glm' or 'flexsurvspline'
-#' @param data A dataset including columns to match to covariates in the model
+#' @param CFM A model of type 'glm' or 'flexsurvspline'
+#' @param DC A dataset including columns to match to covariates in the model
 #' @param nsim The number of simulations for the MCMC routine
 #' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.
 #'  Defaults to all patients
@@ -28,15 +28,15 @@
 #'   Where \eqn{b(.)}, \eqn{t(.)} and \eqn{c(.)} represent the functions of the
 #'   exponential family. In both cases, \eqn{\Gamma} is defiend as:
 #'
-#'   \deqn{ \Gamma = \gamma x + \beta}
+#'   \deqn{ \Gamma = \gamma x + b}
 #'
-#'   Where \eqn{\gamma} are the model coefficients supplied by the CFM and \beta
+#'   Where \eqn{\gamma} are the model coefficients supplied by the CFM and b
 #'   is the parameter set to measure the difference between the CFM and the DC.
 #'
 #'   Estimation is performed using a Bayesian MCMC procedure.  Prior distributions
 #'    for \eqn{\Gamma} (& \eqn{\Lambda}) are derived directly from the model
 #'    coefficients (mean and variance covariance matrix) or the CFM. A bespoke MCMC
-#'    routine is performed to estimate \eqn{\beta}.  Please see '?mcmc' for more detials.
+#'    routine is performed to estimate \eqn{b}.  Please see '?mcmc' for more detials.
 #'
 #'    For the standard example where the DC contains information from only a single
 #'    treatment, trt need not be specified.  Where comparisons between the CFM and
@@ -50,38 +50,44 @@
 #'
 #'  \item {A 'cleaned' dataset including extracted components of the CFM and the
 #'  cleaned DC included in the procedure}
-#'  \item {An object defingin the class of model (and therefore the procedure
+#'  \item {An object defining the class of model (and therefore the procedure
 #'  applied - see above)}
 #'  \item {A matrix containing the draws of the posterior distributions}
 #'  }
-#'
+#' @import enrichwith mvtnorm survival
 #' @examples
-#' psc.ob <- psc(model,data)
-#' summary(psc.ob)
+#' library(psc)
+#' library(survival)
+#' data("surv.mod")
+#' data("data")
+#' surv.psc <- pscfit(surv.mod,data)
 #' @export
-pscfit <- function (CFM, DC, nsim = 5000, id = NULL,trt=NULL){
+pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
 
-  ### Cleaning data
-  DC_clean <- dataComb(CFM,DC,trt=trt)
+  ### Cleaning Data
+  DC_clean <- dataComb(CFM, DC, id=id, trt = trt)
 
-  # Initial Estimates using Optims
-  init <- initParm(CFM=CFM,DC_clean=DC_clean,trt=trt)
+  ### Starting Parameters
+  init <- initParm(CFM = CFM, DC_clean = DC_clean, trt = trt)
 
-  # Estimation
-  mcmc <- pscEst(CFM=CFM,DC_clean=DC_clean,nsim=nsim,start=init$par,trt=trt)
+  ### MCMC estimation
+  mcmc <- pscEst(CFM = CFM, DC_clean = DC_clean, nsim = nsim,
+                 start = init$par, trt = trt)
 
+  ### Formatting results
   covnm <- "beta"
-
-  if(!is.null(trt)){
+  if (!is.null(trt)) {
     df <- data.frame(DC_clean$cov)
     ft <- factor(df$trt)
-    covnm <- paste("beta",levels(ft),sep="_")
+    covnm <- paste("beta", levels(ft), sep = "_")
   }
 
-  ## Cleaning output
   mcmc <- data.frame(mcmc)
-  names(mcmc) <- c(colnames(DC_clean$model_extract$sig), covnm,"DIC")
-  psc.ob <- list("model.type"=class(CFM),DC_clean=DC_clean, posterior = mcmc)
+  names(mcmc) <- c(colnames(DC_clean$model_extract$sig), covnm,
+                   "DIC")
+  psc.ob <- list(model.type = class(CFM), DC_clean = DC_clean,
+                 posterior = mcmc)
   class(psc.ob) <- "psc"
   return(psc.ob)
 }
+

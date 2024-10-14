@@ -4,14 +4,24 @@
 \alias{summary.psc}
 \title{Personalised Synthetic Controls - summary}
 \usage{
-\method{summary}{psc}(x)
+\method{summary}{psc}(object, ...)
 }
 \arguments{
-\item{x}{an object of class 'psc'}
+\item{object}{an object of class 'psc'}
+
+\item{...}{not used}
 }
 \value{
 psc summary results'
 }
 \description{
 Personalised Synthetic Controls - summary
+}
+\examples{
+library(psc)
+library(survival)
+data("surv.mod")
+data("data")
+psc.ob <- pscfit(surv.mod,data)
+summary(psc.ob)
 }

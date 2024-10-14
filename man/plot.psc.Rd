@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{x}{an object of class 'psc'}
+
+\item{...}{not used}
 }
 \value{
 a plot corresponding to the psc fit
@@ -19,8 +21,4 @@ Fucntion for Plotting PSC objects
 making use of the generic 'plot' functions this will provide some
   graphical output of the fitted psc object.  The form of the output will
   depend on the class of the initial model
-}
-\examples{
-psc.ob <- psc(model,data)
-plot(psc.ob)
 }

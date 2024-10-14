@@ -4,12 +4,12 @@
 \alias{pscEst}
 \title{Function for performing estimation procedures in 'pscfit'}
 \usage{
-pscEst(x, ...)
+pscEst(CFM, DC_clean, nsim, start, trt)
 }
 \arguments{
 \item{CFM}{a model object supplied to pscfit}
 
-\item{DC}{a dataset including covariates to match the CFM}
+\item{DC_clean}{a cleaned dataset ontained using dataComb().}
 
 \item{nsim}{the number of MCMC simulations to run}
 
