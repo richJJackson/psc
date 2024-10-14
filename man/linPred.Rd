@@ -17,3 +17,11 @@ Estimates the linear predictor of a psc object
 \details{
 A function which combines the data from the data cohort against the model parameters of the PSC
 }
+\examples{
+library(psc)
+library(survival)
+data("surv.mod")
+data("data")
+dc <- dataComb(surv.mod,data)
+lp <- linPred(dc)
+}

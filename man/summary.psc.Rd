@@ -17,3 +17,11 @@ psc summary results'
 \description{
 Personalised Synthetic Controls - summary
 }
+\examples{
+library(psc)
+library(survival)
+data("surv.mod")
+data("data")
+psc.ob <- pscfit(surv.mod,data)
+summary(psc.ob)
+}

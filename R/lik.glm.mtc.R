@@ -4,8 +4,6 @@
 #' @param DC_clean a cleaned dataset including covariates to match the CFM
 #' @details A likelihood function for use by pscfit for a model of class 'flexsurvreg'
 #'     where mulitple treatment comparisons are
-#' @export
-
 lik.glm.mtc <- function(beta,DC_clean){
 
   event <- as.numeric(DC_clean$out[,1]);event

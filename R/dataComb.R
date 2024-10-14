@@ -3,6 +3,12 @@
 #' @param DC a dataset including covariates to match the CFM
 #' @param id to specify which observations in the data cohort should be evaluated.  Defualts to 'NULL' i.e all observations
 #' @param trt used to specify multiple treatment effects. Defaults to NULL
+#' @examples
+#' library(psc)
+#' library(survival)
+#' data("surv.mod")
+#' data("data")
+#' dc <- dataComb(surv.mod,data)
 #' @export
 dataComb <- function(CFM,DC,id=NULL,trt=NULL){
   UseMethod("dataComb")

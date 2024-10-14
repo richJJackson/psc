@@ -4,7 +4,7 @@
 \name{psc-package}
 \alias{psc}
 \alias{psc-package}
-\title{psc: Estimates treatment effects using Personalised Synthetic Controls}
+\title{psc: Personalised Synthetic Controls}
 \description{
 This package allows the comparison of data cohorts (DC) against a Coutner Factual Model (CFM) and measures the difference in terms of an efficacy parameter. Allows the application of Personalised Synthetic Controls.
 }

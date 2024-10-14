@@ -72,3 +72,10 @@ the \code{pscfit} function compares a dataset ('DC') against a parametric model.
    multiple treatments are require, a covariate of treamtne allocations must be
    specified sperately (using the 'trt' option).
 }
+\examples{
+library(psc)
+library(survival)
+data("surv.mod")
+data("data")
+surv.psc <- pscfit(surv.mod,data)
+}

@@ -3,7 +3,7 @@
 #' @param beta a parameter to be estimate
 #' @param DC_clean a cleaned dataset including covariates to match the CFM
 #' @details A likelihood function for use by pscfit for a model of class 'flexsurvreg'
-#' @export
+
 lik.glm <- function (beta, DC_clean){
   event <- as.numeric(DC_clean$out[,1]);event
   if(DC_clean$model_extract$family$family=="binomial") event = as.numeric(as.factor(event)) -1

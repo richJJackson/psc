@@ -3,6 +3,13 @@
 #' @param DC_clean a cleaned data obhject created using dataComb()
 #' @param resp detailing whether the linear predictor shoudl be returned on the natural or response level.  Defaults to the natural scale (resp=F)
 #' @details A function which combines the data from the data cohort against the model parameters of the PSC
+#' @examples
+#' library(psc)
+#' library(survival)
+#' data("surv.mod")
+#' data("data")
+#' dc <- dataComb(surv.mod,data)
+#' lp <- linPred(dc)
 #' @export
 linPred <- function(DC_clean,resp=F){
   mt <- DC_clean$model.type

@@ -18,3 +18,11 @@ populations
 \description{
 Personalised Synthetic Controls - summary
 }
+\examples{
+library(psc)
+library(survival)
+data("surv.mod")
+data("data")
+dc <- dataComb(surv.mod,data)
+summ <- pscSumm(dc)
+}

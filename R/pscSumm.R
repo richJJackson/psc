@@ -7,6 +7,13 @@
 #' populations
 #'
 #' @export
+#' @examples
+#' library(psc)
+#' library(survival)
+#' data("surv.mod")
+#' data("data")
+#' dc <- dataComb(surv.mod,data)
+#' summ <- pscSumm(dc)
 pscSumm <- function(DC_clean){
 
   lp <- linPred(DC_clean,resp=F)

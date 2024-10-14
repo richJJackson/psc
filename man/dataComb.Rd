@@ -18,3 +18,10 @@ dataComb(CFM, DC, id = NULL, trt = NULL)
 \description{
 A generic function for cleaning data ready for analysis
 }
+\examples{
+library(psc)
+library(survival)
+data("surv.mod")
+data("data")
+dc <- dataComb(surv.mod,data)
+}
