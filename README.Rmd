@@ -37,6 +37,7 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(psc)
+library(survival)
 ## basic example code
 
 ### Load model
@@ -54,8 +55,6 @@ You can use standard commands for getting a summary of your analysis...
 ```{r cars}
 summary(surv.psc)
 ```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
 
 ... and to see a plot of what you have done
 
