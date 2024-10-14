@@ -6,13 +6,13 @@
 \alias{psc-package}
 \title{psc: Personalised Synthetic Controls}
 \description{
-This package allows the comparison of data cohorts (DC) against a Coutner Factual Model (CFM) and measures the difference in terms of an efficacy parameter. Allows the application of Personalised Synthetic Controls.
+Allows the comparison of data cohorts (DC) against a Coutner Factual Model (CFM) and measures the difference in terms of an efficacy parameter. Allows the application of Personalised Synthetic Controls.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/richjjackson/psc/}
-  \item Report bugs at \url{https://github.com/richjjackson/psc/issues}
+  \item Report bugs at \url{https://github.com/richJJackson/psc/issues}
 }
 
 }
