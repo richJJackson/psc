@@ -55,6 +55,7 @@
 #'  \item {A matrix containing the draws of the posterior distributions}
 #'  }
 #' @import enrichwith mvtnorm survival
+#' @example pscfit.example.R
 #' @export
 pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
 
