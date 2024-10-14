@@ -5,8 +5,8 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/richJJackson/pic/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/richJJackson/pic/actions/workflows/R-CMD-check.yaml)
-[![R-CMD-check](https://github.com/richJJackson/pic/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/richJJackson/pic/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/richJJackson/psc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/richJJackson/psc/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/richJJackson/psc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/richJJackson/psc/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of psc is to compare a dataset of observations against a
@@ -61,15 +61,15 @@ summary(surv.psc)
 #> Formula: 
 #> Surv(time, cen) ~ vi/age60 + ecog + allmets + logafp + alb + 
 #>     logcreat + logast + aet
-#> <environment: 0x13b2d0af0>
+#> <environment: 0x1484682b8>
 #> 
 #> Call:
 #>  CFM model + beta
 #> 
 #> Coefficients:
 #>       median    2.5%      97.5%     Pr(x<0)   Pr(x>0) 
-#> beta    0.3544    0.1621    0.5633    0.0018    0.9982
-#> DIC   280.8828  273.5725  292.8262        NA        NA
+#> beta    0.3541    0.1194    0.5652    0.0016    0.9984
+#> DIC   281.0033  273.6267  293.1466        NA        NA
 ```
 
 … and to see a plot of what you have done

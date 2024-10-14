@@ -12,7 +12,7 @@
 \item{...}{not used}
 }
 \value{
-psc summary results'
+A summary of a psc object obtained using pscSumm and a copy of the pscfit object
 }
 \description{
 Personalised Synthetic Controls - summary
