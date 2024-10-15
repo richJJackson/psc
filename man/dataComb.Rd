@@ -10,7 +10,18 @@ dataComb(CFM, DC, id = NULL, trt = NULL)
 \item{CFM}{a model object supplied to pscfit}
 
 \item{DC}{a dataset including covariates to match the CFM}
+
+\item{id}{to specify which observations in the data cohort should be evaluated.  Defualts to 'NULL' i.e all observations}
+
+\item{trt}{used to specify multiple treatment effects. Defaults to NULL}
 }
 \description{
 A generic function for cleaning data ready for analysis
+}
+\examples{
+library(psc)
+library(survival)
+data("surv.mod")
+data("data")
+dc <- dataComb(surv.mod,data)
 }

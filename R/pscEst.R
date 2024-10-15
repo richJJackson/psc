@@ -1,6 +1,6 @@
 #' Function for performing estimation procedures in 'pscfit'
 #' @param CFM a model object supplied to pscfit
-#' @param DC a dataset including covariates to match the CFM
+#' @param DC_clean a cleaned dataset ontained using dataComb().
 #' @param nsim the number of MCMC simulations to run
 #' @param start the stating value for
 #' @param trt an optional vector denoting treatment allocations where mulitple
@@ -45,6 +45,6 @@
 #'}
 #' The result of the algorithm is a posterior distribution for the log hazard ratio,
 #' \eqn{\beta}, captures the variability in B through the defined priors \eqn{\pi{(\beta)}}.
-pscEst <- function(x,...){
+pscEst <- function(CFM, DC_clean, nsim, start, trt){
   UseMethod("pscEst")
 }

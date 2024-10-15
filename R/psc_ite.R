@@ -4,7 +4,6 @@
 #' @param data a data cohort
 #' @details
 #'  A wrapper function that estimates individual treatment effects usinf pscfit
-#' @export
 psc_ite <- function(model,data){
 
   nr <- nrow(data)

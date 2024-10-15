@@ -1,0 +1,65 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# psc
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/richJJackson/psc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/richJJackson/psc/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/richJJackson/psc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/richJJackson/psc/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+The goal of psc is to compare a dataset of observations against a parametric model
+
+## Installation
+
+You can install the development version of psc from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("richJJackson/psc")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(psc)
+library(survival)
+## basic example code
+
+### Load model
+data("surv.mod")
+
+### Load Data
+data("data")
+
+### Use 'pscfit' to compare
+surv.psc <- pscfit(surv.mod,data)
+
+```
+
+You can use standard commands for getting a summary of your analysis...
+```{r cars}
+summary(surv.psc)
+```
+
+... and to see a plot of what you have done
+
+```{r pressure, echo = FALSE}
+plot(surv.psc)
+```
+
+In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

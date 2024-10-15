@@ -1,23 +1,28 @@
 #' Fucntion for estimating initial parameter values  'glm'
 #'
 #' @param CFM a model object supplied to pscfit
-#' @param DC a dataset including covariates to match the CFM
+#' @param DC_clean a cleaned dataset ontained using dataComb().
 #' @param nsim the number of MCMC simulations to run
 #' @param start the stating value for
+#' @param trt an optional vector denoting treatment allocations where mulitple
+#'     treatment comparisons are bieng made
 #' @details An MCMC routine for fitting a psc model
 #' @return a matrix continig the draws form the posterior ditribution
+#' @import utils
 #' @export
 #'
-pscEst.glm <- function(CFM,DC_clean,nsim,start){
+pscEst.glm <- function(CFM,DC_clean,nsim,start,trt=trt){
 
   cov_co <- DC_clean$model_extract$cov_co;cov_co
   sig <- DC_clean$model_extract$sig;sig
   est <- c(cov_co)
+  trt.con <- is.null(trt)
 
   ####### Bayesian Estimation
   beta <- start
-  parm <- matrix(NA, nsim, length(est) + 2)
-  parm[1, ] <- c(est, beta, NA)
+  parm <- matrix(NA,nsim,length(est)+length(beta)+1)
+  parm[1,]<- c(est,beta,NA);parm[1,]
+
 
   ## Progress Bar
   pb <- txtProgressBar(min = 0, max = nsim, style = 3)
@@ -29,35 +34,46 @@ pscEst.glm <- function(CFM,DC_clean,nsim,start){
 
   ### Drawing Samples
   cand <- rmvnorm(1,est,sig)
-  cand.beta <- rnorm(1,0,1) #Check this bit
+  cand.beta <- rnorm(length(beta),0,1) #Check this bit
   parm[n,] <- c(cand,cand.beta,NA)
 
   ### partitioning covariates into baseline hazard and coefficients
   DC_cand <- DC_clean
   DC_cand$model_extract$cov_co <- as.numeric(cand)
 
-  ### cadidate log Hazard Ratios
-  beta.old <- parm[n-1,(length(cand)+1)];beta.old
-  beta.new <- parm[n,(length(cand)+1)];beta.new
+  ### cadidate log Hazard Ratio
+  beta.old <- parm[n-1,-c(1:length(cand),ncol(parm))];beta.old
+  beta.new <- parm[n,-c(1:length(cand),ncol(parm))];beta.new
+
 
   ### Prior contribution
   pr.cand <- -dmvnorm(cand,est,sig,log=T)
-  pr.old <- log(dnorm(beta.old,0,1000))
-  pr.new <- log(dnorm(beta.new,0,1000))
+  pr.old <- dmvnorm(beta.old,rep(0,length(beta)),diag(length(beta))*1000,log=T)
+  pr.new <- dmvnorm(beta.new,rep(0,length(beta)),diag(length(beta))*1000,log=T)
 
-  ### Likelihood evaluation
-  l.old <- lik.glm(beta.old,DC_cand) + pr.old + pr.cand
-  l.new <- lik.glm(beta.new,DC_cand)  + pr.new + pr.cand
+  if(trt.con){
+    ### Likelihood evaluation
+    l.old <- lik.glm(beta.old,DC_cand) + pr.old + pr.cand
+    l.new <- lik.glm(beta.new,DC_cand)  + pr.new + pr.cand
+  }
+
+  if(!trt.con){
+    l.old <- lik.glm.mtc(beta.old,DC_cand) + pr.old + pr.cand;l.old
+    l.new <- lik.glm.mtc(beta.new,DC_cand)  + pr.new + pr.cand;l.new
+  }
+
 
   ### Accept/Reject
   parm[n,ncol(parm)] <- l.new
   if(!acc(l.old,l.new)) {
-    parm[n,(length(cand)+1)] <- beta.old
+    parm[n,-c(1:length(cand),ncol(parm))] <- beta.old
     parm[n,ncol(parm)] <- l.old
   }
 
 }
-parm
+
+  parm
+
 }
 
 
