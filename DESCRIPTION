@@ -24,7 +24,7 @@ Imports:
     survival,
     enrichwith,
     stats,
-    flexsuvreg
+    flexsurv
 Suggests: 
     knitr,
     rmarkdown,

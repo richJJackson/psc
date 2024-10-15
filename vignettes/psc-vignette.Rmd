@@ -50,20 +50,20 @@ Where the CFM is of type 'flexsurvreg' the likeihood supplied is of the form:
 
 
 $$L(D∣\Lambda,\Gamma_i)=\prod_{i=1}^{n} f(t_i∣\Lambda,\Gamma_i)^{c_i} S(t_i∣\Gamma,\Lambda_i)^{(1−c_i)}$$
-Where $\Gamma$ defines the cumulative baseline hazard function, $\Lambda$ is the linear predictor and $t$ and $c$ are the event time and indicator variables.
+Where $\Gamma$ defines the cumulative baseline hazard function, $\Lambda$ is the linear predictor and $t$ and $c$ are the event time and indicator variables.
 
 Where the CFM is of the type 'glm' the likelihood supplied is of the form:
 
 $$L(x∣\Gamma_i) = \prod_{i=1}^{n} b (x∣ \Gamma_i )\exp\{\Gamma_i t(x)−c(\Gamma_i)\}$$
 
 
-Where `b(.)b(.)`, `t(.)t(.)` and `c(.)c(.)` represent the functions of the exponential family. In both cases, `ΓΓ` is defiend as:
+Where $b(.)$, $t(.)$ and $c(.)$ represent the functions of the exponential family. In both cases, $\Gamma$ is defiend as:
 
 $$ \Gamma_i = \gamma x_i+\beta $$
 
-Where $\gamma$ are the model coefficients supplied by the CFM and $\beta$ is the parameter set to measure the difference between the CFM and the DC.
+Where $\gamma$ are the model coefficients supplied by the CFM and $\beta$ is the parameter set to measure the difference between the CFM and the DC.
 
-Estimation is performed using a Bayesian MCMC procedure. Prior distributions for $\Gamma$ (& $\Lambda$) are derived directly from the model coefficients (mean and variance covariance matrix) or the CFM. A bespoke MCMC routine is performed to estimate $\beta$. Please see '?mcmc' for more detials.
+Estimation is performed using a Bayesian MCMC procedure. Prior distributions for $\Gamma$ (& $\Lambda$) are derived directly from the model coefficients (mean and variance covariance matrix) or the CFM. A bespoke MCMC routine is performed to estimate $\beta$. Please see '?mcmc' for more detials.
 
 For the standard example where the DC contains information from only a single treatment, trt need not be specified. Where comparisons between the CFM and multiple treatments are require, a covariate of treamtne allocations must be specified sperately (using the 'trt' option).
 

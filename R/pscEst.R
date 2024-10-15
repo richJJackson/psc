@@ -16,7 +16,7 @@
 #' The prior distirbution for the efficacy parameter (\eqn{\pi{(\beta)}}) is set
 #' as an uniformative \eqn{~N(0,1000)}.
 #'
-#' Ultimately the aim is to estimate the posterior distribution for β conditional
+#' Ultimately the aim is to estimate the posterior distribution for \beta conditional
 #' on the distribution of B and the observed data.  A full form for the posterior
 #' distribution is then given as
 #'
@@ -27,18 +27,18 @@
 #' For each iteration of the MCMC procedure, the following algorithm is performed \enumerate{
 #'
 #' \item{Set and indicator s=1, and define an initial state based on prior
-#' hyperparameters for π(B)  and π(β) such that b_s = μ and τ_s=0}
+#' hyperparameters for \pi(B)  and \pi(β) such that b_s = \mu and \tau_s=0}
 #'
-#' \item{Update s = s+1 and draw model parameters b_s from π(B) and an draw a
-#' proposal estimate of β from some target distribution}
+#' \item{Update s = s+1 and draw model parameters b_s from \pi(B) and an draw a
+#' proposal estimate of \beta from some target distribution}
 #'
-#' \item{Estimate Γ_(i,S)=υ^T x_i where υ  is the subset of parameters from b_s
+#' \item{Estimate \Gamma_(i,S)=\nu^T x_i where \nu is the subset of parameters from b_s
 #'  which relate to the model covariates and define 2 new likelihood functions
-#'    ϑ_(s,1)=L(D│B=b_s,β=τ_(s-1) ) & ϑ_(s,2)= L(D|B=b_s,β=τ_s)}
+#'    \Theta_(s,1)=L(D│B=b_s,\beta=\tau_(s-1) ) & \Theta_(s,2)= L(D|B=b_s,\beta=\tau_s)}
 #'
-#' \item{Draw a single value ς from a Uniform (0,1) distribution and estimate
-#' the condition ω=  ϑ_(s,2)/ϑ_(s,2). If ω > ς then accept τ_s as belonging
-#' to the posterior distribution P(β|B,D) otherwise retain τ_(s-1)}
+#' \item{Draw a single value \psi from a Uniform (0,1) distribution and estimate
+#' the condition \omega=  \Theta_(s,1)/\Theta_(s,2). If \omega > \psi then accept \tau_s as belonging
+#' to the posterior distribution P(\beta|B,D) otherwise retain \tau_(s-1)}
 #'
 #' \item{Repeat steps 2 – 4 for the required number of iterations}
 #'
