@@ -23,7 +23,8 @@ Imports:
     mvtnorm,
     survival,
     enrichwith,
-    stats
+    stats,
+    flexsuvreg
 Suggests: 
     knitr,
     rmarkdown,
