@@ -4,8 +4,8 @@
 #' @param DC_clean a cleaned dataset ontained using dataComb().
 #' @param nsim the number of MCMC simulations to run
 #' @param start the stating value for
-#' @param trt an optional vector denoting treatment allocations where mulitple
-#'     treatment comparisons are bieng made
+#' @param trt an optional vector denoting treatment allocations where multiple
+#'     treatment comparisons are being made
 #' @details An MCMC routine for fitting a psc model
 #' @return a matrix containing the draws form the posterior distribution
 #' @import utils
