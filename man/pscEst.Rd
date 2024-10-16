@@ -24,11 +24,11 @@ Function for performing estimation procedures in 'pscfit'
 \details{
 Define the set of model parameters \eqn{B} to contain \eqn{\Gamma} which summarize
 the parameters of the CFM. Prior distributions are defined for B using a
-multivariate normal distribution \eqn{\pi (B) ∼ MVN(\mu ,\Sigma)} where \eqn{\mu}
+multivariate normal distribution \eqn{\pi (B) ∼ MVN(\mu ,\Sigma)} where \eqn{\mu|}
 is the vector of coefficient estimates from the validated model and \eqn{\Sigma}
 is the variance-covariance matrix. This information is taken directly from the
 outputs of the parametric model and no further elicitation is required.
-The prior distirbution for the efficacy parameter (\eqn{\pi(\beta)}) is set
+The prior distirbution for the efficacy parameter (\eqn{\pi{(\beta)}}) is set
 as an uniformative \eqn{~N(0,1000)}.
 
 Ultimately the aim is to estimate the posterior distribution for \eqn{\beta} conditional
@@ -52,7 +52,7 @@ proposal estimate of \eqn{\beta} from some target distribution}
    \eqn{\Theta_(s,1)=L(D \vert B=b_s,\beta=\tau_(s-1) )} & \eqn{\Theta_(s,2)= L(D \vert B=b_s,\beta=\tau_s)}}
 
 \item{Draw a single value \eqn{\psi} from a Uniform (0,1) distribution and estimate
-the condition \eqn{\omega=  \Theta_(s,1) / \Theta_(s,2)}. If \eqn{\omega > \psi} then accept \eqn{\tau_s} as belonging
+the condition \eqn{\omega=  \Theta_(s,1)/\Theta_(s,2)}. If \eqn{\omega > \psi} then accept \eqn{\tau_s} as belonging
 to the posterior distribution \eqn{P(\beta \vert B,D)} otherwise retain \eqn{\tau_(s-1)}}
 
 \item{Repeat steps 2 – 4 for the required number of iterations}

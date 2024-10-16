@@ -14,7 +14,7 @@
 #' is the variance-covariance matrix. This information is taken directly from the
 #' outputs of the parametric model and no further elicitation is required.
 #' The prior distirbution for the efficacy parameter (\eqn{\pi{(\beta)}}) is set
-#' as an uniformative \eqn{~N(0,1000)}.
+#' as an uniformative \eqn{N(0,1000)}.
 #'
 #' Ultimately the aim is to estimate the posterior distribution for \eqn{\beta} conditional
 #' on the distribution of B and the observed data.  A full form for the posterior
