@@ -16,29 +16,29 @@
 #' The prior distirbution for the efficacy parameter (\eqn{\pi{(\beta)}}) is set
 #' as an uniformative \eqn{~N(0,1000)}.
 #'
-#' Ultimately the aim is to estimate the posterior distribution for \beta conditional
+#' Ultimately the aim is to estimate the posterior distribution for \eqn{\beta} conditional
 #' on the distribution of B and the observed data.  A full form for the posterior
 #' distribution is then given as
 #'
-#' \deqn{P(\beta|B,D) \propto L(D|B,\beta) \pi(B) π(\beta)}
+#' \deqn{P(\beta \vert B,D) \propto L(D \vert B,\beta) \pi(B) \pi(\beta)}
 #'
 #' Please see 'pscfit' for more details on liklihood formation.
 #'
 #' For each iteration of the MCMC procedure, the following algorithm is performed \enumerate{
 #'
 #' \item{Set and indicator s=1, and define an initial state based on prior
-#' hyperparameters for \pi(B)  and \pi(β) such that b_s = \mu and \tau_s=0}
+#' hyperparameters for \eqn{\pi(B)}  and \eqn{\pi(\beta)} such that \eqn{b_s = \mu and \tau_s=0}}
 #'
-#' \item{Update s = s+1 and draw model parameters b_s from \pi(B) and an draw a
-#' proposal estimate of \beta from some target distribution}
+#' \item{Update \eqn{s = s+1} and draw model parameters \eqn{b_s} from \eqn{\pi(B)} and an draw a
+#' proposal estimate of \eqn{\beta} from some target distribution}
 #'
-#' \item{Estimate \Gamma_(i,S)=\nu^T x_i where \nu is the subset of parameters from b_s
+#' \item{Estimate \eqn{\Gamma_(i,S)=\nu^T x_i} where \eqn{\nu} is the subset of parameters from \eqn{b_s}
 #'  which relate to the model covariates and define 2 new likelihood functions
-#'    \Theta_(s,1)=L(D│B=b_s,\beta=\tau_(s-1) ) & \Theta_(s,2)= L(D|B=b_s,\beta=\tau_s)}
+#'    \eqn{\Theta_(s,1)=L(D \vert B=b_s,\beta=\tau_(s-1) )} & \eqn{\Theta_(s,2)= L(D \vert B=b_s,\beta=\tau_s)}}
 #'
-#' \item{Draw a single value \psi from a Uniform (0,1) distribution and estimate
-#' the condition \omega=  \Theta_(s,1)/\Theta_(s,2). If \omega > \psi then accept \tau_s as belonging
-#' to the posterior distribution P(\beta|B,D) otherwise retain \tau_(s-1)}
+#' \item{Draw a single value \eqn{\psi} from a Uniform (0,1) distribution and estimate
+#' the condition \eqn{\omega=  \Theta_(s,1)/\Theta_(s,2)}. If \eqn{\omega > \psi} then accept \eqn{\tau_s} as belonging
+#' to the posterior distribution \eqn{P(\beta \vert B,D)} otherwise retain \eqn{\tau_(s-1)}}
 #'
 #' \item{Repeat steps 2 – 4 for the required number of iterations}
 #'
