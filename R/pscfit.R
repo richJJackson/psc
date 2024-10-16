@@ -13,7 +13,7 @@
 #'
 #'   Where the CFM is of type 'flexsurvreg' the likeihood supplied is of the form:
 #'
-#'   \deqn{L(D|\Lambda, \Gamma_i) = \prod^{n}_{i=1} f(t_i | \Lambda, \Gamma_i)^{c_i}
+#'   \deqn{L(D \vert \Lambda, \Gamma_i) = \prod^{n}_{i=1} f(t_i \vert  \Lambda, \Gamma_i)^{c_i}
 #'   S(t_i|\Lambda, \Gamma_i)^{(1-c_i)}}
 #'
 #'   Where \eqn{\Lambda} defines the cumulative baseline hazard function,
@@ -22,13 +22,13 @@
 #'
 #'   Where the CFM is of the type 'glm' the likelihood supplied is of the form:
 #'
-#'    \deqn{L(x|\Gamma_i) = \prod^{n}_{i=1} b(x|\Gamma_i) \exp{\{\Gamma_i^T t(x)
+#'    \deqn{L(x \vert \Gamma_i) = \prod^{n}_{i=1} b(x \vert \Gamma_i) \exp{\{\Gamma_i^T t(x)
 #'    - c(\Gamma_i)\} } }
 #'
 #'   Where \eqn{b(.)}, \eqn{t(.)} and \eqn{c(.)} represent the functions of the
 #'   exponential family. In both cases, \eqn{\Gamma} is defiend as:
 #'
-#'   \deqn{ \Gamma = \gamma x + b}
+#'   \deqn{ \Gamma = \gamma x + \beta}
 #'
 #'   Where \eqn{\gamma} are the model coefficients supplied by the CFM and b
 #'   is the parameter set to measure the difference between the CFM and the DC.
@@ -36,7 +36,7 @@
 #'   Estimation is performed using a Bayesian MCMC procedure.  Prior distributions
 #'    for \eqn{\Gamma} (& \eqn{\Lambda}) are derived directly from the model
 #'    coefficients (mean and variance covariance matrix) or the CFM. A bespoke MCMC
-#'    routine is performed to estimate \eqn{b}.  Please see '?mcmc' for more detials.
+#'    routine is performed to estimate \eqn{\beta}.  Please see '?mcmc' for more detials.
 #'
 #'    For the standard example where the DC contains information from only a single
 #'    treatment, trt need not be specified.  Where comparisons between the CFM and
