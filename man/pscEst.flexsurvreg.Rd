@@ -15,11 +15,11 @@
 
 \item{start}{the stating value for}
 
-\item{trt}{an optional vector denoting treatment allocations where mulitple
-treatment comparisons are bieng made}
+\item{trt}{an optional vector denoting treatment allocations where multiple
+treatment comparisons are being made}
 }
 \value{
-a matrix continig the draws form the posterior ditribution
+a matrix containing the draws form the posterior distribution
 }
 \description{
 Fucntion for estimating initial parameter values  'flexsurvreg'

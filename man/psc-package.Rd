@@ -6,7 +6,7 @@
 \alias{psc-package}
 \title{psc: Personalised Synthetic Controls}
 \description{
-Allows the comparison of data cohorts (DC) against a Coutner Factual Model (CFM) and measures the difference in terms of an efficacy parameter. Allows the application of Personalised Synthetic Controls.
+Allows the comparison of data cohorts (DC) against a Counter Factual Model (CFM) and measures the difference in terms of an efficacy parameter. Allows the application of Personalised Synthetic Controls.
 }
 \seealso{
 Useful links:

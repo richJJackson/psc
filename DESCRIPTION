@@ -8,7 +8,7 @@ Authors@R: c(
     comment = c(ORCID = "0000-0002-7814-5088")))
 Maintainer: Richard Jackson <richJ23@liverpool.ac.uk>
 Description: Allows the comparison of data cohorts (DC) against a 
-    Coutner Factual Model (CFM) and measures the difference in terms of an 
+    Counter Factual Model (CFM) and measures the difference in terms of an 
     efficacy parameter.  Allows the application of Personalised Synthetic 
     Controls.
 License: GPL-3 | file LICENSE
@@ -23,7 +23,8 @@ Imports:
     mvtnorm,
     survival,
     enrichwith,
-    stats
+    stats,
+    flexsurv
 Suggests: 
     knitr,
     rmarkdown,

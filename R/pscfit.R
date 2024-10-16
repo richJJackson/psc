@@ -54,7 +54,7 @@
 #'  applied - see above)}
 #'  \item {A matrix containing the draws of the posterior distributions}
 #'  }
-#' @import enrichwith mvtnorm survival
+#' @import enrichwith mvtnorm survival flexsurv
 #' @examples
 #' library(psc)
 #' library(survival)
