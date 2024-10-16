@@ -11,7 +11,7 @@
 
 \item{DC}{a dataset including covariates to match the CFM}
 
-\item{id}{a vector specifiying whether a subset of the dataset shoudl be selcted.
+\item{id}{a vector specifiying whether a subset of the dataset should be selected.
 Defaults to 'NULL' e.g. all data points included}
 
 \item{trt}{An optional additional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to 'NULL'}

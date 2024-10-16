@@ -24,12 +24,12 @@ Function for performing estimation procedures in 'pscfit'
 \details{
 Define the set of model parameters \eqn{B} to contain \eqn{\Gamma} which summarize
 the parameters of the CFM. Prior distributions are defined for B using a
-multivariate normal distribution \eqn{\pi (B) ∼ MVN(\mu ,\Sigma)} where \eqn{\mu|}
+multivariate normal distribution \eqn{\pi (B) \sim MVN(\mu ,\Sigma)} where \eqn{\mu|}
 is the vector of coefficient estimates from the validated model and \eqn{\Sigma}
 is the variance-covariance matrix. This information is taken directly from the
 outputs of the parametric model and no further elicitation is required.
 The prior distirbution for the efficacy parameter (\eqn{\pi{(\beta)}}) is set
-as an uniformative \eqn{~N(0,1000)}.
+as an uniformative \eqn{N(0,1000)}.
 
 Ultimately the aim is to estimate the posterior distribution for \eqn{\beta} conditional
 on the distribution of B and the observed data.  A full form for the posterior

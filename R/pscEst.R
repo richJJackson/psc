@@ -9,7 +9,7 @@
 #'
 #' Define the set of model parameters \eqn{B} to contain \eqn{\Gamma} which summarize
 #' the parameters of the CFM. Prior distributions are defined for B using a
-#' multivariate normal distribution \eqn{\pi (B) ∼ MVN(\mu ,\Sigma)} where \eqn{\mu|}
+#' multivariate normal distribution \eqn{\pi (B) \sim MVN(\mu ,\Sigma)} where \eqn{\mu|}
 #' is the vector of coefficient estimates from the validated model and \eqn{\Sigma}
 #' is the variance-covariance matrix. This information is taken directly from the
 #' outputs of the parametric model and no further elicitation is required.
