@@ -16,10 +16,10 @@ pscfit(CFM, DC, nsim = 5000, id = NULL, trt = NULL)
 \item{id}{Numeric vector stating which patient(s) from the dataset should be included in the analysis.
 Defaults to all patients}
 
-\item{trt}{An optional vector denotin treatment allocations for multiple treatmence comparisons.  Defaults to NULL.}
+\item{trt}{An optional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to NULL.}
 }
 \value{
-a object of class 'psc' with attributes model.tupe, the cleaned Dataset and the
+a object of class 'psc' with attributes model.type, the cleaned Dataset and the
   posterior distribution of the fitted model
 
   Attributes include \itemize{
@@ -55,11 +55,11 @@ the \code{pscfit} function compares a dataset ('DC') against a parametric model.
    - c(\Gamma_i)\} } }
 
   Where \eqn{b(.)}, \eqn{t(.)} and \eqn{c(.)} represent the functions of the
-  exponential family. In both cases, \eqn{\Gamma} is defiend as:
+  exponential family. In both cases, \eqn{\Gamma} is defined as:
 
-  \deqn{ \Gamma = \gamma x + \beta}
+  \deqn{\Gamma = \gamma x + \beta}
 
-  Where \eqn{\gamma} are the model coefficients supplied by the CFM and b
+  Where \eqn{\gamma} are the model coefficients supplied by the CFM and \eqn{\beta}
   is the parameter set to measure the difference between the CFM and the DC.
 
   Estimation is performed using a Bayesian MCMC procedure.  Prior distributions

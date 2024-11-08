@@ -34,11 +34,11 @@ To load the library use the code
 
 ```{r setup,include=F}
 library(devtools)
-install_github("RichJJackson/psc",ref="Version-1.0")
+install_github("RichJJackson/psc")
 library(psc)
 library(survival)
-library(mvtnorm)
-library(enrichwith)
+#library(mvtnorm)
+#library(enrichwith)
 ```
 
 # Methodology

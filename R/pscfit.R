@@ -5,7 +5,7 @@
 #' @param nsim The number of simulations for the MCMC routine
 #' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.
 #'  Defaults to all patients
-#' @param trt An optional vector denotin treatment allocations for multiple treatmence comparisons.  Defaults to NULL.
+#' @param trt An optional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to NULL.
 #' @details the \code{pscfit} function compares a dataset ('DC') against a parametric model.
 #'   This is done by selecting a likelihood which is identified by the type of CFM that is supplied.
 #'   At present, two types of model are supported, a flexible parmaeteric survival model of type 'flexsurvreg'
@@ -26,11 +26,11 @@
 #'    - c(\Gamma_i)\} } }
 #'
 #'   Where \eqn{b(.)}, \eqn{t(.)} and \eqn{c(.)} represent the functions of the
-#'   exponential family. In both cases, \eqn{\Gamma} is defiend as:
+#'   exponential family. In both cases, \eqn{\Gamma} is defined as:
 #'
-#'   \deqn{ \Gamma = \gamma x + \beta}
+#'   \deqn{\Gamma = \gamma x + \beta}
 #'
-#'   Where \eqn{\gamma} are the model coefficients supplied by the CFM and b
+#'   Where \eqn{\gamma} are the model coefficients supplied by the CFM and \eqn{\beta}
 #'   is the parameter set to measure the difference between the CFM and the DC.
 #'
 #'   Estimation is performed using a Bayesian MCMC procedure.  Prior distributions
@@ -43,7 +43,7 @@
 #'    multiple treatments are require, a covariate of treamtne allocations must be
 #'    specified sperately (using the 'trt' option).
 #'
-#' @return a object of class 'psc' with attributes model.tupe, the cleaned Dataset and the
+#' @return a object of class 'psc' with attributes model.type, the cleaned Dataset and the
 #'   posterior distribution of the fitted model
 #'
 #'   Attributes include \itemize{
