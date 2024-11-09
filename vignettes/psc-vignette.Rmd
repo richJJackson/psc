@@ -132,7 +132,7 @@ For an example with a survival outcome a model must be supplied which is contruc
 
 ```{r}
 data("surv.mod")
-surv.mod
+#surv.mod
 ```
 
 In this example you can see that this is a model constructed with 3 internal knots and hence 5 parameters to describe the baseline cumulative hazard function.  There are also prognostic covariates which match with the prognostic covaraites in the data cohort.
