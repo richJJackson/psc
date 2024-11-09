@@ -33,8 +33,8 @@ In this vignette, we will detail how the psc.r package is constructed and give s
 To load the library use the code
 
 ```{r setup,include=F}
-library(devtools)
-install_github("RichJJackson/psc")
+#library(devtools)
+#install_github("RichJJackson/psc")
 library(psc)
 library(survival)
 #library(mvtnorm)
@@ -97,7 +97,8 @@ basic post estimation functions have been developed to work with the psc object,
 The psc.r package includes as example, a dataset which is derived from patients with advanced Hepatocellular Carcinoma (aHCC) who have all received some experimental treatment.  The dataset is simply named 'data' and is loaded into the enviroment using the "data()" function
 
 ```{r}
-data("data")
+#data("data")
+data <- psc::data
 #data[1:3,]
 ```
 
@@ -131,8 +132,9 @@ Lastly the dataset also inlclude a 'trt' variable to be used in the estimation o
 For an example with a survival outcome a model must be supplied which is contructed ont he basis of flexible parametric splines.  This is contructed using the "flexsurvreg" function within the "flexsurv" package.  An example is included within the 'psc.r' package names 'surv.mod' and is loaded using the 'data()" function:
 
 ```{r}
-data("surv.mod")
-#surv.mod
+surv.mod <- psc::surv.mod
+#data("surv.mod")
+surv.mod
 ```
 
 In this example you can see that this is a model constructed with 3 internal knots and hence 5 parameters to describe the baseline cumulative hazard function.  There are also prognostic covariates which match with the prognostic covaraites in the data cohort.
@@ -199,7 +201,9 @@ The "pscfit()" object uses class of the model supplied to derive the likelihoiod
 
 Step 1:  Load Model
 ```{r}
-data("bin.mod")
+bin.mod <- psc::bin.mod
+bin.mod
+#data("bin.mod")
 ```
 
 Step 2: Fit psc object
@@ -223,7 +227,9 @@ plot(psc.bin)
 
 Step 1:  Load Model
 ```{r}
-data("count.mod")
+count.mod <- psc::count.mod
+count.mod
+#data("count.mod")
 ```
 
 Step 2: Fit psc object
@@ -246,7 +252,9 @@ plot(psc.count)
 
 Step 1:  Load Model
 ```{r}
-data("cont.mod")
+cont.mod <- psc::cont.mod
+cont.mod
+#data("cont.mod")
 ```
 
 Step 2: Fit psc object
