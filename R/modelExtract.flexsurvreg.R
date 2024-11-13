@@ -3,7 +3,6 @@
 #' @details A function for extracting the model information required for using pscfit
 #' @return a list of extracted model components
 #' @export
-#'
 modelExtract.flexsurvreg <- function(CFM){
   co <- CFM$coefficients
   k <- CFM$k

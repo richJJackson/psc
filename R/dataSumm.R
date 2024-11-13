@@ -1,0 +1,29 @@
+#' A function which provides basic summary information of a matrix x
+#' @param x a matrix of covariates
+#' @details Categorical/Character data are summarised by a table and Continuous
+#'     data are summarised as median (IQR)
+#' @export
+dataSumm <- function(x){
+
+  cl.x <- class(x)
+
+  if(cl.x%in%c("character","factor")){
+    x <- factor(x)
+    lev <- levels(x)
+    tb <- table(x)
+    ret <- c("Class"=cl.x,tb)
+  }
+
+  if(cl.x%in%c("integer","numeric")){
+    x <- as.numeric(x)
+    quant <- round(quantile(x,c(0.5,0.25,0.75)),2)
+    minx <- min(x,na.rm=T)
+    maxx <- max(x,na.rm=T)
+    miqr <- paste(quant[1]," (",quant[2],", ",quant[3],")",sep="")
+    ret <- c("Class"=cl.x,"min"=minx,"max"=maxx,"miqr"=miqr)
+    ret
+  }
+
+  ret
+
+}
