@@ -4,12 +4,15 @@
 \alias{linPred}
 \title{Estimates the linear predictor of a psc object}
 \usage{
-linPred(DC_clean, resp = F)
+linPred(DC_clean, resp = FALSE)
 }
 \arguments{
 \item{DC_clean}{a cleaned data obhject created using dataComb()}
 
 \item{resp}{detailing whether the linear predictor shoudl be returned on the natural or response level.  Defaults to the natural scale (resp=F)}
+}
+\value{
+Extracts the linear predictor from a object containing both a counter factual model and a data cohort which is created using the dataComb() fucntion.
 }
 \description{
 Estimates the linear predictor of a psc object

@@ -47,8 +47,7 @@ plot.psc <- function (x, ...){
     ## poisson
     if(fam$family%in%c("poisson")){
       plot(table(out),xlim=xl,col="mistyrose",lwd=15,pch=15)
-      par(new=T)
-      plot(density(pr_cont),xlim=xl,lwd=6,col="royalblue",xlab="Pr (Response)",main="")
+      lines(density(pr_cont),xlim=xl,lwd=6,col="royalblue",xlab="Pr (Response)",main="")
       legend(xmin*1.1,ymax*.975,c("Predicted Control Response","observed response"),bty="n",col=c("royalblue","darkred"),lwd=c(3,3),lty=c(1,2))
     }
 

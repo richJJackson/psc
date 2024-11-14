@@ -15,6 +15,11 @@ dataComb(CFM, DC, id = NULL, trt = NULL)
 
 \item{trt}{used to specify multiple treatment effects. Defaults to NULL}
 }
+\value{
+datComb returns a list containing objects which detial the components of both the
+  Counter Factual Model (CFM) and the Data Cohort (DC) the required exported components
+  of the model and a cleaned data cohort.
+}
 \description{
 A generic function for cleaning data ready for analysis
 }

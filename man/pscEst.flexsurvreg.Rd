@@ -19,7 +19,7 @@
 treatment comparisons are being made}
 }
 \value{
-a matrix containing the draws form the posterior distribution
+A matrix containing the draws form the posterior distribution
 }
 \description{
 Fucntion for estimating initial parameter values  'flexsurvreg'

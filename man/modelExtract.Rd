@@ -7,8 +7,14 @@
 modelExtract(CFM)
 }
 \arguments{
-\item{CFM}{a model object supplied to pscfit}
+\item{CFM}{a model of class either 'glm' or 'flexsurvreg'}
+}
+\value{
+a list of extracted model components
 }
 \description{
 A generic function for extracting model information
+}
+\details{
+A function for extracting the model information required for using pscfit
 }

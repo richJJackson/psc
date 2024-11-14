@@ -15,8 +15,6 @@ dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL){
   mf <- model_extract$model.frame
   term.nm <- names(mf)
   term.nm <- term.nm[-c(1,length(term.nm))];term.nm
-  attributes(CFM)
-
 
   ### ERROR CHECK: Selecting data from DC
   data_unavail_id  <- which(!term.nm%in%names(DC))

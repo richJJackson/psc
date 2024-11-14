@@ -5,6 +5,7 @@
 #' @param start the stating value for
 #' @param trt an optional vector denoting treatment allocations where mulitple
 #'     treatment comparisons are bieng made
+#' @return A matrix containing the draws form the posterior distribution
 #' @details
 #'
 #' Define the set of model parameters \eqn{B} to contain \eqn{\Gamma} which summarize

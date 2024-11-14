@@ -7,7 +7,7 @@
 #' @param trt an optional vector denoting treatment allocations where multiple
 #'     treatment comparisons are being made
 #' @details An MCMC routine for fitting a psc model
-#' @return a matrix containing the draws form the posterior distribution
+#' @return A matrix containing the draws form the posterior distribution
 #' @import utils
 #' @export
 #'

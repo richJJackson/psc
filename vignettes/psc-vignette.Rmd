@@ -33,12 +33,8 @@ In this vignette, we will detail how the psc.r package is constructed and give s
 To load the library use the code
 
 ```{r setup,include=F}
-#library(devtools)
-#install_github("RichJJackson/psc")
 library(psc)
 library(survival)
-#library(mvtnorm)
-#library(enrichwith)
 ```
 
 # Methodology
@@ -97,9 +93,7 @@ basic post estimation functions have been developed to work with the psc object,
 The psc.r package includes as example, a dataset which is derived from patients with advanced Hepatocellular Carcinoma (aHCC) who have all received some experimental treatment.  The dataset is simply named 'data' and is loaded into the enviroment using the "data()" function
 
 ```{r}
-#data("data")
 data <- psc::data
-#data[1:3,]
 ```
 
 Included is a list of prognostic covariates:
@@ -170,7 +164,6 @@ Inspection will show that there is a column for each parameter in the original m
 We can inspect the trace and obtaine standard estimates of the efficacy parameter using standard summary statistics
 
 ```{r}
-par(mfrow=c(1,2))
 acf(surv.post$beta)
 plot(surv.post$beta,typ="s")
 summary(surv.post$beta)

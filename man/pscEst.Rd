@@ -18,6 +18,9 @@ pscEst(CFM, DC_clean, nsim, start, trt)
 \item{trt}{an optional vector denoting treatment allocations where mulitple
 treatment comparisons are bieng made}
 }
+\value{
+A matrix containing the draws form the posterior distribution
+}
 \description{
 Function for performing estimation procedures in 'pscfit'
 }
