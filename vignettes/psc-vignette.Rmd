@@ -127,7 +127,6 @@ For an example with a survival outcome a model must be supplied which is contruc
 
 ```{r}
 surv.mod <- psc::surv.mod
-#data("surv.mod")
 surv.mod
 ```
 
@@ -137,7 +136,6 @@ To begin it is worth looking at the performance of the model and looking at how 
 
 ```{r}
 sfit <- survfit(Surv(data$time,data$cen)~1)
-#plot(surv.mod)
 plot(sfit)
 ```
 
@@ -161,11 +159,21 @@ head(surv.post)
 ```
 Inspection will show that there is a column for each parameter in the original model as well as 'beta' and 'DIC' vcolumns which give teh posterior estiamtes for $\beta$ and the Deviance Informaiton Criterion respectively.
 
-We can inspect the trace and obtaine standard estimates of the efficacy parameter using standard summary statistics
+We can inspect the poterior distribution using the autocorrelation function, trace and stardard summary statistics:
 
+#### Autocorrelation
 ```{r}
 acf(surv.post$beta)
+```
+
+#### Trace
+```{r}
 plot(surv.post$beta,typ="s")
+```
+
+#### Summary
+
+```{r}
 summary(surv.post$beta)
 ```
 
@@ -180,7 +188,6 @@ summary(surv.psc)
 To visualise the original model and the fit of the data, the plot function has been developed
 
 ```{r}
-par(mfrow=c(1,1))
 plot(surv.psc)
 ```
 
@@ -196,7 +203,6 @@ Step 1:  Load Model
 ```{r}
 bin.mod <- psc::bin.mod
 bin.mod
-#data("bin.mod")
 ```
 
 Step 2: Fit psc object
