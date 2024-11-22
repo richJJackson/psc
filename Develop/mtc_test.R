@@ -73,9 +73,9 @@ pscSumm <- function(DC_clean){
 
   cat(paste(nrow(DC_clean$cov),"observations selected from the data cohort for comparison"),"\n")
   cat("CFM of type",DC_clean$model.type,"identified"," \n")
-  cat("linear predictor succesfully obtained with median: \n")
+  cat("linear predictor succesfully obtained with median: \n ")
   cat(paste("trt",lev,": ",round(lp_ret,3),"\n",sep=""))
-  cat("Average expected response: \n")
+  cat("Average expected response: \n ")
   cat(paste("trt",lev,": ",round(exp_resp,3),"\n",sep=""))
   cat(paste("Average observed response:",round(ob_resp,3)),"\n")
 
