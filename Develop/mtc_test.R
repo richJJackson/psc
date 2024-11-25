@@ -36,6 +36,6 @@ plot(psbin)
 plot(pscon)
 plot(pscou)
 
-
+?psc
 
 

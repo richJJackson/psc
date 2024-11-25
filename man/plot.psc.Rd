@@ -2,20 +2,18 @@
 % Please edit documentation in R/plot.R
 \name{plot.psc}
 \alias{plot.psc}
-\title{Fucntion for Plotting PSC objects}
+\title{Function for Plotting PSC objects}
 \usage{
-\method{plot}{psc}(x, ...)
+\method{plot}{psc}(x)
 }
 \arguments{
 \item{x}{an object of class 'psc'}
-
-\item{...}{not used}
 }
 \value{
 a plot corresponding to the psc fit
 }
 \description{
-Fucntion for Plotting PSC objects
+Function for Plotting PSC objects
 }
 \details{
 making use of the generic 'plot' functions this will provide some

@@ -1,7 +1,12 @@
 #' Example model for a survival outcome
 #'
-#' A model of class 'flezsurvreg'
-#'
+#' A generated model with a survival endpoint and a cuymulative hazard function
+#' estimated using flexible parametric splines. Data for the model were
+#' synthetically generated and are based on a dataset to
+#' evaulate the use of Sorafenib in HCC akin to the PROSASH model
+#' @references Using prognostic and predictive clinical features to make
+#' personalised survival prediction in advanced hepatocellular carcinoma patients
+#' undergoing sorafenib treatment. Berhane S, et al., Br J Cancer. 2019 Jul;121(2):117-124
 #'
 #' @format A model of class 'flezsurvreg':
 #' \describe{

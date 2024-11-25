@@ -4,7 +4,7 @@
 #' @details making use of 'ggsurvplot' in the survminer package, this function
 #' plots the expected survival funtion for the 'control' treatment estimated
 #' from the CFM along with the Kaplan Meier estimates of the observed events
-#' @import ggplot survminer
+#' @import ggplot2 survminer
 plot.psc.flexsurvreg <- function(x){
   med <- coef(x)
   med <- med[-nrow(med),1]

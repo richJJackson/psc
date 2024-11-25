@@ -1,6 +1,17 @@
 #' Personalised Synthetic Controls model fit
 #'
-#' @param CFM A model of type 'glm' or 'flexsurvspline'
+#' Function which allows comparison of a data cohort against a parametric Counter Factual Model (CFM).
+#' The function allows models of the type 'flexsurvreg' and 'glm' to be supplied.
+#' The function performs by calculating the linear predictor as a combination of
+#' the CFM and the dataset supplied and then selects a likelihood
+#' based on the type of model specified.  Likelihood is estimated using a Baysian MCMC
+#' procedure wherebey the parameters of the CFM acts as informative priors.
+#'
+#' Model currently supports estimation of more than one treatment (using the
+#' 'trt') option and esitmation restricted to sub-groups of the data cohort
+#' (using the 'id' option.
+#'
+#' @param CFM An R model object of class 'glm' or 'flexsurvspline'
 #' @param DC A dataset including columns to match to covariates in the model
 #' @param nsim The number of simulations for the MCMC routine
 #' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.

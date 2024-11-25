@@ -3,7 +3,7 @@
 #' @return A plot showing the individual treatment effects
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates for each patient in the dataset
-#' @import ggplot
+#' @import ggplot2
 plot_ite.glm<- function(x){
 
   fam <- x$DC_clean$model_extract$family;fam

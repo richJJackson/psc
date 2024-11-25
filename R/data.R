@@ -1,6 +1,7 @@
 #' Example Dataset of patients with aHCC receiving Lenvetanib
 #'
-#' A dataset containing 100 simulated patients.
+#' A dataset containing 100 simulated patients.  Data are based on the data used
+#' to generate PROSASH survival model -see ?psc::surv.mod for more detials.
 #'
 #' @format A model of class 'flezsurvreg':
 #' \describe{

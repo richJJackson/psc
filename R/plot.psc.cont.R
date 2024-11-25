@@ -3,7 +3,7 @@
 #' @return a survival plot corresponding to the psc fit
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates of the experimental arms
-#' @import ggplot
+#' @import ggplot2
 plot.psc.cont <- function(x){
 
   fam <- x$DC_clean$model_extract$family;fam

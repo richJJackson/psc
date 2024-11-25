@@ -31,6 +31,7 @@ simulated
 data
 }
 \description{
-A dataset containing 100 simulated patients.
+A dataset containing 100 simulated patients.  Data are based on the data used
+to generate PROSASH survival model -see ?psc::surv.mod for more detials.
 }
 \keyword{datasets}

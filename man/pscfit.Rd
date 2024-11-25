@@ -7,7 +7,7 @@
 pscfit(CFM, DC, nsim = 5000, id = NULL, trt = NULL)
 }
 \arguments{
-\item{CFM}{A model of type 'glm' or 'flexsurvspline'}
+\item{CFM}{An R model object of class 'glm' or 'flexsurvspline'}
 
 \item{DC}{A dataset including columns to match to covariates in the model}
 
@@ -32,9 +32,18 @@ a object of class 'psc' with attributes model.type, the cleaned Dataset and the
  }
 }
 \description{
-Personalised Synthetic Controls model fit
+Function which allows comparison of a data cohort against a parametric Counter Factual Model (CFM).
+The function allows models of the type 'flexsurvreg' and 'glm' to be supplied.
+The function performs by calculating the linear predictor as a combination of
+the CFM and the dataset supplied and then selects a likelihood
+based on the type of model specified.  Likelihood is estimated using a Baysian MCMC
+procedure wherebey the parameters of the CFM acts as informative priors.
 }
 \details{
+Model currently supports estimation of more than one treatment (using the
+'trt') option and esitmation restricted to sub-groups of the data cohort
+(using the 'id' option.
+
 the \code{pscfit} function compares a dataset ('DC') against a parametric model.
   This is done by selecting a likelihood which is identified by the type of CFM that is supplied.
   At present, two types of model are supported, a flexible parmaeteric survival model of type 'flexsurvreg'

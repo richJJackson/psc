@@ -15,7 +15,7 @@ acc(old, new)
 returns the an evaluation of old/new > U where U is a draw from the uniform distribution
 }
 \description{
-acc
+Function to accept (or not) a proposed solution used as part of the MCMC procedure
 }
 \details{
 A function for the evaluation of two likelihoods as part of the MCMC procedure

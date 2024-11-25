@@ -1,4 +1,9 @@
-#' A generic function for performing validation of a flexsurvreg model
+#' Validation of a flexsurvreg model
+#' This function intends to perform basic validation of a survival model of class
+#' 'flexsurvreg'.  As a default internal valudation will be performed by estimating
+#' basic measures of discrimination and calibration. If provided, measures will
+#' be estimated on external data. This is intended to be used in conjunction
+#' with the pscCRM.R function#' A generic function for extracting model information
 #' @param CFM a model of class 'flexsurvreg'
 #' @param exData an external dataset (for external validation)
 #' @return a list of validation procedures for measures of discrimination and
@@ -51,7 +56,6 @@ cfmValid.flexsurvreg <- function(cfm,exData=NULL){
   ret$discrim$sfit <- sfit
   ret$discrim$cm <- cm
 
-
   ## Calibration
 
   # concordance & slope
@@ -60,7 +64,6 @@ cfmValid.flexsurvreg <- function(cfm,exData=NULL){
 
   ret$calib$c <- c
   ret$calib$slope <- lp_slope
-
 
   ## returning object
   ret
