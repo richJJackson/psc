@@ -12,8 +12,15 @@
 #' lp <- linPred(dc)
 #' @export
 linPred <- function(DC_clean,resp=F){
+
   mt <- DC_clean$model.type
   cov <- DC_clean$cov;cov
+
+  ## Removing 'trt' from dataset
+  if("trt"%in%colnames(cov)){
+    cov <- cov[,-which(colnames(cov)=="trt")]
+  }
+
   cov_co <- DC_clean$model_extract$cov_co;cov_co
   lp <- cov %*% cov_co
   ret <- lp
