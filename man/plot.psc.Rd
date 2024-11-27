@@ -10,13 +10,20 @@
 \item{x}{an object of class 'psc'}
 }
 \value{
-a plot corresponding to the psc fit
+a survival plot corresponding to the psc fit
 }
 \description{
-Function for Plotting PSC objects
+A function which illsutrates the predicted response under the Counter Factual
+Model (CFM) and the observed response under the experimental treatment(s).
+Form of the output will depend on the form of the CFM used
 }
 \details{
-making use of the generic 'plot' functions this will provide some
-  graphical output of the fitted psc object.  The form of the output will
-  depend on the class of the initial model
+This function plots the expected response of the control treatment
+   along with the observe response rates of the experimental arms
+}
+\examples{
+bin.mod <- psc::bin.mod
+data <- psc::data
+bin.psc <- pscfit(bin.mod,data)
+plot_ite(bin.psc)
 }

@@ -19,7 +19,10 @@ included in the model}
 \item{citation}{a character giving a reference (if applicable),  defaults to NULL (e.g no citation)}
 }
 \description{
-A function which provides basic summary information of a matrix x
+This function creates and object containaing all information relating to a
+model which may be used for counter-factual inference.  This includes the
+model parameters, the intended setting for it's, details of validation and
+references for further details.
 }
 \details{
 Categorical/Character data are summarised by a table and Continuous

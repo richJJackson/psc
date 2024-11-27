@@ -1,4 +1,11 @@
 #' A function which provides basic summary information of a matrix x
+#'
+#' This function creates and object containaing all information relating to a
+#' model which may be used for counter-factual inference.  This includes the
+#' model parameters, the intended setting for it's, details of validation and
+#' references for further details.
+#'
+#'
 #' @param cfm a model object
 #' @param covnm an optinal character vector suppling covariate names to the terms
 #'     included in the model

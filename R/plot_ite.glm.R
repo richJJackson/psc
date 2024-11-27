@@ -1,9 +1,22 @@
 #' Function for Plotting PSC objects
+#'
+#' A function which plots a patients response against their predicted response
+#' from a CFM.  Exact form of the output will depend on the form of the glm
+#'
 #' @param x an object of class 'psc'
 #' @return A plot showing the individual treatment effects
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates for each patient in the dataset
 #' @import ggplot2
+#' @examples
+#' library(psc)
+#' library(survival)
+#' bin.mod <- psc::bin.mod
+#' data <- psc::data
+#' bin.psc <- pscfit(bin.mod,data)
+#' plot_ite(bin.psc)
+#' @export
+#'
 plot_ite.glm<- function(x){
 
   fam <- x$DC_clean$model_extract$family;fam

@@ -10,13 +10,22 @@ plot_ite(x)
 \item{x}{an object of class 'psc'}
 }
 \value{
-a plot corresponding to the psc fit
+A plot showing the individual treatment effects
 }
 \description{
-Function for Plotting individual treatment effects for a PSC object
+A function which plots a patients response against their predicted response
+from a CFM.  Exact form of the output will depend on the form of the model supplied
 }
 \details{
-a funtion which returns a plot showing the individual estimated
-response under the control treatment (from the CFM) against the observed
-response from the data cohort
+This function plots the expected response of the control treatment
+   along with the observe response rates for each patient in the dataset
+}
+\examples{
+library(psc)
+library(survival)
+bin.mod <- psc::bin.mod
+data <- psc::data
+bin.psc <- pscfit(bin.mod,data)
+plot_ite(bin.psc)
+
 }

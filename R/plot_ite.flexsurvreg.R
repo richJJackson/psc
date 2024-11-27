@@ -1,9 +1,21 @@
 #' Function for Plotting PSC objects
+#'
+#' A function which plots a patients response against their predicted response
+#' from a CFM
+#'
 #' @param x an object of class 'psc'
 #' @return A plot showing the individual treatment effects
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates for each patient in the dataset
 #' @import ggplot2
+#' @examples
+#' library(psc)
+#' library(survival)
+#' surv.mod <- psc::surv.mod
+#' data <- psc::data
+#' surv.psc <- pscfit(surv.mod,data)
+#' plot_ite(surv.psc)
+#' @export
 plot_ite.flexsurvreg<- function(x){
 
   ### Getting model survival estimate

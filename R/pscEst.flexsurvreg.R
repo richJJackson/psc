@@ -1,4 +1,8 @@
-#' Fucntion for estimating initial parameter values  'flexsurvreg'
+#' Function for estimating initial parameter values  'flexsurvreg'
+#'
+#' A function which performs the Bayesian MCMC estimation procedure for
+#' estimating the efficacy parameter (\beta) using personalised sunthetic
+#' controls methodology.
 #'
 #' @param CFM a model object supplied to pscfit
 #' @param DC_clean a cleaned dataset ontained using dataComb().
@@ -9,7 +13,6 @@
 #' @details An MCMC routine for fitting a psc model
 #' @return a matrix containing the draws form the posterior distribution
 #' @import utils
-#' @export
 #'
 pscEst.flexsurvreg <- function(CFM,DC_clean,nsim,start,trt=trt){
 

@@ -13,9 +13,18 @@ plot_ite.glm(x)
 A plot showing the individual treatment effects
 }
 \description{
-Function for Plotting PSC objects
+A function which plots a patients response against their predicted response
+from a CFM.  Exact form of the output will depend on the form of the glm
 }
 \details{
 This function plots the expected response of the control treatment
    along with the observe response rates for each patient in the dataset
+}
+\examples{
+library(psc)
+library(survival)
+bin.mod <- psc::bin.mod
+data <- psc::data
+bin.psc <- pscfit(bin.mod,data)
+plot_ite(bin.psc)
 }

@@ -10,7 +10,15 @@
 \item{CFM}{a model of class 'glm'}
 }
 \value{
-a list of extracted model components
+a list of extracted model components.  Included are
+\itemize{
+\item{model.frame a dataset of the covareits used to create the model}
+\item{cov_co: covariate coefficients}
+\item{sig: variance-covariance matrix}
+\item{form: model formula}
+\item{family: model family}
+\item{out.nm: outcome covariates names}
+}
 }
 \description{
 A generic function for extracting model information

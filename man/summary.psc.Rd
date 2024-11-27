@@ -15,7 +15,8 @@
 A summary of a psc object obtained using pscSumm and a copy of the pscfit object
 }
 \description{
-Personalised Synthetic Controls - summary
+A generic function to provide a summary of a 'psc' object obtained from
+pscfit.R
 }
 \examples{
 library(psc)

@@ -13,7 +13,8 @@ modp(x)
 a numeric vector with negative values replaced with 0
 }
 \description{
-modp
+A function which rrturns either the input value (if positive) or zero (if
+negative)
 }
 \details{
 A fucntion which returns a version of x with negative values replacd with 0

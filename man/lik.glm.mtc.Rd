@@ -2,7 +2,7 @@
 % Please edit documentation in R/lik.glm.mtc.R
 \name{lik.glm.mtc}
 \alias{lik.glm.mtc}
-\title{Likelihood functio for a a psc model of class 'flexsurvreg'}
+\title{Likelihood function for a a psc model of class 'glm' with multiple treatment comparisons}
 \usage{
 lik.glm.mtc(beta, DC_clean)
 }
@@ -12,7 +12,10 @@ lik.glm.mtc(beta, DC_clean)
 \item{DC_clean}{a cleaned dataset including covariates to match the CFM}
 }
 \description{
-Likelihood functio for a a psc model of class 'flexsurvreg'
+A function which defines the likelihood for a PSC model where the Counter
+Factual Model (CFM) takes the form of a 'glm' object and a mulitple efficacy
+parameters (\beta) is being estimated.  For more details on fitting please see
+?pscfit and ?pscEst
 }
 \details{
 A likelihood function for use by pscfit for a model of class 'flexsurvreg'

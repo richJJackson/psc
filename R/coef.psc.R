@@ -1,6 +1,7 @@
 #' Returns the coefficeint estimate of a psc object.
 #'
-#' Returns basic measures of the posterior distribution obtained from the pscfit.R function
+#' Returns basic measures of the posterior distribution obtained from the
+#' pscfit.R function
 #'
 #' @param object a 'psc' object
 #' @param level the level at which credibility intervals are assessed, defaults to 0.05

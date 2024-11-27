@@ -19,6 +19,12 @@ Defualts to 'NULL' i.e all observations}
 \value{
 a list containing objects which specifiy the required exported components
   of the model and a cleaned data cohort.  Attirbutes of the 'cleaned' object include:
+ Attributes include \itemize{
+ \item{'model.type' specifying the class of model to be used as the CFM }
+ \item{'model_extract' sepcifying the model componets required for estimation}
+ \item{'cov' a cleaned dataset of covariates}
+ \item{'outcome' a cleaned dataset containing the outcomes}
+ }
 }
 \description{
 The purpose of this function is to prepare the dataset and the counter-factual

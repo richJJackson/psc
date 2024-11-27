@@ -2,7 +2,7 @@
 % Please edit documentation in R/pscEst.glm.R
 \name{pscEst.glm}
 \alias{pscEst.glm}
-\title{Fucntion for estimating initial parameter values  'glm'}
+\title{Function for estimating initial parameter values  'flexsurvreg'}
 \usage{
 \method{pscEst}{glm}(CFM, DC_clean, nsim, start, trt = trt)
 }
@@ -22,7 +22,9 @@ treatment comparisons are being made}
 a matrix containing the draws form the posterior distribution
 }
 \description{
-Fucntion for estimating initial parameter values  'glm'
+A function which performs the Bayesian MCMC estimation procedure for
+estimating the efficacy parameter (\beta) using personalised sunthetic
+controls methodology.
 }
 \details{
 An MCMC routine for fitting a psc model

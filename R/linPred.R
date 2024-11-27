@@ -1,5 +1,10 @@
 #' Estimates the linear predictor of a psc object
 #'
+#' A function which created a linear predictor from a model and an external
+#' dataset.  If required, linear predictors will be provided on the response
+#' scale.  For a survival outcome, this will take the form of median survival
+#' estimates.
+#'
 #' @param DC_clean a cleaned data obhject created using dataComb()
 #' @param resp detailing whether the linear predictor shoudl be returned on the natural or response level.  Defaults to the natural scale (resp=F)
 #' @details A function which combines the data from the data cohort against the model parameters of the PSC

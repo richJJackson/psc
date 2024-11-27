@@ -16,7 +16,8 @@ summary statistics of the average responses for the sythenthic and observed
 populations
 }
 \description{
-Personalised Synthetic Controls - summary
+A function which provides a summary of a DC_clean object.
+To be used either in conjunction with dataComb.R or summary.psc.R
 }
 \examples{
 library(psc)
@@ -24,5 +25,5 @@ library(survival)
 data("surv.mod")
 data("data")
 dc <- dataComb(surv.mod,data)
-summ <- pscSumm(dc)
+pscSumm(dc)
 }

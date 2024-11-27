@@ -13,9 +13,16 @@
 a survival plot corresponding to the psc fit
 }
 \description{
-Function for Plotting PSC objects
+A function which illsutrates the predicted response under the counter factual
+model and the observed response under the experimental treatment(s).
 }
 \details{
 This function plots the expected response of the control treatment
    along with the observe response rates of the experimental arms
+}
+\examples{
+cont.mod <- psc::cont.mod
+data <- psc::data
+cont.psc <- pscfit(cont.mod,data)
+plot_ite(cont.psc)
 }

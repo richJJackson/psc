@@ -1,9 +1,19 @@
 #' Function for Plotting PSC objects
+#'
+#' A function which illsutrates the predicted response under the counter factual
+#' model and the observed response under the experimental treatment(s).
+#'
 #' @param x an object of class 'psc'
 #' @return a survival plot corresponding to the psc fit
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates of the experimental arms
 #' @import ggplot2
+#' @examples
+#' bin.mod <- psc::bin.mod
+#' data <- psc::data
+#' bin.psc <- pscfit(bin.mod,data)
+#' plot_ite(bin.psc)
+#' @export
 plot.psc.binary <- function(x){
 
   fam <- x$DC_clean$model_extract$family;fam

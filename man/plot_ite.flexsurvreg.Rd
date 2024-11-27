@@ -13,9 +13,18 @@ plot_ite.flexsurvreg(x)
 A plot showing the individual treatment effects
 }
 \description{
-Function for Plotting PSC objects
+A function which plots a patients response against their predicted response
+from a CFM
 }
 \details{
 This function plots the expected response of the control treatment
    along with the observe response rates for each patient in the dataset
+}
+\examples{
+library(psc)
+library(survival)
+surv.mod <- psc::surv.mod
+data <- psc::data
+surv.psc <- pscfit(surv.mod,data)
+plot_ite(surv.psc)
 }

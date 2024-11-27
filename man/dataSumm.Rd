@@ -10,7 +10,11 @@ dataSumm(x)
 \item{x}{a matrix of covariates}
 }
 \description{
-A function which provides basic summary information of a matrix x
+A function which provides basic summaries of data provided within a data frame
+of covariets.  Summaries are in the form of frequencies of counts and associated
+percentages for categorical data and median (IQR) for continuous data.
+Intended for use with the pscCFM.R function to define the setting in which a
+model has been generated
 }
 \details{
 Categorical/Character data are summarised by a table and Continuous
