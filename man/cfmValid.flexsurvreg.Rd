@@ -4,7 +4,7 @@
 \alias{cfmValid.flexsurvreg}
 \title{Validation of a flexsurvreg model
 This function intends to perform basic validation of a survival model of class
-'flexsurvreg'.  As a default internal valudation will be performed by estimating
+'flexsurvreg'.  As a default internal validation will be performed by estimating
 basic measures of discrimination and calibration. If provided, measures will
 be estimated on external data. This is intended to be used in conjunction
 with the pscCRM.R function#' A generic function for extracting model information}
@@ -12,9 +12,9 @@ with the pscCRM.R function#' A generic function for extracting model information
 \method{cfmValid}{flexsurvreg}(cfm, exData = NULL)
 }
 \arguments{
-\item{exData}{an external dataset (for external validation)}
+\item{cfm}{a model of class 'flexsurvreg'}
 
-\item{CFM}{a model of class 'flexsurvreg'}
+\item{exData}{an external dataset (for external validation)}
 }
 \value{
 a list of validation procedures for measures of discrimination and
@@ -23,7 +23,7 @@ a list of validation procedures for measures of discrimination and
     predictor.  Discrimation estimated provided in terms of kaplan merie
     estimates and hazard ratios.
 
-    Calibration performed by exxtracting the cnocrdance statstic and by
+    Calibration performed by extracting the concordance statistic and by
     regression the linear predictor against the outcome.
 
     Validation is internal unless an external dataset is provided.
@@ -31,7 +31,7 @@ a list of validation procedures for measures of discrimination and
 \description{
 Validation of a flexsurvreg model
 This function intends to perform basic validation of a survival model of class
-'flexsurvreg'.  As a default internal valudation will be performed by estimating
+'flexsurvreg'.  As a default internal validation will be performed by estimating
 basic measures of discrimination and calibration. If provided, measures will
 be estimated on external data. This is intended to be used in conjunction
 with the pscCRM.R function#' A generic function for extracting model information

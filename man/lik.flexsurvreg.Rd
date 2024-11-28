@@ -2,7 +2,7 @@
 % Please edit documentation in R/lik.flexsurvreg.R
 \name{lik.flexsurvreg}
 \alias{lik.flexsurvreg}
-\title{Likelihood functio for a a psc model of class 'flexsurvreg'}
+\title{Likelihood function for a psc model of class 'flexsurvreg'}
 \usage{
 lik.flexsurvreg(beta, DC_clean)
 }
@@ -12,8 +12,12 @@ lik.flexsurvreg(beta, DC_clean)
 \item{DC_clean}{a cleaned dataset including covariates to match the CFM}
 }
 \description{
-Likelihood functio for a a psc model of class 'flexsurvreg'
+A function which defines the likelihood for a PSC model where the Counter
+Factual Model (CFM) takes the form of a 'flexsurvreg' object and an efficacy
+parameter (\eqn{\beta}) is being estimated.  For more details on fitting please see
+?pscfit and ?pscEst
 }
 \details{
-A likelihood function for use by pscfit for a model of class 'flexsurvreg'
+A likelihood function for use by pscfit for a model of class
+'flexsurvreg'
 }

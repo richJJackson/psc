@@ -10,7 +10,7 @@ If provided, measures will be estimated on external data. This is intended
 to be used in conjunction with the pscCRM.R function#' A generic function for
  extracting model information}
 \usage{
-cfmValid(CFM)
+cfmValid(cfm, exData)
 }
 \arguments{
 \item{CFM}{a model object to be validated}
@@ -23,8 +23,4 @@ performed by estimating basic measures of discrimination and calibration.
 If provided, measures will be estimated on external data. This is intended
 to be used in conjunction with the pscCRM.R function#' A generic function for
  extracting model information
-}
-\examples{
-library(psc)
-cfmValid(psc::surv.mod)
 }

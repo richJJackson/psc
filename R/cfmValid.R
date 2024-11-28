@@ -6,10 +6,7 @@
 #' to be used in conjunction with the pscCRM.R function#' A generic function for
 #'  extracting model information
 #' @param CFM a model object to be validated
-#' @examples
-#' library(psc)
-#' cfmValid(psc::surv.mod)
-cfmValid <- function(CFM){
+cfmValid <- function(cfm, exData){
   UseMethod("cfmValid")
 }
 

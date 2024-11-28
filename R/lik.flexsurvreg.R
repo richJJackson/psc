@@ -1,8 +1,15 @@
-#' Likelihood functio for a a psc model of class 'flexsurvreg'
+#' Likelihood function for a psc model of class 'flexsurvreg'
+#'
+#' A function which defines the likelihood for a PSC model where the Counter
+#' Factual Model (CFM) takes the form of a 'flexsurvreg' object and an efficacy
+#' parameter (\eqn{\beta}) is being estimated.  For more details on fitting please see
+#' ?pscfit and ?pscEst
 #'
 #' @param beta a parameter to be estimate
 #' @param DC_clean a cleaned dataset including covariates to match the CFM
-#' @details A likelihood function for use by pscfit for a model of class 'flexsurvreg'
+#' @details A likelihood function for use by pscfit for a model of class
+#' 'flexsurvreg'
+#'
 lik.flexsurvreg <- function(beta,DC_clean){
   lam <- DC_clean$model_extract$lam
   kn <- DC_clean$model_extract$kn
