@@ -14,7 +14,7 @@
 #' bin.psc <- pscfit(bin.mod,data)
 #' plot_ite(bin.psc)
 #' @export
-plot.psc.binary <- function(x){
+plot.psc.binary <- function(x,...){
 
   fam <- x$DC_clean$model_extract$family;fam
   out <- as.numeric(unlist(x$DC_clean$out));out
