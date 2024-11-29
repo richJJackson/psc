@@ -4,10 +4,12 @@
 \alias{plot.psc.cont}
 \title{Function for Plotting PSC objects}
 \usage{
-\method{plot}{psc.cont}(x)
+\method{plot}{psc.cont}(x, ...)
 }
 \arguments{
 \item{x}{an object of class 'psc'}
+
+\item{...}{not used}
 }
 \value{
 a survival plot corresponding to the psc fit

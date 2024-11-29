@@ -4,10 +4,12 @@
 \alias{plot.psc}
 \title{Function for Plotting PSC objects}
 \usage{
-\method{plot}{psc}(x)
+\method{plot}{psc}(x, ...)
 }
 \arguments{
 \item{x}{an object of class 'psc'}
+
+\item{...}{not used}
 }
 \value{
 a survival plot corresponding to the psc fit

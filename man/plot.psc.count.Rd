@@ -6,10 +6,12 @@
 #' A function which illsutrates the predicted response under the counter factual
 model and the observed response under the experimental treatment(s).}
 \usage{
-\method{plot}{psc.count}(x)
+\method{plot}{psc.count}(x, ...)
 }
 \arguments{
 \item{x}{an object of class 'psc'}
+
+\item{...}{not used}
 }
 \value{
 a survival plot corresponding to the psc fit

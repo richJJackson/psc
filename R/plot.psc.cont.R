@@ -13,7 +13,7 @@
 #' cont.mod <- psc::cont.mod
 #' data <- psc::data
 #' cont.psc <- pscfit(cont.mod,data)
-#' plot_ite(cont.psc)
+#' plot(cont.psc)
 #' @export
 plot.psc.cont <- function(x, ...){
 

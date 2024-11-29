@@ -12,7 +12,7 @@
 #' count.mod <- psc::count.mod
 #' data <- psc::data
 #' count.psc <- pscfit(count.mod,data)
-#' plot_ite(cont.psc)
+#' plot(cont.psc)
 #' @export
 plot.psc.count <- function(x, ...){
 
