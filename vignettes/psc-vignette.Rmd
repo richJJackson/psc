@@ -238,16 +238,16 @@ To visualise the original model and the fit of the data, the plot function has
 been developed
 
 ```{r}
-library(ggplot2)
-library(survminer)
-plot(surv.psc)
+#library(ggplot2)
+#library(survminer)
+#plot(surv.psc)
 ```
 
 
 ## GLM
 
 The "pscfit()" object uses class of the model supplied to derive the likelihoiod 
-and estimation procedure that is required.  In this example, the "enrichwith" 
+and estimation procedure that isde required.  In this example, the "enrichwith" 
 package is utilised to extract from the model the parameters of the exponential 
 family.  Important from the attributes of the GLM are the "family" statements 
 which dictates the form of the likelihood.  For each of the binary, continuous 
@@ -375,7 +375,7 @@ And look at the plots for each outcome
 
 #### PSC plot for ECOG=0
 ```{r}
-plot(sub1)
+#plot(sub1)
 ```
 
 #### PSC plot for ECOG=1
