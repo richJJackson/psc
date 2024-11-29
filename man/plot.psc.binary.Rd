@@ -4,7 +4,7 @@
 \alias{plot.psc.binary}
 \title{Function for Plotting PSC objects}
 \usage{
-\method{plot}{psc.binary}(x)
+\method{plot}{psc.binary}(x, ...)
 }
 \arguments{
 \item{x}{an object of class 'psc'}
