@@ -6,6 +6,10 @@
 #' from the CFM along with the Kaplan Meier estimates of the observed events
 #' @import ggplot2 survminer
 plot.psc.flexsurvreg <- function(x){
+
+  # Binding local varaibles
+  S <- NULL
+
   med <- coef(x)
   med <- med[-nrow(med),1]
 
