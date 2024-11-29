@@ -17,5 +17,6 @@
 The summary of the posterior distribution for the efficacy parameter in terms of the median and 95% HPD
 }
 \description{
-Returns the coefficeint estimate of a psc object.
+Returns basic measures of the posterior distribution obtained from the
+pscfit.R function
 }

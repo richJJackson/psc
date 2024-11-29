@@ -15,7 +15,10 @@ linPred(DC_clean, resp = FALSE)
 Extracts the linear predictor from a object containing both a counter factual model and a data cohort which is created using the dataComb() fucntion.
 }
 \description{
-Estimates the linear predictor of a psc object
+A function which created a linear predictor from a model and an external
+dataset.  If required, linear predictors will be provided on the response
+scale.  For a survival outcome, this will take the form of median survival
+estimates.
 }
 \details{
 A function which combines the data from the data cohort against the model parameters of the PSC

@@ -1,7 +1,14 @@
-#' modp
+#' A function to obtain survival estimates from a flexible parametric model
+#'
+#' This function provides basic survival estimates from a flexible parametric survival
+#' model
+#'
+#'
 #' @param DC_clean a cleaned dataset ontained using dataComb().
-#' @param beta a parameter to determine if the survival probabilities should be adjusted by some (log) hazard ratio.  Defaults to beta=0, i.e. no adjustment.
-#' @param s if specified will return the time at which some threshold is passed (e.g. s=0.5 for median survival time)
+#' @param beta a parameter to determine if the survival probabilities should be
+#' adjusted by some (log) hazard ratio.  Defaults to beta=0, i.e. no adjustment.
+#' @param s if specified will return the time at which some threshold is passed
+#' (e.g. s=0.5 for median survival time)
 #' @return a list of times and assoicated survival probabilities
 #' @details A fucntion which extracts survival probabilities from a flexsurvreg object
 #' @examples

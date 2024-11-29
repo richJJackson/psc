@@ -2,7 +2,8 @@
 % Please edit documentation in R/lik.flexsurvreg.mtc.R
 \name{lik.flexsurvreg.mtc}
 \alias{lik.flexsurvreg.mtc}
-\title{Likelihood functio for a a psc model of class 'flexsurvreg'}
+\title{Likelihood function for a psc model of class 'flexsurv' with multiple
+treatment comparisons}
 \usage{
 lik.flexsurvreg.mtc(beta, DC_clean)
 }
@@ -12,9 +13,12 @@ lik.flexsurvreg.mtc(beta, DC_clean)
 \item{DC_clean}{a cleaned dataset including covariates to match the CFM}
 }
 \description{
-Likelihood functio for a a psc model of class 'flexsurvreg'
+A function which defines the likelihood for a PSC model where the Counter
+Factual Model (CFM) takes the form of a 'flexsurvreg' object and a mulitple efficacy
+parameters (\eqn{\beta}) is being estimated.  For more details on fitting please see
+?pscfit and ?pscEst
 }
 \details{
 A likelihood function for use by pscfit for a model of class 'flexsurvreg'
-    where mulitple treatment comparisons are
+    where multiple treatment comparisons are required
 }

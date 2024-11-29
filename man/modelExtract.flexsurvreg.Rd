@@ -10,10 +10,20 @@
 \item{CFM}{a model of class 'flexsurvreg'}
 }
 \value{
-a list of extracted model components
+a list of extracted model components.  Included are
+\itemize{
+\item{model.frame a dataset of the covareits used to create the model}
+\item{cov_co: covariate coefficients}
+\item{sig: variance-covariance matrix}
+\item{haz_co: hazard parameter coefficients}
+\item{k: number of knots}
+\item{knots: knot position}
+\item{lam: lambda parameter}
+\item{form: model formula}
+}
 }
 \description{
-A generic function for extracting model information
+This function extracts model information for use with the pscfit.R function.
 }
 \details{
 A function for extracting the model information required for using pscfit

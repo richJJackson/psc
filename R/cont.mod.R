@@ -1,24 +1,16 @@
-#' cont.mod
+#' Example model for a survival outcome
 #'
-#' A model of class 'glm'
+#' A generated model with a continuous data endpoint and a identity link function.
+#' Data for the model were synthetically generated and are based on a dataset to
+#' evaulate the use of Sorafenib in HCC akin to the PROSASH model
+#' (see ?psc::surv.mod for more details)
 #'
-#' @format A model of class 'flezsurvreg':
+#' @format A model of class 'glm':
 #' \describe{
-#'  \item{gamma}{cumulative baseline hazard parameters}
-#'  \item{vi}{vascular invasion}
-#'  \item{age60}{patient age (centred at 60)}
 #'  \item{ecog}{ECOG performance Status}
 #'  \item{logafp}{AFP - log scale}
 #'  \item{alb}{albumin}
 #'  \item{logcreat}{Creatinine - log scale}
-#'  \item{allmets}{metastesis}
-#'  \item{ageVasInv}{centred age nested within vasculdevar invasion}
-#'  \item{time}{survival time}
-#'  \item{cen}{censoring indicator}
-#'  \item{os}{survival time}
-#'  \item{count}{exapmple outcome for count data}
-#'  \item{trt}{exapmple identifier for mulitple treatment comparisons}
-#'  \item{aet}{Aetiology}
 #' }
 #' @source simulated
 "cont.mod"
