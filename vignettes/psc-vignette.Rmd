@@ -238,6 +238,8 @@ To visualise the original model and the fit of the data, the plot function has
 been developed
 
 ```{r}
+library(ggplot2)
+library(survminer)
 plot(surv.psc)
 ```
 
