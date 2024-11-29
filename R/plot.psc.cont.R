@@ -4,6 +4,7 @@
 #' model and the observed response under the experimental treatment(s).
 #'
 #' @param x an object of class 'psc'
+#' @param ... not used
 #' @return a survival plot corresponding to the psc fit
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates of the experimental arms
@@ -14,7 +15,7 @@
 #' cont.psc <- pscfit(cont.mod,data)
 #' plot_ite(cont.psc)
 #' @export
-plot.psc.cont <- function(x){
+plot.psc.cont <- function(x, ...){
 
   fam <- x$DC_clean$model_extract$family;fam
   out <- as.numeric(unlist(x$DC_clean$out));out

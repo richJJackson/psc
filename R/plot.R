@@ -5,6 +5,7 @@
 #' Form of the output will depend on the form of the CFM used
 #'
 #' @param x an object of class 'psc'
+#' @param ... not used
 #' @return a survival plot corresponding to the psc fit
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates of the experimental arms
@@ -15,7 +16,7 @@
 #' bin.psc <- pscfit(bin.mod,data)
 #' plot(bin.psc)
 #' @export
-plot.psc <- function (x){
+plot.psc <- function (x,...){
 
   model.type <- x$'model.type';model.type
   fam <- x$DC_clean$model_extract$family;fam

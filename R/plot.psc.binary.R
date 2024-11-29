@@ -4,6 +4,7 @@
 #' model and the observed response under the experimental treatment(s).
 #'
 #' @param x an object of class 'psc'
+#' @param ... not used
 #' @return a survival plot corresponding to the psc fit
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates of the experimental arms
