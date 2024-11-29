@@ -1,5 +1,6 @@
 #' Function for Plotting PSC objects
 #' @param x an object of class 'psc'
+#' @param ... not used
 #' @return a survival plot corresponding to the psc fit
 #' @details making use of 'ggsurvplot' in the survminer package, this function
 #' plots the expected survival funtion for the 'control' treatment estimated
