@@ -29,5 +29,5 @@ This function plots the expected response of the control treatment
 count.mod <- psc::count.mod
 data <- psc::data
 count.psc <- pscfit(count.mod,data)
-plot(cont.psc)
+plot(count.psc)
 }
