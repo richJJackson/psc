@@ -27,5 +27,4 @@ bin.mod <- psc::bin.mod
 data <- psc::data
 bin.psc <- pscfit(bin.mod,data)
 plot_ite(bin.psc)
-
 }

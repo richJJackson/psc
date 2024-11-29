@@ -32,7 +32,7 @@ pscCFM <- function(cfm,covnm=NULL,setting=NULL,valid=NULL,citation=NULL){
   ##################
 
   ### Setting - PICO
-  if(is.null(setting)) setting <- psc.sett()
+  if(is.null(setting)) setting <- cfmSett()
 
   ### Setting - Data Summary
   dset <- cfm$data$m

@@ -18,6 +18,9 @@
 #' @export
 plot_ite.flexsurvreg<- function(x){
 
+  # Binding local varaibles
+  ggdata <- S <- lresp <- id <- ltime <- NULL
+
   ### Getting model survival estimate
   s_fpm <- surv_fpm(x$DC_clean)
   s_data <- data.frame("time"=s_fpm$time,"S"=s_fpm$S)
