@@ -238,9 +238,7 @@ To visualise the original model and the fit of the data, the plot function has
 been developed
 
 ```{r}
-#library(ggplot2)
-#library(survminer)
-#plot(surv.psc)
+plot(surv.psc)
 ```
 
 
@@ -375,7 +373,7 @@ And look at the plots for each outcome
 
 #### PSC plot for ECOG=0
 ```{r}
-#plot(sub1)
+plot(sub1)
 ```
 
 #### PSC plot for ECOG=1
