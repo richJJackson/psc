@@ -17,6 +17,9 @@
 #' @export
 plot.psc.binary <- function(x,...){
 
+  # binding variables
+  pr_data <- Outcome <-  NULL
+
   fam <- x$DC_clean$model_extract$family;fam
   out <- as.numeric(unlist(x$DC_clean$out));out
 

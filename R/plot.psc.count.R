@@ -16,6 +16,9 @@
 #' @export
 plot.psc.count <- function(x, ...){
 
+  # Binding local varaibles
+  pr_data <- den <- Outcome <- NULL
+
   fam <- x$DC_clean$model_extract$family;fam
   out <- as.numeric(unlist(x$DC_clean$out));out
 

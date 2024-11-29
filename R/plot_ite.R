@@ -15,6 +15,7 @@
 #' data <- psc::data
 #' bin.psc <- pscfit(bin.mod,data)
 #' plot_ite(bin.psc)
+#' @export
 #'
 plot_ite <- function (x){
 
