@@ -1,7 +1,7 @@
 #' Function for estimating initial parameter values  'flexsurvreg'
 #'
 #' A function which performs the Bayesian MCMC estimation procedure for
-#' estimating the efficacy parameter (\beta) using personalised sunthetic
+#' estimating the efficacy parameter (\eqn{\beta}) using personalised sunthetic
 #' controls methodology.
 #'
 #' @param CFM a model object supplied to pscfit

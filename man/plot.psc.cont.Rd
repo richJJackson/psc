@@ -26,5 +26,5 @@ This function plots the expected response of the control treatment
 cont.mod <- psc::cont.mod
 data <- psc::data
 cont.psc <- pscfit(cont.mod,data)
-plot_ite(cont.psc)
+plot(cont.psc)
 }
