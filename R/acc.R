@@ -11,6 +11,6 @@ acc <-  function(old,new){
   ret <- FALSE
   r <- runif(1)
   e <-exp(old-new)
-  try(if(e>r) ret <- TRUE)
+  try(if(e>r) ret <- TRUE,silent=T)
   ret
 }
