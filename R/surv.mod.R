@@ -21,7 +21,7 @@
 #'  \item{ageVasInv}{centred age nested within vascular invasion}
 #'  \item{time}{survival time}
 #'  \item{cen}{censoring indicator}
-#'  \item{os}{survival time}
+#'  \item{os}{survival time}de
 #'  \item{count}{exapmple outcome for count data}
 #'  \item{trt}{exapmple identifier for mulitple treatment comparisons}
 #'  \item{aet}{Aetiology}
