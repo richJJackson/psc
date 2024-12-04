@@ -5,7 +5,7 @@ library(psc)
 library(survival)
 
 setwd("~/Documents/GitHub/psc/Develop")
-
+devtools::load_all()
 ### UK COMPASS
 
 data <- read.csv("ukcData.csv")
