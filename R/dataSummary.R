@@ -1,18 +1,17 @@
 ### Data summary
 
 
-setwd("~/Documents/GitHub/psc/Develop")
-devtools::load_all()
-
-
-## step 1 - compare data to model
-
-data <- read.csv("TACTICS data final.csv")
-model <- load("fpm.tace.R")
 
 
 
 ### Getting example - TACTICS
+
+setwd("~/Documents/GitHub/psc/Develop")
+devtools::load_all()
+
+data <- read.csv("TACTICS data final.csv")
+model <- load("fpm.tace.R")
+
 
 ### Model Object
 ### Setting
@@ -61,21 +60,80 @@ data$hbv[which(data$HBｓ.Ag=="+")] <- 1
 #data$aetOther[which(data$"HCV.Ab"=="-"&data$"HBｓ.Ag"=="-")] <- 1
 data$ecog <- data$ECOG.PS
 
-data$tumour.number <- factor(data$tumour.number,labels=c("Single","Multiple"))
+data$tumour.number <- factor(data$tumour.number,labels=c("Singular","Multiple"))
 
 
 data$time <- data$OS_months
 data$cen <- data$status
 
-
+### Fails! - lets see why
 pscfit(fpm.tace,data)
 
 
 
-
-
+########################################
+library(ggplot2)
+library(gridExtra)
 
 ### Visualisations of data in model
+
+cfm <- fpm.tace
+pscCFM
+
+
+### Getting dataset
+dset <- cfm$data$m
+dset <- dset[,-c(1,ncol(dset))]
+
+## Create numeric/integer and factor.character
+
+cls <- lapply(dset,class)
+
+num.dset[1:3,]
+
+num.dset <- dset[,(cls%in%c("numeric"))]
+fac.dset <- dset[,(cls%in%c("factor","character"))]
+
+
+### num.plot
+num.dset[1:3,]
+
+num.nm <- names(num.dset)
+
+i<-1
+
+ggp <- list()
+for(i in 1:6){
+
+  nm <- num.nm[i];nm
+  x <- num.dset[,i];x
+
+  ggp[[i]] <-ggplot(data=num.dset,aes(x=x)) +
+  geom_density(aes(x=x,y=..density..), fill="#69b3a2" ) +
+  ggtitle(nm)
+
+}
+i
+p
+
+num.dset[1:3,]
+
+
+hist(num.dset[,1])
+
+ggp[[2]]
+
+grid.arrange(ggp[[1]],ggp[[2]],ggp[[3]],ggp[[4]],ggp[[5]],ggp[[6]],nrow=6)
+
+ggp
+
+p1
+
+cls
+
+ncol(dset) == ncol(fac.dset)+ncol(num.dset)
+ncol(dset)
+
 
 ## Comparisons of DC to m
 
