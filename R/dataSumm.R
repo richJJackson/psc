@@ -27,7 +27,8 @@ dataSumm <- function(x){
     minx <- min(x,na.rm=T)
     maxx <- max(x,na.rm=T)
     miqr <- paste(quant[1]," (",quant[2],", ",quant[3],")",sep="")
-    ret <- c("Class"=cl.x,"min"=minx,"max"=maxx,"miqr"=miqr)
+    ret <- c("Class"=cl.x,"min"=minx,"max"=maxx,"med"=quant[1],"low"=quant[2],
+             "upp"=quant[3])
     ret
   }
 
