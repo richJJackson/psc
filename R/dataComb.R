@@ -7,11 +7,9 @@
 #'   Counter Factual Model (CFM) and the Data Cohort (DC) the required exported components
 #'   of the model and a cleaned data cohort.
 #' @examples
-#' library(psc)
-#' library(survival)
-#' data("surv.mod")
-#' data("data")
-#' dc <- dataComb(surv.mod,data)
+#' bin.mod <- psc::bin.mod
+#' data <- psc::data
+#' dc <- dataComb(bin.mod,data)
 #' @export
 dataComb <- function(CFM,DC,id=NULL,trt=NULL){
   UseMethod("dataComb")

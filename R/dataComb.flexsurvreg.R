@@ -18,7 +18,6 @@
 #'  \item{'outcome' a cleaned dataset containing the outcomes}
 #'  }
 #' @export
-
 dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL){
 
   ### removing response and weights
@@ -65,9 +64,11 @@ dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL){
 
   ### Matching data between DC and CFM
   DCcov <- data_match(mf,DC);DC[1:4,]
+  DCM <- cbind(DCcov,out)
 
   ### Creating model matrix based on new dataset
-  dc_mm <- model.matrix(model_extract$formula,data=DCcov)[,-1]
+  dc_mm <- model.matrix(model_extract$formula,data=DCM)[,-1]
+
 
   ### Adding in 'trt' (if required)
   if(!is.null(trt)) dc_mm <- cbind(dc_mm,"trt"=DC$trt)

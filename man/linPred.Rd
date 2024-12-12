@@ -26,8 +26,8 @@ A function which combines the data from the data cohort against the model parame
 \examples{
 library(psc)
 library(survival)
-data("surv.mod")
-data("data")
+surv.mod <- psc::surv.mod
+data <- psc::data
 dc <- dataComb(surv.mod,data)
 lp <- linPred(dc)
 }

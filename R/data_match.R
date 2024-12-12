@@ -1,4 +1,11 @@
-
+#' A function to ensure that data from the cfm and data cohort are compatible
+#'
+#' The purpose of this function is to run a series of checks to ensure that the
+#' data included in the data cohort is comparable to the counter-factual model
+#'
+#' @param cfm.data a model object supplied to pscfit
+#' @param dc.data a dataset including covariates to match the CFM
+#' @return a dataset which is checked and compatible with the CFM
 data_match <- function(cfm.data,dc.data){
 
   ### duplicated namse in dc.data

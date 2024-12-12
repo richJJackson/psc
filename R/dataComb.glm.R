@@ -1,4 +1,4 @@
-#' Fucntion for cleaning the data of a model with class 'flexsurvreg'
+#' Function for cleaning the data of a model with class 'flexsurvreg'
 #'
 #' The purpose of this function is to prepare the dataset and the counter-factual
 #' model for estimation and is the first step pf the pscfit.R process. The output
@@ -62,15 +62,17 @@ dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
   names(out) <- out.nm
 
   ### Matching data between DC and CFM
-  DC <- data_match(mf,DC);DC[1:4,]
+  DCcov <- data_match(mf,DC);DC[1:4,]
+  DCM <- cbind(DCcov,out)
 
-  ## Creating the model matrix
-  dc_mm <- model.matrix(model_extract$formula, data = DC)
+  ### Creating model matrix based on new dataset
+  dc_mm <- model.matrix(model_extract$formula,data=DCM)
+
 
   ### Adding in 'trt' (if required)
   if(!is.null(trt)) dc_mm <- cbind(dc_mm,"trt"=DC$trt)
 
-
+  ## Selecting sub-group if 'id' is specified
   if(!is.null(id)){
     dc_mm;dc_mm <- dc_mm[id,];dc_mm
 
