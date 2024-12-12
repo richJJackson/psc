@@ -12,7 +12,7 @@
 #' @examples
 #' bin.mod <- psc::bin.mod
 #' data <- psc::data
-#' bin.psc <- pscfit(bin.mod,data)
+#' bin.psc <- pscfit(bin.mod,data,nsim=1000)
 #' plot(bin.psc)
 #' @export
 plot.psc.binary <- function(x,...){
