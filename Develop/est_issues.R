@@ -22,6 +22,9 @@ sett <- cfmSett(P,I,C,O)
 cfm.ob <- pscCFM(fpm.tace,setting=sett)
 cfm.ob
 
+
+
+
 ##### PSC
 
 

@@ -14,7 +14,8 @@ data_match <- function(cfm.data,dc.data){
 
   ## Getting Classes
   cls  <- lapply(cfm.data,class);cls
-  i<-2
+  nm <- names(cfm.data)
+
   for(i in 1:ncol(cfm.data)){
 
     con <- which(names(dc.data)%in%nm[i]);con

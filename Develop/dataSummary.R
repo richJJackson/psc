@@ -3,10 +3,11 @@
 library(ggplot2)
 library(gridExtra)
 library(waffle)
-
+library(RColorBrewer)
 
 
 ### Getting example - TACTICS
+
 
 setwd("~/Documents/GitHub/psc/Develop")
 devtools::load_all()
@@ -23,12 +24,20 @@ C <- "Not Included in Model"
 O <- "Overall Survival"
 sett <- cfmSett(P,I,C,O)
 
+
+### Looking at the models
+
 cfm.ob <- pscCFM(fpm.tace,setting=sett)
-cfm.ob
+
+
+### Visualising cfm dataset
+cfmVis  <- cfmDataVis(fpm.tace)
+
 
 ##### PSC
 
-
+fpm.tace
+data[1:3,]
 #################
 ## Data cleaning
 
@@ -68,125 +77,23 @@ data$tumour.number <- factor(data$tumour.number,labels=c("Solitary","Multiple"))
 data$time <- data$OS_months
 data$cen <- data$status
 
+data[1:2,]
+
+
+
+#### Comparing ddata = #### Comparing datasets
+cfmDataComp(cfm,data,plot=T)
+
+
+
+
 ### Fails! - lets see why
-pscfit(fpm.tace,data)
+psc <- pscfit(fpm.tace,data)
 
 
-
-########################################
-
-
-### Visualisations of data in model
-
-cfm <- fpm.tace
-pscCFM
-
-### Getting dataset
-dset <- cfm$data$m
-dset <- dset[,-c(1,ncol(dset))]
-
-## Create numeric/integer and factor.character
-
-cls <- lapply(dset,class)
-
-num.vis <- function(x,nm){
-  df <- data.frame("y"=x)
-  p <- ggplot(aes(x=y),data=df) +
-    geom_density(aes(x=y,y=..density..), fill="#69b3a2", colour="#69b3a2" ) +
-    xlab("")+
-    ylab("")+
-    ggtitle(nm)+
-    theme_void()+
-    theme(plot.title = element_text(hjust = 0.05))
-  p
-}
-
-
-fac.vis <- function(x,nm){
-  db <- data.frame(table(x));db
-  p <- ggplot(data=db,aes(fill=x,values=Freq))+
-    geom_waffle(color="white",size=0.33,n_rows=10)+
-    theme_void()+
-    scale_fill_manual(values = c("#69b9f2", "#69b9a2", "#69b9c2")) +
-    ggtitle(nm)+
-    theme(legend.position="right") +
-    theme(legend.title=element_blank())+
-    theme(plot.title = element_text(hjust = 0.07))
-  p
-}
-
-
-
-gglist <- list()
-for(i in 1:ncol(dset)){
-
-  cls[i]
-  x <- dset[,i]
-  nm <- names(dset)[i]
-  if(cls[i]%in%c("factor","character")){
-    gglist[[i]] <- fac.vis(x,nm)
-  }
-
-  if(cls[i]%in%c("numeric","integer")){
-    gglist[[i]] <- num.vis(x,nm)
-  }
-
-}
-
-
-grid.arrange(grobs=gglist,ncol=2)
 
 #############################################
 
-num.vis.compare <- function(p,x){
-  dnew <- data.frame("xnew"=x)
-  p + geom_density(aes(x=xnew,y=-..density..),data=dnew, fill="#404080",color="#404080" )
-}
-
-
-fac.vis.compare <- function(p,x){
-
-  old.d <- p$data
-  tit <- p$labels$title
-  old.d$source="CFM"
-  dbnew <- data.frame(table(x));dbnew
-  dbnew$source <- "DC"
-  df <- rbind(old.d,dbnew)
-
-  p <- ggplot(data=df,aes(fill=x,values=Freq))+
-    geom_waffle(color="white",size=0.33,n_rows=10)+
-    theme_void()+
-    facet_wrap(~source,ncol=1)+
-    scale_fill_manual(values = c("#69b9a2","#404080","red","blue")) +
-    ggtitle(tit)+
-    theme(legend.position="right") +
-    theme(legend.title=element_blank())+
-    theme(plot.title = element_text(hjust = 0.07))
-  p
-  }
-
-
-
-## Comparisons of DC to m
-gglist.compare <- list()
-for(i in 1:ncol(dset)){
-
-  x <- data[,which(names(data)%in%names(dset)[i])]
-
-  if(cls[i]%in%c("factor","character")){
-    if(!any(unique(dset[,1])%in%unique(x))) warning("factor levels do not match")
-    gglist.compare[[i]] <- fac.vis.compare(gglist[[i]],x)
-  }
-
-  if(cls[i]%in%c("numeric","integer")){
-    gglist.compare[[i]] <- num.vis.compare(gglist[[i]],x)
-  }
-
-}
-
-
-
-grid.arrange(grobs=gglist.compare,ncol=2)
 
 
 
