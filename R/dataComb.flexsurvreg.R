@@ -18,6 +18,7 @@
 #'  \item{'outcome' a cleaned dataset containing the outcomes}
 #'  }
 #' @export
+
 dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL){
 
   ### removing response and weights
@@ -25,6 +26,7 @@ dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL){
   mf <- model_extract$model.frame
   term.nm <- names(mf)
   term.nm <- term.nm[-c(1,length(term.nm))];term.nm
+  attributes(mf)
 
   ### ERROR CHECK: Selecting data from DC
   data_unavail_id  <- which(!term.nm%in%names(DC))
@@ -58,12 +60,17 @@ dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL){
     warning(paste(length(miss.id),"rows removed due to missing data in dataset"))
   }
 
-  ### Estimating linear predictor
-  dc_mm <- model.matrix(model_extract$formula,data=DC)[,-1]
-
-  if(!is.null(trt)) dc_mm <- cbind(dc_mm,"trt"=DC$trt)
-
+  ## Defining Outcome
   out <- data.frame("time"=DC$time,"cen"=DC$cen)
+
+  ### Matching data between DC and CFM
+  DCcov <- data_match(mf,DC);DC[1:4,]
+
+  ### Creating model matrix based on new dataset
+  dc_mm <- model.matrix(model_extract$formula,data=DCcov)[,-1]
+
+  ### Adding in 'trt' (if required)
+  if(!is.null(trt)) dc_mm <- cbind(dc_mm,"trt"=DC$trt)
 
   if(!is.null(id)){
     dc_mm <- dc_mm[id,]

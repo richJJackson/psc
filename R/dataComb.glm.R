@@ -57,13 +57,19 @@ dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
     warning(paste(length(miss.id), "rows removed due to missing data in dataset"))
   }
 
+  ## Defining outcome
+  out <- data.frame(out.nm = DC[, which(names(DC) == out.nm)])
+  names(out) <- out.nm
+
+  ### Matching data between DC and CFM
+  DC <- data_match(mf,DC);DC[1:4,]
+
   ## Creating the model matrix
   dc_mm <- model.matrix(model_extract$formula, data = DC)
 
+  ### Adding in 'trt' (if required)
   if(!is.null(trt)) dc_mm <- cbind(dc_mm,"trt"=DC$trt)
 
-  out <- data.frame(out.nm = DC[, which(names(DC) == out.nm)])
-  names(out) <- out.nm
 
   if(!is.null(id)){
     dc_mm;dc_mm <- dc_mm[id,];dc_mm

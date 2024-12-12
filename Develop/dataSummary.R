@@ -1,6 +1,8 @@
 ### Data summary
 
-
+library(ggplot2)
+library(gridExtra)
+library(waffle)
 
 
 
@@ -60,7 +62,7 @@ data$hbv[which(data$HBｓ.Ag=="+")] <- 1
 #data$aetOther[which(data$"HCV.Ab"=="-"&data$"HBｓ.Ag"=="-")] <- 1
 data$ecog <- data$ECOG.PS
 
-data$tumour.number <- factor(data$tumour.number,labels=c("Singular","Multiple"))
+data$tumour.number <- factor(data$tumour.number,labels=c("Solitary","Multiple"))
 
 
 data$time <- data$OS_months
@@ -72,14 +74,12 @@ pscfit(fpm.tace,data)
 
 
 ########################################
-library(ggplot2)
-library(gridExtra)
+
 
 ### Visualisations of data in model
 
 cfm <- fpm.tace
 pscCFM
-
 
 ### Getting dataset
 dset <- cfm$data$m
@@ -89,52 +89,215 @@ dset <- dset[,-c(1,ncol(dset))]
 
 cls <- lapply(dset,class)
 
-num.dset[1:3,]
+num.vis <- function(x,nm){
+  df <- data.frame("y"=x)
+  p <- ggplot(aes(x=y),data=df) +
+    geom_density(aes(x=y,y=..density..), fill="#69b3a2", colour="#69b3a2" ) +
+    xlab("")+
+    ylab("")+
+    ggtitle(nm)+
+    theme_void()+
+    theme(plot.title = element_text(hjust = 0.05))
+  p
+}
 
-num.dset <- dset[,(cls%in%c("numeric"))]
-fac.dset <- dset[,(cls%in%c("factor","character"))]
+
+fac.vis <- function(x,nm){
+  db <- data.frame(table(x));db
+  p <- ggplot(data=db,aes(fill=x,values=Freq))+
+    geom_waffle(color="white",size=0.33,n_rows=10)+
+    theme_void()+
+    scale_fill_manual(values = c("#69b9f2", "#69b9a2", "#69b9c2")) +
+    ggtitle(nm)+
+    theme(legend.position="right") +
+    theme(legend.title=element_blank())+
+    theme(plot.title = element_text(hjust = 0.07))
+  p
+}
 
 
-### num.plot
-num.dset[1:3,]
 
-num.nm <- names(num.dset)
+gglist <- list()
+for(i in 1:ncol(dset)){
 
-i<-1
+  cls[i]
+  x <- dset[,i]
+  nm <- names(dset)[i]
+  if(cls[i]%in%c("factor","character")){
+    gglist[[i]] <- fac.vis(x,nm)
+  }
 
-ggp <- list()
-for(i in 1:6){
-
-  nm <- num.nm[i];nm
-  x <- num.dset[,i];x
-
-  ggp[[i]] <-ggplot(data=num.dset,aes(x=x)) +
-  geom_density(aes(x=x,y=..density..), fill="#69b3a2" ) +
-  ggtitle(nm)
+  if(cls[i]%in%c("numeric","integer")){
+    gglist[[i]] <- num.vis(x,nm)
+  }
 
 }
-i
-p
-
-num.dset[1:3,]
 
 
-hist(num.dset[,1])
+grid.arrange(grobs=gglist,ncol=2)
 
-ggp[[2]]
+#############################################
 
-grid.arrange(ggp[[1]],ggp[[2]],ggp[[3]],ggp[[4]],ggp[[5]],ggp[[6]],nrow=6)
+num.vis.compare <- function(p,x){
+  dnew <- data.frame("xnew"=x)
+  p + geom_density(aes(x=xnew,y=-..density..),data=dnew, fill="#404080",color="#404080" )
+}
 
-ggp
 
-p1
+fac.vis.compare <- function(p,x){
 
-cls
+  old.d <- p$data
+  tit <- p$labels$title
+  old.d$source="CFM"
+  dbnew <- data.frame(table(x));dbnew
+  dbnew$source <- "DC"
+  df <- rbind(old.d,dbnew)
 
-ncol(dset) == ncol(fac.dset)+ncol(num.dset)
-ncol(dset)
+  p <- ggplot(data=df,aes(fill=x,values=Freq))+
+    geom_waffle(color="white",size=0.33,n_rows=10)+
+    theme_void()+
+    facet_wrap(~source,ncol=1)+
+    scale_fill_manual(values = c("#69b9a2","#404080","red","blue")) +
+    ggtitle(tit)+
+    theme(legend.position="right") +
+    theme(legend.title=element_blank())+
+    theme(plot.title = element_text(hjust = 0.07))
+  p
+  }
+
 
 
 ## Comparisons of DC to m
+gglist.compare <- list()
+for(i in 1:ncol(dset)){
+
+  x <- data[,which(names(data)%in%names(dset)[i])]
+
+  if(cls[i]%in%c("factor","character")){
+    if(!any(unique(dset[,1])%in%unique(x))) warning("factor levels do not match")
+    gglist.compare[[i]] <- fac.vis.compare(gglist[[i]],x)
+  }
+
+  if(cls[i]%in%c("numeric","integer")){
+    gglist.compare[[i]] <- num.vis.compare(gglist[[i]],x)
+  }
+
+}
+
+
+
+grid.arrange(grobs=gglist.compare,ncol=2)
+
+
+
+
+
+
+dataSumm.num <- function(x){
+  x <- as.numeric(x)
+  quant <- round(quantile(x,c(0.5,0.25,0.75)),2)
+  minx <- min(x,na.rm=T)
+  maxx <- max(x,na.rm=T)
+  miqr <- paste(quant[1]," (",quant[2],", ",quant[3],")",sep="")
+  ret <- c("min"=minx,"max"=maxx,"med"=quant[1],"low"=quant[2],
+           "upp"=quant[3])
+  ret
+}
+
+dataSumm.fac <- function(x){
+  x <- factor(x)
+  lev <- levels(x)
+  tb <- table(x)
+  ret <- c(tb)
+}
+
+
+
+
+
+
+
+compareData <- function(nm,dlist,data){
+
+  cond1 <- nm%in%names(dlist);cond1
+
+  if(cond1){
+    nmmod <- which(names(dlist)%in%nm)
+    x <- dlist[nmmod]
+  }
+
+  cond2 <- nm%in%names(data)
+  names(data)
+
+  if(cond2){
+    nmdata <- which(names(data)%in%nm);nmdata
+    y <- data[,nmdata]
+  }
+
+  ## Getting class of data
+  cls <- x[[1]][1];cls
+
+
+  ### factor summary
+  if("factor"%in%cls){
+
+    dataRet <- "data comparable"
+
+    nmx <- names(x[[1]])[-1]
+    nmy <- unique(y)
+
+    if(any(!(nmx%in%nmy)))
+      dataRet <- paste("WARNING: Model levels for",nm,"do not match data levels")
+    if(any(!(nmy%in%nmx)))
+      dataRet <- paste("WARNING: Model levels for",nm,"do not match data levels")
+
+    tbmod <- x[[1]][-1]
+    tbdata <- table(y)
+
+
+    if(dataRet!="data comparable") ret <- dataRet
+    if(dataRet=="data comparable") {
+      cmp <- rbind(tbmod,tbdata)
+      ret <- cbind(nm,cls,c("Model","Data"),cmp)
+    }
+  }
+
+
+
+  ### numeric summary
+  if("numeric"%in%cls){
+
+    dataRet <- "data comparable"
+
+    sumod <- x[[1]][-1];sumod
+    sudata <- summary(y);sudata
+    rsudata <- round(sudata,2)
+
+    mod_iqr <- as.numeric(as.character(sumod[5]))-as.numeric(as.character(sumod[4]))
+    dat_iqr <- as.numeric(sudata[5] - sudata[2])
+    iqr_check <- mod_iqr/dat_iqr;iqr_check
+    iqr_cond <- iqr_check<0.5|iqr_check>2|is.na(iqr_check);iqr_cond
+
+
+    med_cond1 <- sudata[3] > as.numeric(as.character(sumod[5]))
+    med_cond2 <- sudata[3] < as.numeric(as.character(sumod[4]))
+
+    if(iqr_cond|med_cond1|med_cond2){
+      dataRet <- "Data seem to be from different distributions"
+    }
+
+    r1 <- paste(sumod[3]," (",sumod[5],", ",sumod[5],")",sep="")
+    r2 <- paste(rsudata[3]," (",rsudata[2],", ",rsudata[4],")",sep="")
+
+    nbelow <- length(which(y<sumod[1]))
+    nabove <- length(which(y>sumod[2]))
+
+    cmp <- rbind(c(r1,"-","-"),c(r2,nbelow,nabove))
+    ret <- cbind(nm,cls,c("Model","Data"),cmp,"msg"=dataRet)
+
+  }
+
+  ret
+}
 
 

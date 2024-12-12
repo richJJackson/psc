@@ -1,34 +1,14 @@
 ### Estimation Issues
 
 
-devtools::load_all()
 
-library(survival)
+### Getting example - TACTICS
 
 setwd("~/Documents/GitHub/psc/Develop")
 devtools::load_all()
-### UK COMPASS
-
-data <- read.csv("ukcData.csv")
-load("UKCmodel.Rdata")
-
-pscfit(flexspline_model5,data)
-devtools::load_all()
-
-## Added a 'silent=T' option to the try wrapper so that 'solved' the problem but
-## plenty of 'failures here' - need a closer look
-## likelihood was failing for some estimation of f - didn't fix but applied a
-## ammendment to the code so it doesn't fail
-
-
-######## TACTICS
-
-## step 1 - compare data to model
 
 data <- read.csv("TACTICS data final.csv")
 model <- load("fpm.tace.R")
-
-
 
 
 ### Model Object
@@ -40,143 +20,9 @@ O <- "Overall Survival"
 sett <- cfmSett(P,I,C,O)
 
 cfm.ob <- pscCFM(fpm.tace,setting=sett)
-
-cfm.ob$setting
-
-
-### Function to compare data to modelled data
-
-#pscCompare <- function(cfm.ob,data){
-
-  sett <- cfm.ob$setting
-  dlist <- sett$data
-
-  nmm <- names(dlist)
-  nmd <-   names(data)
-
-  ## outcome
-  if("flexsurvreg"%in%cfm.ob$class){
-    out.msg <- "not checked"
-    cond <- "time"%in%nmd&"cen"%in%nmd;cond
-      if(cond) out.msg <- "time and cen variables both in dataset"
-      if(!cond) out.msg <- "WARNING: time or cen variable missing from dataset"
-    }
-
-
-
-  n.nmm <- length(nmm)
-  modnmm <- nmm[1:(n.nmm-2)]
-  i <- modnmm[1]
-
-  dataComparison <- list()
-  for(i in 1:length(modnmm)){
-    cd <- compareData(modnmm[i],dlist,data)
-    dataComparison[[i]] <- cd
-  }
-
-  dataComparison
-
-  #}
-
-nm
-data[1:3,]
-
-nm <- "afp"
-nm <- "tumour.number"
-
-compareData(nm,dlist,data)
-
-nm
-
-compareData <- function(nm,dlist,data){
-
-  cond1 <- nm%in%names(dlist);cond1
-
-  if(cond1){
-    nmmod <- which(names(dlist)%in%nm)
-    x <- dlist[nmmod]
-    }
-
-  cond2 <- nm%in%names(data)
-  names(data)
-
-  if(cond2){
-    nmdata <- which(names(data)%in%nm);nmdata
-    y <- data[,nmdata]
-  }
-
-  ## Getting class of data
-  cls <- x[[1]][1];cls
-
-
-  ### factor summary
-  if("factor"%in%cls){
-
-    dataRet <- "data comparable"
-
-    nmx <- names(x[[1]])[-1]
-    nmy <- unique(y)
-
-    if(any(!(nmx%in%nmy)))
-      dataRet <- paste("WARNING: Model levels for",nm,"do not match data levels")
-    if(any(!(nmy%in%nmx)))
-      dataRet <- paste("WARNING: Model levels for",nm,"do not match data levels")
-
-      tbmod <- x[[1]][-1]
-      tbdata <- table(y)
-
-
-      if(dataRet!="data comparable") ret <- dataRet
-      if(dataRet=="data comparable") {
-        cmp <- rbind(tbmod,tbdata)
-        ret <- cbind(nm,cls,c("Model","Data"),cmp)
-      }
-  }
-
-
-
-  ### numeric summary
-  if("numeric"%in%cls){
-
-    dataRet <- "data comparable"
-
-    sumod <- x[[1]][-1];sumod
-    sudata <- summary(y);sudata
-    rsudata <- round(sudata,2)
-
-    mod_iqr <- as.numeric(as.character(sumod[5]))-as.numeric(as.character(sumod[4]))
-    dat_iqr <- as.numeric(sudata[5] - sudata[2])
-    iqr_check <- mod_iqr/dat_iqr;iqr_check
-    iqr_cond <- iqr_check<0.5|iqr_check>2|is.na(iqr_check);iqr_cond
-
-
-    med_cond1 <- sudata[3] > as.numeric(as.character(sumod[5]))
-    med_cond2 <- sudata[3] < as.numeric(as.character(sumod[4]))
-
-    if(iqr_cond|med_cond1|med_cond2){
-      dataRet <- "Data seem to be from different distributions"
-    }
-
-    r1 <- paste(sumod[3]," (",sumod[5],", ",sumod[5],")",sep="")
-    r2 <- paste(rsudata[3]," (",rsudata[2],", ",rsudata[4],")",sep="")
-
-    nbelow <- length(which(y<sumod[1]))
-    nabove <- length(which(y>sumod[2]))
-
-    cmp <- rbind(c(r1,"-","-"),c(r2,nbelow,nabove))
-    ret <- cbind(nm,cls,c("Model","Data"),cmp,"msg"=dataRet)
-
-    }
-
- ret
-}
-
-
+cfm.ob
 
 ##### PSC
-
-
-dataSumm
 
 
 #################
@@ -212,14 +58,63 @@ data$hbv[which(data$HBｓ.Ag=="+")] <- 1
 #data$aetOther[which(data$"HCV.Ab"=="-"&data$"HBｓ.Ag"=="-")] <- 1
 data$ecog <- data$ECOG.PS
 
-data$tumour.number <- factor(data$tumour.number,labels=c("Single","Multiple"))
+data$tumour.number <- factor(data$tumour.number,labels=c("Solitary","Multiple"))
 
 
 data$time <- data$OS_months
 data$cen <- data$status
 
-
+### Fails! - lets see why
 pscfit(fpm.tace,data)
+
+
+CFM <- fpm.tace
+DC <- data
+nsim <- 500
+id <- NULL
+trt <- NULL
+
+#pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
+
+  ### Cleaning Data
+  DC_clean <- dataComb(CFM, DC, id=id, trt = trt)
+
+
+  DC_clean
+  ### Starting Parameters
+  init <- initParm(CFM = CFM, DC_clean = DC_clean, trt = trt)
+
+  ### MCMC estimation
+  mcmc <- pscEst(CFM = CFM, DC_clean = DC_clean, nsim = nsim,
+                 start = init$par, trt = trt)
+
+  ### Formatting results
+  covnm <- "beta"
+  if (!is.null(trt)) {
+    df <- data.frame(DC_clean$cov)
+    ft <- factor(df$trt)
+    covnm <- paste("beta", levels(ft), sep = "_")
+  }
+
+  mcmc <- data.frame(mcmc)
+  names(mcmc) <- c(colnames(DC_clean$model_extract$sig), covnm,
+                   "DIC")
+  psc.ob <- list(model.type = class(CFM), DC_clean = DC_clean,
+                 posterior = mcmc)
+  class(psc.ob) <- "psc"
+  return(psc.ob)
+}
+
+
+
+
+### Data match function
+
+
+cfm.data <- mf
+dc.data <- DC
+
+
 
 
 
