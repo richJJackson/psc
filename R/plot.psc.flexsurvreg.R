@@ -28,7 +28,7 @@ plot.psc.flexsurvreg <- function(x, ...){
   out <- x$DC_clean$outcome
   out$trt <- trt
   sfit <- survfit(Surv(time,cen)~trt,data=out)
-  sfit_plot <- ggsurvplot(sfit,data=out)$plot
+  sfit_plot <- ggsurvplot(sfit,data=out,legend="none")$plot
   sfit_plot + geom_line(data=s_data, aes(time,S),col=6,lwd=1.5)
 
 }

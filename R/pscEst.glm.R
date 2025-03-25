@@ -8,13 +8,14 @@
 #' @param DC_clean a cleaned dataset ontained using dataComb().
 #' @param nsim the number of MCMC simulations to run
 #' @param start the stating value for
+#' @param start.se the stating value fo
 #' @param trt an optional vector denoting treatment allocations where multiple
 #'     treatment comparisons are being made
 #' @details An MCMC routine for fitting a psc model
 #' @return a matrix containing the draws form the posterior distribution
 #' @import utils
 #'
-pscEst.glm <- function(CFM,DC_clean,nsim,start,trt=trt){
+pscEst.glm <- function(CFM,DC_clean,nsim,start,start.se,trt=trt){
 
   cov_co <- DC_clean$model_extract$cov_co;cov_co
   sig <- DC_clean$model_extract$sig;sig
@@ -26,6 +27,8 @@ pscEst.glm <- function(CFM,DC_clean,nsim,start,trt=trt){
   parm <- matrix(NA,nsim,length(est)+length(beta)+1)
   parm[1,]<- c(est,beta,NA);parm[1,]
 
+  ### multiplier for target distribution
+  mult <- (5+5*start.se);mult
 
   ## Progress Bar
   pb <- txtProgressBar(min = 0, max = nsim, style = 3)
@@ -36,8 +39,8 @@ pscEst.glm <- function(CFM,DC_clean,nsim,start,trt=trt){
   setTxtProgressBar(pb, n)
 
   ### Drawing Samples
-  cand <- rmvnorm(1,est,sig)
-  cand.beta <- rnorm(length(beta),0,1) #Check this bit
+  cand <- rmvnorm(1,est,sig);cand
+  cand.beta <- rnorm(length(beta),start,start.se*mult);cand.beta #Check this bit
   parm[n,] <- c(cand,cand.beta,NA)
 
   ### partitioning covariates into baseline hazard and coefficients
@@ -48,12 +51,12 @@ pscEst.glm <- function(CFM,DC_clean,nsim,start,trt=trt){
   beta.old <- parm[n-1,-c(1:length(cand),ncol(parm))];beta.old
   beta.new <- parm[n,-c(1:length(cand),ncol(parm))];beta.new
 
-
   ### Prior contribution
   pr.cand <- -dmvnorm(cand,est,sig,log=T)
   pr.old <- dmvnorm(beta.old,rep(0,length(beta)),diag(length(beta))*1000,log=T)
   pr.new <- dmvnorm(beta.new,rep(0,length(beta)),diag(length(beta))*1000,log=T)
 
+  parm[1:3,]
   if(trt.con){
     ### Likelihood evaluation
     l.old <- lik.glm(beta.old,DC_cand) + pr.old + pr.cand

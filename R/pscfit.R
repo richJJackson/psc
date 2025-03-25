@@ -73,6 +73,7 @@
 #' data("data")
 #' surv.psc <- pscfit(surv.mod,data)
 #' @export
+
 pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
 
   ### Cleaning Data
@@ -80,10 +81,12 @@ pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
 
   ### Starting Parameters
   init <- initParm(CFM = CFM, DC_clean = DC_clean, trt = trt)
+  start<- init$par
+  start.se <- sqrt(1/init$hess)
 
-  ### MCMC estimation
+  ### MCMC estimation### MhessianCMC estimation
   mcmc <- pscEst(CFM = CFM, DC_clean = DC_clean, nsim = nsim,
-                 start = init$par, trt = trt)
+                 start = init$par, start.se=start.se,trt = trt)
 
   ### Formatting results
   covnm <- "beta"
@@ -101,4 +104,3 @@ pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
   class(psc.ob) <- "psc"
   return(psc.ob)
 }
-
