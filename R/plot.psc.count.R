@@ -11,7 +11,7 @@
 #' @examples
 #' count.mod <- psc::count.mod
 #' data <- psc::data
-#' count.psc <- pscfit(count.mod,data)
+#' count.psc <- pscfit(count.mod,data,nsim=3000)
 #' plot(count.psc)
 #' @export
 plot.psc.count <- function(x, ...){

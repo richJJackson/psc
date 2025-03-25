@@ -12,7 +12,7 @@
 #' @examples
 #' cont.mod <- psc::cont.mod
 #' data <- psc::data
-#' cont.psc <- pscfit(cont.mod,data)
+#' cont.psc <- pscfit(cont.mod,data,nsim=3000)
 #' plot(cont.psc)
 #' @export
 plot.psc.cont <- function(x, ...){

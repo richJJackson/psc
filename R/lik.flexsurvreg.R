@@ -44,7 +44,10 @@ lik.flexsurvreg <- function(beta,DC_clean){
   S <- exp(-H)
   f <- S*h
 
-  l <- sum(cen*log(f+1e-16) + (1-cen)*log(S+1e-16))
-  -l
+  #l <- sum(cen*log(f+1e-16) + (1-cen)*log(S+1e-16))
+  #-l
+
+  ll <- rowSums(cbind(cen*log(f+1e-16),(1-cen)*log(S+1e-16)),na.rm=T)
+  -sum(ll)
 
 }

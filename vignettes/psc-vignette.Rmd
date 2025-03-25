@@ -129,7 +129,7 @@ experimental treatment.  The dataset is simply named 'data' and is loaded into
 the enviroment using the "data()" function
 
 ```{r}
-devtools::install_github("richjjackson/psc")
+#install.packages("psc")
 library(psc)
 ```
 

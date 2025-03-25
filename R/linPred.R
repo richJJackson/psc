@@ -12,8 +12,8 @@
 #' @examples
 #' library(psc)
 #' library(survival)
-#' data("surv.mod")
-#' data("data")
+#' surv.mod <- psc::surv.mod
+#' data <- psc::data
 #' dc <- dataComb(surv.mod,data)
 #' lp <- linPred(dc)
 #' @export

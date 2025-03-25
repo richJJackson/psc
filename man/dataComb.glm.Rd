@@ -2,7 +2,7 @@
 % Please edit documentation in R/dataComb.glm.R
 \name{dataComb.glm}
 \alias{dataComb.glm}
-\title{Fucntion for cleaning the data of a model with class 'flexsurvreg'}
+\title{Function for cleaning the data of a model with class 'flexsurvreg'}
 \usage{
 \method{dataComb}{glm}(CFM, DC, id = NULL, trt = NULL)
 }
