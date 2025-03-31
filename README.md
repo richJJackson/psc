@@ -63,15 +63,15 @@ summary(surv.psc)
 #> Formula: 
 #> Surv(time, cen) ~ vi/age60 + ecog + allmets + logafp + alb + 
 #>     logcreat + logast + aet
-#> <environment: 0x11a95d660>
+#> <environment: 0x123d49650>
 #> 
 #> Call:
 #>  CFM model + beta
 #> 
 #> Coefficients:
 #>       median    2.5%      97.5%     Pr(x<0)   Pr(x>0) 
-#> beta    0.3574    0.1204    0.5801    0.0004    0.9996
-#> DIC   280.8601  273.6541  291.9444        NA        NA
+#> beta    0.3671    0.1691    0.5542    0.0004    0.9996
+#> DIC   280.6072  273.5602  292.4466        NA        NA
 ```
 
 … and to see a plot of what you have done

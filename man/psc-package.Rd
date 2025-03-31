@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Richard Jackson \email{richJ23@liverpool.ac.uk} (\href{https://orcid.org/0000-0002-7814-5088}{ORCID})
+\strong{Maintainer}: Richard Jackson \email{richJ23@liverpool.ac.uk} (\href{https://orcid.org/0000-0002-7814-5088}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}

@@ -28,7 +28,7 @@ pscEst.glm <- function(CFM,DC_clean,nsim,start,start.se,trt=trt){
   parm[1,]<- c(est,beta,NA);parm[1,]
 
   ### multiplier for target distribution
-  mult <- (5+5*start.se);mult
+  mult <- (2*start.se);mult
 
   ## Progress Bar
   pb <- txtProgressBar(min = 0, max = nsim, style = 3)
@@ -40,7 +40,7 @@ pscEst.glm <- function(CFM,DC_clean,nsim,start,start.se,trt=trt){
 
   ### Drawing Samples
   cand <- rmvnorm(1,est,sig);cand
-  cand.beta <- rnorm(length(beta),start,start.se*mult);cand.beta #Check this bit
+  cand.beta <- rnorm(length(beta),start,mult);cand.beta #Check this bit
   parm[n,] <- c(cand,cand.beta,NA)
 
   ### partitioning covariates into baseline hazard and coefficients
