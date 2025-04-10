@@ -10,20 +10,9 @@
 #'   starting value for the mcmc routine.
 #' @export
 #'
-initParm.glm <- function(CFM,DC_clean,trt=trt){
-
-  if(is.null(trt)){
-    beta<- 0
-    ip <- optim(beta, lik.glm, DC_clean=DC_clean, method = "Brent", lower = -10,
-                upper = 10, hessian = T)
-  }
-
-  if(!is.null(trt)){
-    beta <- rep(0,length(levels(factor(trt))))
-    ip <- optim(beta, lik.glm.mtc, DC_clean=DC_clean, method = "BFGS", hessian = T)
-  }
-
-  return(ip)
-
-  }
+initParm.pscCFM <- function(CFM,DC_clean,trt=NULL){
+  if("flexsurvreg"%in%CFM$mod_class) ret <- initParm.flexsurvreg(CFM,DC_clean,trt=trt)
+  if("glm"%in%CFM$mod_class) ret <- initParm.glm(CFM,DC_clean,trt=trt)
+  return(ret)
+}
 

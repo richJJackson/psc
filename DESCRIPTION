@@ -23,7 +23,10 @@ Imports:
     stats,
     flexsurv,
     ggplot2,
-    survminer
+    survminer,
+    gtsummary,
+    RColorBrewer,
+    waffle
 Suggests: 
     knitr,
     rmarkdown,
