@@ -82,7 +82,7 @@ pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
   ### Starting Parameters
   init <- initParm(CFM = CFM, DC_clean = DC_clean, trt = trt)
   start<- init$par
-  start.se <- sqrt(1/init$hess)
+  start.se <- sqrt(solve(init$hess))
 
   ### MCMC estimation### MhessianCMC estimation
   mcmc <- pscEst(CFM = CFM, DC_clean = DC_clean, nsim = nsim,

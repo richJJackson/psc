@@ -35,9 +35,12 @@ pscEst.flexsurvreg <- function(CFM,DC_clean,nsim,start,start.se,trt=trt){
   parm[1,]<- c(est,beta,NA);parm[1,]
 
   ### multiplier for target distribution
-  mult <- (5+5*start.se);mult
+  mult <- (start.se*2);mult
 
-  ## Progress Bar
+  s1 <- rmvnorm(1000,start,start.se)
+  s2 <- rmvnorm(1000,start,mult)
+
+    ## Progress Bar
   pb <- txtProgressBar(min = 0, max = nsim, style = 3)
 
   for(n in 2:nsim){
@@ -47,7 +50,7 @@ pscEst.flexsurvreg <- function(CFM,DC_clean,nsim,start,start.se,trt=trt){
 
     ### Drawing Samples
     cand <- rmvnorm(1,est,sig)
-    cand.beta <- rnorm(length(beta),start,start.se*mult) #Check this bit
+    cand.beta <- rnorm(length(beta),start,mult)
     parm[n,] <- c(cand,cand.beta,NA)
 
     ### partitioning covariates into baseline hazard and coefficients
