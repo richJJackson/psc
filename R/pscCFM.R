@@ -28,5 +28,4 @@ pscCFM <- function(cfm,dataSumm=T,dataVis=T){
 
   class(me) <- c("pscCFM")
   return(me)
-  me
 }

@@ -6,7 +6,7 @@
 #' @param ... not used
 #' @return A quiet list
 #' @export
-print.quiet_gtsumm <- function(x, ...) {
-  cat("A Summary Table")
+print.quiet_list <- function(x, ...) {
+  cat("A list with names:")
   print(names(x))
 }

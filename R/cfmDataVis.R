@@ -49,6 +49,6 @@ cfmDataVis <- function(cfm){
   }
 
   names(gglist) <- names(data)
-  class(gglist) <- c("quiet_gglist",class(gglist))
+  class(gglist) <- c("quiet_list",class(gglist))
   gglist
 }

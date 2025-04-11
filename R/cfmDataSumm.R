@@ -24,7 +24,7 @@ cfmDataSumm <- function(cfm){
   tb_summ <- tbl_summary(data,missing="ifany")
   ret <- list(tb_summ)
   names(ret) <- "summ_Table"
-  class(ret) <- c("quiet_gtsumm",class(tb_summ))
+  class(ret) <- c("quiet_gtsumm",class(ret))
   ret
 }
 
