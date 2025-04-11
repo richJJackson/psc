@@ -19,8 +19,8 @@
 #'  }
 #' @export
 dataComb.pscCFM <- function(CFM,DC,id=NULL,trt=NULL,cfmOb=T){
-  if("flexsurvreg"%in%CFM$mod_class) ret <- dataComb.flexsurvreg(CFM=CFM,DC=DC,id=NULL,trt=trt,cfmOb=T)
-  if("glm"%in%CFM$mod_class) ret <- dataComb.glm(CFM=CFM,DC=DC,id=NULL,trt=trt,cfmOb=T)
+  if("flexsurvreg"%in%CFM$mod_class) ret <- dataComb.flexsurvreg(CFM=CFM,DC=DC,id=id,trt=trt,cfmOb=T)
+  if("glm"%in%CFM$mod_class) ret <- dataComb.glm(CFM=CFM,DC=DC,id=id,trt=trt,cfmOb=T)
   return(ret)
 }
 

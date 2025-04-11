@@ -73,7 +73,6 @@
 #' data("data")
 #' surv.psc <- pscfit(surv.mod,data)
 #' @export
-
 pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
 
   ### Cleaning Data
@@ -99,8 +98,10 @@ pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
   mcmc <- data.frame(mcmc)
   names(mcmc) <- c(colnames(DC_clean$model_extract$sig), covnm,
                    "DIC")
-  psc.ob <- list(model.type = class(CFM), DC_clean = DC_clean,
+  cl <- class(CFM)
+  if("pscCFM"%in%cl) cl = CFM$mod_class
+  psc.ob <- list(model.type = cl, DC_clean = DC_clean,
                  posterior = mcmc)
-  class(psc.ob) <- "psc"
+    class(psc.ob) <- "psc"
   return(psc.ob)
 }
