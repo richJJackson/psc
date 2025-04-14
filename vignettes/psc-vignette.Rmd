@@ -123,36 +123,32 @@ posterior distribution.
 
 The psc.r package includes as example a dataset which is derived from patients 
 with pancreatic ductal adenocarcinoma (PDAC) who have all received some 
-experimental treatment, in this case GemCap.  The dataset is simply named 'data' and is loaded into the enviroment using the "data()" function
+experimental treatment, in this case GemCap.  The dataset is named 'e4_data' and is loaded into the enviroment using the "data()" function
 
 ```{r}
 #install.packages("psc")
-library(psc)
+#library(psc)
+e4_data <- psc::e4_data
 ```
 
 Included is a list of prognostic covariates:
 
-* vi - Vascular Invasion
-* age60 - Age - centered at 60
-* ecog - ECOG performance Status
-* logafp - AFP on the natural log scale
+* nodes: patient lymph node status; negative (n=1) or positive (n=2) lymph nodes
+* grade: tumour grade; 1,2 or 3
+* lca199: log transformed ca19.9
+* t: T-stage; (1,2 or 3)
 
 
 Also included are the following structures
 
 * time - survival time
 * cen - censoring indictor
-* os - time to be used as a continuous outcome
-* event - binary event for use as a binary outcome
-* count - count data to be used for a count outcome
 
-Lastly the dataset also inlclude a 'trt' variable to be used in the estimation 
-of multiple treatment comparisons.
 
 We give esamples of how the 'pscfit()' function can be used to comapre data 
-against models with survival outcomes (with a 'flexsurvreg' model) along with 
-binary, continuous and count outcomes (with a 'glm' model).
-
+against models with survival outcomes (with a 'flexsurvreg' model). Examples on 
+how to perform analyses using GLM model objects are available from the github 
+repo http://www.github/richjjackson/psc
 
 ## Survival Example
 
@@ -163,28 +159,33 @@ included within the 'psc.r' package names 'surv.mod' and is loaded using the
 'data()" function:
 
 ```{r}
-CFM <- psc::gemCFM
-CFM
+gemCFM <- psc::gemCFM
 ```
+
+
+The 'gemCFM' is an object of calss pscCFM which means it contains all of the structures required for analysis but has stripped the model object of any patient level data.  Included instead are a summary table:
+
+```{r}
+gemCFM$datasumm
+```
+
+...and a set of visualisations which we arrange using the ggarrange
+
+
+```{r}
+ggarrange(plotlist=gemCFM$datavis)
+```
+
 
 In this example you can see that this is a model constructed with 3 internal 
 knots and hence 5 parameters to describe the baseline cumulative hazard 
 function.  There are also prognostic covariates which match with the prognostic 
-covaraites in the data cohort.
-
-To begin it is worth looking at the performance of the model and looking at how 
-the survival of patietns in the data cohort compare
-
-```{r}
-library(survival)
-sfit <- survfit(Surv(data$time,data$cen)~1)
-plot(sfit)
-```
+covariates in the data cohort.
 
 Comparing the dataset to the model is then performed using
 
 ```{r,include=F}
-surv.psc <- pscfit(surv.mod,data)
+surv.psc <- pscfit(gemCFM,e4_data)
 ```
 
 and we can view the attributes of the psc object that is created
@@ -217,9 +218,6 @@ plot(surv.post$beta,typ="s")
 
 #### Summary
 
-```{r}
-summary(surv.post$beta)
-```
 
 Standard 'summary()' function wil summarise the model fit
 

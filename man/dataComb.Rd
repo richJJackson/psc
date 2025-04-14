@@ -4,7 +4,7 @@
 \alias{dataComb}
 \title{A generic function for cleaning data ready for analysis}
 \usage{
-dataComb(CFM, DC, id = NULL, trt = NULL)
+dataComb(CFM, DC, id = NULL, trt = NULL, cfmOb = FALSE)
 }
 \arguments{
 \item{CFM}{a model object supplied to pscfit}

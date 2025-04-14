@@ -26,7 +26,8 @@ Imports:
     survminer,
     gtsummary,
     RColorBrewer,
-    waffle
+    waffle,
+    ggpubr
 Suggests: 
     knitr,
     rmarkdown,
