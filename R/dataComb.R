@@ -11,7 +11,7 @@
 #' data <- psc::data
 #' dc <- dataComb(bin.mod,data)
 #' @export
-dataComb <- function(CFM,DC,id=NULL,trt=NULL){
+dataComb <- function(CFM,DC,id=NULL,trt=NULL,cfmOb=FALSE){
   UseMethod("dataComb")
 }
 

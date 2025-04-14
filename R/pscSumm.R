@@ -26,19 +26,18 @@ pscSumm <- function(DC_clean){
   trt <- rep(1,nrow(DC_clean$cov))
   if(mtc.cond) trt <- factor(DC_clean$cov[,which(colnames(DC_clean$cov)=="trt")])
   lev <- levels(trt)
-
-
   lp_ret <- tapply(lp,trt,median)
-  DC_clean$cov
 
-  if("glm" %in% DC_clean$model.type){
+
+
+  if("glm" %in% DC_clean$model_extract$mod_class){
     #exp_resp <- mean(resp)
     exp_resp <- tapply(resp,trt,median)
     ob_resp <- mean(unlist(DC_clean$out))
   }
 
 
-  if("flexsurvreg" %in% DC_clean$model.type){
+  if("flexsurvreg" %in% DC_clean$model_extract$mod_class){
     s.ob <- Surv(DC_clean$out$time,DC_clean$out$cen)
     sfit <- survfit(s.ob~1)
     sfit.tab <- summary(sfit)$table
@@ -50,7 +49,7 @@ pscSumm <- function(DC_clean){
   }
 
   cat(paste(nrow(DC_clean$cov),"observations selected from the data cohort for comparison"),"\n")
-  cat("CFM of type",DC_clean$model.type,"identified"," \n")
+  cat("CFM of type",DC_clean$model_extract$mod_class,"identified"," \n")
   cat("linear predictor succesfully obtained with median: \n ")
   cat(paste("trt",lev,": ",round(lp_ret,3),"\n",sep=""))
   cat("Average expected response: \n ")

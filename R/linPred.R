@@ -19,7 +19,7 @@
 #' @export
 linPred <- function(DC_clean,resp=FALSE){
 
-  mt <- DC_clean$model.type
+  mt <- DC_clean$model_extract$mod_class
   cov <- DC_clean$cov;cov
 
   ## Removing 'trt' from dataset

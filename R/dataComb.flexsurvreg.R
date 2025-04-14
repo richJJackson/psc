@@ -18,11 +18,11 @@
 #'  \item{'outcome' a cleaned dataset containing the outcomes}
 #'  }
 #' @export
-dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL,cfmOb=F){
+dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL,cfmOb=FALSE){
 
+  model_extract <- CFM
   ### removing response and weights
   if(!cfmOb) model_extract <- modelExtract(CFM);model_extract
-  if(cfmOb) model_extract <- CFM
 
   ### Getting term names (and removing outcome and 'weights')
   term.nm <- model_extract$terms
