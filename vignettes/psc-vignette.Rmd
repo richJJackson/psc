@@ -127,7 +127,8 @@ experimental treatment, in this case GemCap.  The dataset is named 'e4_data' and
 
 ```{r}
 #install.packages("psc")
-#library(psc)
+library(psc)
+library(ggpubr)
 e4_data <- psc::e4_data
 ```
 

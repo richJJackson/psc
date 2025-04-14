@@ -6,8 +6,11 @@
 #' @param p a ggplot objects
 #' @param x a categorical covariate
 #' @return a ggplot object
+#' @import RColorBrewer waffle
 #' @export
 facVisComp <- function(p,x){
+
+  Freq <- NULL
 
   old.d <- p$data;old.d
   tit <- p$labels$title

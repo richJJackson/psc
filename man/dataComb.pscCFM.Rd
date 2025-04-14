@@ -15,6 +15,8 @@
 Defualts to 'NULL' i.e all observations}
 
 \item{trt}{used to specify multiple treatment effects. Defaults to NULL}
+
+\item{cfmOb}{used to specify if a CFM object is supplies as the counter factual model}
 }
 \value{
 a list containing objects which specifiy the required exported components

@@ -9,14 +9,6 @@
 #' summary statistics of the average responses for the sythenthic and observed
 #' populations
 #'
-#'
-#' @examples
-#' library(psc)
-#' library(survival)
-#' data("surv.mod")
-#' data("data")
-#' dc <- dataComb(surv.mod,data)
-#' pscSumm(dc)
 #' @export
 pscSumm <- function(DC_clean){
 

@@ -25,11 +25,3 @@ model
 \details{
 A fucntion which extracts survival probabilities from a flexsurvreg object
 }
-\examples{
-library(psc)
-library(survival)
-data("surv.mod")
-data("data")
-dc <- dataComb(surv.mod,data)
-s_est <- surv_fpm(dc)
-}

@@ -3,8 +3,9 @@
 #' The purpose of this function is to run a series of checks to ensure that the
 #' data included in the data cohort is comparable to the counter-factual model
 #'
-#' @param cfm.data a model object supplied to pscfit
-#' @param dc.data a dataset including covariates to match the CFM
+#' @param cls a list of extracted data classes
+#' @param lev a list of factor levels
+#' @param dc.data dataset to be 'cleaned'
 #' @return a dataset which is checked and compatible with the CFM
 
 ######### data_match

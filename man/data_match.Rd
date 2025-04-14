@@ -7,9 +7,11 @@
 data_match(cls, lev, dc.data)
 }
 \arguments{
-\item{dc.data}{a dataset including covariates to match the CFM}
+\item{cls}{a list of extracted data classes}
 
-\item{cfm.data}{a model object supplied to pscfit}
+\item{lev}{a list of factor levels}
+
+\item{dc.data}{dataset to be 'cleaned'}
 }
 \value{
 a dataset which is checked and compatible with the CFM

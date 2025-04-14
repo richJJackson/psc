@@ -11,13 +11,6 @@
 #' (e.g. s=0.5 for median survival time)
 #' @return a list of times and assoicated survival probabilities
 #' @details A fucntion which extracts survival probabilities from a flexsurvreg object
-#' @examples
-#' library(psc)
-#' library(survival)
-#' data("surv.mod")
-#' data("data")
-#' dc <- dataComb(surv.mod,data)
-#' s_est <- surv_fpm(dc)
 #' @export
 surv_fpm <- function(DC_clean,beta=0,s=NULL){
 

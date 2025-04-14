@@ -9,6 +9,7 @@
 #' @param id a vector specifiying whether a subset of the dataset should be selected.
 #'   Defaults to 'NULL' e.g. all data points included
 #' @param trt An optional additional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to 'NULL'
+#' @param cfmOb used to specify if a CFM object is supplies as the counter factual model
 #' @return a list containing objects which specifiy the required exported components
 #'   of the model and a cleaned data cohort.
 #'  Attributes include \itemize{

@@ -5,8 +5,12 @@
 #' @param x a covariate to be summarised
 #' @param nm a covariate name
 #' @return a ggplot object
+#' @import RColorBrewer waffle
 #' @export
 facVis <- function(x,nm){
+
+  Freq <- NULL
+
   db <- data.frame(table(x));db
   cls <- brewer.pal(max(3,nrow(db)),"BuGn")
   p <- ggplot(data=db,aes(fill=x,values=Freq))+

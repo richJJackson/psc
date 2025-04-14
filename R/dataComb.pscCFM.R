@@ -9,6 +9,7 @@
 #' @param id to specify which observations in the data cohort should be evaluated.
 #' Defualts to 'NULL' i.e all observations
 #' @param trt used to specify multiple treatment effects. Defaults to NULL
+#' @param cfmOb used to specify if a CFM object is supplies as the counter factual model
 #' @return a list containing objects which specifiy the required exported components
 #'   of the model and a cleaned data cohort.  Attirbutes of the 'cleaned' object include:
 #'  Attributes include \itemize{

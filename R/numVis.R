@@ -5,8 +5,11 @@
 #' @param x a covariate to be summarised
 #' @param nm a covariate name
 #' @return a ggplot object
+#' @import RColorBrewer
 #' @export
 numVis <- function(x,nm){
+
+  y <- NULL
   cls <- brewer.pal(3,"BuGn")
   df <- data.frame("y"=x)
   p <- ggplot(aes(x=y),data=df) +

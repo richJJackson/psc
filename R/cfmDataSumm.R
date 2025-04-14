@@ -6,8 +6,10 @@
 #'
 #' @param cfm a 'glm' or 'flexsurvreg' model object
 #' @return a summary table
+#' @import gtsummary
 #' @export
 cfmDataSumm <- function(cfm){
+
 
   ### Getting data from object
   data <- model.frame(cfm)

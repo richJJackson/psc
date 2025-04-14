@@ -7,6 +7,7 @@
 #' @return a ggplot object
 #' @export
 numVisComp <- function(p,x){
+  xnew <- NULL
   dnew <- data.frame("xnew"=x)
   p + geom_density(aes(x=xnew,y=-after_stat(density)),data=dnew, fill="#404080",color="#404080" )
 }

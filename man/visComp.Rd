@@ -7,12 +7,12 @@
 visComp(CFM, DC, id = NULL)
 }
 \arguments{
+\item{CFM}{an object of class pscCFM}
+
 \item{DC}{A dataset including columns to match to covariates in the model}
 
 \item{id}{Numeric vector stating which patient(s) from the dataset should be included in the analysis.
 Defaults to all patients}
-
-\item{cfm}{an object of class pscCFM}
 }
 \value{
 a list of grobs for each model covariate

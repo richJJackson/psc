@@ -4,7 +4,7 @@
 #' CFM model and appends summaries of the equivalent datapoints from the
 #' Data Cohort.
 #'
-#' @param cfm an object of class pscCFM
+#' @param CFM an object of class pscCFM
 #' @param DC A dataset including columns to match to covariates in the model
 #' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.
 #'  Defaults to all patients
@@ -13,7 +13,7 @@
 visComp <- function(CFM,DC,id=NULL){
 
   ### error (CFP shoudl be of class pscCFM)
-  if(class(CFM)!="pscCFM") stop("Only models of class 'pscCFM' are allowed,
+  if(!inherits(CFM,what ="pscCFM")) stop("Only models of class 'pscCFM' are allowed,
     please see pscCFM for details")
 
   cfmVis <- CFM$datavis

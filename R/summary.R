@@ -8,11 +8,10 @@
 #' @return A summary of a psc object obtained using pscSumm and a copy of the pscfit object
 #' @examples
 #' library(psc)
-#' library(survival)
-#' data("surv.mod")
-#' data("data")
-#' psc.ob <- pscfit(surv.mod,data)
-#' summary(psc.ob)
+#' e4_data <-psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' psc <- pscfit(gemCFM,e4_data)
+#' summary(psc)
 #' @export
 summary.psc <- function(object,...){
 

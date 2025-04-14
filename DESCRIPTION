@@ -26,12 +26,12 @@ Imports:
     survminer,
     gtsummary,
     RColorBrewer,
-    waffle,
-    ggpubr
+    waffle
 Suggests: 
     knitr,
     rmarkdown,
     devtools,
+    ggpubr,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3

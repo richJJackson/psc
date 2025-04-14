@@ -5,7 +5,7 @@
 \alias{gemCFM}
 \title{Model for a survival outcome based on Gemcitbine patietns from ESPAC-3}
 \format{
-A model of class 'flezsurvreg':
+A model of class 'pscCFM' containg a 'flexsurvreg' model:
 \describe{
  \item{gamma}{cumulative baseline hazard parameters}
  \item{nodes}{negative (n=1) or positive (n=2) lymph nodes}

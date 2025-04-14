@@ -27,5 +27,4 @@
 #'  \item{aet}{Aetiology}
 #' }
 #' @source simulated
-#' @export
 "surv.mod"

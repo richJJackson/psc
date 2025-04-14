@@ -68,10 +68,10 @@
 #' @import enrichwith mvtnorm survival flexsurv
 #' @examples
 #' library(psc)
-#' library(survival)
-#' data("surv.mod")
-#' data("data")
-#' surv.psc <- pscfit(surv.mod,data)
+#' e4_data <-psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' psc <- pscfit(gemCFM,e4_data)
+#' summary(psc)
 #' @export
 pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
 

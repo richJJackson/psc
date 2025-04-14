@@ -15,6 +15,8 @@
 Defaults to 'NULL' e.g. all data points included}
 
 \item{trt}{An optional additional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to 'NULL'}
+
+\item{cfmOb}{used to specify if a CFM object is supplies as the counter factual model}
 }
 \value{
 a list containing objects which specifiy the required exported components
