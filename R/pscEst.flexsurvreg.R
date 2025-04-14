@@ -8,13 +8,14 @@
 #' @param DC_clean a cleaned dataset ontained using dataComb().
 #' @param nsim the number of MCMC simulations to run
 #' @param start the stating value for
+#' @param start.se the stating value fo
 #' @param trt an optional vector denoting treatment allocations where multiple
 #'     treatment comparisons are being made
 #' @details An MCMC routine for fitting a psc model
 #' @return A matrix containing the draws form the posterior distribution
 #' @import utils
 #'
-pscEst.flexsurvreg <- function(CFM,DC_clean,nsim,start,trt=trt){
+pscEst.flexsurvreg <- function(CFM,DC_clean,nsim,start,start.se,trt=trt){
 
   cov_co <- DC_clean$model_extract$cov_co;cov_co
   haz_co <- DC_clean$model_extract$haz_co;haz_co
@@ -33,7 +34,13 @@ pscEst.flexsurvreg <- function(CFM,DC_clean,nsim,start,trt=trt){
   parm <- matrix(NA,nsim,length(est)+length(beta)+1)
   parm[1,]<- c(est,beta,NA);parm[1,]
 
-  ## Progress Bar
+  ### multiplier for target distribution
+  mult <- (start.se*2);mult
+
+  s1 <- rmvnorm(1000,start,start.se)
+  s2 <- rmvnorm(1000,start,mult)
+
+    ## Progress Bar
   pb <- txtProgressBar(min = 0, max = nsim, style = 3)
 
   for(n in 2:nsim){
@@ -43,7 +50,7 @@ pscEst.flexsurvreg <- function(CFM,DC_clean,nsim,start,trt=trt){
 
     ### Drawing Samples
     cand <- rmvnorm(1,est,sig)
-    cand.beta <- rnorm(length(beta),0,1) #Check this bit
+    cand.beta <- rnorm(length(beta),start,mult)
     parm[n,] <- c(cand,cand.beta,NA)
 
     ### partitioning covariates into baseline hazard and coefficients

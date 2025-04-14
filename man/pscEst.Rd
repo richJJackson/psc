@@ -4,7 +4,7 @@
 \alias{pscEst}
 \title{Function for performing estimation procedures in 'pscfit'}
 \usage{
-pscEst(CFM, DC_clean, nsim, start, trt)
+pscEst(CFM, DC_clean, nsim, start, start.se, trt)
 }
 \arguments{
 \item{CFM}{a model object supplied to pscfit}
@@ -14,6 +14,8 @@ pscEst(CFM, DC_clean, nsim, start, trt)
 \item{nsim}{the number of MCMC simulations to run}
 
 \item{start}{the stating value for}
+
+\item{start.se}{the stating value for}
 
 \item{trt}{an optional vector denoting treatment allocations where mulitple
 treatment comparisons are bieng made}

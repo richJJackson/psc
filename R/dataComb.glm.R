@@ -18,16 +18,18 @@
 #'  \item{'outcome' a cleaned dataset containing the outcomes}
 #'  }
 #' @export
-dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
+dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL,cfmOb=F){
 
   ### removing response and weights
-  model_extract <- modelExtract(CFM);model_extract
-  mf <- model_extract$model.frame
-  term.nm <- names(mf)
-  out.nm <- term.nm[1]
-  length(term.nm)
+  if(!cfmOb) model_extract <- modelExtract(CFM);model_extract
+  if(cfmOb) model_extract <- CFM
 
+  ### Getting term names (and removing outcome and 'weights')
+  term.nm <- model_extract$terms;term.nm
+  out.nm <- term.nm[1]
   term.nm <- term.nm[-1];term.nm
+
+  ### ERROR CHECK: Selecting data from DC
   data_unavail_id <- which(!term.nm %in% names(DC))
   data_unavail <- term.nm[data_unavail_id]
   if (length(data_unavail_id) != 0)
@@ -35,7 +37,7 @@ dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
                sep = ""))
   out.id <- which(names(DC) %in% c(out.nm))
   if (length(out.id) != 1)
-    stop(paste("Please ensure covariates for the outcom labelled",
+    stop(paste("Please ensure covariates for the outcome labelled",
                out.nm, "is included"))
 
 
@@ -44,45 +46,43 @@ dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
     if("trt"%in%names(DC)){
       DC <- DC[,-which(names(DC)=="trt")]
     }
-    DC <- cbind(DC,trt)
     term.nm <- c(term.nm,"trt")
   }
 
-  ### Finding missing data
-  DC2 <- DC[, which(names(DC) %in% c(term.nm, out.nm))]
-  miss.id <- unique(which(is.na(DC2), arr.ind = T)[, 1])
-
-  if (length(miss.id) > 0) {
-    DC <- DC[-miss.id, ]
-    warning(paste(length(miss.id), "rows removed due to missing data in dataset"))
+  #### Selecting subgroup (if 'id' is specified)
+  if(!is.null(id)){
+    DC <- DC[id,]
+    trt <- trt[id]
   }
+
+  ### Removing missing data
+  miss.cov <- which(is.na(DC),arr.ind=T)[,1]
+  miss.trt <- which(is.na(trt))
+  miss.id <- union(miss.cov,miss.trt)
+
+  if(length(miss.id)>0) {
+    DC <- DC[-miss.id,]
+    trt <- trt[-miss.id]
+    warning(paste(length(miss.id),"rows removed due to missing data in dataset"))
+  }
+
+
+  ## Matching data between DC and CFM
+  cls <- model_extract$cov_class;cls
+  lev <- model_extract$cov_lev;lev
+  DCcov <- data_match(cls,lev,DC);DCcov[1:4,];trt[1:4]
 
   ## Defining outcome
   out <- data.frame(out.nm = DC[, which(names(DC) == out.nm)])
   names(out) <- out.nm
-
-  ### Matching data between DC and CFM
-  DCcov <- data_match(mf,DC);DC[1:4,]
-  DCM <- cbind(DCcov,out)
-
-  ### Creating model matrix based on new dataset
-  dc_mm <- model.matrix(model_extract$formula,data=DCM)
-
+  dc_mm <- model.matrix(model_extract$formula,data=DCcov)
 
   ### Adding in 'trt' (if required)
   if(!is.null(trt)) dc_mm <- cbind(dc_mm,"trt"=DC$trt)
 
-  ## Selecting sub-group if 'id' is specified
-  if(!is.null(id)){
-    dc_mm;dc_mm <- dc_mm[id,];dc_mm
-
-    cl.out <- class(out);cl.out
-    out <- out[id,];out
-    out <- data.frame(out)
-    names(out) <- "event"
-  }
-
+  ### returning results
   ret <- list("model.type"=class(CFM),"model_extract"=model_extract,"cov"=dc_mm,"outcome"=out)
   ret
 
-  }
+}
+

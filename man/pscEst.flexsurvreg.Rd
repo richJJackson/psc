@@ -4,7 +4,7 @@
 \alias{pscEst.flexsurvreg}
 \title{Function for estimating initial parameter values  'flexsurvreg'}
 \usage{
-\method{pscEst}{flexsurvreg}(CFM, DC_clean, nsim, start, trt = trt)
+\method{pscEst}{flexsurvreg}(CFM, DC_clean, nsim, start, start.se, trt = trt)
 }
 \arguments{
 \item{CFM}{a model object supplied to pscfit}
@@ -14,6 +14,8 @@
 \item{nsim}{the number of MCMC simulations to run}
 
 \item{start}{the stating value for}
+
+\item{start.se}{the stating value fo}
 
 \item{trt}{an optional vector denoting treatment allocations where multiple
 treatment comparisons are being made}

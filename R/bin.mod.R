@@ -15,4 +15,5 @@
 #'  \item{allmets}{metastesis}
 #' }
 #' @source simulated
+#' @export
 "bin.mod"

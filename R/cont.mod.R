@@ -13,5 +13,6 @@
 #'  \item{logcreat}{Creatinine - log scale}
 #' }
 #' @source simulated
+#' @export
 "cont.mod"
 
