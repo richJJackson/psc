@@ -78,6 +78,7 @@ dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL,cfmOb=FALSE){
   ### Creating model matrix based on new dataset
   out.ob <- DCcov[,1];out.ob
   out <- data.frame("time"=out.ob[,1],"cen"=out.ob[,2]);out[1:3,]
+  DCcov <- cbind(DCcov,out)
   dc_mm <- model.matrix(model_extract$formula,data=DCcov)[,-1]
 
   ### Adding in 'trt' (if required)

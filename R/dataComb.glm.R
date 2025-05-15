@@ -76,6 +76,7 @@ dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL,cfmOb=FALSE){
   ## Defining outcome
   out <- data.frame(out.nm = DC[, which(names(DC) == out.nm)])
   names(out) <- out.nm
+  DCcov <- cbind(DCcov,out)
   dc_mm <- model.matrix(model_extract$formula,data=DCcov)
 
   ### Adding in 'trt' (if required)
