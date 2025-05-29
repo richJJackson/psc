@@ -149,7 +149,7 @@ Also included are the following structures
 We give esamples of how the 'pscfit()' function can be used to comapre data 
 against models with survival outcomes (with a 'flexsurvreg' model). Examples on 
 how to perform analyses using GLM model objects are available from the github 
-repo http://www.github/richjjackson/psc
+repo https://github.com/richJJackson/psc
 
 ## Survival Example
 

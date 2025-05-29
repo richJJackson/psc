@@ -12,6 +12,7 @@ Allows the comparison of data cohorts (DC) against a Counter Factual Model (CFM)
 Useful links:
 \itemize{
   \item \url{https://github.com/richjjackson/psc/}
+  \item \url{https://github.com/richJJackson/psc}
   \item Report bugs at \url{https://github.com/richJJackson/psc/issues}
 }
 
