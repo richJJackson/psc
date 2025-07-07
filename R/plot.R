@@ -11,10 +11,12 @@
 #'    along with the observe response rates of the experimental arms
 #' @import ggplot2
 #' @examples
-#' bin.mod <- psc::bin.mod
-#' data <- psc::data
-#' bin.psc <- pscfit(bin.mod,data,nsim=3000)
-#' plot(bin.psc)
+#' @examples
+#' library(psc)
+#' e4_data <-psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' psc <- pscfit(gemCFM,e4_data)
+#' plot(psc)
 #' @export
 plot.psc <- function (x,...){
 

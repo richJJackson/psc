@@ -7,10 +7,6 @@
 #' @return datComb returns a list containing objects which detial the components of both the
 #'   Counter Factual Model (CFM) and the Data Cohort (DC) the required exported components
 #'   of the model and a cleaned data cohort.
-#' @examples
-#' bin.mod <- psc::bin.mod
-#' data <- psc::data
-#' dc <- dataComb(bin.mod,data)
 #' @export
 dataComb <- function(CFM,DC,id=NULL,trt=NULL,cfmOb=FALSE){
   UseMethod("dataComb")

@@ -8,11 +8,6 @@
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates of the experimental arms
 #' @import ggplot2
-#' @examples
-#' count.mod <- psc::count.mod
-#' data <- psc::data
-#' count.psc <- pscfit(count.mod,data,nsim=3000)
-#' plot(count.psc)
 #' @export
 plot.psc.count <- function(x, ...){
 

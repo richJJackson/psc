@@ -1,4 +1,4 @@
-#' Model for a survival outcome based on Gemcitbine patietns from ESPAC-3
+#' Model for a survival outcome based on Gemcitbine patients from ESPAC-3
 #'
 #' A generated model with a survival endpoint and a cuymulative hazard function
 #' estimated using flexible parametric splines. Data for the model were obtained

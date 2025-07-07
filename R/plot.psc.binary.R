@@ -9,11 +9,6 @@
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates of the experimental arms
 #' @import ggplot2
-#' @examples
-#' bin.mod <- psc::bin.mod
-#' data <- psc::data
-#' bin.psc <- pscfit(bin.mod,data,nsim=3000)
-#' plot(bin.psc)
 #' @export
 plot.psc.binary <- function(x,...){
 
