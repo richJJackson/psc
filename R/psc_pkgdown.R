@@ -2,9 +2,16 @@
 
 library(pkgdown)
 
-# Run once to configure your package to use and deploy pkgdown
+# Run this once to publish your site regularly
 usethis::use_pkgdown_github_pages()
 
-use_pkgdown()
+# Run once
+# Remove docs/ from gitignore to ensure it is checked into git.
+usethis::use_pkgdown()
 
+
+# Run everytime you want to update your site
 pkgdown::build_site()
+
+
+
