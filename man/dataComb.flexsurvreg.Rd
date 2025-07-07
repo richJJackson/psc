@@ -4,7 +4,7 @@
 \alias{dataComb.flexsurvreg}
 \title{Function for cleaning the data of a model with class 'flexsurvreg'}
 \usage{
-\method{dataComb}{flexsurvreg}(CFM, DC, id = NULL, trt = NULL)
+\method{dataComb}{flexsurvreg}(CFM, DC, id = NULL, trt = NULL, cfmOb = FALSE)
 }
 \arguments{
 \item{CFM}{a model object supplied to pscfit}
@@ -15,6 +15,8 @@
 Defaults to 'NULL' e.g. all data points included}
 
 \item{trt}{An optional additional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to 'NULL'}
+
+\item{cfmOb}{used to specify if a CFM object is supplies as the counter factual model}
 }
 \value{
 a list containing objects which specifiy the required exported components

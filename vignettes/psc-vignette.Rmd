@@ -36,7 +36,6 @@ and addresses the question of whether treatments are effective in the population
 of patients who are treated.  This estimand then targets efficacy over effectivness.
 
 
-
 In its basic form, this method creates a likelihood to compare a cohort of data 
 to a parametric model.  See (X) for disucssion on it's use as a causal inference 
 tool.  To use this package, two basic peices of information are required, a 
@@ -47,7 +46,6 @@ some examples for it's application in practice.
 
 
 # Methodology
-
 
 The `pscfit` function compares a dataset ('DC') against a parametric model. This 
 is done by selecting a likelihood which is identified by the type of CFM that is 
@@ -123,43 +121,35 @@ posterior distribution.
 # Motivating Example
 
 
-The psc.r package includes as example, a dataset which is derived from patients 
-with advanced Hepatocellular Carcinoma (aHCC) who have all received some 
-experimental treatment.  The dataset is simply named 'data' and is loaded into 
-the enviroment using the "data()" function
+The psc.r package includes as example a dataset which is derived from patients 
+with pancreatic ductal adenocarcinoma (PDAC) who have all received some 
+experimental treatment, in this case GemCap.  The dataset is named 'e4_data' and is loaded into the enviroment using the "data()" function
 
 ```{r}
 #install.packages("psc")
 library(psc)
+library(ggpubr)
+e4_data <- psc::e4_data
 ```
 
 Included is a list of prognostic covariates:
 
-* vi - Vascular Invasion
-* age60 - Age - centered at 60
-* ecog - ECOG performance Status
-* logafp - AFP on the natural log scale
-* alb - Albumin
-* logcreat - Creatinine on the log scale
-* logast - AST on the natuarl log scale
-* allmets -Presence of Metastesis
-* aet - Ateiology; HBV, HCV or Other
+* nodes: patient lymph node status; negative (n=1) or positive (n=2) lymph nodes
+* grade: tumour grade; 1,2 or 3
+* lca199: log transformed ca19.9
+* t: T-stage; (1,2 or 3)
+
 
 Also included are the following structures
 
 * time - survival time
 * cen - censoring indictor
-* os - time to be used as a continuous outcome
-* event - binary event for use as a binary outcome
-* count - count data to be used for a count outcome
 
-Lastly the dataset also inlclude a 'trt' variable to be used in the estimation 
-of multiple treatment comparisons.
 
 We give esamples of how the 'pscfit()' function can be used to comapre data 
-against models with survival outcomes (with a 'flexsurvreg' model) along with 
-binary, continuous and count outcomes (with a 'glm' model).
-
+against models with survival outcomes (with a 'flexsurvreg' model). Examples on 
+how to perform analyses using GLM model objects are available from the github 
+repo https://github.com/richJJackson/psc
 
 ## Survival Example
 
@@ -170,28 +160,33 @@ included within the 'psc.r' package names 'surv.mod' and is loaded using the
 'data()" function:
 
 ```{r}
-surv.mod <- psc::surv.mod
-surv.mod
+gemCFM <- psc::gemCFM
 ```
+
+
+The 'gemCFM' is an object of calss pscCFM which means it contains all of the structures required for analysis but has stripped the model object of any patient level data.  Included instead are a summary table:
+
+```{r}
+gemCFM$datasumm
+```
+
+...and a set of visualisations which we arrange using the ggarrange
+
+
+```{r}
+ggarrange(plotlist=gemCFM$datavis)
+```
+
 
 In this example you can see that this is a model constructed with 3 internal 
 knots and hence 5 parameters to describe the baseline cumulative hazard 
 function.  There are also prognostic covariates which match with the prognostic 
-covaraites in the data cohort.
-
-To begin it is worth looking at the performance of the model and looking at how 
-the survival of patietns in the data cohort compare
-
-```{r}
-library(survival)
-sfit <- survfit(Surv(data$time,data$cen)~1)
-plot(sfit)
-```
+covariates in the data cohort.
 
 Comparing the dataset to the model is then performed using
 
 ```{r,include=F}
-surv.psc <- pscfit(surv.mod,data)
+surv.psc <- pscfit(gemCFM,e4_data)
 ```
 
 and we can view the attributes of the psc object that is created
@@ -224,9 +219,6 @@ plot(surv.post$beta,typ="s")
 
 #### Summary
 
-```{r}
-summary(surv.post$beta)
-```
 
 Standard 'summary()' function wil summarise the model fit
 
@@ -239,146 +231,6 @@ been developed
 
 ```{r}
 plot(surv.psc)
-```
-
-
-## GLM
-
-The "pscfit()" object uses class of the model supplied to derive the likelihoiod 
-and estimation procedure that isde required.  In this example, the "enrichwith" 
-package is utilised to extract from the model the parameters of the exponential 
-family.  Important from the attributes of the GLM are the "family" statements 
-which dictates the form of the likelihood.  For each of the binary, continuous 
-and Count data outcomes then, the syntax and the DC remains the same and it is 
-the form of the CFM that dictates the analysis
-
-
-### Binary
-
-#### Step 1:  Load Model
-```{r}
-bin.mod <- psc::bin.mod
-bin.mod
-```
-
-#### Step 2: Fit psc object
-```{r,include=F}
-psc.bin <- pscfit(bin.mod,data)
-psc.bin
-```
-
-#### Step 3: Review summary statistics
-```{r}
-summary(psc.bin)
-```
-
-#### Step 4: Plot Output
-```{r}
-plot(psc.bin)
-```
-
-### Count
-
-
-#### Step 1:  Load Model
-```{r}
-count.mod <- psc::count.mod
-count.mod
-#data("count.mod")
-```
-
-#### Step 2: Fit psc object
-```{r,include=F}
-psc.count <- pscfit(count.mod,data)
-psc.count
-```
-
-#### Step 3: Review summary statistics
-```{r}
-summary(psc.count)
-```
-
-#### Step 4: Plot Output
-```{r}
-plot(psc.count)
-```
-
-### Continuous
-
-#### Step 1:  Load Model
-```{r}
-cont.mod <- psc::cont.mod
-cont.mod
-```
-
-#### Step 2: Fit psc object
-
-```{r,include=F}
-psc.con <- pscfit(cont.mod,data)
-psc.con
-```
-
-#### Step 3: Review summary statistics
-```{r}
-summary(psc.con)
-```
-
-#### Step 4: Plot Output
-```{r}
-plot(psc.con)
-```
-
-
-# Sub group Effects
-
-An attractive feature of Personalised Synthetic Controls is its use in fitting 
-sub-group effects.  Whereas other casual inference tools typically make 
-ssumptions about population levels of balance and then further assume that this 
-balance holds at sub-group levels, Personalised Synthetic Controls differ in 
-that they estimate treatment effects at a patient level and then average across 
-populations.  To estimate sub-group effects then we need only to restrict 
-estimation over some sub-group of the population.  This can be achived by directly 
-slecting the subgroup you wish to evaluate
-
-Using an example where we wnat to see if the treatment effect is consistent by 
-patients with ECOG=0 and ECOG =1
-
-## Sub group effects by restricting the population
-
-
-### PSC fit for pateitns with ECOG=0
-```{r,include=T,echo=T}
-id1 <- which(data$ecog==0)
-sub1 <- pscfit(surv.mod,data,id=id1)
-```
-
-
-### PSC fit for pateitns with ECOG=1
-```{r,include=T,echo=T}
-id2 <- which(data$ecog==1)
-sub2 <- pscfit(surv.mod,data,id=id2)
-```
-
-
-We can then easily compare the model coefficients
-
-```{r}
-summary(sub1)
-cat("\n")
-summary(sub2)
-```
-
-
-And look at the plots for each outcome
-
-#### PSC plot for ECOG=0
-```{r}
-plot(sub1)
-```
-
-#### PSC plot for ECOG=1
-```{r}
-plot(sub2)
 ```
 
 

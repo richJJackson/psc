@@ -9,6 +9,7 @@
 #' @param id a vector specifiying whether a subset of the dataset should be selected.
 #'   Defaults to 'NULL' e.g. all data points included
 #' @param trt An optional additional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to 'NULL'
+#' @param cfmOb used to specify if a CFM object is supplies as the counter factual model
 #' @return a list containing objects which specifiy the required exported components
 #'   of the model and a cleaned data cohort.
 #'  Attributes include \itemize{
@@ -18,12 +19,15 @@
 #'  \item{'outcome' a cleaned dataset containing the outcomes}
 #'  }
 #' @export
-dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL){
+dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL,cfmOb=FALSE){
 
+  model_extract <- CFM
   ### removing response and weights
-  model_extract <- modelExtract(CFM);model_extract
-  mf <- model_extract$model.frame
-  term.nm <- names(mf)
+  if(!cfmOb) model_extract <- modelExtract(CFM);model_extract
+
+  ### Getting term names (and removing outcome and 'weights')
+  term.nm <- model_extract$terms
+  out.nm <- term.nm[1]
   term.nm <- term.nm[-c(1,length(term.nm))];term.nm
 
   ### ERROR CHECK: Selecting data from DC
@@ -32,12 +36,12 @@ dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL){
   if(length(data_unavail_id)!=0) stop(paste("Covariate '",data_unavail,"' is included in the model but not the dataset",sep=""))
 
   ### Making sure 'time' and 'cen' are present
-  out.id <- which(names(DC)%in%c("time","cen"))
-  if(length(out.id)!=2) stop("Please ensure covariates to define the outcome are labeled as 'time' and 'cen'")
+  out.nm.trap <- which(names(DC)%in%c("time","cen"))
+  if(length(out.nm.trap)!=2) stop("outcome covariates in data cohort should be named 'time' and 'cen'")
 
-  ## Creating model matrix (adding resposne to covariates)
+  ## Creating model matrix (adding response to covariates)
   DC <- data.frame(cbind(0,DC))
-  names(DC)[1] <- names(mf)[1]
+  names(DC)[1] <- out.nm
   DC[,1] <- Surv(DC$time,DC$cen)
 
   ### Adding treatment variable (if not null)
@@ -48,42 +52,38 @@ dataComb.flexsurvreg <- function(CFM,DC,id=NULL,trt=NULL){
     term.nm <- c(term.nm,"trt")
   }
 
-  ## Defining Outcome
-  out.nm.trap <- which(names(DC)%in%c("time","cen"))
-  if(length(out.nm.trap)!=2) stop("outcome covariates in data cohort should be named 'time' and 'cen'")
-  out <- data.frame("time"=DC$time,"cen"=DC$cen)
-
-  ### Matching data between DC and CFM
-  DCcov <- data_match(mf,DC);DC[1:4,];DCcov[1:4,];out[1:4,];trt[1:4]
-
   #### Selecting subgroup (if 'id' is specified)
   if(!is.null(id)){
-    DCcov <- DCcov[id,]
-    out <- out[id,]
+    DC <- DC[id,]
     trt <- trt[id]
   }
 
   ### Removing missing data
-  miss.cov <- which(is.na(DCcov),arr.ind=T)[,1]
-  miss.out <- which(is.na(out),arr.ind=T)[,1]
+  miss.cov <- which(is.na(DC),arr.ind=T)[,1]
   miss.trt <- which(is.na(trt))
-
-  miss.id <- union(miss.cov,miss.out)
-  miss.id <- union(miss.id,miss.trt)
+  miss.id <- union(miss.cov,miss.trt)
 
   if(length(miss.id)>0) {
-    DCcov <- DCcov[-miss.id,]
-    out <- out[-miss.id,]
+    DC <- DC[-miss.id,]
     trt <- trt[-miss.id]
     warning(paste(length(miss.id),"rows removed due to missing data in dataset"))
   }
 
+  ## Matching data between DC and CFM
+  cls <- model_extract$cov_class;cls
+  lev <- model_extract$cov_lev;lev
+  DCcov <- data_match(cls,lev,DC);DCcov[1:4,];trt[1:4]
+
+
   ### Creating model matrix based on new dataset
-  DCM <- cbind(DCcov,out)
-  dc_mm <- model.matrix(model_extract$formula,data=DCM)[,-1]
+  out.ob <- DCcov[,1];out.ob
+  out <- data.frame("time"=out.ob[,1],"cen"=out.ob[,2]);out[1:3,]
+  DCcov <- cbind(DCcov,out)
+  dc_mm <- model.matrix(model_extract$formula,data=DCcov)[,-1]
 
   ### Adding in 'trt' (if required)
   if(!is.null(trt)) dc_mm <- cbind(dc_mm,"trt"=trt)
-  ret <- list("model.type"=class(CFM),"model_extract"=model_extract,"cov"=dc_mm,"outcome"=out)
+  ret <- list("model_extract"=model_extract,"cov"=dc_mm,"outcome"=out)
   ret
+
 }

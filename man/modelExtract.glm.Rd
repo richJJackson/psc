@@ -12,7 +12,10 @@
 \value{
 a list of extracted model components.  Included are
 \itemize{
-\item{model.frame a dataset of the covareits used to create the model}
+\item{mod_class: The class of the model object}
+\item{terms: The terms included in the model}
+\item{cov_cls: The classes of the model covariates}
+\item{cov_lev: The levels of categorical variables}
 \item{cov_co: covariate coefficients}
 \item{sig: variance-covariance matrix}
 \item{form: model formula}

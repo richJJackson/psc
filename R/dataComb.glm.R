@@ -9,6 +9,7 @@
 #' @param id to specify which observations in the data cohort should be evaluated.
 #' Defualts to 'NULL' i.e all observations
 #' @param trt used to specify multiple treatment effects. Defaults to NULL
+#' @param cfmOb used to specify if a CFM object is supplies as the counter factual model
 #' @return a list containing objects which specifiy the required exported components
 #'   of the model and a cleaned data cohort.  Attirbutes of the 'cleaned' object include:
 #'  Attributes include \itemize{
@@ -18,12 +19,14 @@
 #'  \item{'outcome' a cleaned dataset containing the outcomes}
 #'  }
 #' @export
-dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
+dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL,cfmOb=FALSE){
 
+  model_extract <- CFM
   ### removing response and weights
-  model_extract <- modelExtract(CFM);model_extract
-  mf <- model_extract$model.frame
-  term.nm <- names(mf)
+  if(!cfmOb) model_extract <- modelExtract(CFM)
+
+  ### Getting term names (and removing outcome and 'weights')
+  term.nm <- model_extract$terms;term.nm
   out.nm <- term.nm[1]
   term.nm <- term.nm[-1];term.nm
 
@@ -47,39 +50,34 @@ dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
     term.nm <- c(term.nm,"trt")
   }
 
-  ## Defining outcome
-  out <- data.frame(out.nm = DC[, which(names(DC) == out.nm)])
-  names(out) <- out.nm
-
-  ### Matching data between DC and CFM
-  DCcov <- data_match(mf,DC);DC[1:4,];DCcov[1:4,];out[1:4,];trt[1:4]
-
   #### Selecting subgroup (if 'id' is specified)
   if(!is.null(id)){
-    DCcov <- DCcov[id,]
-    out <- out[id]
+    DC <- DC[id,]
     trt <- trt[id]
   }
 
   ### Removing missing data
-  miss.cov <- which(is.na(DCcov),arr.ind=T)[,1]
-  miss.out <- which(is.na(out),arr.ind=T)[,1]
+  miss.cov <- which(is.na(DC),arr.ind=T)[,1]
   miss.trt <- which(is.na(trt))
-
-  miss.id <- union(miss.cov,miss.out)
-  miss.id <- union(miss.id,miss.trt)
+  miss.id <- union(miss.cov,miss.trt)
 
   if(length(miss.id)>0) {
-    DCcov <- DCcov[-miss.id,]
-    out <- out[-miss.id]
+    DC <- DC[-miss.id,]
     trt <- trt[-miss.id]
     warning(paste(length(miss.id),"rows removed due to missing data in dataset"))
   }
 
-  ### Creating model matrix based on new dataset
-  DCM <- cbind(DCcov,out)
-  dc_mm <- model.matrix(model_extract$formula,data=DCM)
 
+  ## Matching data between DC and CFM
+  cls <- model_extract$cov_class;cls
+  lev <- model_extract$cov_lev;lev
+  DCcov <- data_match(cls,lev,DC);DCcov[1:4,];trt[1:4]
+
+  ## Defining outcome
+  out <- data.frame(out.nm = DC[, which(names(DC) == out.nm)])
+  names(out) <- out.nm
+  DCcov <- cbind(DCcov,out)
+  dc_mm <- model.matrix(model_extract$formula,data=DCcov)
 
   ### Adding in 'trt' (if required)
   if(!is.null(trt)) dc_mm <- cbind(dc_mm,"trt"=DC$trt)
@@ -88,4 +86,5 @@ dataComb.glm <- function(CFM,DC,id=NULL,trt=NULL){
   ret <- list("model.type"=class(CFM),"model_extract"=model_extract,"cov"=dc_mm,"outcome"=out)
   ret
 
-  }
+}
+

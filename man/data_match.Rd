@@ -4,12 +4,14 @@
 \alias{data_match}
 \title{A function to ensure that data from the cfm and data cohort are compatible}
 \usage{
-data_match(cfm.data, dc.data)
+data_match(cls, lev, dc.data)
 }
 \arguments{
-\item{cfm.data}{a model object supplied to pscfit}
+\item{cls}{a list of extracted data classes}
 
-\item{dc.data}{a dataset including covariates to match the CFM}
+\item{lev}{a list of factor levels}
+
+\item{dc.data}{dataset to be 'cleaned'}
 }
 \value{
 a dataset which is checked and compatible with the CFM

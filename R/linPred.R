@@ -9,17 +9,10 @@
 #' @param resp detailing whether the linear predictor shoudl be returned on the natural or response level.  Defaults to the natural scale (resp=F)
 #' @details A function which combines the data from the data cohort against the model parameters of the PSC
 #' @return Extracts the linear predictor from a object containing both a counter factual model and a data cohort which is created using the dataComb() fucntion.
-#' @examples
-#' library(psc)
-#' library(survival)
-#' surv.mod <- psc::surv.mod
-#' data <- psc::data
-#' dc <- dataComb(surv.mod,data)
-#' lp <- linPred(dc)
 #' @export
 linPred <- function(DC_clean,resp=FALSE){
 
-  mt <- DC_clean$model.type
+  mt <- DC_clean$model_extract$mod_class
   cov <- DC_clean$cov;cov
 
   ## Removing 'trt' from dataset

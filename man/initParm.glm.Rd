@@ -2,7 +2,7 @@
 % Please edit documentation in R/initParm.glm.R
 \name{initParm.glm}
 \alias{initParm.glm}
-\title{Fucntion for estimating initial parameter values  'flexsurvreg'}
+\title{Fucntion for estimating initial parameter values}
 \usage{
 \method{initParm}{glm}(CFM, DC_clean, trt = trt)
 }
@@ -18,7 +18,7 @@ an 'optim' output giving the parameter values to be supplied as a
   starting value for the mcmc routine.
 }
 \description{
-Fucntion for estimating initial parameter values  'flexsurvreg'
+Fucntion for estimating initial parameter values
 }
 \details{
 This function takes the liklihood for a 'flexsurvreg' model and uses 'optim'

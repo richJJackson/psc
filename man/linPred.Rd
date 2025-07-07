@@ -23,11 +23,3 @@ estimates.
 \details{
 A function which combines the data from the data cohort against the model parameters of the PSC
 }
-\examples{
-library(psc)
-library(survival)
-surv.mod <- psc::surv.mod
-data <- psc::data
-dc <- dataComb(surv.mod,data)
-lp <- linPred(dc)
-}

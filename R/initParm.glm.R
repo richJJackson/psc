@@ -1,4 +1,4 @@
-#' Fucntion for estimating initial parameter values  'flexsurvreg'
+#' Fucntion for estimating initial parameter values
 #'
 #' @param CFM A counter-factual model
 #' @param DC_clean a cleaned dataset obsect obtained using dataComb.flexsurvreg
@@ -23,7 +23,6 @@ initParm.glm <- function(CFM,DC_clean,trt=trt){
     ip <- optim(beta, lik.glm.mtc, DC_clean=DC_clean, method = "BFGS", hessian = T)
   }
 
-  #class(ip) <- class(CFM)
   return(ip)
 
   }

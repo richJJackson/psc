@@ -4,7 +4,7 @@
 \alias{dataComb}
 \title{A generic function for cleaning data ready for analysis}
 \usage{
-dataComb(CFM, DC, id = NULL, trt = NULL)
+dataComb(CFM, DC, id = NULL, trt = NULL, cfmOb = FALSE)
 }
 \arguments{
 \item{CFM}{a model object supplied to pscfit}
@@ -14,6 +14,8 @@ dataComb(CFM, DC, id = NULL, trt = NULL)
 \item{id}{to specify which observations in the data cohort should be evaluated.  Defualts to 'NULL' i.e all observations}
 
 \item{trt}{used to specify multiple treatment effects. Defaults to NULL}
+
+\item{cfmOb}{used to specify if a CFM object is supplies as the counter factual model}
 }
 \value{
 datComb returns a list containing objects which detial the components of both the

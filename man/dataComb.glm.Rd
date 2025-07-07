@@ -4,7 +4,7 @@
 \alias{dataComb.glm}
 \title{Function for cleaning the data of a model with class 'flexsurvreg'}
 \usage{
-\method{dataComb}{glm}(CFM, DC, id = NULL, trt = NULL)
+\method{dataComb}{glm}(CFM, DC, id = NULL, trt = NULL, cfmOb = FALSE)
 }
 \arguments{
 \item{CFM}{a model object supplied to pscfit}
@@ -15,6 +15,8 @@
 Defualts to 'NULL' i.e all observations}
 
 \item{trt}{used to specify multiple treatment effects. Defaults to NULL}
+
+\item{cfmOb}{used to specify if a CFM object is supplies as the counter factual model}
 }
 \value{
 a list containing objects which specifiy the required exported components
