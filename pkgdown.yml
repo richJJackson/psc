@@ -2,9 +2,8 @@ pandoc: 3.1.11
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
-  psc-vignette: psc-vignette.html
   psc: psc.html
-last_built: 2025-07-07T12:57Z
+last_built: 2025-07-07T13:05Z
 urls:
   reference: https://richjjackson.github.io/psc/reference
   article: https://richjjackson.github.io/psc/articles
