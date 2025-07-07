@@ -129,7 +129,7 @@ experimental treatment, in this case GemCap.  The dataset is named 'e4_data' and
 #install.packages("psc")
 library(psc)
 library(ggpubr)
-e4_data <- psc::e4_data
+#e4_data <- psc::e4_data
 ```
 
 Included is a list of prognostic covariates:
