@@ -11,7 +11,6 @@
 #'    along with the observe response rates of the experimental arms
 #' @import ggplot2
 #' @examples
-#' @examples
 #' library(psc)
 #' e4_data <-psc::e4_data
 #' gemCFM <- psc::gemCFM

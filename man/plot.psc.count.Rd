@@ -25,9 +25,3 @@ model and the observed response under the experimental treatment(s).
 This function plots the expected response of the control treatment
    along with the observe response rates of the experimental arms
 }
-\examples{
-count.mod <- psc::count.mod
-data <- psc::data
-count.psc <- pscfit(count.mod,data,nsim=3000)
-plot(count.psc)
-}

@@ -3,7 +3,7 @@
 \docType{data}
 \name{gemCFM}
 \alias{gemCFM}
-\title{Model for a survival outcome based on Gemcitbine patietns from ESPAC-3}
+\title{Model for a survival outcome based on Gemcitbine patients from ESPAC-3}
 \format{
 A model of class 'pscCFM' containg a 'flexsurvreg' model:
 \describe{

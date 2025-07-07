@@ -13,6 +13,7 @@ Useful links:
 \itemize{
   \item \url{https://github.com/richjjackson/psc/}
   \item \url{https://github.com/richJJackson/psc}
+  \item \url{https://richjjackson.github.io/psc/}
   \item Report bugs at \url{https://github.com/richJJackson/psc/issues}
 }
 

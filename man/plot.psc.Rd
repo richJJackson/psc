@@ -24,8 +24,9 @@ This function plots the expected response of the control treatment
    along with the observe response rates of the experimental arms
 }
 \examples{
-bin.mod <- psc::bin.mod
-data <- psc::data
-bin.psc <- pscfit(bin.mod,data,nsim=3000)
-plot(bin.psc)
+library(psc)
+e4_data <-psc::e4_data
+gemCFM <- psc::gemCFM
+psc <- pscfit(gemCFM,e4_data)
+plot(psc)
 }

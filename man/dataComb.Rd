@@ -25,8 +25,3 @@ datComb returns a list containing objects which detial the components of both th
 \description{
 A generic function for cleaning data ready for analysis
 }
-\examples{
-bin.mod <- psc::bin.mod
-data <- psc::data
-dc <- dataComb(bin.mod,data)
-}
