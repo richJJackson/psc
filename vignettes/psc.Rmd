@@ -160,7 +160,7 @@ included within the 'psc.r' package names 'surv.mod' and is loaded using the
 'data()" function:
 
 ```{r}
-#emCFM <- psc::gemCFM
+#gemCFM <- psc::gemCFM
 ```
 
 
