@@ -12,7 +12,7 @@
 #' @param trt to be specified for multiple treatment comparisons. Defaults to
 #' NULL
 #' @return A set of structures for use with estimation procedures
-#'
+#' @export
 pscData <- function(CFM,DC,id=NULL,trt=NULL){
 
   ### Getting term names
