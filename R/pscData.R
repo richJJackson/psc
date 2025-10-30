@@ -67,7 +67,7 @@ pscData <- function(CFM,DC,id=NULL,trt=NULL){
   CFM$datavis <- visComp(CFM,DC)
 
   ### Adding Likelihood
-  lik <- pscData_addLik(CFM,trt=trt)
+  lik <- pscData_addLik(CFM)
   CFM$lik <- lik
 
   ## adding in Treatment and id info
