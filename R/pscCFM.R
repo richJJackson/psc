@@ -15,17 +15,24 @@
 #' @return a list containing objects which specifiy the required exported components
 #'   of the model.
 #' @export
-pscCFM <- function(cfm,dataSumm=T,dataVis=T){
-  me <- modelExtract(cfm)
+pscCFM <- function(CFM,dataSumm=T,dataVis=T){
 
-  if(dataSumm){
-    me$datasumm <- cfmDataSumm(cfm)
+  if(!("pscCFM"%in%class(CFM))){
+
+    me <- modelExtract(CFM)
+
+    if(dataSumm){
+      me$datasumm <- cfmDataSumm(CFM)
+    }
+
+    if(dataVis){
+      me$datavis <- cfmDataVis(CFM)
+    }
+
+    class(me) <- c("pscCFM")
+    CFM <- me
   }
 
-  if(dataVis){
-    me$datavis <- cfmDataVis(cfm)
-  }
+  return(CFM)
 
-  class(me) <- c("pscCFM")
-  return(me)
 }

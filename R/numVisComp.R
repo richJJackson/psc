@@ -1,4 +1,4 @@
-#' Visualising Categorical Data
+#' Visualising Numerical Data
 #'
 #' A function which summarises numerical data using a density plots
 #'

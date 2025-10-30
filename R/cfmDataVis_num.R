@@ -1,13 +1,14 @@
-#' Visualising Categorical Data
+#' Visualising Numerical Data
 #'
-#' A function which summarises categorical data using a waffle plot
+#' A function which summarises categorical data using density plots.  A
+#' sub-function of cfmDataVis
 #'
 #' @param x a covariate to be summarised
 #' @param nm a covariate name
 #' @return a ggplot object
 #' @import RColorBrewer
 #' @export
-numVis <- function(x,nm){
+cfmDataVis_num <- function(x,nm){
 
   y <- NULL
   cls <- brewer.pal(3,"BuGn")

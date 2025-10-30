@@ -14,4 +14,3 @@
 #' }
 #' @source simulated
 "cont.mod"
-

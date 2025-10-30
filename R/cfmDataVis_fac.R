@@ -1,13 +1,14 @@
 #' Visualising Categorical Data
 #'
-#' A function which summarises categorical data using a waffle plot
+#' A function which summarises categorical data using a waffle plot.  A
+#' sub-function of cfmDataVis
 #'
 #' @param x a covariate to be summarised
 #' @param nm a covariate name
 #' @return a ggplot object
 #' @import RColorBrewer waffle
 #' @export
-facVis <- function(x,nm){
+cfmDataVis_fac <- function(x,nm){
 
   Freq <- NULL
 

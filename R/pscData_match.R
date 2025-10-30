@@ -1,19 +1,19 @@
 #' A function to ensure that data from the cfm and data cohort are compatible
 #'
 #' The purpose of this function is to run a series of checks to ensure that the
-#' data included in the data cohort is comparable to the counter-factual model
+#' data included in the data cohort is comparable to the counter-factual model.
+#' This matches the data classes and checks the levels in the DC match those
+#' used in the CFM. This acts as a sub-function to the pscData.R function.
 #'
 #' @param cls a list of extracted data classes
 #' @param lev a list of factor levels
-#' @param dc.data dataset to be 'cleaned'
+#' @param DC a data cohort to be 'cleaned'
 #' @return a dataset which is checked and compatible with the CFM
-
-######### data_match
-data_match <- function(cls,lev,dc.data){
+pscData_match <- function(cls,lev,DC){
 
   ### duplicated namse in dc.data
-  dup <- duplicated(names(dc.data))
-  if(any(dup)) dc.data <- dc.data[,-which(dup)]
+  dup <- duplicated(names(DC))
+  if(any(dup)) DC <- DC[,-which(dup)]
 
   ## Getting term names
   nm <- names(cls);nm
@@ -23,14 +23,14 @@ data_match <- function(cls,lev,dc.data){
   if(length(wid)>0) cls <- cls[-wid]
 
   # creating output
-  dc.new <- dc.data
+  dc.new <- DC
 
   for(i in 1:length(cls)){
 
-    con <- which(names(dc.data)%in%nm[i]);con
+    con <- which(names(DC)%in%nm[i]);con
     if(length(con)==0) stop("DC missing covariate included in CFM")
 
-    old <-dc.data[,con];old
+    old <-DC[,con];old
     new <- old
     cl <- cls[[i]];cl
 
@@ -59,4 +59,7 @@ data_match <- function(cls,lev,dc.data){
   ret <- dc.new[,which(names(dc.new)%in%nm)]
   ret
 }
+
+
+
 
