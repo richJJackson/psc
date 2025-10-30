@@ -130,9 +130,9 @@ remove.packages("psc")
 rm(list=ls())
 library(devtools)
 install_github("richjjackson/psc",ref="Version-2.0.0")
+pscData
 #install.packages("psc")
 library(psc)
-library(ggpubr)
 #e4_data <- psc::e4_data
 ```
 
@@ -191,6 +191,8 @@ Comparing the dataset to the model is then performed using
 
 ```{r,include=F}
 surv.psc <- pscfit(gemCFM,e4_data)
+pscfit
+library(psc)
 
 ```
 
