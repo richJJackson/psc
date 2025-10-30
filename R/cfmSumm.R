@@ -15,7 +15,7 @@ cfmSumm <- function(pscOb){
 
   ### Survival Summary
   if("flexsurvreg" %in% pscOb$mod_class){
-    cfm_summ <- cfmSumm.flexsurvreg(pscOb,beta=0,bootCI = T,nboot=1000)
+    cfm_summ <- cfmSumm.flexsurvreg(pscOb,bootCI = T,nboot=1000)
   }
 
   ### Summary Text
