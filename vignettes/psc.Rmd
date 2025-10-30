@@ -130,10 +130,12 @@ remove.packages("psc")
 rm(list=ls())
 library(devtools)
 install_github("richjjackson/psc",ref="Version-2.0.0")
-pscData
 #install.packages("psc")
 library(psc)
-#e4_data <- psc::e4_data
+e4_data <- psc::e4_data;e4_data[1:3,]
+gemCFM <- psc::gemCFM
+gemCFM$terms
+
 ```
 
 Included is a list of prognostic covariates:
