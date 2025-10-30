@@ -4,12 +4,12 @@
 \alias{print.psc}
 \title{Personalised Synthetic Controls - print}
 \usage{
-\method{print}{psc}(x, ...)
+\method{print}{psc}(pscOb, ...)
 }
 \arguments{
-\item{x}{an object of class 'psc'}
-
 \item{...}{not used}
+
+\item{x}{an object of class 'psc'}
 }
 \value{
 printing psc results

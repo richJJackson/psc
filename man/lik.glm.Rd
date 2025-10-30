@@ -4,7 +4,7 @@
 \alias{lik.glm}
 \title{Likelihood function for a psc model of class 'glm'}
 \usage{
-lik.glm(beta, DC_clean)
+lik.glm(beta, pscOb)
 }
 \arguments{
 \item{beta}{a parameter to be estimate}

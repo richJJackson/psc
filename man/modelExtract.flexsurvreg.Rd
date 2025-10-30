@@ -7,26 +7,13 @@
 \method{modelExtract}{flexsurvreg}(CFM)
 }
 \arguments{
-\item{CFM}{a model of class 'flexsurvreg'}
+\item{CFM}{a model of class either 'flexsurvreg'}
 }
 \value{
-a list of extracted model components.  Included are
-\itemize{
-\item{mod_class: The class of the model object}
-\item{terms: The terms included in the model}
-\item{cov_cls: The classes of the model covariates}
-\item{cov_lev: The levels of categorical variables}
-\item{cov_co: covariate coefficients}
-\item{sig: variance-covariance matrix}
-\item{haz_co: hazard parameter coefficients}
-\item{k: number of knots}
-\item{knots: knot position}
-\item{lam: lambda parameter}
-\item{form: model formula}
-}
+a list of extracted model components
 }
 \description{
-This function extracts model information for use with the pscfit.R function.
+A generic function for extracting model information
 }
 \details{
 A function for extracting the model information required for using pscfit

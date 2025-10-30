@@ -2,29 +2,23 @@
 % Please edit documentation in R/pscEst.R
 \name{pscEst}
 \alias{pscEst}
-\title{Function for performing estimation procedures in 'pscfit'}
+\title{Function for performing Bayesian MCMC estimation procedures in 'pscfit'}
 \usage{
-pscEst(CFM, DC_clean, nsim, start, start.se, trt)
+pscEst(pscOb, nsim = 1000, nchain = 1)
 }
 \arguments{
-\item{CFM}{a model object supplied to pscfit}
-
-\item{DC_clean}{a cleaned dataset ontained using dataComb().}
+\item{pscOb}{an pscOb object which has been passed through pscData() and
+init() functions}
 
 \item{nsim}{the number of MCMC simulations to run}
 
-\item{start}{the stating value for}
-
-\item{start.se}{the stating value for}
-
-\item{trt}{an optional vector denoting treatment allocations where mulitple
-treatment comparisons are bieng made}
+\item{nchain}{Number of chains to use for analysis}
 }
 \value{
 A matrix containing the draws form the posterior distribution
 }
 \description{
-Function for performing estimation procedures in 'pscfit'
+Function for performing Bayesian MCMC estimation procedures in 'pscfit'
 }
 \details{
 Define the set of model parameters \eqn{B} to contain \eqn{\Gamma} which summarize

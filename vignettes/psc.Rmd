@@ -126,6 +126,8 @@ with pancreatic ductal adenocarcinoma (PDAC) who have all received some
 experimental treatment, in this case GemCap.  The dataset is named 'e4_data' and is loaded into the enviroment using the "data()" function
 
 ```{r}
+library(devtools)
+install_github("richjjackson/psc",ref="Version-2.0.0")
 #install.packages("psc")
 library(psc)
 library(ggpubr)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/numVisComp.R
 \name{numVisComp}
 \alias{numVisComp}
-\title{Visualising Categorical Data}
+\title{Visualising Numerical Data}
 \usage{
 numVisComp(p, x)
 }

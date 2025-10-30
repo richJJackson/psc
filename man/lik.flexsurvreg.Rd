@@ -4,7 +4,7 @@
 \alias{lik.flexsurvreg}
 \title{Likelihood function for a psc model of class 'flexsurvreg'}
 \usage{
-lik.flexsurvreg(beta, DC_clean)
+lik.flexsurvreg(beta, pscOb)
 }
 \arguments{
 \item{beta}{a parameter to be estimate}

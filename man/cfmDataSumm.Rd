@@ -2,7 +2,7 @@
 % Please edit documentation in R/cfmDataSumm.R
 \name{cfmDataSumm}
 \alias{cfmDataSumm}
-\title{Summarising data within a CFM}
+\title{Summarising data within a Counter Factual Model (CFM)}
 \usage{
 cfmDataSumm(cfm)
 }
@@ -14,6 +14,7 @@ a summary table
 }
 \description{
 The pscCFM creates a model object which is stripped of identifiable
-information.  The cfmDataSumm fucntion supplies a tabulated form of the dataset
-for summary information
+information.  The cfmDataSumm function supplies a tabulated form of the
+dataset used in the CFM for summary information.  Information returned in
+the form of a table
 }
