@@ -146,6 +146,7 @@ library(posterior)
 library(ggplot2)
 library(survminer)
 library(ggpubr)
+library(survival)
 ```
 
 Starting with the model, we can inspect the model terms included in the counter 
