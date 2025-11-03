@@ -23,10 +23,13 @@ Imports:
     stats,
     flexsurv,
     ggplot2,
+    ggpubr,
     survminer,
     gtsummary,
     RColorBrewer,
-    waffle
+    waffle,
+    parallel,
+    posterior
 Suggests: 
     knitr,
     rmarkdown,

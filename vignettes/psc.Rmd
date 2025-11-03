@@ -121,9 +121,13 @@ posterior distribution.
 # Motivating Example
 
 
-The psc.r package includes as example a dataset which is derived from patients 
-with pancreatic ductal adenocarcinoma (PDAC) who have all received some 
-experimental treatment, in this case GemCap.  The dataset is named 'e4_data' and is loaded into the enviroment using the "data()" function
+The psc.r package includes as example a dataset "e4_data" which is derived from 
+patients  ith pancreatic ductal adenocarcinoma (PDAC) who have all received some 
+experimental treatment, in this case GemCap.  Aside from this we 
+also provide a Counter Factual Model (CFM) for patients in the same setting 
+(named 'gemCFM') to receive a therapy called 'Gem'.  The aim here is to produce 
+a 'GemCap Vs Gem' comparison.  We start by loading the package and from there 
+obtianing the data and the model for analysis.
 
 ```{r}
 remove.packages("psc")
@@ -132,25 +136,49 @@ library(devtools)
 install_github("richjjackson/psc",ref="Version-2.0.0")
 #install.packages("psc")
 library(psc)
-e4_data <- psc::e4_data;e4_data[1:3,]
+e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
-gemCFM$terms
+```
 
+```{r}
+library(parallel)
+library(posterior)
+library(ggplot2)
+library(survminer)
+library(ggpubr)
+```
+
+Starting with the model, we can inspect the model terms included in the counter 
+factual model using 
+```{r}
+gemCFM$terms
 ```
 
 Included is a list of prognostic covariates:
 
-* nodes: patient lymph node status; negative (n=1) or positive (n=2) lymph nodes
-* grade: tumour grade; 1,2 or 3
-* lca199: log transformed ca19.9
-* t: T-stage; (1,2 or 3)
+* Lymph Nodes: patient lymph node status; negative (n=1) or positive (n=2) lymph nodes
+* Diff_Status: tumour grade; 1,2 or 3
+* PostOpCA199: log transformed ca19.9
+
+Similarly we can observe the outcome terms.  As the gemCFM object is a survival 
+model this includes terms named "time" and "cen".  NB the pscfit function will 
+search for these terms and so it is important that outcomes included in the data
+cohort (DC) are labelled in the same way.
+
+```{r}
+gemCFM$out.nm
+```
+
+Importantly the covariates included in the DC must have names which match these.  
+Prior to comparing the DC to the CFM then it is advisable to get an good 
+understanding of the data included in the CFM.  Within the CFM object there are 
+a series of plots to visualise the covariate values which can be extracted using 
+the 'plotCFM' function
 
 
-Also included are the following structures
-
-* time - survival time
-* cen - censoring indictor
-
+```{r}
+plotCFM(gemCFM)
+```
 
 We give esamples of how the 'pscfit()' function can be used to comapre data 
 against models with survival outcomes (with a 'flexsurvreg' model). Examples on 
@@ -165,79 +193,80 @@ using the "flexsurvreg" function within the "flexsurv" package.  An example is
 included within the 'psc.r' package names 'surv.mod' and is loaded using the 
 'data()" function:
 
+The 'gemCFM' is an object of class pscCFM which means it contains all of the 
+structures required for analysis but has stripped the model object of any 
+patient level data.  Please note that the psc package can be used by providing 
+standard 'glm' or 'flexsurvreg' models.  Here the procedures will convert the 
+model into a 'pscCFM' object using the pscCFM() function. 
+
+
+In this example the 'gemCFM' model is constructed with 5 internal 
+knots and hence 7 parameters to describe the baseline cumulative hazard 
+function:
+
 ```{r}
-#gemCFM <- psc::gemCFM
+gemCFM$haz_co
 ```
 
 
-The 'gemCFM' is an object of calss pscCFM which means it contains all of the structures required for analysis but has stripped the model object of any patient level data.  Included instead are a summary table:
+There are also prognostic covariates which match with the prognostic 
+covariates in the data cohort....
 
 ```{r}
-gemCFM$datasumm
-```
-
-...and a set of visualisations which we arrange using the ggarrange
-
-
-```{r}
-library(ggpubr)
-ggarrange(plotlist=gemCFM$datavis)
+gemCFM$cov_co
 ```
 
 
-In this example you can see that this is a model constructed with 3 internal 
-knots and hence 5 parameters to describe the baseline cumulative hazard 
-function.  There are also prognostic covariates which match with the prognostic 
-covariates in the data cohort.
+The process of comparing the DC to the CFM occures across 4 steps:
 
-Comparing the dataset to the model is then performed using
+* Step 1: Combine/Compare the DC and the CFM using the pscData() function
+* Step 2: Obtain initial values for the estimation procedue using init()
+* Step 3: Run the MCMC estimation procedure 
+* Step 4: Collate and summarise the results
+
+Each of these steps update a 'pscOb' object resutls which is returned to the 
+user.  This process is wrapped up in a single 'pscfit()' function/
 
 ```{r,include=F}
 surv.psc <- pscfit(gemCFM,e4_data)
-library(parallel)
-library(posterior)
 ```
 
-and we can view the attributes of the psc object that is created
+NB. A warning is supplied here just to note that data have been removed form the 
+DC prior to analysis due to missing data.
+
+We can view the attributes of the psc object that is created.  This includes 
+details on all components including the CFM, the DC, the likelihood applied, the 
+starting values and posterior distribuion
 
 ```{r}
 attributes(surv.psc)
 ```
 
-####FIX
-For example to view the matrix contianing the draws of the posterior 
-distribution we use
-
+Its worth noting that as part of the 'pscData()' function which ensures the DC 
+and CFM are compatible - the 'datavis' object has been updated.  This will now
+produce a useful figure to allow evaulation of how comparable the data from the 
+CFM and DC are using the 'plotCFM()' function
+ 
 ```{r}
-surv.post <- surv.psc$posterior
-head(surv.post)
+plotCFM(surv.psc)
 ```
 
-Inspection will show that there is a column for each parameter in the original model as well as 'beta' and 'DIC' vcolumns which give teh posterior estiamtes for $\beta$ and the Deviance Informaiton Criterion respectively.
+We make use of the 'posterior' package to summarise the posterior distributions 
+(saved within the 'draws' object).  Both 'print()' and 'coef()' will show these 
+although the 'summary()' function provides mode information:
 
-We can inspect the poterior distribution using the autocorrelation function, trace and stardard summary statistics:
-
-#### Autocorrelation
-```{r}
-acf(surv.post$beta)
-```
-
-#### Trace
-```{r}
-plot(surv.post$beta,typ="s")
-```
-
-#### Summary
-
-
-Standard 'summary()' function wil summarise the model fit
+This includes information on the underlying CFM as well as expected meand 
+response for patients in the DC along with 95% CI (obtianed using bootstrapping).
+A summary of the MCMC fit is supplied along with the overall summary of the 
+posterior distribution.
 
 ```{r}
 summary(surv.psc)
 ```
 
-To visualise the original model and the fit of the data, the plot function has 
-been developed
+
+Lastly to visualise the original model and the fit of the data, the plot function has 
+been included
 
 ```{r}
 plot(surv.psc)
