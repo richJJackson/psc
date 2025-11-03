@@ -180,6 +180,7 @@ gemCFM$datasumm
 
 
 ```{r}
+library(ggpubr)
 ggarrange(plotlist=gemCFM$datavis)
 ```
 
@@ -193,9 +194,8 @@ Comparing the dataset to the model is then performed using
 
 ```{r,include=F}
 surv.psc <- pscfit(gemCFM,e4_data)
-pscfit
-library(psc)
-
+library(parallel)
+library(posterior)
 ```
 
 and we can view the attributes of the psc object that is created
@@ -204,6 +204,7 @@ and we can view the attributes of the psc object that is created
 attributes(surv.psc)
 ```
 
+####FIX
 For example to view the matrix contianing the draws of the posterior 
 distribution we use
 
