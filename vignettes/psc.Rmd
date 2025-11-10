@@ -132,9 +132,9 @@ obtianing the data and the model for analysis.
 ```{r}
 remove.packages("psc")
 rm(list=ls())
-#library(devtools)
-#install_github("richjjackson/psc",ref="Version-2.0.0")
-#install.packages("psc")
+library(devtools)
+install_github("richjjackson/psc")
+install.packages("psc")
 #library(psc)
 e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
