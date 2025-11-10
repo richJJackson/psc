@@ -6,7 +6,7 @@
 #' @param x a covariate to be summarised
 #' @param nm a covariate name
 #' @return a ggplot object
-#' @import RColorBrewer
+#' @import RColorBrewer waffle
 cfmDataVis_fac <- function(x,nm){
 
   Freq <- NULL

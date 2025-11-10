@@ -134,8 +134,7 @@ remove.packages("psc")
 rm(list=ls())
 library(devtools)
 install_github("richjjackson/psc")
-install.packages("psc")
-#library(psc)
+library(psc)
 e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
 ```
