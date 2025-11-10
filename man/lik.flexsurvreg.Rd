@@ -4,12 +4,15 @@
 \alias{lik.flexsurvreg}
 \title{Likelihood function for a psc model of class 'flexsurvreg'}
 \usage{
-lik.flexsurvreg(beta, DC_clean)
+lik.flexsurvreg(beta, pscOb)
 }
 \arguments{
 \item{beta}{a parameter to be estimate}
 
 \item{DC_clean}{a cleaned dataset including covariates to match the CFM}
+}
+\value{
+the results of a likelihood functions
 }
 \description{
 A function which defines the likelihood for a PSC model where the Counter

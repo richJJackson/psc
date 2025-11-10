@@ -4,12 +4,12 @@
 \alias{plot.psc}
 \title{Function for Plotting PSC objects}
 \usage{
-\method{plot}{psc}(x, ...)
+\method{plot}{psc}(pscOb, ...)
 }
 \arguments{
-\item{x}{an object of class 'psc'}
-
 \item{...}{not used}
+
+\item{x}{an object of class 'psc'}
 }
 \value{
 a survival plot corresponding to the psc fit
@@ -24,8 +24,7 @@ This function plots the expected response of the control treatment
    along with the observe response rates of the experimental arms
 }
 \examples{
-library(psc)
-e4_data <-psc::e4_data
+e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
 psc <- pscfit(gemCFM,e4_data)
 plot(psc)

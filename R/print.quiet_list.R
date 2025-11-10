@@ -5,7 +5,6 @@
 #' @param x an object of class 'psc'
 #' @param ... not used
 #' @return A quiet list
-#' @export
 print.quiet_list <- function(x, ...) {
   cat("A list with names:")
   print(names(x))

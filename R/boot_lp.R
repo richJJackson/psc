@@ -1,0 +1,23 @@
+#' Counter Factual Model - summary
+#'
+#' A function to estimate the linear predictor - used in bootstrapping CFM for
+#' CIs
+#'
+#' @param pscOb an object of class 'psc'
+#' @param resp A boolean object to determine if results should be presented on
+#' the response scale
+#' @return A summary of a cfm object
+boot_lp <- function(i,pscOb,resp=resp){
+  cc <- rest[i,]
+  cov <- pscOb$DC$X
+
+  lp <- cov %*% cc
+  ret <- lp
+
+  if(resp){
+    fam <- enrich(pscOb$family)
+    ret <- fam$linkinv(lp)
+  }
+
+  ret
+}

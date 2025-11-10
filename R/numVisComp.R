@@ -1,11 +1,10 @@
-#' Visualising Categorical Data
+#' Visualising Numerical Data
 #'
 #' A function which summarises numerical data using a density plots
 #'
 #' @param p a ggplot object
 #' @param x a numeric vector
 #' @return a ggplot object
-#' @export
 numVisComp <- function(p,x){
   xnew <- NULL
   dnew <- data.frame("xnew"=x)

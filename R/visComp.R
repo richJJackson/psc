@@ -9,10 +9,9 @@
 #' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.
 #'  Defaults to all patients
 #' @return a list of grobs for each model covariate
-#' @export
 visComp <- function(CFM,DC,id=NULL){
 
-  ### error (CFP shoudl be of class pscCFM)
+  ### error (CFP should be of class pscCFM)
   if(!inherits(CFM,what ="pscCFM")) stop("Only models of class 'pscCFM' are allowed,
     please see pscCFM for details")
 

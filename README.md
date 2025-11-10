@@ -36,6 +36,7 @@ data("surv.mod")
 
 ### Load Data
 data("data")
+#> Warning in data("data"): data set 'data' not found
 
 ### Use 'pscfit' to compare
 surv.psc <- pscfit(surv.mod,data)
@@ -67,18 +68,26 @@ summary(surv.psc)
 #> Formula: 
 #> Surv(time, cen) ~ vi/age60 + ecog + allmets + logafp + alb + 
 #>     logcreat + logast + aet
-#> <environment: 0x1097f3cd8>
+#> <environment: 0x11feb0018>
 #> 
 #> Call:
 #>  CFM model + beta
 #> 
 #> Coefficients:
 #>       median    2.5%      97.5%     Pr(x<0)   Pr(x>0) 
-#> beta    0.3681    0.1639    0.5567    0.0002    0.9998
-#> DIC   280.7310  273.4438  292.3749        NA        NA
+#> beta    0.3672    0.1716    0.5608    0.0002    0.9998
+#> DIC   280.8676  273.3691  292.6939        NA        NA
 ```
 
 … and to see a plot of what you have done
+
+    #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+    #> ℹ Please use `linewidth` instead.
+    #> ℹ The deprecated feature was likely used in the ggpubr package.
+    #>   Please report the issue at <https://github.com/kassambara/ggpubr/issues>.
+    #> This warning is displayed once every 8 hours.
+    #> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    #> generated.
 
 <img src="man/figures/README-pressure-1.png" width="100%" />
 

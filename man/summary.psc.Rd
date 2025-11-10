@@ -4,12 +4,12 @@
 \alias{summary.psc}
 \title{Personalised Synthetic Controls - summary}
 \usage{
-\method{summary}{psc}(object, ...)
+\method{summary}{psc}(pscOb, ...)
 }
 \arguments{
-\item{object}{an object of class 'psc'}
-
 \item{...}{not used}
+
+\item{object}{an object of class 'psc'}
 }
 \value{
 A summary of a psc object obtained using pscSumm and a copy of the pscfit object
@@ -19,8 +19,7 @@ A generic function to provide a summary of a 'psc' object obtained from
 pscfit.R
 }
 \examples{
-library(psc)
-e4_data <-psc::e4_data
+e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
 psc <- pscfit(gemCFM,e4_data)
 summary(psc)

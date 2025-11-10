@@ -17,6 +17,9 @@
 #' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.
 #'  Defaults to all patients
 #' @param trt An optional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to NULL.
+#' @param nchain Number of chains used in posterior MCMC estimation.  Defaults to nchain=3.
+#' @param thin Thin applied to posterior draws.  Defaults to thin=2.
+#' @param burn Number of posterior samples to use as burn-in.  Defaults to burn=500
 #' @details the \code{pscfit} function compares a dataset ('DC') against a parametric model.
 #'   This is done by selecting a likelihood which is identified by the type of CFM that is supplied.
 #'   At present, two types of model are supported, a flexible parmaeteric survival model of type 'flexsurvreg'
@@ -67,41 +70,35 @@
 #'  }
 #' @import enrichwith mvtnorm survival flexsurv
 #' @examples
-#' library(psc)
-#' e4_data <-psc::e4_data
+#' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM
 #' psc <- pscfit(gemCFM,e4_data)
-#' summary(psc)
+#' print(psc)
 #' @export
-pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL) {
+pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL,nchain=3,thin=2,burn=500){
 
-  ### Cleaning Data
-  DC_clean <- dataComb(CFM, DC, id=id, trt = trt)
-
-  ### Starting Parameters
-  init <- initParm(CFM = CFM, DC_clean = DC_clean, trt = trt)
-  start<- init$par
-  start.se <- sqrt(solve(init$hess))
-
-  ### MCMC estimation### MhessianCMC estimation
-  mcmc <- pscEst(CFM = CFM, DC_clean = DC_clean, nsim = nsim,
-                 start = init$par, start.se=start.se,trt = trt)
-
-  ### Formatting results
-  covnm <- "beta"
-  if (!is.null(trt)) {
-    df <- data.frame(DC_clean$cov)
-    ft <- factor(df$trt)
-    covnm <- paste("beta", levels(ft), sep = "_")
+  #### Step 1 - create pscCFM object (may not be required if pscCFM object supplied)
+  if(!"pscCFM"%in%class(CFM)){
+    CFM  <- pscCFM(CFM)
   }
 
-  mcmc <- data.frame(mcmc)
-  names(mcmc) <- c(colnames(DC_clean$model_extract$sig), covnm,
-                   "DIC")
-  cl <- class(CFM)
-  if("pscCFM"%in%cl) cl = CFM$mod_class
-  psc.ob <- list(model.type = cl, DC_clean = DC_clean,
-                 posterior = mcmc)
-    class(psc.ob) <- "psc"
-  return(psc.ob)
+  ### Step 2 - create pscfit data object
+  pscOb <- pscData(CFM,DC,id=id,trt=trt)
+
+  ### Step 3 - get initial values
+  pscOb <- init(pscOb)
+
+  ### Step 4 - MCMC estimation
+  pscOb <- pscEst(pscOb,nsim,nchain)
+
+  ### Step 5 - Summarising posterior
+  pscOb <- postSummary(pscOb,thin=thin,burn=burn)
+
+  ### Giving 'class to result'
+  class(pscOb) <- "psc"
+  pscOb
+
 }
+
+
+

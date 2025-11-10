@@ -4,12 +4,12 @@
 \alias{plot.psc.binary}
 \title{Function for Plotting PSC objects}
 \usage{
-\method{plot}{psc.binary}(x, ...)
+\method{plot}{psc.binary}(pscOb, ...)
 }
 \arguments{
-\item{x}{an object of class 'psc'}
-
 \item{...}{not used}
+
+\item{x}{an object of class 'psc'}
 }
 \value{
 a survival plot corresponding to the psc fit

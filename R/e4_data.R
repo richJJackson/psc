@@ -14,4 +14,3 @@
 #' }
 #' @source simulated
 "e4_data"
-

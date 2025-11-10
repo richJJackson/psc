@@ -1,26 +1,34 @@
-#' Summarising data within a CFM
+#'  Summarising data within a Counter Factual Model (CFM)
 #'
 #' The pscCFM creates a model object which is stripped of identifiable
-#' information.  The cfmDataSumm fucntion supplies a tabulated form of the dataset
-#' for summary information
+#' information.  The cfmDataSumm function supplies a tabulated form of the
+#' dataset used in the CFM for summary information.  Information returned in
+#' the form of a table
 #'
 #' @param cfm a 'glm' or 'flexsurvreg' model object
 #' @return a summary table
 #' @import gtsummary
+#' @examples
+#' e4_data <- psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' cfmDataSumm(gemCFM,e4_data)
 #' @export
 cfmDataSumm <- function(cfm){
 
-
   ### Getting data from object
-  data <- model.frame(cfm)
+  data <- model.frame(cfm);data
 
-  ## removing outcome
-  out <- data[,1]
-  data<- data[,-1]
+  ## Formula
+  fix.form <- formula(cfm,fixed.only=T)
+  fix.term <- terms(fix.form)
+  terms <- attributes(fix.term)$term.labels
 
-  ## removing "weights" column
-  w.id <- which(names(data)=="(weights)")
-  if(length(w.id)>0) data <- data[,-w.id]
+  ### Selecting variables which are fixed effects
+  data <- data[,which(names(data)%in%terms)]
+  if(length(terms)==1){
+    data <- data.frame(data)
+    names(data) <- terms
+  }
 
   ### Table summary
   tb_summ <- tbl_summary(data,missing="ifany")
@@ -29,5 +37,7 @@ cfmDataSumm <- function(cfm){
   class(ret) <- c("quiet_gtsumm",class(ret))
   ret
 }
+
+
 
 

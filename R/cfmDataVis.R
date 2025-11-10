@@ -6,25 +6,34 @@
 #'
 #' @param cfm a 'glm' or 'flexsurvreg' model object
 #' @return a list of grobs for each model covariate
+#' #' @examples
+#' e4_data <- psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' cfmDataVis(gemCFM,e4_data)
 #' @export
 cfmDataVis <- function(cfm){
 
   ### Getting data from object
   data <- model.frame(cfm)
 
-  ### reordering each factor in the dataset - this maintains individual
+  ### reordering each factor in the dataset - this maintains identifiability
   nr <- nrow(data)
   for(i in 1:ncol(data)){
     data[,i] <- data[sample(nr,nr,replace=F),i]
   }
 
-  ## removing outcome
-  out <- data[,1]
-  data<- data[,-1]
+  ## Formula
+  fix.form <- formula(cfm,fixed.only=T)
+  fix.term <- terms(fix.form)
+  terms <- attributes(fix.term)$term.labels
 
-  ## removing "weights" column
-  w.id <- which(names(data)=="(weights)")
-  if(length(w.id)>0) data <- data[,-w.id]
+  ### Selecting variables which are fixed effects
+  data <- data[,which(names(data)%in%terms)]
+  if(length(terms)==1){
+    data <- data.frame(data)
+    names(data) <- terms
+  }
+
 
   ## Getting classes
   cls <- lapply(data,class)
@@ -37,13 +46,13 @@ cfmDataVis <- function(cfm){
     x <- data[,i];x
     nm <- names(data)[i]
     if(cls[i]%in%c("factor","character")){
-      gglist[[i]] <- facVis(x,nm)
+      gglist[[i]] <- cfmDataVis_fac(x,nm)
     }
 
     if(cls[i]%in%c("numeric","integer")){
-      jit.sd <- sd(x)/10
-      x <- x+rnorm(nr,0,jit.sd)
-      gglist[[i]] <- numVis(x,nm)
+      jit.sd <- sd(x,na.rm=T)/10
+      x <- x+rnorm(nr,0,jit.sd) ## jittering
+      gglist[[i]] <- cfmDataVis_num(x,nm)
     }
 
   }

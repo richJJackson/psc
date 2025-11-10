@@ -7,21 +7,10 @@
 \method{modelExtract}{glm}(CFM)
 }
 \arguments{
-\item{CFM}{a model of class 'glm'}
+\item{CFM}{a model of class either 'glm'}
 }
 \value{
-a list of extracted model components.  Included are
-\itemize{
-\item{mod_class: The class of the model object}
-\item{terms: The terms included in the model}
-\item{cov_cls: The classes of the model covariates}
-\item{cov_lev: The levels of categorical variables}
-\item{cov_co: covariate coefficients}
-\item{sig: variance-covariance matrix}
-\item{form: model formula}
-\item{family: model family}
-\item{out.nm: outcome covariates names}
-}
+a list of extracted model components
 }
 \description{
 A generic function for extracting model information

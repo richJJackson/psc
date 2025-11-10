@@ -2,21 +2,26 @@
 % Please edit documentation in R/coef.psc.R
 \name{coef.psc}
 \alias{coef.psc}
-\title{Returns the coefficeint estimate of a psc object.}
+\title{Returns the coefficient estimate of a psc object.}
 \usage{
-\method{coef}{psc}(object, ..., level = 0.05)
+\method{coef}{psc}(pscOb, ...)
 }
 \arguments{
-\item{object}{a 'psc' object}
-
 \item{...}{not used}
 
-\item{level}{the level at which credibility intervals are assessed, defaults to 0.05}
+\item{object}{a 'psc' object}
 }
 \value{
-The summary of the posterior distribution for the efficacy parameter in terms of the median and 95% HPD
+The summary of the posterior distribution for the efficacy parameter
+in terms of the median and 95% HPD
 }
 \description{
 Returns basic measures of the posterior distribution obtained from the
-pscfit.R function
+psc object
+}
+\examples{
+e4_data <- psc::e4_data
+gemCFM <- psc::gemCFM
+psc <- pscfit(gemCFM,e4_data)
+coef(psc)
 }

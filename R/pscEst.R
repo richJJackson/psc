@@ -1,12 +1,10 @@
-#' Function for performing estimation procedures in 'pscfit'
-#' @param CFM a model object supplied to pscfit
-#' @param DC_clean a cleaned dataset ontained using dataComb().
+#' Function for performing Bayesian MCMC estimation procedures in 'pscfit'
+#' @param pscOb an pscOb object which has been passed through pscData() and
+#' init() functions
 #' @param nsim the number of MCMC simulations to run
-#' @param start the stating value for
-#' @param start.se the stating value for
-#' @param trt an optional vector denoting treatment allocations where mulitple
-#'     treatment comparisons are bieng made
+#' @param nchain Number of chains to use for analysis
 #' @return A matrix containing the draws form the posterior distribution
+#' @import parallel
 #' @details
 #'
 #' Define the set of model parameters \eqn{B} to contain \eqn{\Gamma} which summarize
@@ -47,6 +45,22 @@
 #'}
 #' The result of the algorithm is a posterior distribution for the log hazard ratio,
 #' \eqn{\beta}, captures the variability in B through the defined priors \eqn{\pi{(\beta)}}.
-pscEst <- function(CFM, DC_clean, nsim, start, start.se, trt){
-  UseMethod("pscEst")
+#'  @examples
+#' e4_data <- psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' pscOb <- pscData(gemCFM,e4_data)
+#' pscOb <- init(pscOb)
+#' pscOb <- pscEst(pscOb)
+#' @export
+
+pscEst <- function(pscOb,nsim=1000,nchain=1){
+
+  ### Set Up
+  pscOb <- pscEst_start(pscOb,nsim=nsim,nchain=nchain)
+
+  ### Perform MCMC
+  pscOb <- pscEst_run(pscOb,nsim=nsim,nchain=nchain)
+  pscOb
+
 }
+

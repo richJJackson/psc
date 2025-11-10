@@ -4,7 +4,16 @@
 \alias{pscfit}
 \title{Personalised Synthetic Controls model fit}
 \usage{
-pscfit(CFM, DC, nsim = 5000, id = NULL, trt = NULL)
+pscfit(
+  CFM,
+  DC,
+  nsim = 5000,
+  id = NULL,
+  trt = NULL,
+  nchain = 3,
+  thin = 2,
+  burn = 500
+)
 }
 \arguments{
 \item{CFM}{An R model object of class 'glm' or 'flexsurvspline'}
@@ -17,6 +26,12 @@ pscfit(CFM, DC, nsim = 5000, id = NULL, trt = NULL)
 Defaults to all patients}
 
 \item{trt}{An optional vector denoting treatment allocations for multiple treatment comparisons.  Defaults to NULL.}
+
+\item{nchain}{Number of chains used in posterior MCMC estimation.  Defaults to nchain=3.}
+
+\item{thin}{Thin applied to posterior draws.  Defaults to thin=2.}
+
+\item{burn}{Number of posterior samples to use as burn-in.  Defaults to burn=500}
 }
 \value{
 a object of class 'psc' with attributes model.type, the cleaned Dataset and the
@@ -82,9 +97,8 @@ the \code{pscfit} function compares a dataset ('DC') against a parametric model.
    specified sperately (using the 'trt' option).
 }
 \examples{
-library(psc)
-e4_data <-psc::e4_data
+e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
 psc <- pscfit(gemCFM,e4_data)
-summary(psc)
+print(psc)
 }
