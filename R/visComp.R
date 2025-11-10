@@ -9,7 +9,6 @@
 #' @param id Numeric vector stating which patient(s) from the dataset should be included in the analysis.
 #'  Defaults to all patients
 #' @return a list of grobs for each model covariate
-#' @export
 visComp <- function(CFM,DC,id=NULL){
 
   ### error (CFP should be of class pscCFM)

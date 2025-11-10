@@ -4,6 +4,7 @@
 #' @param nsim the number of MCMC simulations to run
 #' @param nchain Number of chains to use for analysis
 #' @return A matrix containing the draws form the posterior distribution
+#' @import parallel
 #' @details
 #'
 #' Define the set of model parameters \eqn{B} to contain \eqn{\Gamma} which summarize
@@ -44,6 +45,14 @@
 #'}
 #' The result of the algorithm is a posterior distribution for the log hazard ratio,
 #' \eqn{\beta}, captures the variability in B through the defined priors \eqn{\pi{(\beta)}}.
+#'  @examples
+#' e4_data <- psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' pscOb <- pscData(gemCFM,e4_data)
+#' pscOb <- init(pscOb)
+#' pscOb <- pscEst(pscOb)
+#' @export
+
 pscEst <- function(pscOb,nsim=1000,nchain=1){
 
   ### Set Up

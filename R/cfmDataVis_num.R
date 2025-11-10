@@ -7,7 +7,6 @@
 #' @param nm a covariate name
 #' @return a ggplot object
 #' @import RColorBrewer
-#' @export
 cfmDataVis_num <- function(x,nm){
 
   y <- NULL

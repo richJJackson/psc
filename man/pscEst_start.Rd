@@ -29,3 +29,10 @@ defining, target and prior distributions and deifnign the posterior
 desitribution from the CFM.  This also sets the number of cores to be used
 for estimation where parallel computing is applied.
 }
+\examples{
+e4_data <- psc::e4_data
+gemCFM <- psc::gemCFM
+pscOb <- pscData(gemCFM,e4_data)
+pscOb <- init(pscOb)
+pscOb <- pscEst_start(pscOb)
+}

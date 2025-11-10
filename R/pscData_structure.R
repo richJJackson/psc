@@ -9,7 +9,6 @@
 #' @param CFM a Counter Factual Model
 #' @param DC a Data Cohort object
 #' @return A set of structures for use with estimation procedures
-#'
 pscData_structure <- function(CFM,DC){
 
   if("lmerMod"%in%CFM$mod_class){

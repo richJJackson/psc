@@ -70,11 +70,10 @@
 #'  }
 #' @import enrichwith mvtnorm survival flexsurv
 #' @examples
-#' library(psc)
-#' e4_data <-psc::e4_data
+#' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM
 #' psc <- pscfit(gemCFM,e4_data)
-#' summary(psc)
+#' print(psc)
 #' @export
 pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL,nchain=3,thin=2,burn=500){
 

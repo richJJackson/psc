@@ -5,7 +5,6 @@
 #' @param p a ggplot object
 #' @param x a numeric vector
 #' @return a ggplot object
-#' @export
 numVisComp <- function(p,x){
   xnew <- NULL
   dnew <- data.frame("xnew"=x)

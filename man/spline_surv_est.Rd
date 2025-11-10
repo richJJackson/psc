@@ -21,7 +21,7 @@ spline_surv_est(lam, kn, k, haz_co, cov_co, cov = cov, tm = tm, beta = 0)
 beta=0)}
 }
 \value{
-A summary of a cfm object
+A data frame containing survival estimates for a give time
 }
 \description{
 A function to estimate the survival function based on parameter estimates -

@@ -26,9 +26,9 @@ which has been passed through pscData()) then a comparison of the CFM and DC
 will be supplied
 }
 \examples{
-library(psc)
-e4_data <-psc::e4_data
+e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
+plotCFM(gemCFM)
 psc <- pscfit(gemCFM,e4_data)
-plot(psc)
+plotCFM(psc)
 }

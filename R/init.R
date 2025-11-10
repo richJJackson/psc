@@ -6,6 +6,11 @@
 #' pscData() strucutres and fits the likelihood to provide starting values for
 #' MCMC estimation
 #' @return Parameter Estimates and standard error for the efficacy parameter
+#' @examples
+#' e4_data <- psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' pscOb <- pscData(gemCFM,e4_data)
+#' pscOb <- init(pscOb)
 #' @export
 init <- function(pscOb){
 

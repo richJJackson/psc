@@ -12,7 +12,17 @@
 #' @details This function makes use of the 'posterior' package to pull together
 #' each of the 'draw' matrices included in the psc object and produce posterior
 #' summaries
-#'
+#' @return Returns a summary of a 'psc' object including details on the original
+#' Counter Factual Model, a summary of the Data Cohort, the predicted responses
+#' from the CFM and details on the model fit.
+#' @import posterior
+#' @examples
+#' e4_data <- psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' pscOb <- pscData(gemCFM,e4_data)
+#' pscOb <- init(pscOb)
+#' pscOb <- pscEst(pscOb)
+#' pscOb <- postSummary(pscOb)
 #' @export
 #'
 postSummary <- function(pscOb,thin=2,burn=1000,par="beta"){

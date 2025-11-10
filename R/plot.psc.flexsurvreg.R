@@ -5,7 +5,7 @@
 #' @details making use of 'ggsurvplot' in the survminer package, this function
 #' plots the expected survival funtion for the 'control' treatment estimated
 #' from the CFM along with the Kaplan Meier estimates of the observed events
-#' @import ggplot2 survminer
+#' @import ggplot2 survminer ggpubr
 plot.psc.flexsurvreg <- function(pscOb, addFit=T,...){
 
   # Binding local varaibles

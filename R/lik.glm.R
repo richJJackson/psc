@@ -9,6 +9,7 @@
 #' @param DC_clean a cleaned dataset including covariates to match the CFM
 #' @details A likelihood function for use by pscfit for a model of class
 #' 'glm'
+#' @return the results of a likelihood functions
 #'
 lik.glm <- function (beta,pscOb){
 

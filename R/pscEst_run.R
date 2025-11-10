@@ -6,7 +6,13 @@
 #' @param nsim the number of MCMC simulations to run
 #' @param nchain Number of chains to use for analysis
 #' @return An updated set of attributes for the pscOb which includes
-#' @export
+#' @examples
+#' e4_data <- psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' pscOb <- pscData(gemCFM,e4_data)
+#' pscOb <- init(pscOb)
+#' pscOb <- pscEst_start(pscOb)
+#' pscOb <- pscEst_run(pscOb)
 pscEst_run <- function(pscOb,nsim,nchain){
 
   if(nchain==1){
@@ -14,8 +20,16 @@ pscEst_run <- function(pscOb,nsim,nchain){
   }
 
   if(nchain>1){
-    res <- mclapply(1:nchain,mc.cores=pscOb$ncores,
+    if(.Platform$OS.type!="windows"){
+      res <- mclapply(1:nchain,mc.cores=pscOb$ncores,
                     function(x) pscEst_samp(pscOb=pscOb,nsim=nsim))
+    }
+
+  if(.Platform$OS.type=="windows"){
+    res <- parallelsugar::mclapply(1:nchain,mc.cores=pscOb$ncores,
+                    function(x) pscEst_samp(pscOb=pscOb,nsim=nsim))
+    }
+
   }
 
   ### Adding results

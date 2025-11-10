@@ -4,9 +4,7 @@
 #' @param pscOb an pscOb object which has been passed through pscData() and
 #' init() functions
 #' @param nsim the number of MCMC simulations to run
-
 #' @return An updated set of attributes for the pscOb which includes
-#' @export
 pscEst_samp <- function(pscOb,nsim){
 
   draws <- pscOb$draws;draws

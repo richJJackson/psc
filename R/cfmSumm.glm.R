@@ -5,7 +5,6 @@
 #'
 #' @param object an object of class 'psc'
 #' @return A summary of a cfm object
-#' @export
 cfmSumm.glm <- function(pscOb,bootCI=TRUE,nboot=1000,resp=TRUE){
 
   ### Set-Up

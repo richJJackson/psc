@@ -12,7 +12,7 @@
 #' @param tm time at which to assess the survival function
 #' @param beta parameter with which to adjust the baseline function (defaults to
 #' beta=0)
-#' @return A summary of a cfm object
+#' @return A data frame containing survival estimates for a give time
 spline_surv_est <- function(lam,kn,k,haz_co,cov_co,cov=cov,tm=tm,beta=0){
 
   ret <- S <- f <- NULL

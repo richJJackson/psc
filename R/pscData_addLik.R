@@ -4,8 +4,7 @@
 #' psc object for estimation procedures
 #'
 #' @param CFM A counter factual model
-#' @return a likelihood function
-#'
+#' @return a likelihood functio
 pscData_addLik <- function(CFM){
 
   ret <- "No Likelihood specified"

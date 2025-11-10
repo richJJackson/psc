@@ -2,7 +2,6 @@
 #' @param CFM a model of class either 'glm'
 #' @details A function for extracting the model information required for using pscfit
 #' @return a list of extracted model components
-#' @export
 modelExtract.glm <- function(CFM){
 
   ### Model class

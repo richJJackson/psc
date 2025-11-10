@@ -9,7 +9,6 @@
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates of the experimental arms
 #' @import ggplot2
-#' @export
 plot.psc.binary <- function(pscOb,...){
 
   # binding variables

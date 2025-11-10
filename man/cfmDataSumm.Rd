@@ -18,3 +18,8 @@ information.  The cfmDataSumm function supplies a tabulated form of the
 dataset used in the CFM for summary information.  Information returned in
 the form of a table
 }
+\examples{
+e4_data <- psc::e4_data
+gemCFM <- psc::gemCFM
+cfmDataSumm(gemCFM,e4_data)
+}

@@ -9,10 +9,9 @@
 #' @return a survival plot corresponding to the psc fit
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates of the experimental arms
-#' @import ggplot2
+#' @import ggplot2 ggpubr
 #' @examples
-#' library(psc)
-#' e4_data <-psc::e4_data
+#' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM
 #' psc <- pscfit(gemCFM,e4_data)
 #' plot(psc)

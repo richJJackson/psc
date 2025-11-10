@@ -11,6 +11,9 @@ lik.flexsurvreg(beta, pscOb)
 
 \item{DC_clean}{a cleaned dataset including covariates to match the CFM}
 }
+\value{
+the results of a likelihood functions
+}
 \description{
 A function which defines the likelihood for a PSC model where the Counter
 Factual Model (CFM) takes the form of a 'flexsurvreg' object and an efficacy

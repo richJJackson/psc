@@ -19,3 +19,9 @@ in terms of the median and 95% HPD
 Returns basic measures of the posterior distribution obtained from the
 psc object
 }
+\examples{
+e4_data <- psc::e4_data
+gemCFM <- psc::gemCFM
+psc <- pscfit(gemCFM,e4_data)
+coef(psc)
+}

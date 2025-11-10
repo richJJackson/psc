@@ -7,7 +7,6 @@
 #' @param x a categorical covariate
 #' @return a ggplot object
 #' @import RColorBrewer waffle
-#' @export
 facVisComp <- function(p,x){
 
   Freq <- NULL

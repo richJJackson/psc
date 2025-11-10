@@ -22,3 +22,11 @@ An updated set of attributes for the pscOb which includes
 Running the Bayesian MCMC routine
 A procedure which runs the MCMC estimation routine
 }
+\examples{
+e4_data <- psc::e4_data
+gemCFM <- psc::gemCFM
+pscOb <- pscData(gemCFM,e4_data)
+pscOb <- init(pscOb)
+pscOb <- pscEst_start(pscOb)
+pscOb <- pscEst_run(pscOb)
+}

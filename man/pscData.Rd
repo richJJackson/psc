@@ -26,3 +26,8 @@ extracting the appropriate structures.  Data are returned in terms of "Y" for
 model outcomes, "X" for data and "Z" for random effects where mixed models
 are supplied.
 }
+\examples{
+e4_data <- psc::e4_data
+gemCFM <- psc::gemCFM
+pscOb <- pscData(gemCFM,e4_data)
+}

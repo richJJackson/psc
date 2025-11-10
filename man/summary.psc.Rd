@@ -18,3 +18,9 @@ A summary of a psc object obtained using pscSumm and a copy of the pscfit object
 A generic function to provide a summary of a 'psc' object obtained from
 pscfit.R
 }
+\examples{
+e4_data <- psc::e4_data
+gemCFM <- psc::gemCFM
+psc <- pscfit(gemCFM,e4_data)
+summary(psc)
+}

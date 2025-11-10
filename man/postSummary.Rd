@@ -16,6 +16,11 @@ postSummary(pscOb, thin = 2, burn = 1000, par = "beta")
 \item{par}{the parameter to be summarised - defaults to 'beta' to summarise
 all 'beta' parameters in the posterior distribution}
 }
+\value{
+Returns a summary of a 'psc' object including details on the original
+Counter Factual Model, a summary of the Data Cohort, the predicted responses
+from the CFM and details on the model fit.
+}
 \description{
 A function that provides a summary of the posterior distributions obtained
 from a pscEst() procedures
@@ -24,4 +29,12 @@ from a pscEst() procedures
 This function makes use of the 'posterior' package to pull together
 each of the 'draw' matrices included in the psc object and produce posterior
 summaries
+}
+\examples{
+e4_data <- psc::e4_data
+gemCFM <- psc::gemCFM
+pscOb <- pscData(gemCFM,e4_data)
+pscOb <- init(pscOb)
+pscOb <- pscEst(pscOb)
+pscOb <- postSummary(pscOb)
 }

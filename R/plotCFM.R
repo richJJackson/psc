@@ -13,11 +13,11 @@
 #' will be supplied
 #' @import ggplot2
 #' @examples
-#' library(psc)
-#' e4_data <-psc::e4_data
+#' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM
+#' plotCFM(gemCFM)
 #' psc <- pscfit(gemCFM,e4_data)
-#' plot(psc)
+#' plotCFM(psc)
 #' @export
 plotCFM <- function(x,...){
   if(!class(x)%in%c("pscCFM","psc","pscOb")){

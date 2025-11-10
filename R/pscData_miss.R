@@ -6,7 +6,6 @@
 #'
 #' @param DC a data cohort to be 'cleaned'
 #' @return a dataset with missing data removed
-#'
 pscData_miss <- function(DC){
   miss.id <- which(is.na(DC),arr.ind=T)[,1];miss.id
   if(length(miss.id)>0) {

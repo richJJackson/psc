@@ -7,7 +7,6 @@
 #' @param term.nm Term names from the CFM
 #' @param DC a data cohort to be 'cleaned'
 #' @return a 'stop' command when errors are detected
-#'
 pscData_error <- function(term.nm,DC){
 
   ## removing 'weights' column if there

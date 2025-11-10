@@ -6,6 +6,10 @@
 #'
 #' @param cfm a 'glm' or 'flexsurvreg' model object
 #' @return a list of grobs for each model covariate
+#' #' @examples
+#' e4_data <- psc::e4_data
+#' gemCFM <- psc::gemCFM
+#' cfmDataVis(gemCFM,e4_data)
 #' @export
 cfmDataVis <- function(cfm){
 
