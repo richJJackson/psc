@@ -1,15 +1,16 @@
 #' Function for Plotting PSC objects
-#' @param x an object of class 'psc'
+#' @param pscOb an object of class 'psc'
+#' @param addFit should a curve for the model fit be added?
 #' @param ... not used
 #' @return a survival plot corresponding to the psc fit
 #' @details making use of 'ggsurvplot' in the survminer package, this function
 #' plots the expected survival funtion for the 'control' treatment estimated
 #' from the CFM along with the Kaplan Meier estimates of the observed events
-#' @import ggplot2 survminer ggpubr
+#' @import ggplot2 survminer ggpubr survival
 plot.psc.flexsurvreg <- function(pscOb, addFit=T,...){
 
   # Binding local varaibles
-  S <- trt <-s_fpm <- s_data <- NULL
+  S <- trt <-s_fpm <- s_data <- lo <- hi <- NULL
 
   med <- coef(pscOb)
   med <- as.numeric(as.character(data.frame(med)$mean))

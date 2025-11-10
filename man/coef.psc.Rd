@@ -4,12 +4,12 @@
 \alias{coef.psc}
 \title{Returns the coefficient estimate of a psc object.}
 \usage{
-\method{coef}{psc}(pscOb, ...)
+\method{coef}{psc}(object, ...)
 }
 \arguments{
-\item{...}{not used}
-
 \item{object}{a 'psc' object}
+
+\item{...}{not used}
 }
 \value{
 The summary of the posterior distribution for the efficacy parameter

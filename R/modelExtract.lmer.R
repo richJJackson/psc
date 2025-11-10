@@ -2,6 +2,7 @@
 #' @param CFM a model of class either 'lmer'
 #' @details A function for extracting the model information required for using pscfit
 #' @return a list of extracted model components
+#' @import lme4
 modelExtract.lmerMod <- function(CFM){
 
   ### Model class
@@ -16,7 +17,7 @@ modelExtract.lmerMod <- function(CFM){
 
   ## random effects
   b <- VarCorr(CFM)
-  ran.var <- bdiag(b)
+  ran.var <- diag(b)
   e <- summary(CFM)$sigma;e
 
   ### Getting fixed and random effect model forms

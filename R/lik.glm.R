@@ -6,7 +6,8 @@
 #' ?pscfit and ?pscEst
 #'
 #' @param beta a parameter to be estimate
-#' @param DC_clean a cleaned dataset including covariates to match the CFM
+#' @param pscOb a pscOb object containing a cleaned dataset including
+#' covariates to match the CFM
 #' @details A likelihood function for use by pscfit for a model of class
 #' 'glm'
 #' @return the results of a likelihood functions

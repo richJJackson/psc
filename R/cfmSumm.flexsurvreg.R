@@ -3,7 +3,9 @@
 #' A generic function to provide a summary of a Counter factual model of class
 #' 'glm'
 #'
-#' @param object an object of class 'psc'
+#' @param pscOb an object of class 'psc'
+#' @param bootCI a boolean to determine if bootstrapping CIs are required
+#' @param nboot Number of bootstraps
 #' @return A summary of a cfm object
 cfmSumm.flexsurvreg <-   function(pscOb,bootCI=TRUE,nboot=1000){
 

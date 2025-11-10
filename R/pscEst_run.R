@@ -20,16 +20,8 @@ pscEst_run <- function(pscOb,nsim,nchain){
   }
 
   if(nchain>1){
-    if(.Platform$OS.type!="windows"){
-      res <- mclapply(1:nchain,mc.cores=pscOb$ncores,
+        res <- mclapply(1:nchain,mc.cores=pscOb$ncores,
                     function(x) pscEst_samp(pscOb=pscOb,nsim=nsim))
-    }
-
-  if(.Platform$OS.type=="windows"){
-    res <- parallelsugar::mclapply(1:nchain,mc.cores=pscOb$ncores,
-                    function(x) pscEst_samp(pscOb=pscOb,nsim=nsim))
-    }
-
   }
 
   ### Adding results

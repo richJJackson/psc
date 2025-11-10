@@ -3,7 +3,7 @@
 #' A function which illsutrates the predicted response under the counter factual
 #' model and the observed response under the experimental treatment(s).
 #'
-#' @param x an object of class 'psc'
+#' @param pscOb an object of class 'psc'
 #' @param ... not used
 #' @return a survival plot corresponding to the psc fit
 #' @details This function plots the expected response of the control treatment
@@ -12,7 +12,7 @@
 plot.psc.binary <- function(pscOb,...){
 
   # binding variables
-  pr_data <- Outcome <-  NULL
+  pr_data <- Outcome <- lp <-  NULL
 
   fam <- pscOb$family;fam
   out <- pscOb$DC$Y;out

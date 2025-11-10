@@ -7,7 +7,13 @@
 cfmSumm.glm(pscOb, bootCI = TRUE, nboot = 1000, resp = TRUE)
 }
 \arguments{
-\item{object}{an object of class 'psc'}
+\item{pscOb}{an object of class 'psc'}
+
+\item{bootCI}{a boolean to determine if bootstrapping CIs are required}
+
+\item{nboot}{Number of bootstraps}
+
+\item{resp}{Should results be on the response scale?}
 }
 \value{
 A summary of a cfm object

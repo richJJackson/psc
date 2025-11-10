@@ -7,9 +7,11 @@
 \method{plot}{psc.flexsurvreg}(pscOb, addFit = T, ...)
 }
 \arguments{
-\item{...}{not used}
+\item{pscOb}{an object of class 'psc'}
 
-\item{x}{an object of class 'psc'}
+\item{addFit}{should a curve for the model fit be added?}
+
+\item{...}{not used}
 }
 \value{
 a survival plot corresponding to the psc fit

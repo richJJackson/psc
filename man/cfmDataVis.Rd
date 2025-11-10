@@ -11,10 +11,6 @@ cfmDataVis(cfm)
 }
 \value{
 a list of grobs for each model covariate
-#' @examples
-e4_data <- psc::e4_data
-gemCFM <- psc::gemCFM
-cfmDataVis(gemCFM,e4_data)
 }
 \description{
 The pscCFM creates a model object which is stripped of identifiable

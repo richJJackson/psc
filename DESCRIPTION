@@ -23,18 +23,19 @@ Imports:
     stats,
     flexsurv,
     ggplot2,
-    ggpubr,
     survminer,
     gtsummary,
     RColorBrewer,
-    waffle,
     parallel,
-    posterior
+    ggpubr,
+    posterior,
+    lme4,
+    utils
 Suggests: 
     knitr,
     rmarkdown,
     devtools,
-    ggpubr,
+    waffle,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3

@@ -8,11 +8,6 @@
 #' @param cfm a 'glm' or 'flexsurvreg' model object
 #' @return a summary table
 #' @import gtsummary
-#' @examples
-#' e4_data <- psc::e4_data
-#' gemCFM <- psc::gemCFM
-#' cfmDataSumm(gemCFM,e4_data)
-#' @export
 cfmDataSumm <- function(cfm){
 
   ### Getting data from object

@@ -7,7 +7,7 @@
 #' the psc package
 #'
 #'
-#' @param cfm a 'glm' or 'flexsurvreg' model object
+#' @param CFM a 'glm' or 'flexsurvreg' model object
 #' @param dataSumm a logical indicator specifying whether a summary of the data
 #' should be provided, defaults to TRUE.
 #' @param dataVis a logical indicator specifying whether a visualisations of the
