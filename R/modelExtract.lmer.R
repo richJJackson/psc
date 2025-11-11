@@ -2,7 +2,7 @@
 #' @param CFM a model of class either 'lmer'
 #' @details A function for extracting the model information required for using pscfit
 #' @return a list of extracted model components
-#' @import lme4
+#' @importFrom lme4 VarCorr
 modelExtract.lmerMod <- function(CFM){
 
   ### Model class
@@ -16,7 +16,7 @@ modelExtract.lmerMod <- function(CFM){
   sig <- vcov(CFM)
 
   ## random effects
-  b <- VarCorr(CFM)
+  b <- lme4::VarCorr(CFM)
   ran.var <- diag(b)
   e <- summary(CFM)$sigma;e
 

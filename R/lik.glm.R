@@ -11,14 +11,14 @@
 #' @details A likelihood function for use by pscfit for a model of class
 #' 'glm'
 #' @return the results of a likelihood functions
-#'
+#' @importFrom enrichwith enrich
 lik.glm <- function (beta,pscOb){
 
   ## Getting data& model objects
   event <- pscOb$DC$Y
   cov <- pscOb$DC$X
   cov_co <- pscOb$cov_co
-  fam <- enrich(pscOb$family)
+  fam <- enrichwith::enrich(pscOb$family)
 
   ### Specifying treatment for MTC
   if(!is.null(pscOb$DC$trt)){

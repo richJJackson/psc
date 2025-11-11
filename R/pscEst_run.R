@@ -11,8 +11,9 @@
 #' gemCFM <- psc::gemCFM
 #' pscOb <- pscData(gemCFM,e4_data)
 #' pscOb <- init(pscOb)
-#' pscOb <- pscEst_start(pscOb)
-#' pscOb <- pscEst_run(pscOb)
+#' pscOb <- pscEst_start(pscOb,nsim=1000,nchain=2)
+#' pscOb <- pscEst_run(pscOb,nsim=1000,nchain=2)
+#' @export
 pscEst_run <- function(pscOb,nsim,nchain){
 
   if(nchain==1){

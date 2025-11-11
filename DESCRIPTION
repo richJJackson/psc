@@ -7,7 +7,9 @@ Authors@R: c(
     role = c("cre", "aut","cph"),
     comment = c(ORCID = "0000-0002-7814-5088")))
 Maintainer: Richard Jackson <richJ23@liverpool.ac.uk>
-Description: Allows the comparison of data cohorts (DC) against a Counter Factual Model (CFM) and measures the difference in terms of an efficacy parameter.  Allows the application of Personalised Synthetic Controls.
+Description: Allows the comparison of data cohorts (DC) against a Counter 
+    Factual Model (CFM) and measures the difference in terms of an efficacy 
+    parameter.  Allows the application of Personalised Synthetic Controls.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -15,14 +17,14 @@ RoxygenNote: 7.3.3
 URL: https://github.com/richjjackson/psc/, https://github.com/richJJackson/psc, https://richjjackson.github.io/psc/
 BugReports: https://github.com/richJJackson/psc/issues
 Depends:
-    R (>= 4.0.0)
+    R (>= 4.0.0),
+    survival,
+    ggplot2
 Imports:
     mvtnorm,
-    survival,
     enrichwith,
     stats,
     flexsurv,
-    ggplot2,
     survminer,
     gtsummary,
     RColorBrewer,

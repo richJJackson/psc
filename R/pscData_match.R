@@ -9,6 +9,7 @@
 #' @param lev a list of factor levels
 #' @param DC a data cohort to be 'cleaned'
 #' @return a dataset which is checked and compatible with the CFM
+#' @importFrom survival Surv
 pscData_match <- function(cls,lev,DC){
 
   ### duplicated namse in dc.data

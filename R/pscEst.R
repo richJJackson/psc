@@ -51,6 +51,7 @@
 #' pscOb <- pscData(gemCFM,e4_data)
 #' pscOb <- init(pscOb)
 #' pscOb <- pscEst(pscOb)
+#' importFrom survival Surv survfit
 #' @export
 
 pscEst <- function(pscOb,nsim=1000,nchain=1){

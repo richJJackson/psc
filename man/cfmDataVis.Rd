@@ -14,6 +14,6 @@ a list of grobs for each model covariate
 }
 \description{
 The pscCFM creates a model object which is stripped of identifiable
-information.  The cfmDataVis fucntion supplies a visualised form of the dataset
+information.  The cfmDataVis function supplies a visualised form of the dataset
 for summary information
 }

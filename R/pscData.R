@@ -12,7 +12,7 @@
 #' @param trt to be specified for multiple treatment comparisons. Defaults to
 #' NULL
 #' @return A set of structures for use with estimation procedures
-#' @import survival
+#' @importFrom survival Surv
 #' @examples
 #' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM

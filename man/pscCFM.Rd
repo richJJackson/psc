@@ -16,7 +16,7 @@ should be provided, defaults to TRUE.}
 data should be provided, defaults to TRUE.}
 }
 \value{
-a list containing objects which specifiy the required exported components
+a list containing objects which specify the required exported components
   of the model.
 }
 \description{

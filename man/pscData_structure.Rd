@@ -13,6 +13,7 @@ pscData_structure(CFM, DC)
 }
 \value{
 A set of structures for use with estimation procedures
+re-export Surv from survival
 }
 \description{
 This function ensures the data are supplied in a structure which allows for

@@ -17,7 +17,8 @@
 #' gemCFM <- psc::gemCFM
 #' pscOb <- pscData(gemCFM,e4_data)
 #' pscOb <- init(pscOb)
-#' pscOb <- pscEst_start(pscOb)
+#' pscOb <- pscEst_start(pscOb,nsim=1000,nchain=2)
+#' @importFrom mvtnorm rmvnorm dmvnorm
 #' @export
 
 pscEst_start <- function(pscOb,nsim,nchain){
@@ -39,11 +40,11 @@ pscEst_start <- function(pscOb,nsim,nchain){
   colnames(draws) <- c(names(pscOb$co),beta.nm,"likEst")
 
   ## adding hazard parameters onto covariates for flexsurvsreg models
-  cfmPost <- function(x) c(rmvnorm(x,pscOb$co,pscOb$sig))
+  cfmPost <- function(x) c(mvtnorm::rmvnorm(x,pscOb$co,pscOb$sig))
 
   #starting parameters
   if(!is.null(pscOb$trt)){
-    target <- function(x) c(rmvnorm(x,pscOb$start.mu,pscOb$start.sd*2))
+    target <- function(x) c(mvtnorm::rmvnorm(x,pscOb$start.mu,pscOb$start.sd*2))
   }
 
   if(is.null(pscOb$trt)){
@@ -51,7 +52,7 @@ pscEst_start <- function(pscOb,nsim,nchain){
   }
 
   # prior distributions
-  betaPrior <- function(x) dmvnorm(x,rep(0,length(x)),diag(length(x))*1000,log=T)
+  betaPrior <- function(x) mvtnorm::dmvnorm(x,rep(0,length(x)),diag(length(x))*1000,log=T)
 
   # number of cores (for parallel computing of multiple chians)
   dcores <- detectCores()

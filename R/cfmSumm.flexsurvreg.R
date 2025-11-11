@@ -6,7 +6,8 @@
 #' @param pscOb an object of class 'psc'
 #' @param bootCI a boolean to determine if bootstrapping CIs are required
 #' @param nboot Number of bootstraps
-#' @import flexsurv survival
+#' @importFrom mvtnorm rmvnorm
+#' @importFrom survival Surv
 #' @return A summary of a cfm object
 cfmSumm.flexsurvreg <-   function(pscOb,bootCI=TRUE,nboot=1000){
 
@@ -32,7 +33,7 @@ cfmSumm.flexsurvreg <-   function(pscOb,bootCI=TRUE,nboot=1000){
   if(bootCI){
     vc <- pscOb$sig
     mu <- c(pscOb$haz_co,pscOb$cov_co)
-    rest <- rmvnorm(nboot,mu,vc)
+    rest <- mvtnorm::rmvnorm(nboot,mu,vc)
     s_boot <- mapply(boot_sest,1:nboot,MoreArgs=list(pscOb=pscOb,lam=lam,kn=kn,k=k,cov=X
                                                      ,tm=Y$time,rest=rest,beta=0))
     s_ci <- t(mapply(function(i) quantile(s_boot[i,],p=c(0.025,0.975)),1:nrow(s_boot)))

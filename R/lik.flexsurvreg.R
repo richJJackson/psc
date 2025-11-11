@@ -9,6 +9,7 @@
 #' @param pscOb A pscOb object containing a cleaned dataset including covariates to match the CFM
 #' @details A likelihood function for use by pscfit for a model of class
 #' 'flexsurvreg'
+#' @importFrom survival Surv
 #' @return the results of a likelihood functions
 lik.flexsurvreg <- function(beta,pscOb){
 

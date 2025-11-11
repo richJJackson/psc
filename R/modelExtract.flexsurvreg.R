@@ -2,6 +2,7 @@
 #' @param CFM a model of class either 'flexsurvreg'
 #' @details A function for extracting the model information required for using pscfit
 #' @return a list of extracted model components
+#' @importFrom survival Surv
 modelExtract.flexsurvreg <- function(CFM){
 
   ### Model class

@@ -12,6 +12,7 @@
 #' @param cov a matrix of covariates
 #' @param rest a set of parameter covariate draws
 #' @param beta parameter with which to adjust the baseline function
+#' @importFrom survival Surv
 #' @return A set of survival estimates
 boot_sest <- function(i,pscOb=pscOb,lam=lam,kn=kn,k=k,cov=cov,tm=tm,rest=rest,beta=beta){
   hc <- rest[i,1:length(pscOb$haz_co)]
