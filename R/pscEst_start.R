@@ -54,11 +54,19 @@ pscEst_start <- function(pscOb,nsim,nchain){
   # prior distributions
   betaPrior <- function(x) mvtnorm::dmvnorm(x,rep(0,length(x)),diag(length(x))*1000,log=T)
 
-  # number of cores (for parallel computing of multiple chians)
+
+  ## ncores
+  if(.Platform$OS.type=="windows"&nchain>1){
+    warning("Currently only single chains allowed on Windows OS")
+    nchain <- 1
+  }
+
+  # number of cores (for parallel computing of multiple chains)
   dcores <- detectCores()
   if(dcores>3) {
     ncores <- min(round(dcores*.75),nchain)
   }
+
 
   ## Returning estimation object
   pscOb$cfmPost <- cfmPost;pscOb
