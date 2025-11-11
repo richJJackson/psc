@@ -1,7 +1,7 @@
 Package: psc
 Type: Package
 Title: Personalised Synthetic Controls
-Version: 1.3.0
+Version: 2.0.0
 Authors@R: c(
     person("Richard", "Jackson", email = "richJ23@liverpool.ac.uk", 
     role = c("cre", "aut","cph"),

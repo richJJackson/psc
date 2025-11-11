@@ -1,3 +1,5 @@
+# psc 2.0.0
+
 # psc 1.3.0
 
 Updates the package to allow the creation and use of 'pscCFM' objects.  These are model objects with he data stripped away to make them easier to share with researchers.
