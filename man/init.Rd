@@ -24,5 +24,4 @@ MCMC estimation
 e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
 pscOb <- pscData(gemCFM,e4_data)
-pscOb <- init(pscOb)
 }

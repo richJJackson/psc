@@ -10,7 +10,7 @@ pscfit(
   nsim = 5000,
   id = NULL,
   trt = NULL,
-  nchain = 3,
+  nchain = 2,
   thin = 2,
   burn = 500
 )

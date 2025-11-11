@@ -11,7 +11,7 @@
 #' is supplied which has combied the CFM and DC (e.g. a psc object or an object
 #' which has been passed through pscData()) then a comparison of the CFM and DC
 #' will be supplied
-#' @import ggplot2
+#' @import ggplot2 survival
 #' @examples
 #' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM

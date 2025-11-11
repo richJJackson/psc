@@ -12,6 +12,7 @@
 #' @import survival
 pscData_structure <- function(CFM,DC){
 
+
   if("lmerMod"%in%CFM$mod_class){
     mod <- lmer(CFM$formula,data=DC)
     Z <- getME(mod,"Z")

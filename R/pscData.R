@@ -50,9 +50,6 @@ pscData <- function(CFM,DC,id=NULL,trt=NULL){
     trt.nm <- DCtrt[[2]]
   }
 
-  DC[1:10,]
-
-
   #########
   #### Selecting subgroup (if 'id' is specified)
   if(!is.null(id)){

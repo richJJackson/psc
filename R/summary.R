@@ -6,6 +6,7 @@
 #' @param object an object of class 'psc'
 #' @param ... not used
 #' @return A summary of a psc object obtained using pscSumm and a copy of the pscfit object
+#' @import survival
 #' @examples
 #' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM

@@ -6,6 +6,7 @@
 #' @param pscOb an object of class 'psc'
 #' @param bootCI a boolean to determine if bootstrapping CIs are required
 #' @param nboot Number of bootstraps
+#' @import flexsurv survival
 #' @return A summary of a cfm object
 cfmSumm.flexsurvreg <-   function(pscOb,bootCI=TRUE,nboot=1000){
 
