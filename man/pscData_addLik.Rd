@@ -10,7 +10,7 @@ pscData_addLik(CFM)
 \item{CFM}{A counter factual model}
 }
 \value{
-a likelihood functio
+a likelihood function
 }
 \description{
 The purpose of this function is to include the appropriate likelihood to the

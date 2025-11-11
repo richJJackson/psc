@@ -12,7 +12,7 @@
 plot.psc.cont <- function(x, ...){
 
   # Binding local varaibles
-  y <- xn <- yn <- Outcome  <- NULL
+  y <- xn <- yn <- Outcome  <- linPred <-  NULL
 
   fam <- x$DC_clean$model_extract$family;fam
   out <- as.numeric(unlist(x$DC_clean$out));out

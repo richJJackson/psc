@@ -9,7 +9,8 @@ lik.glm(beta, pscOb)
 \arguments{
 \item{beta}{a parameter to be estimate}
 
-\item{DC_clean}{a cleaned dataset including covariates to match the CFM}
+\item{pscOb}{a pscOb object containing a cleaned dataset including
+covariates to match the CFM}
 }
 \value{
 the results of a likelihood functions

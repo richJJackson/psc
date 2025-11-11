@@ -6,7 +6,8 @@
 #' @param p a ggplot objects
 #' @param x a categorical covariate
 #' @return a ggplot object
-#' @import RColorBrewer waffle
+#' @import RColorBrewer
+#' @importFrom waffle geom_waffle
 facVisComp <- function(p,x){
 
   Freq <- NULL
@@ -23,7 +24,7 @@ facVisComp <- function(p,x){
 
 
   p <- ggplot(data=df,aes(fill=x,values=Freq))+
-    geom_waffle(color="white",size=0.33,n_rows=10)+
+    waffle::geom_waffle(color="white",size=0.33,n_rows=10)+
     theme_void()+
     scale_fill_manual(values = cls) +
     facet_wrap(~source,ncol=1)+

@@ -4,12 +4,12 @@
 \alias{coef.psc}
 \title{Returns the coefficient estimate of a psc object.}
 \usage{
-\method{coef}{psc}(pscOb, ...)
+\method{coef}{psc}(object, ...)
 }
 \arguments{
-\item{...}{not used}
-
 \item{object}{a 'psc' object}
+
+\item{...}{not used}
 }
 \value{
 The summary of the posterior distribution for the efficacy parameter
@@ -18,10 +18,4 @@ in terms of the median and 95% HPD
 \description{
 Returns basic measures of the posterior distribution obtained from the
 psc object
-}
-\examples{
-e4_data <- psc::e4_data
-gemCFM <- psc::gemCFM
-psc <- pscfit(gemCFM,e4_data)
-coef(psc)
 }

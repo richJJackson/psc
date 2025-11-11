@@ -13,7 +13,12 @@ spline_surv_est(lam, kn, k, haz_co, cov_co, cov = cov, tm = tm, beta = 0)
 
 \item{k}{number of knots in the flexible spline model}
 
-\item{haz_co}{covariate parameters of the flexible spline model}
+\item{haz_co}{parameters for the baseline hazard function in the flexible
+spline model}
+
+\item{cov_co}{covariate parameters of the flexible spline model}
+
+\item{cov}{a matrix of covaraites from the Data Cohort}
 
 \item{tm}{time at which to assess the survival function}
 

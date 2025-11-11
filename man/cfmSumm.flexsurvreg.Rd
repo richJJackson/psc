@@ -7,7 +7,11 @@
 cfmSumm.flexsurvreg(pscOb, bootCI = TRUE, nboot = 1000)
 }
 \arguments{
-\item{object}{an object of class 'psc'}
+\item{pscOb}{an object of class 'psc'}
+
+\item{bootCI}{a boolean to determine if bootstrapping CIs are required}
+
+\item{nboot}{Number of bootstraps}
 }
 \value{
 A summary of a cfm object

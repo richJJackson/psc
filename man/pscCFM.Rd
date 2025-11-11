@@ -7,16 +7,16 @@
 pscCFM(CFM, dataSumm = T, dataVis = T)
 }
 \arguments{
+\item{CFM}{a 'glm' or 'flexsurvreg' model object}
+
 \item{dataSumm}{a logical indicator specifying whether a summary of the data
 should be provided, defaults to TRUE.}
 
 \item{dataVis}{a logical indicator specifying whether a visualisations of the
 data should be provided, defaults to TRUE.}
-
-\item{cfm}{a 'glm' or 'flexsurvreg' model object}
 }
 \value{
-a list containing objects which specifiy the required exported components
+a list containing objects which specify the required exported components
   of the model.
 }
 \description{

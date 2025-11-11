@@ -4,14 +4,14 @@
 #' @param ... not used
 #' @return printing psc results
 #' @export
-print.psc <- function(pscOb,...){
+print.psc <- function(x,...){
 
   cat("Call:\n", "CFM model + beta")
   cat("\n")
   cat("\n")
   cat("Coefficients:\n")
 
-  coef(pscOb)
+  coef(x)
 
 }
 

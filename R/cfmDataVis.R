@@ -1,16 +1,11 @@
 #' Visualising data within a CFM
 #'
 #' The pscCFM creates a model object which is stripped of identifiable
-#' information.  The cfmDataVis fucntion supplies a visualised form of the dataset
+#' information.  The cfmDataVis function supplies a visualised form of the dataset
 #' for summary information
 #'
 #' @param cfm a 'glm' or 'flexsurvreg' model object
 #' @return a list of grobs for each model covariate
-#' #' @examples
-#' e4_data <- psc::e4_data
-#' gemCFM <- psc::gemCFM
-#' cfmDataVis(gemCFM,e4_data)
-#' @export
 cfmDataVis <- function(cfm){
 
   ### Getting data from object

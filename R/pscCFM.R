@@ -7,13 +7,14 @@
 #' the psc package
 #'
 #'
-#' @param cfm a 'glm' or 'flexsurvreg' model object
+#' @param CFM a 'glm' or 'flexsurvreg' model object
 #' @param dataSumm a logical indicator specifying whether a summary of the data
 #' should be provided, defaults to TRUE.
 #' @param dataVis a logical indicator specifying whether a visualisations of the
 #' data should be provided, defaults to TRUE.
-#' @return a list containing objects which specifiy the required exported components
+#' @return a list containing objects which specify the required exported components
 #'   of the model.
+#' @importFrom survival Surv
 #' @export
 pscCFM <- function(CFM,dataSumm=T,dataVis=T){
 

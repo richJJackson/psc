@@ -68,14 +68,13 @@
 #'  applied - see above)}
 #'  \item {A matrix containing the draws of the posterior distributions}
 #'  }
-#' @import enrichwith mvtnorm survival flexsurv
 #' @examples
 #' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM
 #' psc <- pscfit(gemCFM,e4_data)
 #' print(psc)
 #' @export
-pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL,nchain=3,thin=2,burn=500){
+pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL,nchain=2,thin=2,burn=500){
 
   #### Step 1 - create pscCFM object (may not be required if pscCFM object supplied)
   if(!"pscCFM"%in%class(CFM)){

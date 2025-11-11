@@ -17,10 +17,26 @@ boot_sest(
 )
 }
 \arguments{
-\item{object}{an object of class 'psc'}
+\item{i}{indicator object}
+
+\item{pscOb}{a pscOb object}
+
+\item{lam}{parameters of the flexible spline model}
+
+\item{kn}{knots included in the flexible spline model}
+
+\item{k}{number of knots in the flexible spline model}
+
+\item{cov}{a matrix of covariates}
+
+\item{tm}{time at which to assess the survival function}
+
+\item{rest}{a set of parameter covariate draws}
+
+\item{beta}{parameter with which to adjust the baseline function}
 }
 \value{
-A summary of a cfm object
+A set of survival estimates
 }
 \description{
 A function to estimate the survival function based on parameter estimates -

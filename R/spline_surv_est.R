@@ -8,7 +8,8 @@
 #' @param k number of knots in the flexible spline model
 #' @param haz_co parameters for the baseline hazard function in the flexible
 #' spline model
-#' @param haz_co covariate parameters of the flexible spline model
+#' @param cov_co covariate parameters of the flexible spline model
+#' @param cov a matrix of covaraites from the Data Cohort
 #' @param tm time at which to assess the survival function
 #' @param beta parameter with which to adjust the baseline function (defaults to
 #' beta=0)

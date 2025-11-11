@@ -130,24 +130,23 @@ a 'GemCap Vs Gem' comparison.  We start by loading the package and from there
 obtianing the data and the model for analysis.
 
 ```{r}
-remove.packages("psc")
-rm(list=ls())
+#remove.packages("psc")
+#rm(list=ls())
 library(devtools)
-install_github("richjjackson/psc",ref="Version-2.0.0")
-#install.packages("psc")
+install_github("richjjackson/psc")
 library(psc)
 e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
 ```
 
-```{r}
-library(parallel)
-library(posterior)
-library(ggplot2)
-library(survminer)
-library(ggpubr)
-library(survival)
-```
+#```{r}
+#library(parallel)
+#library(posterior)
+#library(ggplot2)
+#library(survminer)
+#library(ggpubr)
+#library(survival)
+#```
 
 Starting with the model, we can inspect the model terms included in the counter 
 factual model using 

@@ -15,7 +15,7 @@
 #' @return Returns a summary of a 'psc' object including details on the original
 #' Counter Factual Model, a summary of the Data Cohort, the predicted responses
 #' from the CFM and details on the model fit.
-#' @import posterior
+#' @importFrom posterior summarise_draws as_draws thin_draws
 #' @examples
 #' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM

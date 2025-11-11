@@ -12,6 +12,8 @@
 #' which has been passed through pscData()) then a comparison of the CFM and DC
 #' will be supplied
 #' @import ggplot2
+#' @importFrom ggpubr ggarrange
+#' @importFrom survival Surv
 #' @examples
 #' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM
@@ -23,5 +25,5 @@ plotCFM <- function(x,...){
   if(!class(x)%in%c("pscCFM","psc","pscOb")){
     x <- pscCFM(x)
   }
-  ggarrange(plotlist=x$datavis,...)
+  ggpubr::ggarrange(plotlist=x$datavis,...)
 }

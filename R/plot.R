@@ -10,36 +10,37 @@
 #' @details This function plots the expected response of the control treatment
 #'    along with the observe response rates of the experimental arms
 #' @import ggplot2 ggpubr
+#' @importFrom survival Surv survfit
 #' @examples
 #' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM
 #' psc <- pscfit(gemCFM,e4_data)
 #' plot(psc)
 #' @export
-plot.psc <- function (pscOb, ...){
+plot.psc <- function (x, ...){
 
   p <- NULL
-  model.type <- pscOb$mod_class;model.type
-  fam <- pscOb$family;fam
+  model.type <- x$mod_class;model.type
+  fam <- x$family;fam
 
   if ("glm" %in% model.type) {
 
     ### gaussian
     if(fam$family%in%c("gaussian")){
-      p <- plot.psc.cont(pscOb)
+      p <- plot.psc.cont(x)
     }
     ## poisson
     if(fam$family%in%c("poisson")){
-      p <- plot.psc.count(pscOb)
+      p <- plot.psc.count(x)
     }
     ## binomial
     if(fam$family%in%c("binomial")){
-      p <- plot.psc.binary(pscOb)
+      p <- plot.psc.binary(x)
     }
   }
 
   if ("flexsurvreg" %in% model.type) {
-    p <- plot.psc.flexsurvreg(pscOb)
+    p <- plot.psc.flexsurvreg(x)
   }
   p
 }

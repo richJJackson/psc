@@ -5,6 +5,7 @@
 #' init() functions
 #' @param nsim the number of MCMC simulations to run
 #' @return An updated set of attributes for the pscOb which includes
+#' @import utils
 pscEst_samp <- function(pscOb,nsim){
 
   draws <- pscOb$draws;draws

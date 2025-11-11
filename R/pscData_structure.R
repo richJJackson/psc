@@ -9,7 +9,12 @@
 #' @param CFM a Counter Factual Model
 #' @param DC a Data Cohort object
 #' @return A set of structures for use with estimation procedures
+#' re-export Surv from survival
+#' @importFrom lme4 lmer getME
+#' @importFrom survival Surv
+#' @import flexsurv
 pscData_structure <- function(CFM,DC){
+
 
   if("lmerMod"%in%CFM$mod_class){
     mod <- lmer(CFM$formula,data=DC)
@@ -27,9 +32,10 @@ pscData_structure <- function(CFM,DC){
   }
 
   if("flexsurvreg"%in%CFM$mod_class){
-    mf <- model.frame(CFM$formula,data=DC)
+    #mf <- model.frame(CFM$formula,data=DC)
+    #ys <- mf[,1]
+    ys <- Surv(DC$time,DC$cen)
     mm <- model.matrix(CFM$formula,data=DC)[,-1]
-    ys <- mf[,1]
     yd <- data.frame("time"=ys[,1],"cen"=ys[,2])
     ret <- list("Y"=yd,"X"=mm)
   }

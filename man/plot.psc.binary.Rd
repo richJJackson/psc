@@ -7,9 +7,9 @@
 \method{plot}{psc.binary}(pscOb, ...)
 }
 \arguments{
-\item{...}{not used}
+\item{pscOb}{an object of class 'psc'}
 
-\item{x}{an object of class 'psc'}
+\item{...}{not used}
 }
 \value{
 a survival plot corresponding to the psc fit

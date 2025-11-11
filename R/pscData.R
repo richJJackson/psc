@@ -12,6 +12,7 @@
 #' @param trt to be specified for multiple treatment comparisons. Defaults to
 #' NULL
 #' @return A set of structures for use with estimation procedures
+#' @importFrom survival Surv
 #' @examples
 #' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM
@@ -48,9 +49,6 @@ pscData <- function(CFM,DC,id=NULL,trt=NULL){
     DC <- DCtrt[[1]]
     trt.nm <- DCtrt[[2]]
   }
-
-  DC[1:10,]
-
 
   #########
   #### Selecting subgroup (if 'id' is specified)

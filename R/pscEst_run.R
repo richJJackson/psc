@@ -11,8 +11,9 @@
 #' gemCFM <- psc::gemCFM
 #' pscOb <- pscData(gemCFM,e4_data)
 #' pscOb <- init(pscOb)
-#' pscOb <- pscEst_start(pscOb)
-#' pscOb <- pscEst_run(pscOb)
+#' pscOb <- pscEst_start(pscOb,nsim=1000,nchain=2)
+#' pscOb <- pscEst_run(pscOb,nsim=1000,nchain=2)
+#' @export
 pscEst_run <- function(pscOb,nsim,nchain){
 
   if(nchain==1){
@@ -20,16 +21,8 @@ pscEst_run <- function(pscOb,nsim,nchain){
   }
 
   if(nchain>1){
-    if(.Platform$OS.type!="windows"){
-      res <- mclapply(1:nchain,mc.cores=pscOb$ncores,
+        res <- mclapply(1:nchain,mc.cores=pscOb$ncores,
                     function(x) pscEst_samp(pscOb=pscOb,nsim=nsim))
-    }
-
-  if(.Platform$OS.type=="windows"){
-    res <- parallelsugar::mclapply(1:nchain,mc.cores=pscOb$ncores,
-                    function(x) pscEst_samp(pscOb=pscOb,nsim=nsim))
-    }
-
   }
 
   ### Adding results
