@@ -7,11 +7,9 @@
 #' @param x a categorical covariate
 #' @return a ggplot object
 #' @import RColorBrewer
-#' @importFrom waffle geom_waffle
 facVisComp <- function(p,x){
 
   Freq <- NULL
-
   old.d <- p$data;old.d
   tit <- p$labels$title
   old.d$source="CFM"
@@ -23,14 +21,17 @@ facVisComp <- function(p,x){
   cls <- brewer.pal(max(3,nrow(df)),"BuGn")
 
 
-  p <- ggplot(data=df,aes(fill=x,values=Freq))+
-    waffle::geom_waffle(color="white",size=0.33,n_rows=10)+
+  p <- ggplot(data=df,aes(x=x,y=Freq,fill=source))+
+    geom_col(position = position_stack())+
     theme_void()+
     scale_fill_manual(values = cls) +
     facet_wrap(~source,ncol=1)+
     ggtitle(tit)+
-    theme(legend.position="right") +
-    theme(legend.title=element_blank())+
-    theme(plot.title = element_text(hjust = 0.07))
+    theme(
+      legend.position="none",
+      strip.text.x = element_text(size = 11, face = "bold"),
+      legend.title=element_blank(),
+      plot.title = element_text(hjust = 0.07,face = "bold", size = 12))
   p
-}
+
+  }

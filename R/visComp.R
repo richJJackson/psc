@@ -19,7 +19,7 @@ visComp <- function(CFM,DC,id=NULL){
   vis_nm <- names(cfmVis)
   vis_cls <- CFM$cov_class
   ncov <- length(vis_nm)
-
+  vis_cls
   gglist <- list()
 
   for(i in 1:ncov){

@@ -32,8 +32,7 @@ Imports:
     ggpubr,
     posterior,
     lme4,
-    utils,
-    waffle
+    utils
 Suggests: 
     knitr,
     rmarkdown,
