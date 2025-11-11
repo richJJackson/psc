@@ -74,7 +74,7 @@
 #' psc <- pscfit(gemCFM,e4_data)
 #' print(psc)
 #' @export
-pscfit <- function (CFM, DC, nsim = 5000, id = NULL, trt = NULL,nchain=2,thin=2,burn=500){
+pscfit <- function (CFM, DC, nsim = 3000, id = NULL, trt = NULL,nchain=2,thin=2,burn=500){
 
   #### Step 1 - create pscCFM object (may not be required if pscCFM object supplied)
   if(!"pscCFM"%in%class(CFM)){

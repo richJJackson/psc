@@ -13,14 +13,15 @@
 #' pscOb <- init(pscOb)
 #' pscOb <- pscEst_start(pscOb,nsim=1000,nchain=2)
 #' pscOb <- pscEst_run(pscOb,nsim=1000,nchain=2)
+#' @importFrom parallel mclapply
 #' @export
 pscEst_run <- function(pscOb,nsim,nchain){
 
-  if(nchain==1){
+  if(nchain==1|.Platform$OS.type=="windows"){
     res <- pscEst_samp(pscOb,nsim)
   }
 
-  if(nchain>1){
+  if(nchain>1&.Platform$OS.type!="windows"){
         res <- mclapply(1:nchain,mc.cores=pscOb$ncores,
                     function(x) pscEst_samp(pscOb=pscOb,nsim=nsim))
   }

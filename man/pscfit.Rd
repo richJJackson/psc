@@ -7,7 +7,7 @@
 pscfit(
   CFM,
   DC,
-  nsim = 5000,
+  nsim = 3000,
   id = NULL,
   trt = NULL,
   nchain = 2,
