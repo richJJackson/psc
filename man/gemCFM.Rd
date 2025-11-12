@@ -11,7 +11,7 @@ A model of class 'pscCFM' containg a 'flexsurvreg' model:
  \item{nodes}{negative (n=1) or positive (n=2) lymph nodes}
  \item{grade}{tumour grade (1,2 or 3)}
  \item{lca199}{log transformed ca19.9}
- \item{t}{T-stage (1,2 or 3)}
+ \item{ResecM}{Resection Margins)}
 }
 }
 \source{
