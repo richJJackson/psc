@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">psc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
                         <h4 data-toc-skip class="author">Richard
 Jackson</h4>
             
-            <h4 data-toc-skip class="date">2025-07-07</h4>
+            <h4 data-toc-skip class="date">2025-11-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/richJJackson/psc/blob/main/vignettes/psc.Rmd" class="external-link"><code>vignettes/psc.Rmd</code></a></small>
       <div class="d-none name"><code>psc.Rmd</code></div>
@@ -184,30 +184,73 @@ parameter obtained from the posterior distribution.</p>
 <div class="section level2">
 <h2 id="motivating-example">Motivating Example<a class="anchor" aria-label="anchor" href="#motivating-example"></a>
 </h2>
-<p>The psc.r package includes as example a dataset which is derived from
-patients with pancreatic ductal adenocarcinoma (PDAC) who have all
-received some experimental treatment, in this case GemCap. The dataset
-is named ‘e4_data’ and is loaded into the enviroment using the “data()”
-function</p>
+<p>The psc.r package includes as example a dataset “e4_data” which is
+derived from patients ith pancreatic ductal adenocarcinoma (PDAC) who
+have all received some experimental treatment, in this case GemCap.
+Aside from this we also provide a Counter Factual Model (CFM) for
+patients in the same setting (named ‘gemCFM’) to receive a therapy
+called ‘Gem’. The aim here is to produce a ‘GemCap Vs Gem’ comparison.
+We start by loading the package and from there obtianing the data and
+the model for analysis.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#install.packages("psc")</span></span>
+<code class="sourceCode R"><span><span class="co">#remove.packages("psc")</span></span>
+<span><span class="co">#rm(list=ls())</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: usethis</span></span>
+<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"richjjackson/psc"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.</span></span>
+<span><span class="co">#&gt; Downloading GitHub repo richjjackson/psc@HEAD</span></span>
+<span><span class="co">#&gt; RcppEigen    (NA     -&gt; 0.3.4.0.2) [CRAN]</span></span>
+<span><span class="co">#&gt; cpp11        (NA     -&gt; 0.5.2    ) [CRAN]</span></span>
+<span><span class="co">#&gt; digest       (0.6.37 -&gt; 0.6.38   ) [CRAN]</span></span>
+<span><span class="co">#&gt; RcppArmad... (NA     -&gt; 15.0.2-2 ) [CRAN]</span></span>
+<span><span class="co">#&gt; Installing 4 packages: RcppEigen, cpp11, digest, RcppArmadillo</span></span>
+<span><span class="co">#&gt; Installing packages into '/home/runner/work/_temp/Library'</span></span>
+<span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; * checking for file ‘/tmp/Rtmp8JlGP1/remotes226fd2a294e/richJJackson-psc-e7ed206/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">#&gt; * preparing ‘psc’:</span></span>
+<span><span class="co">#&gt; * checking DESCRIPTION meta-information ... OK</span></span>
+<span><span class="co">#&gt; * checking for LF line-endings in source and make files and shell scripts</span></span>
+<span><span class="co">#&gt; * checking for empty or unneeded directories</span></span>
+<span><span class="co">#&gt; * building ‘psc_2.0.0.tar.gz’</span></span>
+<span><span class="co">#&gt; Installing package into '/home/runner/work/_temp/Library'</span></span>
+<span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/richjjackson/psc/" class="external-link">psc</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/ggpubr/" class="external-link">ggpubr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: survival</span></span>
 <span><span class="co">#&gt; Loading required package: ggplot2</span></span>
-<span><span class="co">#e4_data &lt;- psc::e4_data</span></span></code></pre></div>
+<span><span class="va">e4_data</span> <span class="op">&lt;-</span> <span class="fu">psc</span><span class="fu">::</span><span class="va"><a href="../reference/e4_data.html">e4_data</a></span></span>
+<span><span class="va">gemCFM</span> <span class="op">&lt;-</span> <span class="fu">psc</span><span class="fu">::</span><span class="va"><a href="../reference/gemCFM.html">gemCFM</a></span></span></code></pre></div>
+<p>#<code>{r} #library(parallel) #library(posterior) #library(ggplot2) #library(survminer) #library(ggpubr) #library(survival) #</code></p>
+<p>Starting with the model, we can inspect the model terms included in
+the counter factual model using</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gemCFM</span><span class="op">$</span><span class="va">terms</span></span>
+<span><span class="co">#&gt; [1] "LymphN"      "ResecM"      "Diff_Status" "PostOpCA199" "(weights)"</span></span></code></pre></div>
 <p>Included is a list of prognostic covariates:</p>
 <ul>
-<li>nodes: patient lymph node status; negative (n=1) or positive (n=2)
-lymph nodes</li>
-<li>grade: tumour grade; 1,2 or 3</li>
-<li>lca199: log transformed ca19.9</li>
-<li>t: T-stage; (1,2 or 3)</li>
+<li>Lymph Nodes: patient lymph node status; negative (n=1) or positive
+(n=2) lymph nodes</li>
+<li>Diff_Status: tumour grade; 1,2 or 3</li>
+<li>PostOpCA199: log transformed ca19.9</li>
 </ul>
-<p>Also included are the following structures</p>
-<ul>
-<li>time - survival time</li>
-<li>cen - censoring indictor</li>
-</ul>
+<p>Similarly we can observe the outcome terms. As the gemCFM object is a
+survival model this includes terms named “time” and “cen”. NB the pscfit
+function will search for these terms and so it is important that
+outcomes included in the data cohort (DC) are labelled in the same
+way.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gemCFM</span><span class="op">$</span><span class="va">out.nm</span></span>
+<span><span class="co">#&gt; [1] "time" "cen"</span></span></code></pre></div>
+<p>Importantly the covariates included in the DC must have names which
+match these.<br>
+Prior to comparing the DC to the CFM then it is advisable to get an good
+understanding of the data included in the CFM. Within the CFM object
+there are a series of plots to visualise the covariate values which can
+be extracted using the ‘plotCFM’ function</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotCFM.html">plotCFM</a></span><span class="op">(</span><span class="va">gemCFM</span><span class="op">)</span></span></code></pre></div>
+<p><img src="psc_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" width="672"></p>
 <p>We give esamples of how the ‘pscfit()’ function can be used to
 comapre data against models with survival outcomes (with a ‘flexsurvreg’
 model). Examples on how to perform analyses using GLM model objects are
@@ -220,109 +263,125 @@ is contructed ont he basis of flexible parametric splines. This is
 contructed using the “flexsurvreg” function within the “flexsurv”
 package. An example is included within the ‘psc.r’ package names
 ‘surv.mod’ and is loaded using the ’data()” function:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#gemCFM &lt;- psc::gemCFM</span></span></code></pre></div>
-<p>The ‘gemCFM’ is an object of calss pscCFM which means it contains all
+<p>The ‘gemCFM’ is an object of class pscCFM which means it contains all
 of the structures required for analysis but has stripped the model
-object of any patient level data. Included instead are a summary
-table:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gemCFM</span><span class="op">$</span><span class="va">datasumm</span></span>
-<span><span class="co">#&gt; A Summary Table[1] "summ_Table"</span></span></code></pre></div>
-<p>…and a set of visualisations which we arrange using the ggarrange</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html" class="external-link">ggarrange</a></span><span class="op">(</span>plotlist<span class="op">=</span><span class="va">gemCFM</span><span class="op">$</span><span class="va">datavis</span><span class="op">)</span></span></code></pre></div>
-<p><img src="psc_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
-<p>In this example you can see that this is a model constructed with 3
-internal knots and hence 5 parameters to describe the baseline
-cumulative hazard function. There are also prognostic covariates which
-match with the prognostic covariates in the data cohort.</p>
-<p>Comparing the dataset to the model is then performed using</p>
-<p>and we can view the attributes of the psc object that is created</p>
+object of any patient level data. Please note that the psc package can
+be used by providing standard ‘glm’ or ‘flexsurvreg’ models. Here the
+procedures will convert the model into a ‘pscCFM’ object using the
+pscCFM() function.</p>
+<p>In this example the ‘gemCFM’ model is constructed with 5 internal
+knots and hence 7 parameters to describe the baseline cumulative hazard
+function:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gemCFM</span><span class="op">$</span><span class="va">haz_co</span></span>
+<span><span class="co">#&gt;      gamma0      gamma1      gamma2      gamma3      gamma4      gamma5 </span></span>
+<span><span class="co">#&gt; -11.3808020   3.8359818   1.2911623  -1.3176560   1.1190182  -0.8876277 </span></span>
+<span><span class="co">#&gt;      gamma6 </span></span>
+<span><span class="co">#&gt;   0.3372484</span></span></code></pre></div>
+<p>There are also prognostic covariates which match with the prognostic
+covariates in the data cohort….</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gemCFM</span><span class="op">$</span><span class="va">cov_co</span></span>
+<span><span class="co">#&gt;      LymphN1      ResecM1 Diff_Status1 Diff_Status2  PostOpCA199 </span></span>
+<span><span class="co">#&gt;    0.4876152    0.1805322   -0.4160534   -0.5897823    0.2671471</span></span></code></pre></div>
+<p>The process of comparing the DC to the CFM occures across 4
+steps:</p>
+<ul>
+<li>Step 1: Combine/Compare the DC and the CFM using the pscData()
+function</li>
+<li>Step 2: Obtain initial values for the estimation procedue using
+init()</li>
+<li>Step 3: Run the MCMC estimation procedure</li>
+<li>Step 4: Collate and summarise the results</li>
+</ul>
+<p>Each of these steps update a ‘pscOb’ object resutls which is returned
+to the user. This process is wrapped up in a single ‘pscfit()’
+function/</p>
+<p>NB. A warning is supplied here just to note that data have been
+removed form the DC prior to analysis due to missing data.</p>
+<p>We can view the attributes of the psc object that is created. This
+includes details on all components including the CFM, the DC, the
+likelihood applied, the starting values and posterior distribuion</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $names</span></span>
-<span><span class="co">#&gt; [1] "model.type" "DC_clean"   "posterior" </span></span>
+<span><span class="co">#&gt;  [1] "mod_class" "terms"     "out.nm"    "cov_class" "cov_lev"   "co"       </span></span>
+<span><span class="co">#&gt;  [7] "cov_co"    "sig"       "haz_co"    "k"         "kn"        "lam"      </span></span>
+<span><span class="co">#&gt; [13] "formula"   "datasumm"  "datavis"   "DC"        "lik"       "start.mu" </span></span>
+<span><span class="co">#&gt; [19] "start.sd"  "cfmPost"   "target"    "betaPrior" "ncores"    "draws"    </span></span>
+<span><span class="co">#&gt; [25] "postFit"   "postEst"  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $class</span></span>
 <span><span class="co">#&gt; [1] "psc"</span></span></code></pre></div>
-<p>For example to view the matrix contianing the draws of the posterior
-distribution we use</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">surv.post</span> <span class="op">&lt;-</span> <span class="va">surv.psc</span><span class="op">$</span><span class="va">posterior</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">surv.post</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       gamma0   gamma1      gamma2     gamma3      gamma4        t3        t4</span></span>
-<span><span class="co">#&gt; 1 -10.183475 2.886891  0.32844796 -0.5849253  0.55252918 0.5605011 0.4197932</span></span>
-<span><span class="co">#&gt; 2 -10.374219 2.921543  0.35192056 -0.6365481  0.58544703 0.3962898 0.2498031</span></span>
-<span><span class="co">#&gt; 3 -10.965218 2.788057 -0.06478021 -0.1637076  0.50457712 0.8416433 0.6618134</span></span>
-<span><span class="co">#&gt; 4 -10.837710 3.478723  1.00099147 -1.8249162  1.28273268 0.3830648 0.3742471</span></span>
-<span><span class="co">#&gt; 5 -10.186945 2.932136 -0.26218258  0.5825346 -0.09242458 0.1376766 0.2445612</span></span>
-<span><span class="co">#&gt; 6  -9.347187 2.542036  0.30628179 -0.5125706  0.45910993 0.8832303 0.7760956</span></span>
-<span><span class="co">#&gt;      grade2    grade3    nodes2     lca199       beta      DIC</span></span>
-<span><span class="co">#&gt; 1 0.4117679 0.7335891 0.4861837 0.20571716 -0.2429918       NA</span></span>
-<span><span class="co">#&gt; 2 0.5187969 0.9038129 0.7217757 0.20592879 -0.1972145 839.3385</span></span>
-<span><span class="co">#&gt; 3 0.2646033 0.7761573 0.7368542 0.24363784 -0.1991925 849.5411</span></span>
-<span><span class="co">#&gt; 4 0.1709291 0.4459290 0.3303669 0.18685758 -0.1991925 846.2865</span></span>
-<span><span class="co">#&gt; 5 0.2749036 0.4610892 0.3754181 0.25901970 -0.1991925 842.9351</span></span>
-<span><span class="co">#&gt; 6 0.4475706 1.1129677 0.6109946 0.08936575 -0.1467539 856.0669</span></span></code></pre></div>
-<p>Inspection will show that there is a column for each parameter in the
-original model as well as ‘beta’ and ‘DIC’ vcolumns which give teh
-posterior estiamtes for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
-and the Deviance Informaiton Criterion respectively.</p>
-<p>We can inspect the poterior distribution using the autocorrelation
-function, trace and stardard summary statistics:</p>
-<div class="section level5">
-<h5 id="autocorrelation">Autocorrelation<a class="anchor" aria-label="anchor" href="#autocorrelation"></a>
-</h5>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/acf.html" class="external-link">acf</a></span><span class="op">(</span><span class="va">surv.post</span><span class="op">$</span><span class="va">beta</span><span class="op">)</span></span></code></pre></div>
-<p><img src="psc_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
-</div>
-<div class="section level5">
-<h5 id="trace">Trace<a class="anchor" aria-label="anchor" href="#trace"></a>
-</h5>
+<p>Its worth noting that as part of the ‘pscData()’ function which
+ensures the DC and CFM are compatible - the ‘datavis’ object has been
+updated. This will now produce a useful figure to allow evaulation of
+how comparable the data from the CFM and DC are using the ‘plotCFM()’
+function</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">surv.post</span><span class="op">$</span><span class="va">beta</span>,typ<span class="op">=</span><span class="st">"s"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="psc_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
-</div>
-<div class="section level5">
-<h5 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
-</h5>
-<p>Standard ‘summary()’ function wil summarise the model fit</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotCFM.html">plotCFM</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span></code></pre></div>
+<p><img src="psc_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" width="672"></p>
+<p>We make use of the ‘posterior’ package to summarise the posterior
+distributions (saved within the ‘draws’ object). Both ‘print()’ and
+‘coef()’ will show these although the ‘summary()’ function provides mode
+information:</p>
+<p>This includes information on the underlying CFM as well as expected
+meand response for patients in the DC along with 95% CI (obtianed using
+bootstrapping). A summary of the MCMC fit is supplied along with the
+overall summary of the posterior distribution.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Summary: </span></span>
-<span><span class="co">#&gt;  </span></span>
-<span><span class="co">#&gt; 311 observations selected from the data cohort for comparison </span></span>
-<span><span class="co">#&gt; CFM of type flexsurvreg identified  </span></span>
-<span><span class="co">#&gt; linear predictor succesfully obtained with median: </span></span>
-<span><span class="co">#&gt;  trt: 1.786</span></span>
-<span><span class="co">#&gt; Average expected response: </span></span>
-<span><span class="co">#&gt;  trt: 30.077</span></span>
-<span><span class="co">#&gt; Average observed response: 26.327 </span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Counterfactual Model (CFM): </span></span>
 <span><span class="co">#&gt; A model of class 'flexsurvreg' </span></span>
-<span><span class="co">#&gt;  Fit with 3 internal knots</span></span>
+<span><span class="co">#&gt;  Fit with 5 internal knots</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Formula: </span></span>
-<span><span class="co">#&gt; s.ob ~ t + grade + nodes + lca199</span></span>
-<span><span class="co">#&gt; &lt;environment: 0x560885cf0f10&gt;</span></span>
+<span><span class="co">#&gt; CFM Formula: </span></span>
+<span><span class="co">#&gt; Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199</span></span>
+<span><span class="co">#&gt; &lt;environment: 0x55efbdfc77f8&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; CFM Summary: </span></span>
+<span><span class="co">#&gt; Expected response for the outcome under the CFM:</span></span>
+<span><span class="co">#&gt;     S     lo     hi  </span></span>
+<span><span class="co">#&gt; 30.30  25.51  35.79  </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Observed outcome from the Data Cohort:</span></span>
+<span><span class="co">#&gt;          [,1] </span></span>
+<span><span class="co">#&gt; median   26.33</span></span>
+<span><span class="co">#&gt; 0.95LCL  22.85</span></span>
+<span><span class="co">#&gt; 0.95UCL  31.03</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; MCMC Fit: </span></span>
+<span><span class="co">#&gt; Posterior Distribution obtaine with fit summary:</span></span>
+<span><span class="co">#&gt;       variable     rhat         ess_bulk     ess_tail     mcse_mean  </span></span>
+<span><span class="co">#&gt; [1,]  beta_1       0.9998201    1841.153     1826.602     0.002056714</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Summary: </span></span>
+<span><span class="co">#&gt; Posterior Distribution for beta:Call:</span></span>
 <span><span class="co">#&gt;  CFM model + beta</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coefficients:</span></span>
-<span><span class="co">#&gt;       median     2.5%       97.5%      Pr(x&lt;0)    Pr(x&gt;0)  </span></span>
-<span><span class="co">#&gt; beta   -0.25020   -0.44084   -0.06284    0.99520    0.00480</span></span>
-<span><span class="co">#&gt; DIC   844.64311  837.88243  857.62927         NA         NA</span></span></code></pre></div>
-<p>To visualise the original model and the fit of the data, the plot
-function has been developed</p>
+<span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
+<span><span class="co">#&gt; posterior  beta_1        -0.006359981  0.08869426    -0.005708949  -0.1574338  </span></span>
+<span><span class="co">#&gt;            q95         </span></span>
+<span><span class="co">#&gt; posterior  0.1338137</span></span></code></pre></div>
+<p>Lastly to visualise the original model and the fit of the data, the
+plot function has been included</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span></code></pre></div>
-<p><img src="psc_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
-</div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
+<span><span class="co">#&gt; posterior  beta_1        -0.006359981  0.08869426    -0.005708949  -0.1574338  </span></span>
+<span><span class="co">#&gt;            q95         </span></span>
+<span><span class="co">#&gt; posterior  0.1338137</span></span>
+<span><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">ggpubr</span> package.</span></span>
+<span><span class="co">#&gt;   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/kassambara/ggpubr/issues&gt;</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
+<span><span class="co">#&gt; Ignoring unknown labels:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">colour</span> : <span style="color: #0000BB;">"Strata"</span></span></span></code></pre></div>
+<p><img src="psc_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" width="672"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -336,7 +395,7 @@ function has been developed</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

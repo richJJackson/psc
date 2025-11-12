@@ -1,0 +1,186 @@
+# Package index
+
+## All functions
+
+- [`acc()`](https://richjjackson.github.io/psc/reference/acc.md) : acc
+
+- [`bin.mod`](https://richjjackson.github.io/psc/reference/bin.mod.md) :
+  Example model for a survival outcome
+
+- [`boot_lp()`](https://richjjackson.github.io/psc/reference/boot_lp.md)
+  : Counter Factual Model - summary
+
+- [`boot_sest()`](https://richjjackson.github.io/psc/reference/boot_sest.md)
+  : Counter Factual Model - summary
+
+- [`cfmDataSumm()`](https://richjjackson.github.io/psc/reference/cfmDataSumm.md)
+  : Summarising data within a Counter Factual Model (CFM)
+
+- [`cfmDataVis()`](https://richjjackson.github.io/psc/reference/cfmDataVis.md)
+  : Visualising data within a CFM
+
+- [`cfmDataVis_fac()`](https://richjjackson.github.io/psc/reference/cfmDataVis_fac.md)
+  : Visualising Categorical Data
+
+- [`cfmDataVis_num()`](https://richjjackson.github.io/psc/reference/cfmDataVis_num.md)
+  : Visualising Numerical Data
+
+- [`cfmSumm.flexsurvreg()`](https://richjjackson.github.io/psc/reference/cfmSumm.flexsurvreg.md)
+  : Counter Factual Model - summary
+
+- [`cfmSumm.glm()`](https://richjjackson.github.io/psc/reference/cfmSumm.glm.md)
+  : Counter Factual Model - summary
+
+- [`coef(`*`<psc>`*`)`](https://richjjackson.github.io/psc/reference/coef.psc.md)
+  : Returns the coefficient estimate of a psc object.
+
+- [`cont.mod`](https://richjjackson.github.io/psc/reference/cont.mod.md)
+  : Example model for a survival outcome
+
+- [`count.mod`](https://richjjackson.github.io/psc/reference/count.mod.md)
+  : Example model for a survival outcome
+
+- [`data`](https://richjjackson.github.io/psc/reference/data.md) :
+  Example Dataset of patients with aHCC receiving Lenvetanib
+
+- [`e4_data`](https://richjjackson.github.io/psc/reference/e4_data.md) :
+  Example Dataset of patients treated with GemCap in the ESPAC-4 trial
+
+- [`facVisComp()`](https://richjjackson.github.io/psc/reference/facVisComp.md)
+  : Visualising Categorical Data
+
+- [`gemCFM`](https://richjjackson.github.io/psc/reference/gemCFM.md) :
+  Model for a survival outcome based on Gemcitbine patients from ESPAC-3
+
+- [`init()`](https://richjjackson.github.io/psc/reference/init.md) :
+  Function for estimating initial parameter values
+
+- [`lik.flexsurvreg()`](https://richjjackson.github.io/psc/reference/lik.flexsurvreg.md)
+  : Likelihood function for a psc model of class 'flexsurvreg'
+
+- [`lik.glm()`](https://richjjackson.github.io/psc/reference/lik.glm.md)
+  : Likelihood function for a psc model of class 'glm'
+
+- [`modelExtract()`](https://richjjackson.github.io/psc/reference/modelExtract.md)
+  : A generic function for extracting model information
+
+- [`modelExtract(`*`<flexsurvreg>`*`)`](https://richjjackson.github.io/psc/reference/modelExtract.flexsurvreg.md)
+  : A generic function for extracting model information
+
+- [`modelExtract(`*`<glm>`*`)`](https://richjjackson.github.io/psc/reference/modelExtract.glm.md)
+  : A generic function for extracting model information
+
+- [`modelExtract(`*`<lmerMod>`*`)`](https://richjjackson.github.io/psc/reference/modelExtract.lmerMod.md)
+  : A generic function for extracting model information
+
+- [`modp()`](https://richjjackson.github.io/psc/reference/modp.md) :
+  modp
+
+- [`numVisComp()`](https://richjjackson.github.io/psc/reference/numVisComp.md)
+  : Visualising Numerical Data
+
+- [`plot(`*`<psc>`*`)`](https://richjjackson.github.io/psc/reference/plot.psc.md)
+  : Function for Plotting PSC objects
+
+- [`plot(`*`<psc.binary>`*`)`](https://richjjackson.github.io/psc/reference/plot.psc.binary.md)
+  : Function for Plotting PSC objects
+
+- [`plot(`*`<psc.cont>`*`)`](https://richjjackson.github.io/psc/reference/plot.psc.cont.md)
+  : Function for Plotting PSC objects
+
+- [`plot(`*`<psc.count>`*`)`](https://richjjackson.github.io/psc/reference/plot.psc.count.md)
+  : Function for Plotting PSC objects \#' A function which illsutrates
+  the predicted response under the counter factual model and the
+  observed response under the experimental treatment(s).
+
+- [`plot(`*`<psc.flexsurvreg>`*`)`](https://richjjackson.github.io/psc/reference/plot.psc.flexsurvreg.md)
+  : Function for Plotting PSC objects
+
+- [`plotCFM()`](https://richjjackson.github.io/psc/reference/plotCFM.md)
+  : Function for Plotting PSC objects
+
+- [`postSummary()`](https://richjjackson.github.io/psc/reference/postSummary.md)
+  : Posterior Summary
+
+- [`print(`*`<psc>`*`)`](https://richjjackson.github.io/psc/reference/print.psc.md)
+  : Personalised Synthetic Controls - print
+
+- [`print(`*`<quiet_gglist>`*`)`](https://richjjackson.github.io/psc/reference/print.quiet_gglist.md)
+  : quiet_gglist
+
+- [`print(`*`<quiet_gtsumm>`*`)`](https://richjjackson.github.io/psc/reference/print.quiet_gtsumm.md)
+  : quiet_gtsumm
+
+- [`print(`*`<quiet_list>`*`)`](https://richjjackson.github.io/psc/reference/print.quiet_list.md)
+  : quiet_gtsumm
+
+- [`psc.object`](https://richjjackson.github.io/psc/reference/psc.object.md)
+  :
+
+  Fitted `psc` object
+
+- [`pscCFM()`](https://richjjackson.github.io/psc/reference/pscCFM.md) :
+  Creating a CFM model which can be shared
+
+- [`pscData()`](https://richjjackson.github.io/psc/reference/pscData.md)
+  : A function which structures the Data Cohort in a format for model
+  estimation
+
+- [`pscData_addLik()`](https://richjjackson.github.io/psc/reference/pscData_addLik.md)
+  : A function that add a likelihood for estimation to the pscObject
+
+- [`pscData_addtrt()`](https://richjjackson.github.io/psc/reference/pscData_addtrt.md)
+  : A function that includes a treatment indicator when multiple
+  treatment comparisons are required
+
+- [`pscData_error()`](https://richjjackson.github.io/psc/reference/pscData_error.md)
+  : A function which performs error checks between the DC and CFM
+
+- [`pscData_match()`](https://richjjackson.github.io/psc/reference/pscData_match.md)
+  : A function to ensure that data from the cfm and data cohort are
+  compatible
+
+- [`pscData_miss()`](https://richjjackson.github.io/psc/reference/pscData_miss.md)
+  : A function which removes missing data from the DC
+
+- [`pscData_structure()`](https://richjjackson.github.io/psc/reference/pscData_structure.md)
+  : A function which structures the Data Cohort in a format for model
+  estimation
+
+- [`pscEst()`](https://richjjackson.github.io/psc/reference/pscEst.md) :
+  Function for performing Bayesian MCMC estimation procedures in
+  'pscfit'
+
+- [`pscEst_run()`](https://richjjackson.github.io/psc/reference/pscEst_run.md)
+  : Running the Bayesian MCMC routine A procedure which runs the MCMC
+  estimation routine
+
+- [`pscEst_samp()`](https://richjjackson.github.io/psc/reference/pscEst_samp.md)
+  : Starting conditions for Bayesian MCMC estimation procedures in
+  'pscfit' A procedure which runs the sampling process for MCMC
+  estimation
+
+- [`pscEst_start()`](https://richjjackson.github.io/psc/reference/pscEst_start.md)
+  : Starting conditions for Bayesian MCMC estimation procedures in
+  'pscfit' A procedure which sets the starting conditions for MCMC
+  estimation
+
+- [`pscEst_update()`](https://richjjackson.github.io/psc/reference/pscEst_update.md)
+  : Updating the posterior distribution as part of the MCMC estimation
+  process A procedure which performs a single update of the posterior
+  distribution
+
+- [`pscfit()`](https://richjjackson.github.io/psc/reference/pscfit.md) :
+  Personalised Synthetic Controls model fit
+
+- [`spline_surv_est()`](https://richjjackson.github.io/psc/reference/spline_surv_est.md)
+  : Counter Factual Model - summary
+
+- [`summary(`*`<psc>`*`)`](https://richjjackson.github.io/psc/reference/summary.psc.md)
+  : Personalised Synthetic Controls - summary
+
+- [`surv.mod`](https://richjjackson.github.io/psc/reference/surv.mod.md)
+  : Example model for a survival outcome
+
+- [`visComp()`](https://richjjackson.github.io/psc/reference/visComp.md)
+  : Visualising Comparisons between a CFM and a DC
