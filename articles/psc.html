@@ -205,7 +205,7 @@ the model for analysis.</p>
 <span><span class="co">#&gt; Installing package into '/home/runner/work/_temp/Library'</span></span>
 <span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; * checking for file ‘/tmp/Rtmpy1LMIl/remotes20c571f9c0c6/richJJackson-psc-4cf38c4/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">#&gt; * checking for file ‘/tmp/RtmpXvzgIv/remotes20c72628be7a/richJJackson-psc-3380b14/DESCRIPTION’ ... OK</span></span>
 <span><span class="co">#&gt; * preparing ‘psc’:</span></span>
 <span><span class="co">#&gt; * checking DESCRIPTION meta-information ... OK</span></span>
 <span><span class="co">#&gt; * checking for LF line-endings in source and make files and shell scripts</span></span>
@@ -334,7 +334,7 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Formula: </span></span>
 <span><span class="co">#&gt; Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199</span></span>
-<span><span class="co">#&gt; &lt;environment: 0x564404c59b00&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: 0x55c679417e58&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Summary: </span></span>
 <span><span class="co">#&gt; Expected response for the outcome under the CFM:</span></span>
@@ -350,7 +350,7 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; MCMC Fit: </span></span>
 <span><span class="co">#&gt; Posterior Distribution obtaine with fit summary:</span></span>
 <span><span class="co">#&gt;       variable     rhat         ess_bulk     ess_tail     mcse_mean  </span></span>
-<span><span class="co">#&gt; [1,]  beta_1       1.000952     1825.11      2153.515     0.002000087</span></span>
+<span><span class="co">#&gt; [1,]  beta_1       1.002312     963.7635     1073.025     0.002827714</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Summary: </span></span>
 <span><span class="co">#&gt; Posterior Distribution for beta:Call:</span></span>
@@ -358,17 +358,17 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coefficients:</span></span>
 <span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
-<span><span class="co">#&gt; posterior  beta_1        -0.009312022  0.0864278     -0.00746047   -0.1542111  </span></span>
+<span><span class="co">#&gt; posterior  beta_1        -0.004250165  0.08824653    0.0002749194  -0.1517958  </span></span>
 <span><span class="co">#&gt;            q95         </span></span>
-<span><span class="co">#&gt; posterior  0.1299042</span></span></code></pre></div>
+<span><span class="co">#&gt; posterior  0.1329466</span></span></code></pre></div>
 <p>Lastly to visualise the original model and the fit of the data, the
 plot function has been included</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
-<span><span class="co">#&gt; posterior  beta_1        -0.009312022  0.0864278     -0.00746047   -0.1542111  </span></span>
+<span><span class="co">#&gt; posterior  beta_1        -0.004250165  0.08824653    0.0002749194  -0.1517958  </span></span>
 <span><span class="co">#&gt;            q95         </span></span>
-<span><span class="co">#&gt; posterior  0.1299042</span></span>
+<span><span class="co">#&gt; posterior  0.1329466</span></span>
 <span><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">ggpubr</span> package.</span></span>

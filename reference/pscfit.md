@@ -14,7 +14,7 @@ wherebey the parameters of the CFM acts as informative priors.
 pscfit(
   CFM,
   DC,
-  nsim = 3000,
+  nsim = 2000,
   id = NULL,
   trt = NULL,
   nchain = 2,
