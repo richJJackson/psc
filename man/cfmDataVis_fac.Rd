@@ -15,6 +15,6 @@ cfmDataVis_fac(x, nm)
 a ggplot object
 }
 \description{
-A function which summarises categorical data using a waffle plot.  A
+A function which summarises categorical data using a bar plot.  A
 sub-function of cfmDataVis
 }

@@ -20,7 +20,7 @@ for a 'psc' obecjec
 }
 \details{
 This function returns either density plots (continuous data) or
-waffle plots (categroical data) to describe the data in the CFM.  If an object
+bar plots (categroical data) to describe the data in the CFM.  If an object
 is supplied which has combied the CFM and DC (e.g. a psc object or an object
 which has been passed through pscData()) then a comparison of the CFM and DC
 will be supplied
