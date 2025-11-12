@@ -115,7 +115,9 @@ We start by loading the package and from there obtianing the data and
 the model for analysis.
 
 ``` r
-#remove.packages("psc")
+remove.packages("psc")
+#> Removing package from '/home/runner/work/_temp/Library'
+#> (as 'lib' is unspecified)
 #rm(list=ls())
 library(devtools)
 #> Loading required package: usethis
@@ -127,7 +129,7 @@ install_github("richjjackson/psc")
 #> Installing package into '/home/runner/work/_temp/Library'
 #> (as 'lib' is unspecified)
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#> * checking for file ‘/tmp/RtmpXvzgIv/remotes20c72628be7a/richJJackson-psc-3380b14/DESCRIPTION’ ... OK
+#> * checking for file ‘/tmp/RtmpAn277t/remotes21082221e97e/richJJackson-psc-3380b14/DESCRIPTION’ ... OK
 #> * preparing ‘psc’:
 #> * checking DESCRIPTION meta-information ... OK
 #> * checking for LF line-endings in source and make files and shell scripts
@@ -284,7 +286,7 @@ summary(surv.psc)
 #> 
 #> CFM Formula: 
 #> Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199
-#> <environment: 0x55c679417e58>
+#> <environment: 0x55edcf4676a0>
 #> 
 #> CFM Summary: 
 #> Expected response for the outcome under the CFM:
@@ -300,7 +302,7 @@ summary(surv.psc)
 #> MCMC Fit: 
 #> Posterior Distribution obtaine with fit summary:
 #>       variable     rhat         ess_bulk     ess_tail     mcse_mean  
-#> [1,]  beta_1       1.002312     963.7635     1073.025     0.002827714
+#> [1,]  beta_1       1.001146     1079.07      1137.392     0.002693919
 #> 
 #> Summary: 
 #> Posterior Distribution for beta:Call:
@@ -308,9 +310,9 @@ summary(surv.psc)
 #> 
 #> Coefficients:
 #>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.004250165  0.08824653    0.0002749194  -0.1517958  
+#> posterior  beta_1        -0.005578508  0.08960138    -0.001205914  -0.1554695  
 #>            q95         
-#> posterior  0.1329466
+#> posterior  0.1347141
 ```
 
 Lastly to visualise the original model and the fit of the data, the plot
@@ -319,9 +321,9 @@ function has been included
 ``` r
 plot(surv.psc)
 #>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.004250165  0.08824653    0.0002749194  -0.1517958  
+#> posterior  beta_1        -0.005578508  0.08960138    -0.001205914  -0.1554695  
 #>            q95         
-#> posterior  0.1329466
+#> posterior  0.1347141
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
 #> ℹ The deprecated feature was likely used in the ggpubr package.
