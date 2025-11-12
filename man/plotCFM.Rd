@@ -29,6 +29,6 @@ will be supplied
 e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
 plotCFM(gemCFM)
-psc <- pscfit(gemCFM,e4_data)
+psc <- pscfit(gemCFM,e4_data,nsim=2000,nchain=1)
 plotCFM(psc)
 }

@@ -71,7 +71,7 @@
 #' @examples
 #' e4_data <- psc::e4_data
 #' gemCFM <- psc::gemCFM
-#' psc <- pscfit(gemCFM,e4_data)
+#' psc <- pscfit(gemCFM,e4_data,nsim=2000,nchain=1)
 #' print(psc)
 #' @export
 pscfit <- function (CFM, DC, nsim = 2000, id = NULL, trt = NULL,nchain=2,thin=2,burn=500){
