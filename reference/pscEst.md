@@ -76,4 +76,5 @@ The result of the algorithm is a posterior distribution for the log
 hazard ratio, \\\beta\\, captures the variability in B through the
 defined priors \\\pi{(\beta)}\\. @examples e4_data \<- psc::e4_data
 gemCFM \<- psc::gemCFM pscOb \<- pscData(gemCFM,e4_data) pscOb \<-
-init(pscOb) pscOb \<- pscEst(pscOb) importFrom survival Surv survfit
+init(pscOb) pscOb \<- pscEst(pscOb,nsim=2000,nchain=1) importFrom
+survival Surv survfit

@@ -97,7 +97,7 @@ e4_data &lt;- psc::e4_data
 gemCFM &lt;- psc::gemCFM
 pscOb &lt;- pscData(gemCFM,e4_data)
 pscOb &lt;- init(pscOb)
-pscOb &lt;- pscEst(pscOb)
+pscOb &lt;- pscEst(pscOb,nsim=2000,nchain=1)
 importFrom survival Surv survfit</p>
     </div>
 
