@@ -130,7 +130,7 @@ a 'GemCap Vs Gem' comparison.  We start by loading the package and from there
 obtianing the data and the model for analysis.
 
 ```{r}
-#remove.packages("psc")
+remove.packages("psc")
 #rm(list=ls())
 library(devtools)
 install_github("richjjackson/psc")
