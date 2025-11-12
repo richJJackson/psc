@@ -30,9 +30,9 @@ A model of class 'pscCFM' containg a 'flexsurvreg' model:
 
   log transformed ca19.9
 
-- t:
+- ResecM:
 
-  T-stage (1,2 or 3)
+  Resection Margins)
 
 ## Source
 
