@@ -137,7 +137,7 @@ print(psc)
 #> 
 #> Coefficients:
 #>            variable     mean         sd           median       q5         
-#> posterior  beta_1       0.05926722   0.08900732   0.0560348    -0.08153316
+#> posterior  beta_1       0.03008486   0.08398675   0.02792879   -0.09979971
 #>            q95        
-#> posterior  0.2006886  
+#> posterior  0.1682233  
 ```

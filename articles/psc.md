@@ -131,7 +131,7 @@ install_github("richjjackson/psc")
 #> Installing packages into '/home/runner/work/_temp/Library'
 #> (as 'lib' is unspecified)
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#> * checking for file ‘/tmp/Rtmp6iNjcM/remotes20b37fd676f0/richJJackson-psc-15a6ea9/DESCRIPTION’ ... OK
+#> * checking for file ‘/tmp/RtmpK9RbPL/remotes216639ea9ef3/richJJackson-psc-94482ab/DESCRIPTION’ ... OK
 #> * preparing ‘psc’:
 #> * checking DESCRIPTION meta-information ... OK
 #> * checking for LF line-endings in source and make files and shell scripts
@@ -288,7 +288,7 @@ summary(surv.psc)
 #> 
 #> CFM Formula: 
 #> Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199
-#> <environment: 0x558572482118>
+#> <environment: 0x558001604080>
 #> 
 #> CFM Summary: 
 #> Expected response for the outcome under the CFM:
@@ -303,8 +303,8 @@ summary(surv.psc)
 #> 
 #> MCMC Fit: 
 #> Posterior Distribution obtaine with fit summary:
-#>       variable     rhat         ess_bulk     ess_tail     mcse_mean  
-#> [1,]  beta_1       1.006862     1034.145     1045.584     0.002653028
+#>       variable    rhat        ess_bulk    ess_tail    mcse_mean 
+#> [1,]  beta_1      1.003578    933.1359    1069.9      0.00278219
 #> 
 #> Summary: 
 #> Posterior Distribution for beta:Call:
@@ -312,9 +312,9 @@ summary(surv.psc)
 #> 
 #> Coefficients:
 #>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.003460176  0.08519708    -0.001057764  -0.1440865  
+#> posterior  beta_1        -0.004570621  0.08599047    -0.002258437  -0.1444204  
 #>            q95         
-#> posterior  0.1328188
+#> posterior  0.1341535
 ```
 
 Lastly to visualise the original model and the fit of the data, the plot
@@ -323,9 +323,9 @@ function has been included
 ``` r
 plot(surv.psc)
 #>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.003460176  0.08519708    -0.001057764  -0.1440865  
+#> posterior  beta_1        -0.004570621  0.08599047    -0.002258437  -0.1444204  
 #>            q95         
-#> posterior  0.1328188
+#> posterior  0.1341535
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
 #> ℹ The deprecated feature was likely used in the ggpubr package.
