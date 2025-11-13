@@ -64,6 +64,6 @@ e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
 pscOb <- pscData(gemCFM,e4_data)
 pscOb <- init(pscOb)
-pscOb <- pscEst(pscOb,nsim=2000,nchain=1)
+pscOb <- pscEst(pscOb,nsim=1500,nchain=1)
 importFrom survival Surv survfit
 }

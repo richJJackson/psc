@@ -99,6 +99,6 @@ the \code{pscfit} function compares a dataset ('DC') against a parametric model.
 \examples{
 e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
-psc <- pscfit(gemCFM,e4_data,nsim=2000,nchain=1)
+psc <- pscfit(gemCFM,e4_data,nsim=1500,nchain=1)
 print(psc)
 }
