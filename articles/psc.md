@@ -131,7 +131,7 @@ install_github("richjjackson/psc")
 #> Installing packages into '/home/runner/work/_temp/Library'
 #> (as 'lib' is unspecified)
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#> * checking for file ‘/tmp/RtmpK9RbPL/remotes216639ea9ef3/richJJackson-psc-94482ab/DESCRIPTION’ ... OK
+#> * checking for file ‘/tmp/Rtmpg7vJtB/remotes20bdc6fb51b/richJJackson-psc-8e978b3/DESCRIPTION’ ... OK
 #> * preparing ‘psc’:
 #> * checking DESCRIPTION meta-information ... OK
 #> * checking for LF line-endings in source and make files and shell scripts
@@ -288,7 +288,7 @@ summary(surv.psc)
 #> 
 #> CFM Formula: 
 #> Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199
-#> <environment: 0x558001604080>
+#> <environment: 0x564544085670>
 #> 
 #> CFM Summary: 
 #> Expected response for the outcome under the CFM:
@@ -303,18 +303,18 @@ summary(surv.psc)
 #> 
 #> MCMC Fit: 
 #> Posterior Distribution obtaine with fit summary:
-#>       variable    rhat        ess_bulk    ess_tail    mcse_mean 
-#> [1,]  beta_1      1.003578    933.1359    1069.9      0.00278219
+#>       variable     rhat         ess_bulk     ess_tail     mcse_mean  
+#> [1,]  beta_1       1.00219      982.9588     969.0546     0.002770336
 #> 
 #> Summary: 
 #> Posterior Distribution for beta:Call:
 #>  CFM model + beta
 #> 
 #> Coefficients:
-#>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.004570621  0.08599047    -0.002258437  -0.1444204  
-#>            q95         
-#> posterior  0.1341535
+#>            variable       mean           sd             median       
+#> posterior  beta_1         -0.003323009   0.08782652     -0.0003282747
+#>            q5             q95          
+#> posterior  -0.1532584     0.130359
 ```
 
 Lastly to visualise the original model and the fit of the data, the plot
@@ -322,10 +322,10 @@ function has been included
 
 ``` r
 plot(surv.psc)
-#>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.004570621  0.08599047    -0.002258437  -0.1444204  
-#>            q95         
-#> posterior  0.1341535
+#>            variable       mean           sd             median       
+#> posterior  beta_1         -0.003323009   0.08782652     -0.0003282747
+#>            q5             q95          
+#> posterior  -0.1532584     0.130359
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
 #> ℹ The deprecated feature was likely used in the ggpubr package.
