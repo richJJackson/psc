@@ -55,7 +55,7 @@
                         <h4 data-toc-skip class="author">Richard
 Jackson</h4>
             
-            <h4 data-toc-skip class="date">2025-11-12</h4>
+            <h4 data-toc-skip class="date">2025-11-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/richJJackson/psc/blob/main/vignettes/psc.Rmd" class="external-link"><code>vignettes/psc.Rmd</code></a></small>
       <div class="d-none name"><code>psc.Rmd</code></div>
@@ -203,11 +203,13 @@ the model for analysis.</p>
 <span><span class="co">#&gt; Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.</span></span>
 <span><span class="co">#&gt; Downloading GitHub repo richjjackson/psc@HEAD</span></span>
 <span><span class="co">#&gt; digest (0.6.37 -&gt; 0.6.38) [CRAN]</span></span>
-<span><span class="co">#&gt; Installing 1 packages: digest</span></span>
-<span><span class="co">#&gt; Installing package into '/home/runner/work/_temp/Library'</span></span>
+<span><span class="co">#&gt; lsoda  (NA     -&gt; 1.2   ) [CRAN]</span></span>
+<span><span class="co">#&gt; rstpm2 (1.7.0  -&gt; 1.7.1 ) [CRAN]</span></span>
+<span><span class="co">#&gt; Installing 3 packages: digest, lsoda, rstpm2</span></span>
+<span><span class="co">#&gt; Installing packages into '/home/runner/work/_temp/Library'</span></span>
 <span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; * checking for file ‘/tmp/RtmpP4sWXQ/remotes20cd512b04ea/richJJackson-psc-7930bd6/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">#&gt; * checking for file ‘/tmp/Rtmp6iNjcM/remotes20b37fd676f0/richJJackson-psc-15a6ea9/DESCRIPTION’ ... OK</span></span>
 <span><span class="co">#&gt; * preparing ‘psc’:</span></span>
 <span><span class="co">#&gt; * checking DESCRIPTION meta-information ... OK</span></span>
 <span><span class="co">#&gt; * checking for LF line-endings in source and make files and shell scripts</span></span>
@@ -336,7 +338,7 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Formula: </span></span>
 <span><span class="co">#&gt; Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199</span></span>
-<span><span class="co">#&gt; &lt;environment: 0x556ecc12ce00&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: 0x558572482118&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Summary: </span></span>
 <span><span class="co">#&gt; Expected response for the outcome under the CFM:</span></span>
@@ -351,8 +353,8 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; MCMC Fit: </span></span>
 <span><span class="co">#&gt; Posterior Distribution obtaine with fit summary:</span></span>
-<span><span class="co">#&gt;       variable    rhat        ess_bulk    ess_tail    mcse_mean </span></span>
-<span><span class="co">#&gt; [1,]  beta_1      0.9998788   1182.917    1213.146    0.00252459</span></span>
+<span><span class="co">#&gt;       variable     rhat         ess_bulk     ess_tail     mcse_mean  </span></span>
+<span><span class="co">#&gt; [1,]  beta_1       1.006862     1034.145     1045.584     0.002653028</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Summary: </span></span>
 <span><span class="co">#&gt; Posterior Distribution for beta:Call:</span></span>
@@ -360,17 +362,17 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coefficients:</span></span>
 <span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
-<span><span class="co">#&gt; posterior  beta_1        -0.00503853   0.08793699    -0.003878069  -0.1565113  </span></span>
+<span><span class="co">#&gt; posterior  beta_1        -0.003460176  0.08519708    -0.001057764  -0.1440865  </span></span>
 <span><span class="co">#&gt;            q95         </span></span>
-<span><span class="co">#&gt; posterior  0.1381945</span></span></code></pre></div>
+<span><span class="co">#&gt; posterior  0.1328188</span></span></code></pre></div>
 <p>Lastly to visualise the original model and the fit of the data, the
 plot function has been included</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
-<span><span class="co">#&gt; posterior  beta_1        -0.00503853   0.08793699    -0.003878069  -0.1565113  </span></span>
+<span><span class="co">#&gt; posterior  beta_1        -0.003460176  0.08519708    -0.001057764  -0.1440865  </span></span>
 <span><span class="co">#&gt;            q95         </span></span>
-<span><span class="co">#&gt; posterior  0.1381945</span></span>
+<span><span class="co">#&gt; posterior  0.1328188</span></span>
 <span><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">ggpubr</span> package.</span></span>

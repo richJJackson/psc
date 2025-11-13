@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   psc: psc.html
-last_built: 2025-11-12T15:34Z
+last_built: 2025-11-13T09:33Z
 urls:
   reference: https://richjjackson.github.io/psc/reference
   article: https://richjjackson.github.io/psc/articles

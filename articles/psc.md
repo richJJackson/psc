@@ -125,11 +125,13 @@ install_github("richjjackson/psc")
 #> Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.
 #> Downloading GitHub repo richjjackson/psc@HEAD
 #> digest (0.6.37 -> 0.6.38) [CRAN]
-#> Installing 1 packages: digest
-#> Installing package into '/home/runner/work/_temp/Library'
+#> lsoda  (NA     -> 1.2   ) [CRAN]
+#> rstpm2 (1.7.0  -> 1.7.1 ) [CRAN]
+#> Installing 3 packages: digest, lsoda, rstpm2
+#> Installing packages into '/home/runner/work/_temp/Library'
 #> (as 'lib' is unspecified)
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#> * checking for file ‘/tmp/RtmpP4sWXQ/remotes20cd512b04ea/richJJackson-psc-7930bd6/DESCRIPTION’ ... OK
+#> * checking for file ‘/tmp/Rtmp6iNjcM/remotes20b37fd676f0/richJJackson-psc-15a6ea9/DESCRIPTION’ ... OK
 #> * preparing ‘psc’:
 #> * checking DESCRIPTION meta-information ... OK
 #> * checking for LF line-endings in source and make files and shell scripts
@@ -286,7 +288,7 @@ summary(surv.psc)
 #> 
 #> CFM Formula: 
 #> Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199
-#> <environment: 0x556ecc12ce00>
+#> <environment: 0x558572482118>
 #> 
 #> CFM Summary: 
 #> Expected response for the outcome under the CFM:
@@ -301,8 +303,8 @@ summary(surv.psc)
 #> 
 #> MCMC Fit: 
 #> Posterior Distribution obtaine with fit summary:
-#>       variable    rhat        ess_bulk    ess_tail    mcse_mean 
-#> [1,]  beta_1      0.9998788   1182.917    1213.146    0.00252459
+#>       variable     rhat         ess_bulk     ess_tail     mcse_mean  
+#> [1,]  beta_1       1.006862     1034.145     1045.584     0.002653028
 #> 
 #> Summary: 
 #> Posterior Distribution for beta:Call:
@@ -310,9 +312,9 @@ summary(surv.psc)
 #> 
 #> Coefficients:
 #>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.00503853   0.08793699    -0.003878069  -0.1565113  
+#> posterior  beta_1        -0.003460176  0.08519708    -0.001057764  -0.1440865  
 #>            q95         
-#> posterior  0.1381945
+#> posterior  0.1328188
 ```
 
 Lastly to visualise the original model and the fit of the data, the plot
@@ -321,9 +323,9 @@ function has been included
 ``` r
 plot(surv.psc)
 #>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.00503853   0.08793699    -0.003878069  -0.1565113  
+#> posterior  beta_1        -0.003460176  0.08519708    -0.001057764  -0.1440865  
 #>            q95         
-#> posterior  0.1381945
+#> posterior  0.1328188
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
 #> ℹ The deprecated feature was likely used in the ggpubr package.
