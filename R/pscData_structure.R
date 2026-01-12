@@ -35,7 +35,7 @@ pscData_structure <- function(CFM,DC){
     #mf <- model.frame(CFM$formula,data=DC)
     #ys <- mf[,1]
     ys <- Surv(DC$time,DC$cen)
-    mm <- model.matrix(CFM$formula,data=DC)[,-1]
+    mm <- model.matrix(CFM$formula[-2],data=DC)[,-1]
     yd <- data.frame("time"=ys[,1],"cen"=ys[,2])
     ret <- list("Y"=yd,"X"=mm)
   }
