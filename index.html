@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">psc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,12 +67,8 @@
 <p>This is a basic example which shows you how to solve a common problem:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/richjjackson/psc/" class="external-link">psc</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: replacing previous import 'posterior::var' by 'stats::var' when</span></span>
-<span><span class="co">#&gt; loading 'psc'</span></span>
-<span><span class="co">#&gt; Warning: replacing previous import 'posterior::sd' by 'stats::sd' when loading</span></span>
-<span><span class="co">#&gt; 'psc'</span></span>
-<span><span class="co">#&gt; Warning: replacing previous import 'posterior::mad' by 'stats::mad' when</span></span>
-<span><span class="co">#&gt; loading 'psc'</span></span>
+<span><span class="co">#&gt; Loading required package: survival</span></span>
+<span><span class="co">#&gt; Loading required package: ggplot2</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival" class="external-link">survival</a></span><span class="op">)</span></span>
 <span><span class="co">## basic example code</span></span>
 <span></span>
@@ -99,12 +95,12 @@
 <span><span class="co">#&gt; CFM Formula: </span></span>
 <span><span class="co">#&gt; Surv(time, cen) ~ vi/age60 + ecog + allmets + logafp + alb + </span></span>
 <span><span class="co">#&gt;     logcreat + logast + aet</span></span>
-<span><span class="co">#&gt; &lt;environment: 0x11b23ef28&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: 0x116b6fd60&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Summary: </span></span>
 <span><span class="co">#&gt; Expected response for the outcome under the CFM:</span></span>
 <span><span class="co">#&gt;      S      lo      hi  </span></span>
-<span><span class="co">#&gt;  9.694   9.094  10.653  </span></span>
+<span><span class="co">#&gt;  9.694   9.094  11.013  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Observed outcome from the Data Cohort:</span></span>
 <span><span class="co">#&gt;          [,1] </span></span>
@@ -114,8 +110,8 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; MCMC Fit: </span></span>
 <span><span class="co">#&gt; Posterior Distribution obtaine with fit summary:</span></span>
-<span><span class="co">#&gt;       variable    rhat        ess_bulk    ess_tail    mcse_mean </span></span>
-<span><span class="co">#&gt; [1,]  beta_1      1.000707    4222.245    3977.807    0.00151382</span></span>
+<span><span class="co">#&gt;       variable     rhat         ess_bulk     ess_tail     mcse_mean  </span></span>
+<span><span class="co">#&gt; [1,]  beta_1       1.001575     1157.117     1022.026     0.002900963</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Summary: </span></span>
 <span><span class="co">#&gt; Posterior Distribution for beta:Call:</span></span>
@@ -123,14 +119,14 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coefficients:</span></span>
 <span><span class="co">#&gt;            variable    mean        sd          median      q5        </span></span>
-<span><span class="co">#&gt; posterior  beta_1      0.395547    0.09849599  0.3994494   0.229423  </span></span>
+<span><span class="co">#&gt; posterior  beta_1      0.3707433   0.09903147  0.3708735   0.2103505 </span></span>
 <span><span class="co">#&gt;            q95       </span></span>
-<span><span class="co">#&gt; posterior  0.5514348</span></span></code></pre></div>
+<span><span class="co">#&gt; posterior  0.5420673</span></span></code></pre></div>
 <p>… and to see a plot of what you have done</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co">#&gt;            variable    mean        sd          median      q5        </span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt; posterior  beta_1      0.395547    0.09849599  0.3994494   0.229423  </span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt; posterior  beta_1      0.3707433   0.09903147  0.3708735   0.2103505 </span></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt;            q95       </span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; posterior  0.5514348</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; posterior  0.5420673</span></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; ℹ Please use `linewidth` instead.</span></span>
 <span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; ℹ The deprecated feature was likely used in the ggpubr package.</span></span>

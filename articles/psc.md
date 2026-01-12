@@ -264,7 +264,7 @@ summary(surv.psc)
 #> 
 #> CFM Formula: 
 #> Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199
-#> <environment: 0x55d343647f70>
+#> <environment: 0x55c809786e60>
 #> 
 #> CFM Summary: 
 #> Expected response for the outcome under the CFM:
@@ -279,18 +279,18 @@ summary(surv.psc)
 #> 
 #> MCMC Fit: 
 #> Posterior Distribution obtaine with fit summary:
-#>       variable    rhat        ess_bulk    ess_tail    mcse_mean 
-#> [1,]  beta_1      1.00206     1201.938    1017.255    0.00247364
+#>       variable     rhat         ess_bulk     ess_tail     mcse_mean  
+#> [1,]  beta_1       0.9994857    1189.257     1281.546     0.002579931
 #> 
 #> Summary: 
 #> Posterior Distribution for beta:Call:
 #>  CFM model + beta
 #> 
 #> Coefficients:
-#>            variable     mean         sd           median       q5         
-#> posterior  beta_1       0.001145023  0.08658349   0.00166373   -0.1454377 
-#>            q95        
-#> posterior  0.1373892
+#>            variable      mean          sd            median        q5          
+#> posterior  beta_1        -0.007418638  0.08911345    -0.004665301  -0.1590243  
+#>            q95         
+#> posterior  0.1395412
 ```
 
 Lastly to visualise the original model and the fit of the data, the plot
@@ -298,10 +298,10 @@ function has been included
 
 ``` r
 plot(surv.psc)
-#>            variable     mean         sd           median       q5         
-#> posterior  beta_1       0.001145023  0.08658349   0.00166373   -0.1454377 
-#>            q95        
-#> posterior  0.1373892
+#>            variable      mean          sd            median        q5          
+#> posterior  beta_1        -0.007418638  0.08911345    -0.004665301  -0.1590243  
+#>            q95         
+#> posterior  0.1395412
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
 #> ℹ The deprecated feature was likely used in the ggpubr package.
