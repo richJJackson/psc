@@ -115,30 +115,6 @@ We start by loading the package and from there obtianing the data and
 the model for analysis.
 
 ``` r
-remove.packages("psc")
-#> Removing package from '/home/runner/work/_temp/Library'
-#> (as 'lib' is unspecified)
-#rm(list=ls())
-library(devtools)
-#> Loading required package: usethis
-install_github("richjjackson/psc")
-#> Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.
-#> Downloading GitHub repo richjjackson/psc@HEAD
-#> RcppArmad... (NA -> 15.2.3-1 ) [CRAN]
-#> RcppEigen    (NA -> 0.3.4.0.2) [CRAN]
-#> cpp11        (NA -> 0.5.2    ) [CRAN]
-#> Installing 3 packages: RcppArmadillo, RcppEigen, cpp11
-#> Installing packages into '/home/runner/work/_temp/Library'
-#> (as 'lib' is unspecified)
-#> ── R CMD build ─────────────────────────────────────────────────────────────────
-#> * checking for file ‘/tmp/Rtmpg89b4R/remotes210f3bb3b39c/richJJackson-psc-91f4a69/DESCRIPTION’ ... OK
-#> * preparing ‘psc’:
-#> * checking DESCRIPTION meta-information ... OK
-#> * checking for LF line-endings in source and make files and shell scripts
-#> * checking for empty or unneeded directories
-#> * building ‘psc_2.0.0.tar.gz’
-#> Installing package into '/home/runner/work/_temp/Library'
-#> (as 'lib' is unspecified)
 library(psc)
 #> Loading required package: survival
 #> Loading required package: ggplot2
@@ -288,7 +264,7 @@ summary(surv.psc)
 #> 
 #> CFM Formula: 
 #> Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199
-#> <environment: 0x55f57b6f4e00>
+#> <environment: 0x55d343647f70>
 #> 
 #> CFM Summary: 
 #> Expected response for the outcome under the CFM:
@@ -303,18 +279,18 @@ summary(surv.psc)
 #> 
 #> MCMC Fit: 
 #> Posterior Distribution obtaine with fit summary:
-#>       variable     rhat         ess_bulk     ess_tail     mcse_mean  
-#> [1,]  beta_1       1.005169     1057.394     1140.16      0.002698852
+#>       variable    rhat        ess_bulk    ess_tail    mcse_mean 
+#> [1,]  beta_1      1.00206     1201.938    1017.255    0.00247364
 #> 
 #> Summary: 
 #> Posterior Distribution for beta:Call:
 #>  CFM model + beta
 #> 
 #> Coefficients:
-#>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.004335199  0.08900325    -0.006206425  -0.1488868  
-#>            q95         
-#> posterior  0.1392804
+#>            variable     mean         sd           median       q5         
+#> posterior  beta_1       0.001145023  0.08658349   0.00166373   -0.1454377 
+#>            q95        
+#> posterior  0.1373892
 ```
 
 Lastly to visualise the original model and the fit of the data, the plot
@@ -322,10 +298,10 @@ function has been included
 
 ``` r
 plot(surv.psc)
-#>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.004335199  0.08900325    -0.006206425  -0.1488868  
-#>            q95         
-#> posterior  0.1392804
+#>            variable     mean         sd           median       q5         
+#> posterior  beta_1       0.001145023  0.08658349   0.00166373   -0.1454377 
+#>            q95        
+#> posterior  0.1373892
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
 #> ℹ The deprecated feature was likely used in the ggpubr package.
