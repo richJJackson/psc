@@ -55,7 +55,7 @@
                         <h4 data-toc-skip class="author">Richard
 Jackson</h4>
             
-            <h4 data-toc-skip class="date">2025-11-13</h4>
+            <h4 data-toc-skip class="date">2026-01-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/richJJackson/psc/blob/main/vignettes/psc.Rmd" class="external-link"><code>vignettes/psc.Rmd</code></a></small>
       <div class="d-none name"><code>psc.Rmd</code></div>
@@ -202,14 +202,14 @@ the model for analysis.</p>
 <span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"richjjackson/psc"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.</span></span>
 <span><span class="co">#&gt; Downloading GitHub repo richjjackson/psc@HEAD</span></span>
-<span><span class="co">#&gt; digest (0.6.37 -&gt; 0.6.38) [CRAN]</span></span>
-<span><span class="co">#&gt; lsoda  (NA     -&gt; 1.2   ) [CRAN]</span></span>
-<span><span class="co">#&gt; rstpm2 (1.7.0  -&gt; 1.7.1 ) [CRAN]</span></span>
-<span><span class="co">#&gt; Installing 3 packages: digest, lsoda, rstpm2</span></span>
+<span><span class="co">#&gt; RcppArmad... (NA -&gt; 15.2.3-1 ) [CRAN]</span></span>
+<span><span class="co">#&gt; RcppEigen    (NA -&gt; 0.3.4.0.2) [CRAN]</span></span>
+<span><span class="co">#&gt; cpp11        (NA -&gt; 0.5.2    ) [CRAN]</span></span>
+<span><span class="co">#&gt; Installing 3 packages: RcppArmadillo, RcppEigen, cpp11</span></span>
 <span><span class="co">#&gt; Installing packages into '/home/runner/work/_temp/Library'</span></span>
 <span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; * checking for file ‘/tmp/Rtmpg7vJtB/remotes20bdc6fb51b/richJJackson-psc-8e978b3/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">#&gt; * checking for file ‘/tmp/Rtmpg89b4R/remotes210f3bb3b39c/richJJackson-psc-91f4a69/DESCRIPTION’ ... OK</span></span>
 <span><span class="co">#&gt; * preparing ‘psc’:</span></span>
 <span><span class="co">#&gt; * checking DESCRIPTION meta-information ... OK</span></span>
 <span><span class="co">#&gt; * checking for LF line-endings in source and make files and shell scripts</span></span>
@@ -251,7 +251,7 @@ there are a series of plots to visualise the covariate values which can
 be extracted using the ‘plotCFM’ function</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plotCFM.html">plotCFM</a></span><span class="op">(</span><span class="va">gemCFM</span><span class="op">)</span></span></code></pre></div>
-<p><img src="psc_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" width="672"></p>
+<p><img src="psc_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="672"></p>
 <p>We give esamples of how the ‘pscfit()’ function can be used to
 comapre data against models with survival outcomes (with a ‘flexsurvreg’
 model). Examples on how to perform analyses using GLM model objects are
@@ -321,7 +321,7 @@ how comparable the data from the CFM and DC are using the ‘plotCFM()’
 function</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plotCFM.html">plotCFM</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span></code></pre></div>
-<p><img src="psc_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" width="672"></p>
+<p><img src="psc_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="672"></p>
 <p>We make use of the ‘posterior’ package to summarise the posterior
 distributions (saved within the ‘draws’ object). Both ‘print()’ and
 ‘coef()’ will show these although the ‘summary()’ function provides mode
@@ -338,7 +338,7 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Formula: </span></span>
 <span><span class="co">#&gt; Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199</span></span>
-<span><span class="co">#&gt; &lt;environment: 0x564544085670&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: 0x55f57b6f4e00&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Summary: </span></span>
 <span><span class="co">#&gt; Expected response for the outcome under the CFM:</span></span>
@@ -354,35 +354,35 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; MCMC Fit: </span></span>
 <span><span class="co">#&gt; Posterior Distribution obtaine with fit summary:</span></span>
 <span><span class="co">#&gt;       variable     rhat         ess_bulk     ess_tail     mcse_mean  </span></span>
-<span><span class="co">#&gt; [1,]  beta_1       1.00219      982.9588     969.0546     0.002770336</span></span>
+<span><span class="co">#&gt; [1,]  beta_1       1.005169     1057.394     1140.16      0.002698852</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Summary: </span></span>
 <span><span class="co">#&gt; Posterior Distribution for beta:Call:</span></span>
 <span><span class="co">#&gt;  CFM model + beta</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coefficients:</span></span>
-<span><span class="co">#&gt;            variable       mean           sd             median       </span></span>
-<span><span class="co">#&gt; posterior  beta_1         -0.003323009   0.08782652     -0.0003282747</span></span>
-<span><span class="co">#&gt;            q5             q95          </span></span>
-<span><span class="co">#&gt; posterior  -0.1532584     0.130359</span></span></code></pre></div>
+<span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
+<span><span class="co">#&gt; posterior  beta_1        -0.004335199  0.08900325    -0.006206425  -0.1488868  </span></span>
+<span><span class="co">#&gt;            q95         </span></span>
+<span><span class="co">#&gt; posterior  0.1392804</span></span></code></pre></div>
 <p>Lastly to visualise the original model and the fit of the data, the
 plot function has been included</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span>
-<span><span class="co">#&gt;            variable       mean           sd             median       </span></span>
-<span><span class="co">#&gt; posterior  beta_1         -0.003323009   0.08782652     -0.0003282747</span></span>
-<span><span class="co">#&gt;            q5             q95          </span></span>
-<span><span class="co">#&gt; posterior  -0.1532584     0.130359</span></span>
+<span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
+<span><span class="co">#&gt; posterior  beta_1        -0.004335199  0.08900325    -0.006206425  -0.1488868  </span></span>
+<span><span class="co">#&gt;            q95         </span></span>
+<span><span class="co">#&gt; posterior  0.1392804</span></span>
 <span><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">ggpubr</span> package.</span></span>
 <span><span class="co">#&gt;   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/kassambara/ggpubr/issues&gt;</span>.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once per session.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
 <span><span class="co">#&gt; Ignoring unknown labels:</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">colour</span> : <span style="color: #0000BB;">"Strata"</span></span></span></code></pre></div>
-<p><img src="psc_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" width="672"></p>
+<p><img src="psc_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" alt="" width="672"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

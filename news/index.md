@@ -2,6 +2,8 @@
 
 ## psc 2.0.0
 
+CRAN release: 2025-11-13
+
 ## psc 1.3.0
 
 CRAN release: 2025-05-29

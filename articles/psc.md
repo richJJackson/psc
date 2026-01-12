@@ -124,14 +124,14 @@ library(devtools)
 install_github("richjjackson/psc")
 #> Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.
 #> Downloading GitHub repo richjjackson/psc@HEAD
-#> digest (0.6.37 -> 0.6.38) [CRAN]
-#> lsoda  (NA     -> 1.2   ) [CRAN]
-#> rstpm2 (1.7.0  -> 1.7.1 ) [CRAN]
-#> Installing 3 packages: digest, lsoda, rstpm2
+#> RcppArmad... (NA -> 15.2.3-1 ) [CRAN]
+#> RcppEigen    (NA -> 0.3.4.0.2) [CRAN]
+#> cpp11        (NA -> 0.5.2    ) [CRAN]
+#> Installing 3 packages: RcppArmadillo, RcppEigen, cpp11
 #> Installing packages into '/home/runner/work/_temp/Library'
 #> (as 'lib' is unspecified)
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#> * checking for file ‘/tmp/Rtmpg7vJtB/remotes20bdc6fb51b/richJJackson-psc-8e978b3/DESCRIPTION’ ... OK
+#> * checking for file ‘/tmp/Rtmpg89b4R/remotes210f3bb3b39c/richJJackson-psc-91f4a69/DESCRIPTION’ ... OK
 #> * preparing ‘psc’:
 #> * checking DESCRIPTION meta-information ... OK
 #> * checking for LF line-endings in source and make files and shell scripts
@@ -288,7 +288,7 @@ summary(surv.psc)
 #> 
 #> CFM Formula: 
 #> Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199
-#> <environment: 0x564544085670>
+#> <environment: 0x55f57b6f4e00>
 #> 
 #> CFM Summary: 
 #> Expected response for the outcome under the CFM:
@@ -304,17 +304,17 @@ summary(surv.psc)
 #> MCMC Fit: 
 #> Posterior Distribution obtaine with fit summary:
 #>       variable     rhat         ess_bulk     ess_tail     mcse_mean  
-#> [1,]  beta_1       1.00219      982.9588     969.0546     0.002770336
+#> [1,]  beta_1       1.005169     1057.394     1140.16      0.002698852
 #> 
 #> Summary: 
 #> Posterior Distribution for beta:Call:
 #>  CFM model + beta
 #> 
 #> Coefficients:
-#>            variable       mean           sd             median       
-#> posterior  beta_1         -0.003323009   0.08782652     -0.0003282747
-#>            q5             q95          
-#> posterior  -0.1532584     0.130359
+#>            variable      mean          sd            median        q5          
+#> posterior  beta_1        -0.004335199  0.08900325    -0.006206425  -0.1488868  
+#>            q95         
+#> posterior  0.1392804
 ```
 
 Lastly to visualise the original model and the fit of the data, the plot
@@ -322,15 +322,15 @@ function has been included
 
 ``` r
 plot(surv.psc)
-#>            variable       mean           sd             median       
-#> posterior  beta_1         -0.003323009   0.08782652     -0.0003282747
-#>            q5             q95          
-#> posterior  -0.1532584     0.130359
+#>            variable      mean          sd            median        q5          
+#> posterior  beta_1        -0.004335199  0.08900325    -0.006206425  -0.1488868  
+#>            q95         
+#> posterior  0.1392804
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
 #> ℹ The deprecated feature was likely used in the ggpubr package.
 #>   Please report the issue at <https://github.com/kassambara/ggpubr/issues>.
-#> This warning is displayed once every 8 hours.
+#> This warning is displayed once per session.
 #> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
 #> generated.
 #> Ignoring unknown labels:

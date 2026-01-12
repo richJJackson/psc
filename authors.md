@@ -10,13 +10,13 @@
 Source:
 [`DESCRIPTION`](https://github.com/richJJackson/psc/blob/main/DESCRIPTION)
 
-Jackson R (2025). *psc: Personalised Synthetic Controls*. R package
+Jackson R (2026). *psc: Personalised Synthetic Controls*. R package
 version 2.0.0, <https://github.com/richjjackson/psc/>.
 
     @Manual{,
       title = {psc: Personalised Synthetic Controls},
       author = {Richard Jackson},
-      year = {2025},
+      year = {2026},
       note = {R package version 2.0.0},
       url = {https://github.com/richjjackson/psc/},
     }
