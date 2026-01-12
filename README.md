@@ -28,12 +28,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(psc)
-#> Warning: replacing previous import 'posterior::var' by 'stats::var' when
-#> loading 'psc'
-#> Warning: replacing previous import 'posterior::sd' by 'stats::sd' when loading
-#> 'psc'
-#> Warning: replacing previous import 'posterior::mad' by 'stats::mad' when
-#> loading 'psc'
+#> Loading required package: survival
+#> Loading required package: ggplot2
 library(survival)
 ## basic example code
 
@@ -63,12 +59,12 @@ summary(surv.psc)
 #> CFM Formula: 
 #> Surv(time, cen) ~ vi/age60 + ecog + allmets + logafp + alb + 
 #>     logcreat + logast + aet
-#> <environment: 0x11b23ef28>
+#> <environment: 0x116b6fd60>
 #> 
 #> CFM Summary: 
 #> Expected response for the outcome under the CFM:
 #>      S      lo      hi  
-#>  9.694   9.094  10.653  
+#>  9.694   9.094  11.013  
 #> 
 #> Observed outcome from the Data Cohort:
 #>          [,1] 
@@ -78,8 +74,8 @@ summary(surv.psc)
 #> 
 #> MCMC Fit: 
 #> Posterior Distribution obtaine with fit summary:
-#>       variable    rhat        ess_bulk    ess_tail    mcse_mean 
-#> [1,]  beta_1      1.000707    4222.245    3977.807    0.00151382
+#>       variable     rhat         ess_bulk     ess_tail     mcse_mean  
+#> [1,]  beta_1       1.001575     1157.117     1022.026     0.002900963
 #> 
 #> Summary: 
 #> Posterior Distribution for beta:Call:
@@ -87,17 +83,17 @@ summary(surv.psc)
 #> 
 #> Coefficients:
 #>            variable    mean        sd          median      q5        
-#> posterior  beta_1      0.395547    0.09849599  0.3994494   0.229423  
+#> posterior  beta_1      0.3707433   0.09903147  0.3708735   0.2103505 
 #>            q95       
-#> posterior  0.5514348
+#> posterior  0.5420673
 ```
 
 … and to see a plot of what you have done
 
     #>            variable    mean        sd          median      q5        
-    #> posterior  beta_1      0.395547    0.09849599  0.3994494   0.229423  
+    #> posterior  beta_1      0.3707433   0.09903147  0.3708735   0.2103505 
     #>            q95       
-    #> posterior  0.5514348
+    #> posterior  0.5420673
     #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
     #> ℹ Please use `linewidth` instead.
     #> ℹ The deprecated feature was likely used in the ggpubr package.
