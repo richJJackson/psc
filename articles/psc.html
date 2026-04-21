@@ -55,7 +55,7 @@
                         <h4 data-toc-skip class="author">Richard
 Jackson</h4>
             
-            <h4 data-toc-skip class="date">2026-01-12</h4>
+            <h4 data-toc-skip class="date">2026-04-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/richJJackson/psc/blob/main/vignettes/psc.Rmd" class="external-link"><code>vignettes/psc.Rmd</code></a></small>
       <div class="d-none name"><code>psc.Rmd</code></div>
@@ -196,6 +196,9 @@ the model for analysis.</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/richjjackson/psc/" class="external-link">psc</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: survival</span></span>
 <span><span class="co">#&gt; Loading required package: ggplot2</span></span>
+<span><span class="co">#&gt; Registered S3 method overwritten by 'lme4':</span></span>
+<span><span class="co">#&gt;   method           from</span></span>
+<span><span class="co">#&gt;   na.action.merMod car</span></span>
 <span><span class="va">e4_data</span> <span class="op">&lt;-</span> <span class="fu">psc</span><span class="fu">::</span><span class="va"><a href="../reference/e4_data.html">e4_data</a></span></span>
 <span><span class="va">gemCFM</span> <span class="op">&lt;-</span> <span class="fu">psc</span><span class="fu">::</span><span class="va"><a href="../reference/gemCFM.html">gemCFM</a></span></span></code></pre></div>
 <p>#<code>{r} #library(parallel) #library(posterior) #library(ggplot2) #library(survminer) #library(ggpubr) #library(survival) #</code></p>
@@ -314,7 +317,7 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Formula: </span></span>
 <span><span class="co">#&gt; Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199</span></span>
-<span><span class="co">#&gt; &lt;environment: 0x55c809786e60&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: 0x55773bd0b630&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Summary: </span></span>
 <span><span class="co">#&gt; Expected response for the outcome under the CFM:</span></span>
@@ -330,7 +333,7 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; MCMC Fit: </span></span>
 <span><span class="co">#&gt; Posterior Distribution obtaine with fit summary:</span></span>
 <span><span class="co">#&gt;       variable     rhat         ess_bulk     ess_tail     mcse_mean  </span></span>
-<span><span class="co">#&gt; [1,]  beta_1       0.9994857    1189.257     1281.546     0.002579931</span></span>
+<span><span class="co">#&gt; [1,]  beta_1       1.008573     934.9654     1167.951     0.002892992</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Summary: </span></span>
 <span><span class="co">#&gt; Posterior Distribution for beta:Call:</span></span>
@@ -338,24 +341,17 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coefficients:</span></span>
 <span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
-<span><span class="co">#&gt; posterior  beta_1        -0.007418638  0.08911345    -0.004665301  -0.1590243  </span></span>
+<span><span class="co">#&gt; posterior  beta_1        -0.006223896  0.08952272    -0.005087597  -0.1558022  </span></span>
 <span><span class="co">#&gt;            q95         </span></span>
-<span><span class="co">#&gt; posterior  0.1395412</span></span></code></pre></div>
+<span><span class="co">#&gt; posterior  0.1366003</span></span></code></pre></div>
 <p>Lastly to visualise the original model and the fit of the data, the
 plot function has been included</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
-<span><span class="co">#&gt; posterior  beta_1        -0.007418638  0.08911345    -0.004665301  -0.1590243  </span></span>
+<span><span class="co">#&gt; posterior  beta_1        -0.006223896  0.08952272    -0.005087597  -0.1558022  </span></span>
 <span><span class="co">#&gt;            q95         </span></span>
-<span><span class="co">#&gt; posterior  0.1395412</span></span>
-<span><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">ggpubr</span> package.</span></span>
-<span><span class="co">#&gt;   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/kassambara/ggpubr/issues&gt;</span>.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once per session.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
+<span><span class="co">#&gt; posterior  0.1366003</span></span>
 <span><span class="co">#&gt; Ignoring unknown labels:</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">colour</span> : <span style="color: #0000BB;">"Strata"</span></span></span></code></pre></div>
 <p><img src="psc_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" alt="" width="672"></p>

@@ -136,8 +136,8 @@ print(psc)
 #>  CFM model + beta
 #> 
 #> Coefficients:
-#>            variable    mean        sd          median      q5        
-#> posterior  beta_1      0.03002969  0.08442986  0.02807207  -0.1042363
-#>            q95       
-#> posterior  0.1690021 
+#>            variable     mean         sd           median       q5         
+#> posterior  beta_1       -0.01726211  0.08224797   -0.01589131  -0.1570149 
+#>            q95        
+#> posterior  0.1066151  
 ```

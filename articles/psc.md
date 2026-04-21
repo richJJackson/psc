@@ -118,6 +118,9 @@ the model for analysis.
 library(psc)
 #> Loading required package: survival
 #> Loading required package: ggplot2
+#> Registered S3 method overwritten by 'lme4':
+#>   method           from
+#>   na.action.merMod car
 e4_data <- psc::e4_data
 gemCFM <- psc::gemCFM
 ```
@@ -264,7 +267,7 @@ summary(surv.psc)
 #> 
 #> CFM Formula: 
 #> Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199
-#> <environment: 0x55c809786e60>
+#> <environment: 0x55773bd0b630>
 #> 
 #> CFM Summary: 
 #> Expected response for the outcome under the CFM:
@@ -280,7 +283,7 @@ summary(surv.psc)
 #> MCMC Fit: 
 #> Posterior Distribution obtaine with fit summary:
 #>       variable     rhat         ess_bulk     ess_tail     mcse_mean  
-#> [1,]  beta_1       0.9994857    1189.257     1281.546     0.002579931
+#> [1,]  beta_1       1.008573     934.9654     1167.951     0.002892992
 #> 
 #> Summary: 
 #> Posterior Distribution for beta:Call:
@@ -288,9 +291,9 @@ summary(surv.psc)
 #> 
 #> Coefficients:
 #>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.007418638  0.08911345    -0.004665301  -0.1590243  
+#> posterior  beta_1        -0.006223896  0.08952272    -0.005087597  -0.1558022  
 #>            q95         
-#> posterior  0.1395412
+#> posterior  0.1366003
 ```
 
 Lastly to visualise the original model and the fit of the data, the plot
@@ -299,16 +302,9 @@ function has been included
 ``` r
 plot(surv.psc)
 #>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.007418638  0.08911345    -0.004665301  -0.1590243  
+#> posterior  beta_1        -0.006223896  0.08952272    -0.005087597  -0.1558022  
 #>            q95         
-#> posterior  0.1395412
-#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-#> ℹ Please use `linewidth` instead.
-#> ℹ The deprecated feature was likely used in the ggpubr package.
-#>   Please report the issue at <https://github.com/kassambara/ggpubr/issues>.
-#> This warning is displayed once per session.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-#> generated.
+#> posterior  0.1366003
 #> Ignoring unknown labels:
 #> • colour : "Strata"
 ```
