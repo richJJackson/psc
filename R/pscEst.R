@@ -57,10 +57,10 @@
 pscEst <- function(pscOb,nsim=1000,nchain=1){
 
   ### Set Up
-  pscOb <- pscEst_start(pscOb,nsim=nsim,nchain=nchain)
+  pscOb <- pscEst_start(pscOb,nsim=nsim,nchain=1)
 
   ### Perform MCMC
-  pscOb <- pscEst_run(pscOb,nsim=nsim,nchain=nchain)
+  pscOb <- pscEst_run(pscOb,nsim=nsim,nchain=1)
   pscOb
 
 }
