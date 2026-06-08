@@ -40,30 +40,38 @@ and a geleneralised linear model of type ‘glm’.
 Where the CFM is of type ‘flexsurvreg’ the likeihood supplied is of the
 form:
 
-$$L\left( D \mid \Lambda,\Gamma_{i} \right) = \prod\limits_{i = 1}^{n}f\left( t_{i} \mid \Lambda,\Gamma_{i} \right)^{c_{i}}S\left( t_{i} \mid \Gamma,\Lambda_{i} \right)^{(1 - c_{i})}$$
+``` math
+L(D∣\Lambda,\Gamma_i)=\prod_{i=1}^{n} f(t_i∣\Lambda,\Gamma_i)^{c_i} 
+S(t_i∣\Gamma,\Lambda_i)^{(1−c_i)}
+```
 
-Where $\Gamma$ defines the cumulative baseline hazard function,
-$\Lambda$ is the linear predictor and $t$ and $c$ are the event time and
-indicator variables.
+Where $`\Gamma`$ defines the cumulative baseline hazard function,
+$`\Lambda`$ is the linear predictor and $`t`$ and $`c`$ are the event
+time and indicator variables.
 
 Where the CFM is of the type ‘glm’ the likelihood supplied is of the
 form:
 
-$$L\left( x \mid \Gamma_{i} \right) = \prod\limits_{i = 1}^{n}b\left( x \mid \Gamma_{i} \right)\exp\{\Gamma_{i}t(x) - c\left( \Gamma_{i} \right)\}$$
+``` math
+L(x∣\Gamma_i) = \prod_{i=1}^{n} b (x∣ \Gamma_i )\exp\{\Gamma_i t(x)−
+c(\Gamma_i)\}
+```
 
-Where $b(.)$, $t(.)$ and $c(.)$ represent the functions of the
-exponential family. In both cases, $\Gamma$ is defiend as:
+Where $`b(.)`$, $`t(.)`$ and $`c(.)`$ represent the functions of the
+exponential family. In both cases, $`\Gamma`$ is defiend as:
 
-$$\Gamma_{i} = \gamma x_{i} + \beta$$
+``` math
+ \Gamma_i = \gamma x_i+\beta 
+```
 
-Where $\gamma$ are the model coefficients supplied by the CFM and
-$\beta$ is the parameter set to measure the difference between the CFM
+Where $`\gamma`$ are the model coefficients supplied by the CFM and
+$`\beta`$ is the parameter set to measure the difference between the CFM
 and the DC.
 
 Estimation is performed using a Bayesian MCMC procedure. Prior
-distributions for $\Gamma$ (& $\Lambda$) are derived directly from the
-model coefficients (mean and variance covariance matrix) or the CFM. A
-bespoke MCMC routine is performed to estimate $\beta$. Please see
+distributions for $`\Gamma`$ (& $`\Lambda`$) are derived directly from
+the model coefficients (mean and variance covariance matrix) or the CFM.
+A bespoke MCMC routine is performed to estimate $`\beta`$. Please see
 ‘?mcmc’ for more detials.
 
 For the standard example where the DC contains information from only a
@@ -115,6 +123,7 @@ We start by loading the package and from there obtianing the data and
 the model for analysis.
 
 ``` r
+
 library(psc)
 #> Loading required package: survival
 #> Loading required package: ggplot2
@@ -131,6 +140,7 @@ Starting with the model, we can inspect the model terms included in the
 counter factual model using
 
 ``` r
+
 gemCFM$terms
 #> [1] "LymphN"      "ResecM"      "Diff_Status" "PostOpCA199" "(weights)"
 ```
@@ -148,6 +158,7 @@ function will search for these terms and so it is important that
 outcomes included in the data cohort (DC) are labelled in the same way.
 
 ``` r
+
 gemCFM$out.nm
 #> [1] "time" "cen"
 ```
@@ -160,6 +171,7 @@ there are a series of plots to visualise the covariate values which can
 be extracted using the ‘plotCFM’ function
 
 ``` r
+
 plotCFM(gemCFM)
 ```
 
@@ -190,6 +202,7 @@ and hence 7 parameters to describe the baseline cumulative hazard
 function:
 
 ``` r
+
 gemCFM$haz_co
 #>      gamma0      gamma1      gamma2      gamma3      gamma4      gamma5 
 #> -11.3808020   3.8359818   1.2911623  -1.3176560   1.1190182  -0.8876277 
@@ -201,6 +214,7 @@ There are also prognostic covariates which match with the prognostic
 covariates in the data cohort….
 
 ``` r
+
 gemCFM$cov_co
 #>      LymphN1      ResecM1 Diff_Status1 Diff_Status2  PostOpCA199 
 #>    0.4876152    0.1805322   -0.4160534   -0.5897823    0.2671471
@@ -225,6 +239,7 @@ includes details on all components including the CFM, the DC, the
 likelihood applied, the starting values and posterior distribuion
 
 ``` r
+
 attributes(surv.psc)
 #> $names
 #>  [1] "mod_class" "terms"     "out.nm"    "cov_class" "cov_lev"   "co"       
@@ -244,6 +259,7 @@ comparable the data from the CFM and DC are using the ‘plotCFM()’
 function
 
 ``` r
+
 plotCFM(surv.psc)
 ```
 
@@ -260,6 +276,7 @@ bootstrapping). A summary of the MCMC fit is supplied along with the
 overall summary of the posterior distribution.
 
 ``` r
+
 summary(surv.psc)
 #> Counterfactual Model (CFM): 
 #> A model of class 'flexsurvreg' 
@@ -267,12 +284,12 @@ summary(surv.psc)
 #> 
 #> CFM Formula: 
 #> Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199
-#> <environment: 0x55773bd0b630>
+#> <environment: 0x558c87a05eb8>
 #> 
 #> CFM Summary: 
 #> Expected response for the outcome under the CFM:
 #>     S     lo     hi  
-#> 30.30  25.51  35.79  
+#> 30.30  25.37  35.79  
 #> 
 #> Observed outcome from the Data Cohort:
 #>          [,1] 
@@ -282,29 +299,30 @@ summary(surv.psc)
 #> 
 #> MCMC Fit: 
 #> Posterior Distribution obtaine with fit summary:
-#>       variable     rhat         ess_bulk     ess_tail     mcse_mean  
-#> [1,]  beta_1       1.008573     934.9654     1167.951     0.002892992
+#>       variable    rhat        ess_bulk    ess_tail    mcse_mean 
+#> [1,]  beta_1      1.009739    36.41891    58.10354    0.01937033
 #> 
 #> Summary: 
 #> Posterior Distribution for beta:Call:
 #>  CFM model + beta
 #> 
 #> Coefficients:
-#>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.006223896  0.08952272    -0.005087597  -0.1558022  
-#>            q95         
-#> posterior  0.1366003
+#>            variable    mean        sd          median      q5        
+#> posterior  beta_1      0.04323647  0.1160525   0.040964    -0.2045809
+#>            q95       
+#> posterior  0.2402727
 ```
 
 Lastly to visualise the original model and the fit of the data, the plot
 function has been included
 
 ``` r
+
 plot(surv.psc)
-#>            variable      mean          sd            median        q5          
-#> posterior  beta_1        -0.006223896  0.08952272    -0.005087597  -0.1558022  
-#>            q95         
-#> posterior  0.1366003
+#>            variable    mean        sd          median      q5        
+#> posterior  beta_1      0.04323647  0.1160525   0.040964    -0.2045809
+#>            q95       
+#> posterior  0.2402727
 #> Ignoring unknown labels:
 #> • colour : "Strata"
 ```

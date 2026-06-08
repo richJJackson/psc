@@ -122,6 +122,9 @@
 - [`pscCFM()`](https://richjjackson.github.io/psc/reference/pscCFM.md) :
   Creating a CFM model which can be shared
 
+- [`pscComb()`](https://richjjackson.github.io/psc/reference/pscComb.md)
+  : PSC Estiamtion combination
+
 - [`pscData()`](https://richjjackson.github.io/psc/reference/pscData.md)
   : A function which structures the Data Cohort in a format for model
   estimation

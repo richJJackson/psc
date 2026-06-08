@@ -9,6 +9,7 @@ You can install the development version of psc from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("richJJackson/psc")
 ```
@@ -18,6 +19,7 @@ devtools::install_github("richJJackson/psc")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
+
 library(psc)
 #> Loading required package: survival
 #> Loading required package: ggplot2
@@ -42,6 +44,7 @@ surv.psc <- pscfit(surv.mod,data)
 You can use standard commands for getting a summary of your analysis…
 
 ``` r
+
 summary(surv.psc)
 #> Counterfactual Model (CFM): 
 #> A model of class 'flexsurvreg' 

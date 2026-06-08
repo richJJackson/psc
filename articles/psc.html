@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>psc-vignette • psc</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="psc-vignette">
 </head>
@@ -55,7 +55,7 @@
                         <h4 data-toc-skip class="author">Richard
 Jackson</h4>
             
-            <h4 data-toc-skip class="date">2026-04-21</h4>
+            <h4 data-toc-skip class="date">2026-06-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/richJJackson/psc/blob/main/vignettes/psc.Rmd" class="external-link"><code>vignettes/psc.Rmd</code></a></small>
       <div class="d-none name"><code>psc.Rmd</code></div>
@@ -98,12 +98,12 @@ model are supported, a flexible parmaeteric survival model of type
 ‘flexsurvreg’ and a geleneralised linear model of type ‘glm’.</p>
 <p>Where the CFM is of type ‘flexsurvreg’ the likeihood supplied is of
 the form:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>D</mi><mo>∣</mo><mi>Λ</mi><mo>,</mo><msub><mi>Γ</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munderover><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>f</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>∣</mo><mi>Λ</mi><mo>,</mo><msub><mi>Γ</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>c</mi><mi>i</mi></msub></msup><mi>S</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>∣</mo><mi>Γ</mi><mo>,</mo><msub><mi>Λ</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">L(D∣\Lambda,\Gamma_i)=\prod_{i=1}^{n} f(t_i∣\Lambda,\Gamma_i)^{c_i} 
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false" form="prefix">(</mo><mi>D</mi><mo>∣</mo><mi mathvariant="normal">Λ</mi><mo>,</mo><msub><mi mathvariant="normal">Γ</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>∣</mo><mi mathvariant="normal">Λ</mi><mo>,</mo><msub><mi mathvariant="normal">Γ</mi><mi>i</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><msub><mi>c</mi><mi>i</mi></msub></msup><mi>S</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>∣</mo><mi mathvariant="normal">Γ</mi><mo>,</mo><msub><mi mathvariant="normal">Λ</mi><mi>i</mi></msub><msup><mo stretchy="false" form="postfix">)</mo><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">L(D∣\Lambda,\Gamma_i)=\prod_{i=1}^{n} f(t_i∣\Lambda,\Gamma_i)^{c_i} 
 S(t_i∣\Gamma,\Lambda_i)^{(1−c_i)}</annotation></semantics></math></p>
 <p>Where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
 defines the cumulative baseline hazard function,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math>
 is the linear predictor and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
 and
@@ -111,17 +111,17 @@ and
 are the event time and indicator variables.</p>
 <p>Where the CFM is of the type ‘glm’ the likelihood supplied is of the
 form:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>∣</mo><msub><mi>Γ</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munderover><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>b</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>∣</mo><msub><mi>Γ</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>exp</mo><mo stretchy="false" form="prefix">{</mo><msub><mi>Γ</mi><mi>i</mi></msub><mi>t</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>c</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>Γ</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">L(x∣\Gamma_i) = \prod_{i=1}^{n} b (x∣ \Gamma_i )\exp\{\Gamma_i t(x)−
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>∣</mo><msub><mi mathvariant="normal">Γ</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>∣</mo><msub><mi mathvariant="normal">Γ</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mrow><mi mathvariant="normal">exp</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">{</mo><msub><mi mathvariant="normal">Γ</mi><mi>i</mi></msub><mi>t</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>c</mi><mo stretchy="false" form="prefix">(</mo><msub><mi mathvariant="normal">Γ</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">L(x∣\Gamma_i) = \prod_{i=1}^{n} b (x∣ \Gamma_i )\exp\{\Gamma_i t(x)−
 c(\Gamma_i)\}</annotation></semantics></math></p>
 <p>Where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>.</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">b(.)</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>.</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">t(.)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo stretchy="false" form="prefix">(</mo><mi>.</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">b(.)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo stretchy="false" form="prefix">(</mo><mi>.</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">t(.)</annotation></semantics></math>
 and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>.</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">c(.)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo stretchy="false" form="prefix">(</mo><mi>.</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">c(.)</annotation></semantics></math>
 represent the functions of the exponential family. In both cases,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
 is defiend as:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Γ</mi><mi>i</mi></msub><mo>=</mo><mi>γ</mi><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><mi>β</mi></mrow><annotation encoding="application/x-tex"> \Gamma_i = \gamma x_i+\beta </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Γ</mi><mi>i</mi></msub><mo>=</mo><mi>γ</mi><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><mi>β</mi></mrow><annotation encoding="application/x-tex"> \Gamma_i = \gamma x_i+\beta </annotation></semantics></math></p>
 <p>Where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
 are the model coefficients supplied by the CFM and
@@ -130,9 +130,9 @@ is the parameter set to measure the difference between the CFM and the
 DC.</p>
 <p>Estimation is performed using a Bayesian MCMC procedure. Prior
 distributions for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>
 (&amp;
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math>)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="normal">Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math>)
 are derived directly from the model coefficients (mean and variance
 covariance matrix) or the CFM. A bespoke MCMC routine is performed to
 estimate
@@ -317,12 +317,12 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Formula: </span></span>
 <span><span class="co">#&gt; Surv(time, cen) ~ LymphN + ResecM + Diff_Status + PostOpCA199</span></span>
-<span><span class="co">#&gt; &lt;environment: 0x55773bd0b630&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: 0x558c87a05eb8&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CFM Summary: </span></span>
 <span><span class="co">#&gt; Expected response for the outcome under the CFM:</span></span>
 <span><span class="co">#&gt;     S     lo     hi  </span></span>
-<span><span class="co">#&gt; 30.30  25.51  35.79  </span></span>
+<span><span class="co">#&gt; 30.30  25.37  35.79  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Observed outcome from the Data Cohort:</span></span>
 <span><span class="co">#&gt;          [,1] </span></span>
@@ -332,26 +332,26 @@ overall summary of the posterior distribution.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; MCMC Fit: </span></span>
 <span><span class="co">#&gt; Posterior Distribution obtaine with fit summary:</span></span>
-<span><span class="co">#&gt;       variable     rhat         ess_bulk     ess_tail     mcse_mean  </span></span>
-<span><span class="co">#&gt; [1,]  beta_1       1.008573     934.9654     1167.951     0.002892992</span></span>
+<span><span class="co">#&gt;       variable    rhat        ess_bulk    ess_tail    mcse_mean </span></span>
+<span><span class="co">#&gt; [1,]  beta_1      1.009739    36.41891    58.10354    0.01937033</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Summary: </span></span>
 <span><span class="co">#&gt; Posterior Distribution for beta:Call:</span></span>
 <span><span class="co">#&gt;  CFM model + beta</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coefficients:</span></span>
-<span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
-<span><span class="co">#&gt; posterior  beta_1        -0.006223896  0.08952272    -0.005087597  -0.1558022  </span></span>
-<span><span class="co">#&gt;            q95         </span></span>
-<span><span class="co">#&gt; posterior  0.1366003</span></span></code></pre></div>
+<span><span class="co">#&gt;            variable    mean        sd          median      q5        </span></span>
+<span><span class="co">#&gt; posterior  beta_1      0.04323647  0.1160525   0.040964    -0.2045809</span></span>
+<span><span class="co">#&gt;            q95       </span></span>
+<span><span class="co">#&gt; posterior  0.2402727</span></span></code></pre></div>
 <p>Lastly to visualise the original model and the fit of the data, the
 plot function has been included</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">surv.psc</span><span class="op">)</span></span>
-<span><span class="co">#&gt;            variable      mean          sd            median        q5          </span></span>
-<span><span class="co">#&gt; posterior  beta_1        -0.006223896  0.08952272    -0.005087597  -0.1558022  </span></span>
-<span><span class="co">#&gt;            q95         </span></span>
-<span><span class="co">#&gt; posterior  0.1366003</span></span>
+<span><span class="co">#&gt;            variable    mean        sd          median      q5        </span></span>
+<span><span class="co">#&gt; posterior  beta_1      0.04323647  0.1160525   0.040964    -0.2045809</span></span>
+<span><span class="co">#&gt;            q95       </span></span>
+<span><span class="co">#&gt; posterior  0.2402727</span></span>
 <span><span class="co">#&gt; Ignoring unknown labels:</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> <span style="color: #00BB00;">colour</span> : <span style="color: #0000BB;">"Strata"</span></span></span></code></pre></div>
 <p><img src="psc_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" alt="" width="672"></p>

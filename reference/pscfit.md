@@ -17,7 +17,7 @@ pscfit(
   nsim = 2000,
   id = NULL,
   trt = NULL,
-  nchain = 2,
+  nchain = 1,
   thin = 2,
   burn = 500
 )
@@ -136,8 +136,8 @@ print(psc)
 #>  CFM model + beta
 #> 
 #> Coefficients:
-#>            variable     mean         sd           median       q5         
-#> posterior  beta_1       -0.01726211  0.08224797   -0.01589131  -0.1570149 
-#>            q95        
-#> posterior  0.1066151  
+#>            variable    mean        sd          median      q5        
+#> posterior  beta_1      0.05315987  0.1135264   0.07342917  -0.1768946
+#>            q95       
+#> posterior  0.2169615 
 ```
