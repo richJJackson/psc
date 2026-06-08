@@ -11,12 +11,12 @@ Source:
 [`DESCRIPTION`](https://github.com/richJJackson/psc/blob/main/DESCRIPTION)
 
 Jackson R (2026). *psc: Personalised Synthetic Controls*. R package
-version 2.0.1, <https://github.com/richjjackson/psc/>.
+version 2.1.0, <https://github.com/richjjackson/psc/>.
 
     @Manual{,
       title = {psc: Personalised Synthetic Controls},
       author = {Richard Jackson},
       year = {2026},
-      note = {R package version 2.0.1},
+      note = {R package version 2.1.0},
       url = {https://github.com/richjjackson/psc/},
     }

@@ -1,5 +1,7 @@
 # Changelog
 
+## psc 2.1.0
+
 ## psc 2.0.1
 
 CRAN release: 2026-01-12
