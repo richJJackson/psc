@@ -25,7 +25,7 @@ pscEst_start <- function(pscOb,nsim,nchain){
 
   #starting parameters
   if(!is.null(pscOb$trt)){
-    pscOb$start.mu <- rmvnorm(1,pscOb$start.mu,sigma=c(pscOb$start.sd^2))
+    pscOb$start.mu <- rmvnorm(1, pscOb$start.mu, sigma = pscOb$start.sd)
   }
 
   if(is.null(pscOb$trt)){
@@ -43,17 +43,20 @@ pscEst_start <- function(pscOb,nsim,nchain){
   cfmPost <- function(x) c(mvtnorm::rmvnorm(x,pscOb$co,pscOb$sig))
 
   #starting parameters
-  if(!is.null(pscOb$trt)){
-    target <- function(x) c(mvtnorm::rmvnorm(x,pscOb$start.mu,pscOb$start.sd*2))
+  if (!is.null(pscOb$trt)) {
+    target <- function(x) {
+      c(mvtnorm::rmvnorm(x, pscOb$start.mu, pscOb$start.sd * 6))
+    }
   }
 
-  if(is.null(pscOb$trt)){
-    target <- function(x) c(rnorm(x,pscOb$start.mu,pscOb$start.sd*2))
+  if (is.null(pscOb$trt)) {
+    target <- function(x) c(runif(x, -3,3))
   }
 
   # prior distributions
-  betaPrior <- function(x) mvtnorm::dmvnorm(x,rep(0,length(x)),diag(length(x))*1000,log=T)
-
+  betaPrior <- function(x) {
+    mvtnorm::dmvnorm(x, rep(0, length(x)), diag(length(x)) * 1000, log = T)
+  }
 
   ## ncores
   if(.Platform$OS.type=="windows"&nchain>1){

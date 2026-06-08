@@ -74,7 +74,7 @@
 #' psc <- pscfit(gemCFM,e4_data,nsim=1500,nchain=1)
 #' print(psc)
 #' @export
-pscfit <- function (CFM, DC, nsim = 2000, id = NULL, trt = NULL,nchain=2,thin=2,burn=500){
+pscfit <- function (CFM, DC, nsim = 2000, id = NULL, trt = NULL,nchain=1,thin=2,burn=500){
 
   #### Step 1 - create pscCFM object (may not be required if pscCFM object supplied)
   if(!"pscCFM"%in%class(CFM)){
@@ -88,7 +88,7 @@ pscfit <- function (CFM, DC, nsim = 2000, id = NULL, trt = NULL,nchain=2,thin=2,
   pscOb <- init(pscOb)
 
   ### Step 4 - MCMC estimation
-  pscOb <- pscEst(pscOb,nsim,nchain)
+  pscOb <- pscEst(pscOb, nsim=nsim, nchain=nchain)
 
   ### Step 5 - Summarising posterior
   pscOb <- postSummary(pscOb,thin=thin,burn=burn)
